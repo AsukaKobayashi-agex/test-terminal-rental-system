@@ -11,6 +11,22 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+//==============================================================
+// 管理画面
+//==============================================================
+Route::group(['prefix' => 'admin', 'middleware' => ['force_https', /*'admin.authed'*/]], function() {
+    // TOPページ
+    Route::get('/', 'Admin\TopController@index');
+
+    // ...
+
+});
+
+//==============================================================
+// ユーザー画面
+//==============================================================
+Route::group(['middleware' => ['force_https', /*'user.authed'*/]], function () {
+    // TOPページ
+    Route::get('/', 'User\TopController@index');
+
 });

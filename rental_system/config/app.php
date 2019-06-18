@@ -175,6 +175,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        Rental\Providers\ValidatorServiceProvider::class,
     ],
 
     /*
@@ -226,6 +227,10 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
 
+        /*
+         * アプリ―ケーション定義
+         */
+        'Format' => MyCommon\Facades\Format::class,
     ],
 
 ];
