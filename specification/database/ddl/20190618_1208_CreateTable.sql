@@ -29,8 +29,8 @@ CREATE TABLE user (
 #**********************************************************
 CREATE TABLE rental_device (
 	rental_device_id INT NOT NULL AUTO_INCREMENT
-	,device_category TINYINT NOT NULL DEFAULT (‹ó)
-	,archive_flag TINYINT NOT NULL DEFAULT (‹ó)
+	,device_category TINYINT NOT NULL DEFAULT 0
+	,archive_flag TINYINT NOT NULL DEFAULT 0
 	,registration_date DATETIME NOT NULL DEFAULT '1900/1/1'
 	,update_date DATETIME NOT NULL DEFAULT '1900/1/1'
 	,CONSTRAINT PK_rental_device PRIMARY KEY (rental_device_id)
@@ -79,7 +79,7 @@ CREATE TABLE test_device_basic (
 CREATE TABLE test_device_mobile (
 	test_device_id INT NOT NULL
 	,carrier_id INT NOT NULL DEFAULT 0
-	,agreement_id INT NOT NULL DEFAULT (‹ó)
+	,agreement_id INT NOT NULL DEFAULT 0
 	,mobile_type TINYINT NOT NULL DEFAULT 0
 	,number VARCHAR (100) NOT NULL DEFAULT ''
 	,mail_address VARCHAR (200) NOT NULL DEFAULT ''
@@ -159,7 +159,7 @@ CREATE TABLE mobile_app_master (
 CREATE TABLE pc_software (
 	test_device_id INT NOT NULL
 	,software_id INT NOT NULL
-	,add_date DATETIME NOT NULL DEFAULT '1900/1/1'
+	,software_add_date DATETIME NOT NULL DEFAULT '1900/1/1'
 	,CONSTRAINT PK_pc_software PRIMARY KEY (test_device_id,software_id)
  ) ROW_FORMAT=DYNAMIC ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
