@@ -14,9 +14,11 @@ class TopData
         $sql = <<< End_of_sql
 select
     *
-from rental_device
-where
-    archive_flag = :archive_flag
+from test_device_basic
+left outer join rental_device
+on test_device_basic.rental_device_id = rental_device.rental_device_id
+inner join rental_state
+on test_device_basic.rental_device_id = rental_state.rental_device_id
 
 End_of_sql;
 

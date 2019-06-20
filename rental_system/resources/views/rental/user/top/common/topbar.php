@@ -17,11 +17,11 @@
 
 <?php
     include('user_database.php');
-   $username = ["{$userdata[0]['name'][0]}","{$userdata[0]['name'][1]}"];
-   $userid = "{$userdata[0]['id']}";
-   $div="{$userdata[0]['div']}";
-   $group="{$userdata[0]['group']}";
-   $email="{$userdata[0]['email']}";
+   $username = ["{$userdata[1]['name'][0]}","{$userdata[1]['name'][1]}"];
+   $userid = "{$userdata[1]['id']}";
+   $div="{$userdata[1]['div']}";
+   $group="{$userdata[1]['group']}";
+   $email="{$userdata[1]['email']}";
 ?>
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
