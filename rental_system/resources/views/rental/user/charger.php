@@ -31,7 +31,7 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">端末一覧(タブレット)</h6>
+              <h6 class="m-0 font-weight-bold text-primary">充電器一覧</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -41,14 +41,14 @@
                   <thead>
                     <tr>
                     <th width=40px><input type="checkbox" id="checkAll"></th>
-                    <th>端末名/OS</th>
-                    <th width=20%>ステータス</th>
+                    <th>充電器名</th>
+                    <th width="200px">ボタン</th>
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
                     <th width=40px><input type="checkbox" id="checkAll"></th>
-                    <th>端末名/OS</th>
+                    <th>充電器名</th>
                     <th width=20%>ステータス</th>
                     </tr>
                   </tfoot>
@@ -57,7 +57,7 @@
                     <?php include('common/bundle_bar.php'); ?>
                     <tbody>
 <?php foreach($data_list as $key => $value):?>
-<?php       if($value['category']==='タブレット'):?>
+<?php       if($value['category']==='充電器'):?>
 <?php       if($value['status']==1):?>
         <?php         if($userid===$value['who']){
             $button="<a href=\"/return?id=$value[id]\" class=\"btn btn-danger btn-user btn-block\">返却</a>";
@@ -72,17 +72,8 @@
 <?php       endif;?>
                             <tr>
                             <td><input type="checkbox" class="js_checkButton" name="check[]" onclick="checkValue(this)" value="<?=$value['id']?>"></td>
-                                        <td><a href="/detail?id=<?=$value['id']?>" ><?=$value['name']?></a>
-                                <?php if($value['lte']===0):?>
-                                            <i class="fas fa-fw fa-mobile-alt"></i>
-                                <?php else:?>
-                                            <i class="fas fa-fw"></i>
-                                <?php endif;?>
-                                <?php if($value['wifi']===0):?>
-                                            <i class="fas fa-fw fa-wifi"></i>
-                                <?php endif;?>
-                              <br><?=$value['os']?>
-                              </td><td><?=$button?></td>
+                              <td><a href="/detail?id=<?=$value['id']?>" ><?=$value['name']?></a></td>
+                              <td><?=$button?></td>
                               </tr>
 <?php       endif;?>
 <?php endforeach;?>
@@ -115,7 +106,7 @@
   <?php include('common/logout.php'); ?>
 
   <!-- コアスクリプト-->
-  <?php include('common/Corescript.php'); ?>
+  <?php include('common/corescript.php'); ?>
 
 
 

@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="ja">
-
+<!-- header -->
 <?php include('common/header.php'); ?>
+
+
 
 <body id="page-top">
 
@@ -13,6 +15,7 @@
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
 
+
       <!-- Main Content -->
       <div id="content">
 
@@ -23,35 +26,53 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800">返却</h1>
-          <!-- Basic Card Example -->
+          <h1 class="h3 mb-2 text-gray-800">テスト端末</h1>
+
+          <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">返却端末一覧</h6>
+              <h6 class="m-0 font-weight-bold text-primary">端末一覧(タブレット)</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
-
-              <!--返却端末テーブル-->
+                <form method="post" id="check">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="table-layout:fixed;">
-                  <?php $cate='return'; include('common/database.php'); ?>
 
                   <thead>
                     <tr>
-                    <th width="40px"></th>
+                    <th width=40px><input type="checkbox" id="checkAll"></th>
                     <th>端末名/OS</th>
-                    <th width="7%">削除</th>
+                    <th width=20%>ステータス</th>
                     </tr>
-</thead>
-                  <tbody>
-<?php foreach($data_list as $value):?>
-<?php $list_num=$_GET['id'];
-$button='<button class="btn btn-primary btn-user btn-block js_deleteButton">削除</button>';?>
-<?php if($list_num===$value['id']):?>
-  <?php $num=0; $num ++;?>
+                  </thead>
+                  <tfoot>
                     <tr>
-                    <td><?=$num?></form></td>
-                              <td><a href="../../..//detail?id=<?=$value['id']?>" ><?=$value['name']?></a>
+                    <th width=40px><input type="checkbox" id="checkAll"></th>
+                    <th>端末名/OS</th>
+                    <th width=20%>ステータス</th>
+                    </tr>
+                  </tfoot>
+                  <?php include('common/database.php'); ?>
+                    <?php include('common/search_bar.php'); ?>
+                    <?php include('common/bundle_bar.php'); ?>
+                    <tbody>
+<?php foreach($data_list as $key => $value):?>
+<?php       if($value['category']==='タブレット'):?>
+<?php       if($value['status']==1):?>
+        <?php         if($userid===$value['who']){
+            $button="<a href=\"/return?id=$value[id]\" class=\"btn btn-danger btn-user btn-block\">返却</a>";
+        }else{
+            $button="<a href=\"/rent-user\" class=\"btn btn-outline-dark btn-user btn-block\">{$userdata["{$value['who']}"]['name'][0]}{$userdata["{$value['who']}"]['name'][1]}<br>({$value['when']})</a>";
+        }
+        ?>
+<?php       else:?>
+<?php
+              $button="<a href=\"/rental?id=$value[id]\" class=\"btn btn-primary btn-user btn-block\">貸出</a>";
+?>
+<?php       endif;?>
+                            <tr>
+                            <td><input type="checkbox" class="js_checkButton" name="check[]" onclick="checkValue(this)" value="<?=$value['id']?>"></td>
+                                        <td><a href="/detail?id=<?=$value['id']?>" ><?=$value['name']?></a>
                                 <?php if($value['lte']===0):?>
                                             <i class="fas fa-fw fa-mobile-alt"></i>
                                 <?php else:?>
@@ -62,34 +83,15 @@ $button='<button class="btn btn-primary btn-user btn-block js_deleteButton">削�
                                 <?php endif;?>
                               <br><?=$value['os']?>
                               </td><td><?=$button?></td>
-                  </tr>
-<?php endif;?>
+                              </tr>
+<?php       endif;?>
 <?php endforeach;?>
                   </tbody>
                 </table>
 
-
               </div>
-                <h6 class="m-0 font-weight-bold text-primary">フォーム</h6>
-                  <form class="user">
-                    <div class="form-group row">
-                      <div class="col-sm-3 mb-3 mb-sm-0">
-                      </div>
-                      <div class="col-sm-3 mb-3 mb-sm-0">
-                      </div>
-                      <div class="col-sm-3 mb-3 mb-sm-0">
-                      <a href="#" onclick="window.history.back(); return false;" class="btn btn-secondary btn-user btn-block">キャンセル</a>
-                      </div>
-                      <div class="col-sm-3 mb-3 mb-sm-0">
-                        <button class="btn btn-primary btn-user btn-block" data-toggle="modal" data-target="#checkModal" Id="fix">
-                        確定
-                      </button>
-                      </div>
-                    </div>
-                  </form>
             </div>
           </div>
-
 
         </div>
         <!-- /.container-fluid -->
@@ -103,9 +105,6 @@ $button='<button class="btn btn-primary btn-user btn-block js_deleteButton">削�
     </div>
     <!-- End of Content Wrapper -->
 
-        <!-- 確認ポップアップ-->
-    <?php $check='return'; include('common/check.php'); ?>
-
   </div>
   <!-- End of Page Wrapper -->
 
@@ -116,17 +115,8 @@ $button='<button class="btn btn-primary btn-user btn-block js_deleteButton">削�
   <?php include('common/logout.php'); ?>
 
   <!-- コアスクリプト-->
-  <?php include('common/Corescript.php'); ?>
+  <?php include('common/corescript.php'); ?>
 
-
-<script type="text/javascript">
-  $(".js_deleteButton").click(function(){
-    $(this).parents('tr').remove();
-    if(!$('.layer').length){
-      $("#fix").attr('disabled','disabled')
-    }
-  });
-</script>
 
 
 

@@ -9,7 +9,7 @@ use Rental\Services\Admin\TopService;
 /**
  * 管理画面TOP
  *
- * Class TopController
+ * Class RentalDeviceController
  * @package Rental\Http\Controllers\Admin
  */
 class TopController extends Controller

@@ -77,7 +77,7 @@
             </a>
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="/sp">スマホ</a>
+                    <a class="collapse-item" href="/smart-phone">スマホ</a>
                     <a class="collapse-item" href="/tablet">タブレット</a>
                 </div>
             </div>
@@ -247,17 +247,31 @@
         $('form').submit();
     }
 
-    function checkValue(check){
-        if(check.checked){
+    $(function(){
+    $('.checkbox').click(function(){
+        if($('#dataTable :checked').length !== 0){
             $('.bundle').removeAttr('disabled')
+        }else{
+            $('.bundle').attr('disabled', true)
         }
-    }
-    $('#checkAll').click(function () {
-        $('input:checkbox').prop('checked', this.checked);
-        $('.bundle').removeAttr('disabled')
-
+        if ($('#dataTable :checked').length === $('#dataTable :input').length){
+            $('#check_all').prop('checked', 'checked');
+        }else{
+            $('#check_all').prop('checked', false);
+        }
     });
 
+    //全チェックボタン
+    $('#check_all').click(function () {
+        $('input:checkbox').prop('checked', this.checked);
+
+        if($('#dataTable :checked').length !== 0){
+            $('.bundle').removeAttr('disabled')
+        }else{
+            $('.bundle').attr('disabled', true)
+        }
+
+    });});
 </script>
 
 

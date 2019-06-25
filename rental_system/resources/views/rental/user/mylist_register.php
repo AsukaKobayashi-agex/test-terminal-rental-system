@@ -21,59 +21,50 @@
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
-
           <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800">返却</h1>
+          <h1 class="h3 mb-4 text-gray-800">マイリスト登録</h1>
           <!-- Basic Card Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">返却端末一覧</h6>
+              <h6 class="m-0 font-weight-bold text-primary">登録端末一覧</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
 
-              <!--返却端末テーブル-->
+              <!--登録端末テーブル-->
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="table-layout:fixed;">
-                  <?php $cate='return'; include('common/database.php'); ?>
-
+                  <?php $cate='rental';
+                  include('common/database.php'); ?>
                   <thead>
                     <tr>
-                    <th width="40px"></th>
-                    <th>端末名/OS</th>
-                    <th width="7%">削除</th>
+                        <th width="40px"></th>
+                        <th>端末名/OS</th>
+                        <th width="7%">削除</th>
                     </tr>
-</thead>
+                  </thead>
                   <tbody>
 <?php foreach($data_list as $value):?>
-<?php if(isset($_POST[check])):?>
+<?php if(isset($_POST['action'])):?>
 <?php
-
-    $list_num=array_unique($_POST[check]);
+    $list_num=array_unique($_POST['action']);
     $button='<button class="btn btn-primary btn-user btn-block js_deleteButton">削除</button>';
 ?>
 <?php foreach($list_num as $id):?>
 <?php if($id===$value['id']):?>
-  <?php $num ++;?>
+  <?php $num=0; $num ++;?>
                     <tr class="layer">
                     <td><?=$num?></td>
-                    <td>
-                        <a href="../../..//detail?id=<?=$value['id']?>" ><?=$value['name']?></a>
-                        <?php if($value['who']!==$userid):?>
-                        <font color="red"><b>※返却不可</b></font>
-                        <?php endif;?>
-                    </td>
-                    <td><?=$value['os']?></td>
-                        <td>
-                            <?php if($value['lte']===0):?>
+                  <td><a href="/detail?id=<?=$value['id']?>" ><?=$value['name']?></a>
+                    <?php if($value['lte']===0):?>
                                 <i class="fas fa-fw fa-mobile-alt"></i>
-                            <?php else:?>
+                    <?php else:?>
                                 <i class="fas fa-fw"></i>
-                            <?php endif;?>
-                            <?php if($value['wifi']===0):?>
+                    <?php endif;?>
+                    <?php if($value['wifi']===0):?>
                                 <i class="fas fa-fw fa-wifi"></i>
-                            <?php endif;?>
-                        </td>
-                    <td><?=$button?></td>
+                    <?php endif;?>
+                  <br><?=$value['os']?>
+                  </td><td><?=$button?></td>
                     </tr>
 <?php endif;?>
 <?php endforeach;?>
@@ -84,18 +75,22 @@
 
 
               </div>
-                <h6 class="m-0 font-weight-bold text-primary">フォーム</h6>
+                <h6 class="m-0 font-weight-bold text-secondary">登録するマイリストを選択</h6>
                   <form class="user">
                     <div class="form-group row">
+                      <form action="#">
+                          <input type="text"  class="col-sm-3 form-control mb-3 mb-sm-0" name="a" placeholder="新規マイリスト" autocomplete="off">
+                          <select class="col-sm-3 form-control mb-3 mb-sm-0">
+                              <option value="1">マイリスト１</option>
+                              <option value="2">マイリスト２</option>
+                              <option value="3">マイリスト３</option>
+                          </select>
+                          </form>
                       <div class="col-sm-3 mb-3 mb-sm-0">
+                        <a href="#" onclick="window.history.back(); return false;" class="btn btn-secondary btn-block">キャンセル</a>
                       </div>
                       <div class="col-sm-3 mb-3 mb-sm-0">
-                      </div>
-                      <div class="col-sm-3 mb-3 mb-sm-0">
-                      <a href="#" onclick="window.history.back(); return false;" class="btn btn-secondary btn-user btn-block">キャンセル</a>
-                      </div>
-                      <div class="col-sm-3 mb-3 mb-sm-0">
-                        <button class="btn btn-primary btn-user btn-block" data-toggle="modal" data-target="#checkModal" Id="fix">
+                        <button class="btn btn-primary btn-block" data-toggle="modal" data-target="#checkModal" Id="fix">
                         確定
                       </button>
                       </div>
@@ -118,7 +113,7 @@
     <!-- End of Content Wrapper -->
 
         <!-- 確認ポップアップ-->
-    <?php $check='return'; include('common/check.php'); ?>
+    <?php $check='rental'; include('common/check.php'); ?>
 
   </div>
   <!-- End of Page Wrapper -->
@@ -130,7 +125,8 @@
   <?php include('common/logout.php'); ?>
 
   <!-- コアスクリプト-->
-  <?php include('common/Corescript.php'); ?>
+  <?php include('common/corescript.php'); ?>
+
 
 
 <script type="text/javascript">
@@ -141,7 +137,6 @@
     }
   });
 </script>
-
 
 </body>
 

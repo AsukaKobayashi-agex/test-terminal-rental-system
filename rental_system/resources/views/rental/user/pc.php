@@ -117,7 +117,7 @@
   <?php include('common/logout.php'); ?>
 
   <!-- コアスクリプト-->
-  <?php include('common/Corescript.php'); ?>
+  <?php include('common/corescript.php'); ?>
 
 
 

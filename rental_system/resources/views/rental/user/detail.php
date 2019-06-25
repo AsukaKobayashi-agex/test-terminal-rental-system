@@ -25,7 +25,10 @@
 <?php foreach($data_list as $value):?>
 <?php if($value['id']===$_GET['id']){
   $detail=$value;
-}?>
+    }else{
+    $detail = "";
+    }
+?>
 <?php endforeach;?>
           <!-- Page Heading -->
           <h1 class="h3 mb-4 text-gray-800">端末詳細</h1>

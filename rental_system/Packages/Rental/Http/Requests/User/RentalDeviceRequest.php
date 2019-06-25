@@ -4,7 +4,7 @@ namespace Rental\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class TopRequest extends FormRequest
+class RentalDeviceRequest extends FormRequest
 {
     protected $_inputs = [];
 
@@ -33,7 +33,9 @@ class TopRequest extends FormRequest
 
     public function attributes()
     {
-        return [];
+        return [
+            'name' => 'required|max:100'
+        ];
     }
 
     public function messages()

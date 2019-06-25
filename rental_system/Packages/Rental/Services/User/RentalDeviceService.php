@@ -2,13 +2,13 @@
 
 namespace Rental\Services\User;
 
-use Rental\Models\User\TopData;
+use Rental\Models\User\RentalDeviceData;
 
-class TopService
+class RentalDeviceService
 {
     protected $_model;
 
-    public function __construct(TopData $model)
+    public function __construct(RentalDeviceData $model)
     {
         $this->_model = $model;
     }
@@ -16,7 +16,7 @@ class TopService
     public function getData($param)
     {
         $data = [];
-        $data['all_device_list'] = $this->_model->getAllRentalDevice();
+        $data['all_device_list'] = $this->_model->getAllRentalDevice($param);
         return $data;
     }
 }
