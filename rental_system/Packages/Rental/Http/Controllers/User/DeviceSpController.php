@@ -3,8 +3,9 @@
 namespace Rental\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use Rental\Http\Requests\User\RentalDeviceRequest;
-use Rental\Services\User\RentalDeviceService;
+use Rental\Http\Requests\User\DeviceSpRequest;
+use Rental\Services\User\DeviceSpService;
+
 
 /**
  * ユーザー画面TOP
@@ -14,8 +15,10 @@ use Rental\Services\User\RentalDeviceService;
  */
 class DeviceSpController extends Controller
 {
-    public function smart_phone()
+    public function smart_phone(DeviceSpRequest $request, DeviceSpService $service)
     {
-        return view('rental.user.category.smart_phone');
+        $param = $request->all();
+        $data = $service->getData($param);
+        return view('rental.user.category.smart_phone')->with($data);
     }
 }

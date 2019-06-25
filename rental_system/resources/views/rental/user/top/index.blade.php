@@ -47,7 +47,13 @@
                         <tr>
                             <td><input type="checkbox" class="checkbox" name="action[]" value="<?=$value['rental_device_id']?>"></td>
                             <td>
-                                <a href="/detail?id=<?=$value['test_device_id']?>" ><?=$value['device_name']?></a>
+                                <a href="/detail?id=<?=$value['rental_device_id']?>" >
+                                    @if($value['device_category']==1)
+                                        <?=$value['device_name']?>
+                                    @elseif($value['device_category']== 2)
+                                        <?=$value['charger_name']?>
+                                    @endif
+                                </a>
                             </td>
                             <td>
                             @if($value['status']===1)

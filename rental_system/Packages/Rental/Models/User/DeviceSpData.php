@@ -2,9 +2,9 @@
 
 namespace Rental\Models\User;
 
-class RentalDeviceData
+class DeviceSpData
 {
-    public function getAllRentalDevice($param)
+    public function getAllDeviceSp($param)
     {
         // バインド値設定
         $params = [
@@ -18,7 +18,6 @@ select
     archive_flag,
     test_device_id,
     device_name,
-    charger_name,
     status,
     rs.user_id,
     name,
@@ -28,8 +27,6 @@ inner join rental_state as rs
 on rd.rental_device_id = rs.rental_device_id
 left outer join test_device_basic as tdb
 on rd.rental_device_id = tdb.rental_device_id
-left outer join charger as ch
-on rd.rental_device_id = ch.rental_device_id
 left outer join user
 on rs.user_id = user.user_id
 where archive_flag = :archive_flag
@@ -41,12 +38,11 @@ End_of_sql;
             $sql .= <<< Add_sql
 
 and device_name like :device_name
-and charger_name like :device_name
 
 Add_sql;
         };
 
-        $sql .= "order by device_category,device_name,charger_name;";
+        $sql .= ";";
 
 
 
