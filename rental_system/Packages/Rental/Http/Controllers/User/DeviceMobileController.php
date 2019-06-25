@@ -3,8 +3,9 @@
 namespace Rental\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use Rental\Http\Requests\User\RentalDeviceRequest;
-use Rental\Services\User\RentalDeviceService;
+use Rental\Http\Requests\User\DeviceMobileRequest;
+use Rental\Services\User\DeviceMobileService;
+
 
 /**
  * ユーザー画面TOP
@@ -14,4 +15,10 @@ use Rental\Services\User\RentalDeviceService;
  */
 class DeviceMobileController extends Controller
 {
+    public function mobile(DeviceMobileRequest $request, DeviceMobileService $service)
+    {
+        $param = $request->all();
+        $data = $service->getData($param);
+        return view('rental.user.category.mobile')->with($data);
+    }
 }

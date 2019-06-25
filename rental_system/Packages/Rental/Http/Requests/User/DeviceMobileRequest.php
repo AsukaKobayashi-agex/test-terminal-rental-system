@@ -4,7 +4,7 @@ namespace Rental\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class DeviceSpRequest extends FormRequest
+class DeviceMobileRequest extends FormRequest
 {
     protected $_inputs = [];
 

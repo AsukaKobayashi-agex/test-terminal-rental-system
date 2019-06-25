@@ -43,9 +43,7 @@ Route::group(['middleware' => ['force_https', /*'user.authed'*/]], function () {
 
     Route::match(['get','post'],'/charger', 'User\DeviceChargerController@charger');
 
-    Route::match(['get','post'],'/smart-phone', 'User\DeviceSpController@smart_phone');
-
-    Route::match(['get','post'],'/tablet', 'User\DeviceTabletController@tablet');
+    Route::match(['get','post'],'/mobile', 'User\DeviceMobileController@mobile');
 
     Route::match(['get','post'],'/rent-user', 'User\RentUserController@rent_user');
 
