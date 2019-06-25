@@ -37,11 +37,12 @@ where archive_flag = :archive_flag
 End_of_sql;
 
         if(isset($param['name']) and !empty($param['name'])) {
-            $params['device_name'] = "%".$param['name']."%";
+            $params['device_name'] = "%".preg_replace("/\s/","%",$param['name'])."%";
+            $params['charger_name'] = "%".preg_replace("/\s/","%",$param['name'])."%";
             $sql .= <<< Add_sql
 
 and device_name like :device_name
-and charger_name like :device_name
+or charger_name like :charger_name
 
 Add_sql;
         };

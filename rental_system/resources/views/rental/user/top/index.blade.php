@@ -28,7 +28,7 @@
                                     <input type="search" name="name" class="form-control form-control-user" value="" placeholder="端末名を入力" >
                                 </div>
                                 <div class="col-2">
-                                    <button type="button" class="btn btn-primary btn-block" form="search" onclick="submitAction('#')"><i class="fas fa-fw fa-search"></i>
+                                    <button type="submit" class="btn btn-primary btn-block" onclick="submitAction('/')"><i class="fas fa-fw fa-search"></i>
                                     </button>
                                 </div>
                             </form>
@@ -45,7 +45,7 @@
                     <tbody>
                     @foreach($all_device_list as $value)
                         <tr>
-                            <td><input type="checkbox" class="checkbox" name="action[]" value="<?=$value['rental_device_id']?>"></td>
+                            <td><input type="checkbox" form="action" class="checkbox" name="action[]" value="<?=$value['rental_device_id']?>"></td>
                             <td>
                                 <a href="/detail?id=<?=$value['rental_device_id']?>" >
                                     @if($value['device_category']==1)
@@ -58,13 +58,13 @@
                             <td>
                             @if($value['status']===1)
                                 @if($userid==$value['user_id'])
-                                    <button type="submit" class="btn btn-danger btn-block" name="action[]" onclick="submitAction('/return')" value="<?=$value['rental_device_id']?>">返却</button>
+                                    <button type="submit" form="action" class="btn btn-danger btn-block" name="action[]" onclick="submitAction('/return')" value="<?=$value['rental_device_id']?>">返却</button>
                                 @else
                                         <button type="submit" class="btn btn-outline-dark btn-block" name="user_id" onclick="submitAction('/rent-user')" value="<?=$value['user_id']?>"><?=$value['name']?><br>(<?=$value['rental_datetime']?>)</button>
                                     @endif
 
                             @else
-                                    <button type="submit" class="btn btn-primary btn-block" name="action[]" onclick="submitAction('/rental')" value="<?=$value['rental_device_id']?>">貸出</button>
+                                    <button type="submit" from="action" class="btn btn-primary btn-block" name="action[]" onclick="submitAction('/rental')" value="<?=$value['rental_device_id']?>">貸出</button>
                             @endif
                             </td>
                         </tr>
