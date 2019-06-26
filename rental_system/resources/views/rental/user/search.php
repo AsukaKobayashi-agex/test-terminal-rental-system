@@ -43,14 +43,14 @@
                       <tr>
                       <th width=40px><input type="checkbox" id="checkAll"></th>
                       <th>端末名/OS</th>
-                      <th width=20%>ステータス</th>
+                      <th width=40%>ステータス</th>
                       </tr>
                     </thead>
                     <tfoot>
                       <tr>
                       <th width=40px><input type="checkbox" id="checkAll"></th>
                       <th>端末名/OS</th>
-                      <th width=20%>ステータス</th>
+                      <th width=40%>ステータス</th>
                       </tr>
                     </tfoot>
                     <?php include('common/database.php'); ?>
@@ -80,7 +80,7 @@ if(preg_match("/{$_POST['id']}/i",$value['id'])
 ?>
 <?php       endif;?>
                               <td><input type="checkbox" class="js_checkButton" name="check[]" onclick="checkValue(this)" value="<?=$value['id']?>"></td>
-                                        <td><a href="/detail?id=<?=$value['id']?>" ><?=$value['name']?></a>
+                                        <td><a class="text-lg" href="/detail?id=<?=$value['id']?>" ><?=$value['name']?></a>
                                 <?php if($value['lte']===0):?>
                                             <i class="fas fa-fw fa-mobile-alt"></i>
                                 <?php else:?>

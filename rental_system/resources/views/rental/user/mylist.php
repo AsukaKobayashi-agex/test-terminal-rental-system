@@ -76,7 +76,7 @@
 <?php if($id===$value['id']):?>
                     <tr class="layer">
                     <td><input type="checkbox" class="check1" name="check[]" onclick="checkValue(this)" value="<?=$value['id']?>"></td>
-                              <td><a href="/detail?id=<?=$value['id']?>" ><?=$value['name']?></a>
+                              <td><a class="text-lg" href="/detail?id=<?=$value['id']?>" ><?=$value['name']?></a>
                                 <?php if($value['lte']===0):?>
                                             <i class="fas fa-fw fa-mobile-alt"></i>
                                 <?php else:?>
@@ -140,7 +140,7 @@
 <?php if($id===$value['id']):?>
                     <tr class="layer">
                     <td><input type="checkbox" class="check2" name="check[]" onclick="checkValue(this)" value="<?=$value['id']?>"></td>
-                              <td><a href="/detail?id=<?=$value['id']?>" ><?=$value['name']?></a>
+                              <td><a class="text-lg" href="/detail?id=<?=$value['id']?>" ><?=$value['name']?></a>
                                 <?php if($value['lte']===0):?>
                                             <i class="fas fa-fw fa-mobile-alt"></i>
                                 <?php else:?>
@@ -204,7 +204,7 @@
 <?php if($id===$value['id']):?>
                     <tr class="layer">
                     <td><input type="checkbox" class="check3" name="check[]" onclick="checkValue(this)" value="<?=$value['id']?>"></td>
-                              <td><a href="/detail?id=<?=$value['id']?>" ><?=$value['name']?></a>
+                              <td><a class="text-lg" href="/detail?id=<?=$value['id']?>" ><?=$value['name']?></a>
                                 <?php if($value['lte']===0):?>
                                             <i class="fas fa-fw fa-mobile-alt"></i>
                                 <?php else:?>

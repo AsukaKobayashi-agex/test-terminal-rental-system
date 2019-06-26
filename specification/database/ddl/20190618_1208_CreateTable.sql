@@ -69,7 +69,7 @@ CREATE TABLE test_device_basic (
 	test_device_id INT NOT NULL AUTO_INCREMENT
 	,rental_device_id INT NOT NULL
 	,device_name VARCHAR (200) NOT NULL DEFAULT ''
-	,test_device_caterory TINYINT NOT NULL DEFAULT 0
+	,test_device_category TINYINT NOT NULL DEFAULT 0
 	,os TINYINT NOT NULL DEFAULT 0
 	,os_version VARCHAR (100) NOT NULL DEFAULT ''
 	,CONSTRAINT PK_test_device_basic PRIMARY KEY (test_device_id)

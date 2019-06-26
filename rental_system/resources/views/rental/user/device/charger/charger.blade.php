@@ -5,7 +5,7 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">モバイル端末一覧</h6>
+            <h6 class="m-0 font-weight-bold text-primary">充電器一覧</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -13,7 +13,7 @@
                         <thead>
                         <tr>
                             <th width=40px><input type="checkbox" id="check_all"></th>
-                            <th>端末名/OS</th>
+                            <th>充電器名/充電器タイプ</th>
                             <th width=40%></th>
                         </tr>
                         </thead>
@@ -33,38 +33,23 @@
                                     <div class="col-sm-4 mb-3 mb-sm-0">
                                         <input type="search" name="search_word" class="form-control form-control-user" value="" placeholder="端末名を入力" >
                                     </div>
-                                    <div class="col-sm-1 mb-3 mb-sm-0">
-                                        <select name="os" class="form-control form-control-user">
-                                            <option value="" selected>OS</option>
-                                            <option value="1">Android</option>
-                                            <option value="2">iOS</option>
+                                    <div class="col-sm-2 mb-3 mb-sm-0">
+                                        <select name="charger_type" class="form-control form-control-user">
+                                            <option value="" selected>充電器タイプ</option>
+                                            <option value="1">USB TYPE-B</option>
+                                            <option value="2">USB TYPE-C</option>
+                                            <option value="3">iphone ライトニング</option>
+                                            <option value="4">iphone 旧型</option>
                                         </select>
                                     </div>
                                     <div class="col-sm-2 mb-3 mb-sm-0">
-                                        <input type="search" name="os_version" class="form-control form-control-user" value="" placeholder="OSバージョン" >
-                                    </div>
-
-                                    <div class="col-sm-1 mb-3 mb-sm-0 ">
-                                        <select name="wifi" class="form-control form-control-user">
-                                            <option value="" selected>Wi-Fi</option>
-                                            <option value="0">なし</option>
-                                            <option value="1">あり</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-sm-1 mb-3 mb-sm-0">
-                                        <select name="com_line" class="form-control form-control-user">
-                                            <option value="" selected>モバイル回線</option>
-                                            <option value="0">なし</option>
-                                            <option value="1">あり</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-sm-1 mb-3 mb-sm-0">
                                         <select name="status" class="form-control form-control-user">
                                             <option value=""selected>ステータス</option>
                                             <option value="0">貸出可</option>
                                             <option value="1">貸出中</option>
                                         </select>
                                     </div>
+
                                     <div class="col-sm-2">
                                         <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-fw fa-search"></i>
                                         </button>
@@ -80,29 +65,23 @@
                         $userid = "1";
                         ?>
 
-                        <tbody>@foreach($mobile_device_list as $value)
+                        <tbody>@foreach($charger_list as $value)
                             <tr>
                                 <td><input type="checkbox" class="checkbox" form="action" name="action[]" value="<?=$value['rental_device_id']?>"></td>
                                 <td>
-                                    <a class="text-lg" href="/detail?id=<?=$value['test_device_id']?>" ><?=$value['device_name']?></a>
-                                     @if($value['wifi_line']===1)
-                                    <i class="fas fa-fw fa-wifi"></i>
-                                    @else
-                                    <i class="fas fa-fw"></i>
-                                    @endif
-                                    @if($value['communication_line']===1)
-                                    <i class="fas fa-fw fa-mobile-alt"></i>
-                                    @endif
+                                    <a class="text-lg" href="/detail?id=<?=$value['charger_id']?>" ><?=$value['charger_name']?></a>
                                     <br>
-                                    @if($value['os']==1)
-                                        Android
-                                    @elseif($value['os']==2)
-                                        iOS
+                                    @if($value['charger_type']==1)
+                                        USB TYPE-B
+                                    @elseif($value['charger_type']==2)
+                                        USB TYPE-C
+                                    @elseif($value['charger_type']==2)
+                                        iphone ライトニング
+                                    @elseif($value['charger_type']==2)
+                                        iphone 旧型
                                     @else
-                                        Other OS
+                                        Other
                                     @endif
-                                    <?=$value['os_version']?>
-
                                 </td>
                                 <td>
                                     @if($value['status']===1)

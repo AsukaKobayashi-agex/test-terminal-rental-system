@@ -49,7 +49,7 @@
                     <tr>
                     <th width=40px><input type="checkbox" id="checkAll"></th>
                     <th>充電器名</th>
-                    <th width=20%>ステータス</th>
+                    <th width=40%>ステータス</th>
                     </tr>
                   </tfoot>
                   <?php include('common/database.php'); ?>
@@ -72,7 +72,7 @@
 <?php       endif;?>
                             <tr>
                             <td><input type="checkbox" class="js_checkButton" name="check[]" onclick="checkValue(this)" value="<?=$value['id']?>"></td>
-                              <td><a href="/detail?id=<?=$value['id']?>" ><?=$value['name']?></a></td>
+                              <td><a class="text-lg" href="/detail?id=<?=$value['id']?>" ><?=$value['name']?></a></td>
                               <td><?=$button?></td>
                               </tr>
 <?php       endif;?>

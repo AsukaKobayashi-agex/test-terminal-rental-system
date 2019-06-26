@@ -13,8 +13,8 @@
                     <thead>
                     <tr>
                         <th width=40px><input type="checkbox" id="check_all"></th>
-                        <th>端末名/OS</th>
-                        <th width=20%></th>
+                        <th>端末名</th>
+                        <th width=40%></th>
                     </tr>
                     </thead>
 
@@ -32,7 +32,14 @@
                                 <div class="col-sm-4 mb-3 mb-sm-0">
                                     <input type="search" name="search_word" class="form-control form-control-user" value="" placeholder="端末名を入力" >
                                 </div>
-                                <div class="col-2">
+                                <div class="col-sm-2 mb-3 mb-sm-0">
+                                    <select name="status" class="form-control form-control-user">
+                                        <option value=""selected>ステータス</option>
+                                        <option value="0">貸出可</option>
+                                        <option value="1">貸出中</option>
+                                    </select>
+                                </div>
+                                <div class="col-sm-2 mb-3 mb-sm-0">
                                     <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-fw fa-search"></i>
                                     </button>
                                 </div>
@@ -52,11 +59,11 @@
                         <tr>
                             <td><input type="checkbox" form="action" class="checkbox" name="action[]" value="<?=$value['rental_device_id']?>"></td>
                             <td>
-                                <a href="/detail?id=<?=$value['rental_device_id']?>" >
+                                <a class="text-lg" href="/detail?id=<?=$value['rental_device_id']?>" >
                                     @if($value['device_category']==1)
                                         <?=$value['device_name']?>
                                     @elseif($value['device_category']== 2)
-                                        <?=$value['charger_name']?>
+                                    <?=$value['charger_name']?>
                                     @endif
                                 </a>
                             </td>
@@ -77,7 +84,7 @@
                             @else
                                 <form name='rental' method="post" action="/rental">
                                     @csrf
-                                    <button type="submit" form="action" class="btn btn-primary btn-block" name="action[]"  value="<?=$value['rental_device_id']?>">貸出</button>
+                                    <button type="submit" class="btn btn-primary btn-block" name="action[]"  value="<?=$value['rental_device_id']?>">貸出</button>
                                 </form>
                             @endif
                             </td>

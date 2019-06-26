@@ -3,19 +3,21 @@
 namespace Rental\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use Rental\Http\Requests\User\UserTopRequest;
-use Rental\Services\User\UserTopService;
+use Rental\Http\Requests\User\DeviceChargerRequest;
+use Rental\Services\User\DeviceChargerService;
 
 /**
  * ユーザー画面TOP
  *
- * Class UserTopController
+ * Class DeviceChargerController
  * @package Rental\Http\Controllers\User
  */
 class DeviceChargerController extends Controller
 {
-    public function charger()
+    public function charger(DeviceChargerRequest $request, DeviceChargerService $service)
     {
-        return view('rental.user.charger');
+        $param = $request->all();
+        $data = $service->getData($param);
+        return view('rental.user.device.charger.charger')->with($data);
     }
 }

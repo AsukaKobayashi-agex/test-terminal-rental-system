@@ -54,7 +54,7 @@
   <?php $num=0; $num ++;?>
                     <tr class="layer">
                     <td><?=$num?></td>
-                  <td><a href="/detail?id=<?=$value['id']?>" ><?=$value['name']?></a>
+                  <td><a class="text-lg" href="/detail?id=<?=$value['id']?>" ><?=$value['name']?></a>
                     <?php if($value['lte']===0):?>
                                 <i class="fas fa-fw fa-mobile-alt"></i>
                     <?php else:?>
