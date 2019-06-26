@@ -26,11 +26,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['force_https', /*'admin.auth
     Route::get('/forgot-password','Admin\LoginController@forgot_password');
     Route::get('/register','Admin\LoginController@register');
 
-    //端末追加画面
-    Route::get('/add','Admin\AddController@view');
+    // 端末追加
+    // スマホ
     Route::get('/add_sp','Admin\Add_spController@view');
-    Route::get('/add_sp_basic_info','Admin\Add_sp_basicController@view');
-    Route::get('/add_charger','Admin\Add_chargerController@view');
+    // PC
+
+    // 充電器
+    Route::get('/add_charger', 'Admin\AddChargerController@form');
+    Route::post('/add_charger/action', 'Admin\AddChargerController@action');
 
     //追加アクション画面
 

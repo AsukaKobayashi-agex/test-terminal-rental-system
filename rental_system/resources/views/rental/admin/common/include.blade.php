@@ -206,12 +206,8 @@
             <!-- End of Topbar -->
 
             <!-- Begin Page Content -->
-            <div class="container-fluid">
-
-                @section('content')
-                @show
-
-            </div>
+            @section('content')
+            @show
             <!-- /.container-fluid -->
 
         </div>
@@ -266,26 +262,7 @@
 <!-- Custom scripts for all pages-->
 <script src="/bootsample/js/sb-admin-2.min.js"></script>
 
-<script type="text/javascript">
-    function submitAction(url) {
-        $('form').attr('action', url);
-        $('form').submit();
-    }
-
-    function checkValue(check){
-        if(check.checked){
-            $('.bundle').removeAttr('disabled')
-        }
-    }
-    $('#checkAll').click(function () {
-        $('input:checkbox').prop('checked', this.checked);
-        $('.bundle').removeAttr('disabled')
-
-    });
-
-</script>
-
-
+@stack('scripts')
 
 </body>
 
