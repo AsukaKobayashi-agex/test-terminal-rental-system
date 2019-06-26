@@ -45,7 +45,7 @@
                     </div>
                     <div class="col-sm mr-1">
                       <div class="text font-weight-bold text-primary text-uppercase mb-1">カテゴリ</div>
-                      <div class="h5 mb-4 font-weight-bold text-gray-800"><?=$detail['category']?></div>
+                      <div class="h5 mb-4 font-weight-bold text-gray-800"><?=$detail['device']?></div>
                     </div>
                     <div class="col-sm mr-1">
                       <div class="text font-weight-bold text-primary text-uppercase mb-1">OS</div>

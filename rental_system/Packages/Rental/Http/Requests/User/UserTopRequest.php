@@ -4,7 +4,7 @@ namespace Rental\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RentalDeviceRequest extends FormRequest
+class UserTopRequest extends FormRequest
 {
     protected $_inputs = [];
 
@@ -28,19 +28,23 @@ class RentalDeviceRequest extends FormRequest
 
     public function rules()
     {
-        return [];
+        return [
+            'search_word' => 'max:100'
+        ];
     }
 
     public function attributes()
     {
         return [
-            'name' => 'required|max:100'
+            'search_word' => '検索ワード'
         ];
     }
 
     public function messages()
     {
-        return [];
+        return [
+            'search_word.max' => '検索文字数が多すぎます'
+        ];
     }
 
     // ----------------------------------------------------

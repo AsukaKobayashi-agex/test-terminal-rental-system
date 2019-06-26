@@ -3,19 +3,19 @@
 namespace Rental\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use Rental\Http\Requests\User\RentalDeviceRequest;
-use Rental\Services\User\RentalDeviceService;
+use Rental\Http\Requests\User\UserTopRequest;
+use Rental\Services\User\UserTopService;
 
 
 /**
  * ユーザー画面TOP
  *
- * Class RentalDeviceController
+ * Class UserTopController
  * @package Rental\Http\Controllers\User
  */
-class RentalDeviceController extends Controller
+class UserTopController extends Controller
 {
-    public function index(RentalDeviceRequest $request, RentalDeviceService $service)
+    public function index(UserTopRequest $request, UserTopService $service)
     {
         $param = $request->all();
         $data = $service->getData($param);

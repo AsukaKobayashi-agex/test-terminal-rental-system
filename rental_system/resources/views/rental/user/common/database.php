@@ -2,7 +2,7 @@
 $data_list=[
   [
     'id'=> '0001',
-    'category'=>'スマホ',
+    'device'=>'スマホ',
     'name'=> 'F-10D Arrows X①',
       'os'=> 'Android4.0',
     'lte'=> 0,     //あり=0 なし=1
@@ -19,7 +19,7 @@ $data_list=[
   ],
   [
     'id'=> '0002',
-    'category'=>'スマホ',
+    'device'=>'スマホ',
     'name'=> 'F-10D Arrows X②',
       'os'=> 'Android4.0',
     'lte'=> 0 ,    //あり=0 なし=1
@@ -36,7 +36,7 @@ $data_list=[
   ],
   [
     'id'=> '0003',
-    'category'=>'スマホ',
+    'device'=>'スマホ',
     'name'=> 'F-10D Arrows X③',
       'os'=> 'Android4.0',
     'lte'=> 1 ,    //あり=0 なし=1
@@ -54,7 +54,7 @@ $data_list=[
   ],
   [
     'id'=> '0004',
-    'category'=>'スマホ',
+    'device'=>'スマホ',
     'name'=> 'SC-02C Galaxy S Ⅱ①',
       'os'=> 'Android4.2',
     'lte'=> 0 ,    //あり=0 なし=1
@@ -71,7 +71,7 @@ $data_list=[
   ],
   [
     'id'=> '0005',
-    'category'=>'スマホ',
+    'device'=>'スマホ',
     'name'=> 'SC-02E Galaxy NOTE③',
       'os'=> 'Android4.1',
     'lte'=> 0  ,   //あり=0 なし=1
@@ -88,7 +88,7 @@ $data_list=[
   ],
   [
     'id'=> '0006',
-    'category'=>'スマホ',
+    'device'=>'スマホ',
     'name'=> 'SC-05G Galaxy S6④',
       'os'=> 'Android4.4',
     'lte'=> 0 ,    //あり=0 なし=1
@@ -105,7 +105,7 @@ $data_list=[
   ],
   [
     'id'=> '0007',
-    'category'=>'スマホ',
+    'device'=>'スマホ',
     'name'=> 'iPhone4 ①',
       'os'=> 'iOS11',
     'lte'=> 0 ,    //あり=0 なし=1
@@ -122,7 +122,7 @@ $data_list=[
   ],
   [
     'id'=> '0008',
-    'category'=>'スマホ',
+    'device'=>'スマホ',
     'name'=> 'iPhone6S ①',
       'os'=> 'iOS11',
     'lte'=> 0 ,    //あり=0 なし=1
@@ -139,7 +139,7 @@ $data_list=[
   ],
   [
     'id'=> '0009',
-    'category'=>'スマホ',
+    'device'=>'スマホ',
     'name'=> 'iPhone6s ②',
       'os'=> 'iOS10',
     'lte'=> 0,     //あり=0 なし=1
@@ -156,7 +156,7 @@ $data_list=[
   ],
   [
     'id'=> '0010',
-    'category'=>'スマホ',
+    'device'=>'スマホ',
     'name'=> 'iPhone8 ②',
       'os'=> 'iOS12',
     'lte'=> 0,     //あり=0 なし=1
@@ -173,7 +173,7 @@ $data_list=[
   ],
   [
     'id'=> '0011',
-    'category'=>'スマホ',
+    'device'=>'スマホ',
     'name'=> 'iPhoneX ②',
       'os'=> 'iOS12',
     'lte'=> 0,     //あり=0 なし=1
@@ -190,7 +190,7 @@ $data_list=[
   ],
   [
     'id'=> '1001',
-    'category'=>'PC',
+    'device'=>'PC',
     'name'=> 'Macbook Air ②',
       'os'=> 'iOS11',
     'lte'=> 0,     //あり=0 なし=1
@@ -207,7 +207,7 @@ $data_list=[
   ],
   [
     'id'=> '1002',
-    'category'=>'PC',
+    'device'=>'PC',
     'name'=> 'Think Pad ②',
       'os'=> 'Windows10',
     'lte'=> 0,     //あり=0 なし=1
@@ -224,7 +224,7 @@ $data_list=[
   ],
   [
     'id'=> '2001',
-    'category'=>'タブレット',
+    'device'=>'タブレット',
     'name'=> 'iPad Pro',
       'os'=> 'iOS12',
     'lte'=> 0,     //あり=0 なし=1
@@ -241,7 +241,7 @@ $data_list=[
   ],
   [
     'id'=>"2002",
-    'category'=>'タブレット',
+    'device'=>'タブレット',
     'name'=> 'Galaxy Tablet',
       'os'=> 'Android4.0',
     'lte'=> 0,     //あり=0 なし=1
@@ -258,7 +258,7 @@ $data_list=[
   ],
   [
     'id'=>"3001",
-    'category'=>'充電器',
+    'device'=>'充電器',
     'name'=> 'Android充電器①',
       'os'=> 'Android4.0',
       'lte'=> 0,     //あり=0 なし=1
@@ -270,7 +270,7 @@ $data_list=[
   ],
   [
     'id'=>"3002",
-    'category'=>'充電器',
+    'device'=>'充電器',
     'name'=> 'iphone充電器①',
       'os'=> 'Android4.0',
       'lte'=> 0,     //あり=0 なし=1

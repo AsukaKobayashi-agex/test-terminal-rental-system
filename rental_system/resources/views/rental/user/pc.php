@@ -60,7 +60,7 @@
                     <tbody>
                       <tr>
 <?php foreach($data_list as $key => $value):?>
-<?php       if($value['category']==='PC'):?>
+<?php       if($value['device']==='PC'):?>
 <?php       if($value['status']==1):?>
         <?php         if($userid===$value['who']){
             $button="<a href=\"/return?id=$value[id]\" class=\"btn btn-danger btn-user btn-block\">返却</a>";

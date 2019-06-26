@@ -10,7 +10,7 @@ use Rental\Services\User\DeviceMobileService;
 /**
  * ユーザー画面TOP
  *
- * Class RentalDeviceController
+ * Class UserTopController
  * @package Rental\Http\Controllers\User
  */
 class DeviceMobileController extends Controller
@@ -19,6 +19,6 @@ class DeviceMobileController extends Controller
     {
         $param = $request->all();
         $data = $service->getData($param);
-        return view('rental.user.category.mobile')->with($data);
+        return view('rental.user.device.mobile.mobile')->with($data);
     }
 }

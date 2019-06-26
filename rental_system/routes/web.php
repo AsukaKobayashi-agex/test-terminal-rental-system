@@ -27,7 +27,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['force_https', /*'admin.auth
 //==============================================================
 Route::group(['middleware' => ['force_https', /*'user.authed'*/]], function () {
     // TOPページ
-    Route::match(['get','post'],'/', 'User\RentalDeviceController@index');
+    Route::match(['get','post'],'/', 'User\UserTopController@index');
 
     Route::get('/login', 'User\LoginController@login');
 

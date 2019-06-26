@@ -28,19 +28,26 @@ class DeviceMobileRequest extends FormRequest
 
     public function rules()
     {
-        return [];
+        return [
+            'search_word' => 'max:100',
+            'os_version' => 'max:50'
+        ];
     }
 
     public function attributes()
     {
         return [
-            'name' => 'required|max:100'
+            'search_word' => '検索ワード',
+            'os_version' => 'OSバージョン'
         ];
     }
 
     public function messages()
     {
-        return [];
+        return [
+            'search_word.max' => '検索ワード : 文字数が多すぎます',
+            'os_version.max' => 'OSバージョン : 文字数が多すぎます'
+        ];
     }
 
     // ----------------------------------------------------

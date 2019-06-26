@@ -57,7 +57,7 @@
                     <?php include('common/bundle_bar.php'); ?>
                     <tbody>
 <?php foreach($data_list as $key => $value):?>
-<?php       if($value['category']==='充電器'):?>
+<?php       if($value['device']==='充電器'):?>
 <?php       if($value['status']==1):?>
         <?php         if($userid===$value['who']){
             $button="<a href=\"/return?id=$value[id]\" class=\"btn btn-danger btn-user btn-block\">返却</a>";

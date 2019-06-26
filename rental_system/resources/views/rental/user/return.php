@@ -46,7 +46,6 @@
                   <tbody>
 <?php foreach($data_list as $value):?>
 <?php $list_num=$_POST['action'];
-    $list_num=array_unique($_POST['action']);
 $button='<button class="btn btn-primary btn-user btn-block js_deleteButton">削除</button>';?>
 <?php if($list_num===$value['id']):?>
   <?php $num=0; $num ++;?>

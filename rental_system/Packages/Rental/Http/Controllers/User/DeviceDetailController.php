@@ -3,13 +3,13 @@
 namespace Rental\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use Rental\Http\Requests\User\RentalDeviceRequest;
-use Rental\Services\User\RentalDeviceService;
+use Rental\Http\Requests\User\UserTopRequest;
+use Rental\Services\User\UserTopService;
 
 /**
  * ユーザー画面TOP
  *
- * Class RentalDeviceController
+ * Class UserTopController
  * @package Rental\Http\Controllers\User
  */
 class DeviceDetailController extends Controller
