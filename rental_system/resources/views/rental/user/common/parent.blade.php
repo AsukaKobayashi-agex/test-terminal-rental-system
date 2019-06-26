@@ -73,12 +73,28 @@
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                 <i class="fas fa-fw fa-mobile"></i>
-                <span>モバイル</span>
+                <span >モバイル</span>
             </a>
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="/sp">スマホ</a>
-                    <a class="collapse-item" href="/tablet">タブレット</a>
+                    <form method="get" name="smartphone" action="/mobile">
+                        <input type="hidden" name="type" value="1">
+                        <a class="collapse-item text-primary" href="javascript:smartphone.submit()">スマホ</a>
+                    </form>
+                    <form method="get" name="android" action="/mobile">
+                        <input type="hidden" name="type" value="1">
+                        <input type="hidden" name="os" value="1">
+                        <a class="collapse-item text-center" href="javascript:android.submit()">Android</a>
+                    </form>
+                    <form method="get" name="ios" action="/mobile">
+                        <input type="hidden" name="type" value="1">
+                        <input type="hidden" name="os" value="2">
+                        <a class="collapse-item text-center" href="javascript:ios.submit()">iOS</a>
+                    </form>
+                    <form method="get" name="tablet" action="/mobile">
+                        <input type="hidden" name="type" value="2">
+                        <a class="collapse-item text-primary" href="javascript:tablet.submit()">タブレット</a>
+                    </form>
                 </div>
             </div>
         </li>
@@ -247,17 +263,31 @@
         $('form').submit();
     }
 
-    function checkValue(check){
-        if(check.checked){
+    $(function(){
+    $('.checkbox').click(function(){
+        if($('#dataTable :checked').length !== 0){
             $('.bundle').removeAttr('disabled')
+        }else{
+            $('.bundle').attr('disabled', true)
         }
-    }
-    $('#checkAll').click(function () {
-        $('input:checkbox').prop('checked', this.checked);
-        $('.bundle').removeAttr('disabled')
-
+        if ($('#dataTable :checked').length === $('#dataTable :input').length){
+            $('#check_all').prop('checked', 'checked');
+        }else{
+            $('#check_all').prop('checked', false);
+        }
     });
 
+    //全チェックボタン
+    $('#check_all').click(function () {
+        $('input:checkbox').prop('checked', this.checked);
+
+        if($('#dataTable :checked').length !== 0){
+            $('.bundle').removeAttr('disabled')
+        }else{
+            $('.bundle').attr('disabled', true)
+        }
+
+    });});
 </script>
 
 

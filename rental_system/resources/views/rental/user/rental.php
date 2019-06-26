@@ -34,7 +34,8 @@
 
               <!--予約端末テーブル-->
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="table-layout:fixed;">
-                  <?php $cate='rental';include('common/database.php'); ?>
+                  <?php $cate='rental';
+                  include('common/database.php'); ?>
                   <thead>
                     <tr>
                     <th width="40px"></th>
@@ -44,7 +45,8 @@
 </thead>
                   <tbody>
 <?php foreach($data_list as $value):?>
-<?php $list_num=$_GET['id'];
+<?php $list_num=$_POST['action'];
+    $list_num=array_unique($_POST['action']);
 $button='<button class="btn btn-primary btn-user btn-block js_deleteButton">削除</button>';?>
 <?php if($list_num===$value['id']):?>
   <?php $num=0; $num ++;?>
@@ -120,7 +122,7 @@ $button='<button class="btn btn-primary btn-user btn-block js_deleteButton">削�
   <?php include('common/logout.php'); ?>
 
   <!-- コアスクリプト-->
-  <?php include('common/Corescript.php'); ?>
+  <?php include('common/corescript.php'); ?>
 
 
 
