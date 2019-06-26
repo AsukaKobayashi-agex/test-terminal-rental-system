@@ -15,11 +15,44 @@
 // 管理画面
 //==============================================================
 Route::group(['prefix' => 'admin', 'middleware' => ['force_https', /*'admin.authed'*/]], function() {
-    // TOPページ
+    // TOPページ(端末一覧)
     Route::get('/', 'Admin\TopController@index');
 
-    // ...
+    //端末詳細ページ
+    Route::get('/information','Admin\InformationController@view');
 
+    //Loginページ
+    Route::get('/login','Admin\LoginController@login');
+    Route::get('/forgot-password','Admin\LoginController@forgot_password');
+    Route::get('/register','Admin\LoginController@register');
+
+    //端末追加画面
+    Route::get('/add','Admin\AddController@view');
+    Route::get('/add_sp','Admin\Add_spController@view');
+    Route::get('/add_sp_basic_info','Admin\Add_sp_basicController@view');
+    Route::get('/add_charger','Admin\Add_chargerController@view');
+
+    //追加アクション画面
+
+    Route::post('charger_action','Admin\Add_chargerController@confirm');
+
+    //端末削除画面
+    Route::get('/delete','Admin\DeleteController@view');
+
+    //端末保管画面
+    Route::get('/archive','Admin\ArchiveController@view');
+
+    //端末編集画面
+    Route::get('/edit','Admin\EditController@view');
+    Route::get('/contract_plan','Admin\Contract_planController@view');
+    Route::get('/os_prevention','Admin\OS_preventionController@view');
+    Route::get('/remarks','Admin\RemarksController@view');
+
+    //ユーザー管理画面
+    Route::get('/user_admin','Admin\User_adminController@view');
+
+    //ルール編集画面
+    Route::get('/rule','Admin\RuleController@view');
 });
 
 //==============================================================
