@@ -11,6 +11,7 @@ class TopService
 
     public function getData($param)
     {
+        //exit('topservice');
         return $param + ['data' => 'test'];
     }
 }
