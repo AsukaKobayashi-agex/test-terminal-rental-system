@@ -65,33 +65,30 @@ Route::group(['middleware' => ['force_https', /*'user.authed'*/]], function () {
     // TOPページ
     Route::match(['get','post'],'/', 'User\UserTopController@index');
 
-    Route::get('/login', 'User\TopController@login');
+    Route::get('/login', 'User\LoginController@login');
 
-    Route::get('/sign-up', 'User\TopController@sign_up');
+    Route::get('/sign-up', 'User\SignUpController@sign_up');
 
-    Route::get('/mylist', 'User\TopController@mylist');
+    Route::match(['get','post'],'/mylist', 'User\MylistController@mylist');
 
-    Route::get('/detail', 'User\TopController@detail');
+    Route::match(['get','post'],'/detail', 'User\DeviceDetailController@detail');
 
-    Route::get('help/users-guide', 'User\TopController@users_guide');
+    Route::get('help/users-guide', 'User\UsersGuideController@users_guide');
 
-    Route::get('/pc', 'User\TopController@pc');
+    Route::match(['get','post'],'/pc', 'User\DevicePcController@pc');
 
-    Route::get('/charger', 'User\TopController@charger');
+    Route::match(['get','post'],'/charger', 'User\DeviceChargerController@charger');
 
-    Route::get('/sp', 'User\TopController@sp');
+    Route::match(['get','post'],'/mobile', 'User\DeviceMobileController@mobile');
 
-    Route::get('/tablet', 'User\TopController@tablet');
+    Route::match(['get','post'],'/rent-user', 'User\RentUserController@rent_user');
 
-    Route::get('/rent-user', 'User\TopController@rent_user');
+    Route::match(['get','post'],'/rental', 'User\RentalController@rental');
 
-    Route::get('/rental', 'User\TopController@rental');
+    Route::match(['get','post'],'/return', 'User\ReturnController@return');
 
-    Route::get('/return', 'User\TopController@return');
+    Route::match(['get','post'],'/profile', 'User\ProfileController@profile');
 
-    Route::get('/profile', 'User\TopController@profile');
-
-    Route::get('/mylist-register', 'User\TopController@mylist_register');
-    Route::post('/mylist-register', 'User\TopController@mylist_register');
+    Route::match(['get','post'],'/mylist-register', 'User\MylistRegisterController@mylist_register');
 
 });
