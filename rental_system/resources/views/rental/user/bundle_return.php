@@ -44,7 +44,7 @@
                     </tr>
 </thead>
                   <tbody>
-<?php foreach($data_list as $value):?>
+<?php foreach($data_list as $device):?>
 <?php if(isset($_POST[check])):?>
 <?php
 
@@ -52,24 +52,24 @@
     $button='<button class="btn btn-primary btn-user btn-block js_deleteButton">削除</button>';
 ?>
 <?php foreach($list_num as $id):?>
-<?php if($id===$value['id']):?>
+<?php if($id===$device['id']):?>
   <?php $num ++;?>
                     <tr class="layer">
                     <td><?=$num?></td>
                     <td>
-                        <a href="../../..//detail?id=<?=$value['id']?>" ><?=$value['name']?></a>
-                        <?php if($value['who']!==$userid):?>
+                        <a href="../../..//detail?rental_device_id=<?=$device['id']?>" ><?=$device['name']?></a>
+                        <?php if($device['who']!==$userid):?>
                         <font color="red"><b>※返却不可</b></font>
                         <?php endif;?>
                     </td>
-                    <td><?=$value['os']?></td>
+                    <td><?=$device['os']?></td>
                         <td>
-                            <?php if($value['lte']===0):?>
+                            <?php if($device['lte']===0):?>
                                 <i class="fas fa-fw fa-mobile-alt"></i>
                             <?php else:?>
                                 <i class="fas fa-fw"></i>
                             <?php endif;?>
-                            <?php if($value['wifi']===0):?>
+                            <?php if($device['wifi']===0):?>
                                 <i class="fas fa-fw fa-wifi"></i>
                             <?php endif;?>
                         </td>

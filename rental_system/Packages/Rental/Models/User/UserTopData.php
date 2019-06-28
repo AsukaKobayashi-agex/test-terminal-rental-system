@@ -17,6 +17,7 @@ select
     device_category,
     archive_flag,
     test_device_id,
+    test_device_category,
     device_name,
     charger_name,
     status,

@@ -22,9 +22,9 @@
         <div class="container-fluid">
 
 <?php include('common/database.php'); ?>
-<?php foreach($data_list as $value):?>
-<?php if($value['id']===$_GET['id']){
-  $detail=$value;
+<?php foreach($data_list as $device):?>
+<?php if($device['id']===$_GET['id']){
+  $detail=$device;
     }else{
     $detail = "";
     }
@@ -70,7 +70,7 @@
          if($userid===$detail['who']){
              $button="<a href=\"/return?id=$detail[id]\" class=\"btn btn-danger btn-user btn-block\">返却可</a>";
               }else{
-             $button="<a href=\"/rent-user\" class=\"btn btn-outline-dark btn-user btn-block\">{$userdata["{$value['who']}"]['name'][0]}{$userdata["{$value['who']}"]['name'][1]}<br>({$value['when']})</a>";
+             $button="<a href=\"/rent-user\" class=\"btn btn-outline-dark btn-user btn-block\">{$userdata["{$device['who']}"]['name'][0]}{$userdata["{$device['who']}"]['name'][1]}<br>({$device['when']})</a>";
               }
 
        }else{

@@ -71,7 +71,7 @@ Route::group(['middleware' => ['force_https', /*'user.authed'*/]], function () {
 
     Route::match(['get','post'],'/mylist', 'User\MylistController@mylist');
 
-    Route::match(['get','post'],'/detail', 'User\DeviceDetailController@detail');
+    Route::match(['get','post'],'/detail-mobile', 'User\DetailMobileController@detail_mobile');
 
     Route::get('help/users-guide', 'User\UsersGuideController@users_guide');
 

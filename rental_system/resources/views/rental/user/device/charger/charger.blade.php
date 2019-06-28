@@ -65,42 +65,42 @@
                         $userid = "1";
                         ?>
 
-                        <tbody>@foreach($charger_list as $value)
+                        <tbody>@foreach($charger_list as $device)
                             <tr>
-                                <td><input type="checkbox" class="checkbox" form="action" name="action[]" value="<?=$value['rental_device_id']?>"></td>
+                                <td><input type="checkbox" class="checkbox" form="action" name="action[]" value="<?=$device['rental_device_id']?>"></td>
                                 <td>
-                                    <a class="text-lg" href="/detail?id=<?=$value['charger_id']?>" ><?=$value['charger_name']?></a>
+                                    <a class="text-lg" href="/detail-charger?rental_device_id=<?=$device['charger_id']?>" ><?=$device['charger_name']?></a>
                                     <br>
-                                    @if($value['charger_type']==1)
+                                    @if($device['charger_type']==1)
                                         USB TYPE-B
-                                    @elseif($value['charger_type']==2)
+                                    @elseif($device['charger_type']==2)
                                         USB TYPE-C
-                                    @elseif($value['charger_type']==2)
+                                    @elseif($device['charger_type']==3)
                                         iphone ライトニング
-                                    @elseif($value['charger_type']==2)
+                                    @elseif($device['charger_type']==4)
                                         iphone 旧型
                                     @else
                                         Other
                                     @endif
                                 </td>
                                 <td>
-                                    @if($value['status']===1)
-                                        @if($userid==$value['user_id'])
+                                    @if($device['status']===1)
+                                        @if($userid==$device['user_id'])
                                             <form id='return' method="post" action="/return">
                                                 @csrf
-                                                <button type="submit" class="btn btn-danger btn-block" name="action[]"  value="<?=$value['rental_device_id']?>">返却</button>
+                                                <button type="submit" class="btn btn-danger btn-block" name="action[]"  value="<?=$device['rental_device_id']?>">返却</button>
                                             </form>
                                         @else
                                             <form id='rent-user' method="post" action="/rent-user">
                                                 @csrf
-                                                <button type="submit" class="btn btn-outline-dark btn-block" name="user_id"  value="<?=$value['user_id']?>"><?=$value['name']?><br>(<?=$value['rental_datetime']?>)</button>
+                                                <button type="submit" class="btn btn-outline-dark btn-block" name="user_id"  value="<?=$device['user_id']?>"><?=$device['name']?><br>(<?=date('m月d日 G時i分',strtotime($device['rental_datetime']))?>)</button>
                                             </form>
                                         @endif
 
                                     @else
                                         <form id='rental' method="post" action="/rental">
                                             @csrf
-                                            <button type="submit" class="btn btn-primary btn-block" name="action[]"  value="<?=$value['rental_device_id']?>">貸出</button>
+                                            <button type="submit" class="btn btn-primary btn-block" name="action[]"  value="<?=$device['rental_device_id']?>">貸出</button>
                                         </form>
                                     @endif
                                 </td>

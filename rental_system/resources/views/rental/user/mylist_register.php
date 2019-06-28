@@ -43,27 +43,27 @@
                     </tr>
                   </thead>
                   <tbody>
-<?php foreach($data_list as $value):?>
+<?php foreach($data_list as $device):?>
 <?php if(isset($_POST['action'])):?>
 <?php
     $list_num=array_unique($_POST['action']);
     $button='<button class="btn btn-primary btn-user btn-block js_deleteButton">削除</button>';
 ?>
 <?php foreach($list_num as $id):?>
-<?php if($id===$value['id']):?>
+<?php if($id===$device['id']):?>
   <?php $num=0; $num ++;?>
                     <tr class="layer">
                     <td><?=$num?></td>
-                  <td><a class="text-lg" href="/detail?id=<?=$value['id']?>" ><?=$value['name']?></a>
-                    <?php if($value['lte']===0):?>
+                  <td><a class="text-lg" href="/detail?rental_device_id=<?=$device['id']?>" ><?=$device['name']?></a>
+                    <?php if($device['lte']===0):?>
                                 <i class="fas fa-fw fa-mobile-alt"></i>
                     <?php else:?>
                                 <i class="fas fa-fw"></i>
                     <?php endif;?>
-                    <?php if($value['wifi']===0):?>
+                    <?php if($device['wifi']===0):?>
                                 <i class="fas fa-fw fa-wifi"></i>
                     <?php endif;?>
-                  <br><?=$value['os']?>
+                  <br><?=$device['os']?>
                   </td><td><?=$button?></td>
                     </tr>
 <?php endif;?>

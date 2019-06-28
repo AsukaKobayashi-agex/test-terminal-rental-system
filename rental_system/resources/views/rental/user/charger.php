@@ -56,23 +56,23 @@
                     <?php include('common/search_bar.php'); ?>
                     <?php include('common/bundle_bar.php'); ?>
                     <tbody>
-<?php foreach($data_list as $key => $value):?>
-<?php       if($value['device']==='充電器'):?>
-<?php       if($value['status']==1):?>
-        <?php         if($userid===$value['who']){
-            $button="<a href=\"/return?id=$value[id]\" class=\"btn btn-danger btn-user btn-block\">返却</a>";
+<?php foreach($data_list as $key => $device):?>
+<?php       if($device['device']==='充電器'):?>
+<?php       if($device['status']==1):?>
+        <?php         if($userid===$device['who']){
+            $button="<a href=\"/return?id=$device[id]\" class=\"btn btn-danger btn-user btn-block\">返却</a>";
         }else{
-            $button="<a href=\"/rent-user\" class=\"btn btn-outline-dark btn-user btn-block\">{$userdata["{$value['who']}"]['name'][0]}{$userdata["{$value['who']}"]['name'][1]}<br>({$value['when']})</a>";
+            $button="<a href=\"/rent-user\" class=\"btn btn-outline-dark btn-user btn-block\">{$userdata["{$device['who']}"]['name'][0]}{$userdata["{$device['who']}"]['name'][1]}<br>({$device['when']})</a>";
         }
         ?>
 <?php       else:?>
 <?php
-              $button="<a href=\"/rental?id=$value[id]\" class=\"btn btn-primary btn-user btn-block\">貸出</a>";
+              $button="<a href=\"/rental?id=$device[id]\" class=\"btn btn-primary btn-user btn-block\">貸出</a>";
 ?>
 <?php       endif;?>
                             <tr>
-                            <td><input type="checkbox" class="js_checkButton" name="check[]" onclick="checkValue(this)" value="<?=$value['id']?>"></td>
-                              <td><a class="text-lg" href="/detail?id=<?=$value['id']?>" ><?=$value['name']?></a></td>
+                            <td><input type="checkbox" class="js_checkButton" name="check[]" onclick="checkValue(this)" value="<?=$device['id']?>"></td>
+                              <td><a class="text-lg" href="/detail?rental_device_id=<?=$device['id']?>" ><?=$device['name']?></a></td>
                               <td><?=$button?></td>
                               </tr>
 <?php       endif;?>

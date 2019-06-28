@@ -58,34 +58,34 @@
                     </tr>
                   </thead>
                   <tbody>
-<?php foreach($data_list as $value):?>
+<?php foreach($data_list as $device):?>
 <?php $list_num=['0001','0005','0009','1001'];?>
-<?php       if($value['status']==1):?>
-        <?php         if($userid===$value['who']){
-            $button="<a href=\"/return?id=$value[id]\" class=\"btn btn-danger btn-user btn-block\">返却</a>";
+<?php       if($device['status']==1):?>
+        <?php         if($userid===$device['who']){
+            $button="<a href=\"/return?id=$device[id]\" class=\"btn btn-danger btn-user btn-block\">返却</a>";
         }else{
-            $button="<a href=\"/rent-user\" class=\"btn btn-outline-dark btn-user btn-block\">{$userdata["{$value['who']}"]['name'][0]}{$userdata["{$value['who']}"]['name'][1]}<br>({$value['when']})</a>";
+            $button="<a href=\"/rent-user\" class=\"btn btn-outline-dark btn-user btn-block\">{$userdata["{$device['who']}"]['name'][0]}{$userdata["{$device['who']}"]['name'][1]}<br>({$device['when']})</a>";
         }
         ?>
 <?php       else:?>
     <?php
-    $button="<a href=\"/rental?id=$value[id]\" class=\"btn btn-primary btn-user btn-block\">貸出</a>";
+    $button="<a href=\"/rental?id=$device[id]\" class=\"btn btn-primary btn-user btn-block\">貸出</a>";
     ?>
 <?php       endif;?>
 <?php foreach($list_num as $id):?>
-<?php if($id===$value['id']):?>
+<?php if($id===$device['id']):?>
                     <tr class="layer">
-                    <td><input type="checkbox" class="check1" name="check[]" onclick="checkValue(this)" value="<?=$value['id']?>"></td>
-                              <td><a class="text-lg" href="/detail?id=<?=$value['id']?>" ><?=$value['name']?></a>
-                                <?php if($value['lte']===0):?>
+                    <td><input type="checkbox" class="check1" name="check[]" onclick="checkValue(this)" value="<?=$device['id']?>"></td>
+                              <td><a class="text-lg" href="/detail?rental_device_id=<?=$device['id']?>" ><?=$device['name']?></a>
+                                <?php if($device['lte']===0):?>
                                             <i class="fas fa-fw fa-mobile-alt"></i>
                                 <?php else:?>
                                             <i class="fas fa-fw"></i>
                                 <?php endif;?>
-                                <?php if($value['wifi']===0):?>
+                                <?php if($device['wifi']===0):?>
                                             <i class="fas fa-fw fa-wifi"></i>
                                 <?php endif;?>
-                              <br><?=$value['os']?>
+                              <br><?=$device['os']?>
                               </td><td><?=$button?></td>
                     <td><button class="btn btn-primary btn-user btn-block js_deleteButton">削除</button></td>
                     </tr>
@@ -122,34 +122,34 @@
                     </tr>
                   </thead>
                   <tbody>
-<?php foreach($data_list as $value):?>
+<?php foreach($data_list as $device):?>
 <?php $list_num=['0001','0005','0009','1001'];?>
-<?php       if($value['status']==1):?>
-        <?php         if($userid===$value['who']){
-            $button="<a href=\"/return?id=$value[id]\" class=\"btn btn-danger btn-user btn-block\">返却</a>";
+<?php       if($device['status']==1):?>
+        <?php         if($userid===$device['who']){
+            $button="<a href=\"/return?id=$device[id]\" class=\"btn btn-danger btn-user btn-block\">返却</a>";
         }else{
-            $button="<a href=\"/rent-user\" class=\"btn btn-outline-dark btn-user btn-block\">{$userdata["{$value['who']}"]['name'][0]}{$userdata["{$value['who']}"]['name'][1]}<br>({$value['when']})</a>";
+            $button="<a href=\"/rent-user\" class=\"btn btn-outline-dark btn-user btn-block\">{$userdata["{$device['who']}"]['name'][0]}{$userdata["{$device['who']}"]['name'][1]}<br>({$device['when']})</a>";
         }
         ?>
 <?php       else:?>
     <?php
-    $button="<a href=\"/rental?id=$value[id]\" class=\"btn btn-primary btn-user btn-block\">貸出</a>";
+    $button="<a href=\"/rental?id=$device[id]\" class=\"btn btn-primary btn-user btn-block\">貸出</a>";
     ?>
 <?php       endif;?>
 <?php foreach($list_num as $id):?>
-<?php if($id===$value['id']):?>
+<?php if($id===$device['id']):?>
                     <tr class="layer">
-                    <td><input type="checkbox" class="check2" name="check[]" onclick="checkValue(this)" value="<?=$value['id']?>"></td>
-                              <td><a class="text-lg" href="/detail?id=<?=$value['id']?>" ><?=$value['name']?></a>
-                                <?php if($value['lte']===0):?>
+                    <td><input type="checkbox" class="check2" name="check[]" onclick="checkValue(this)" value="<?=$device['id']?>"></td>
+                              <td><a class="text-lg" href="/detail?rental_device_id=<?=$device['id']?>" ><?=$device['name']?></a>
+                                <?php if($device['lte']===0):?>
                                             <i class="fas fa-fw fa-mobile-alt"></i>
                                 <?php else:?>
                                             <i class="fas fa-fw"></i>
                                 <?php endif;?>
-                                <?php if($value['wifi']===0):?>
+                                <?php if($device['wifi']===0):?>
                                             <i class="fas fa-fw fa-wifi"></i>
                                 <?php endif;?>
-                              <br><?=$value['os']?>
+                              <br><?=$device['os']?>
                               </td><td><?=$button?></td>
                     <td><button class="btn btn-primary btn-user btn-block js_deleteButton">削除</button></td>
                     </tr>
@@ -186,34 +186,34 @@
                     </tr>
                   </thead>
                   <tbody>
-<?php foreach($data_list as $value):?>
+<?php foreach($data_list as $device):?>
 <?php $list_num=['0001','0005','0009','1001'];?>
-<?php       if($value['status']==1):?>
-        <?php         if($userid===$value['who']){
-            $button="<a href=\"/return?id=$value[id]\" class=\"btn btn-danger btn-user btn-block\">返却</a>";
+<?php       if($device['status']==1):?>
+        <?php         if($userid===$device['who']){
+            $button="<a href=\"/return?id=$device[id]\" class=\"btn btn-danger btn-user btn-block\">返却</a>";
         }else{
-            $button="<a href=\"/rent-user\" class=\"btn btn-outline-dark btn-user btn-block\">{$userdata["{$value['who']}"]['name'][0]}{$userdata["{$value['who']}"]['name'][1]}<br>({$value['when']})</a>";
+            $button="<a href=\"/rent-user\" class=\"btn btn-outline-dark btn-user btn-block\">{$userdata["{$device['who']}"]['name'][0]}{$userdata["{$device['who']}"]['name'][1]}<br>({$device['when']})</a>";
         }
         ?>
 <?php       else:?>
     <?php
-    $button="<a href=\"/rental?id=$value[id]\" class=\"btn btn-primary btn-user btn-block\">貸出</a>";
+    $button="<a href=\"/rental?id=$device[id]\" class=\"btn btn-primary btn-user btn-block\">貸出</a>";
     ?>
 <?php       endif;?>
 <?php foreach($list_num as $id):?>
-<?php if($id===$value['id']):?>
+<?php if($id===$device['id']):?>
                     <tr class="layer">
-                    <td><input type="checkbox" class="check3" name="check[]" onclick="checkValue(this)" value="<?=$value['id']?>"></td>
-                              <td><a class="text-lg" href="/detail?id=<?=$value['id']?>" ><?=$value['name']?></a>
-                                <?php if($value['lte']===0):?>
+                    <td><input type="checkbox" class="check3" name="check[]" onclick="checkValue(this)" value="<?=$device['id']?>"></td>
+                              <td><a class="text-lg" href="/detail?rental_device_id=<?=$device['id']?>" ><?=$device['name']?></a>
+                                <?php if($device['lte']===0):?>
                                             <i class="fas fa-fw fa-mobile-alt"></i>
                                 <?php else:?>
                                             <i class="fas fa-fw"></i>
                                 <?php endif;?>
-                                <?php if($value['wifi']===0):?>
+                                <?php if($device['wifi']===0):?>
                                             <i class="fas fa-fw fa-wifi"></i>
                                 <?php endif;?>
-                              <br><?=$value['os']?>
+                              <br><?=$device['os']?>
                               </td><td><?=$button?></td>
                     <td><button class="btn btn-primary btn-user btn-block js_deleteButton">削除</button></td>
                     </tr>

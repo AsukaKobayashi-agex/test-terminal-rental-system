@@ -44,23 +44,23 @@
                     </tr>
 </thead>
                   <tbody>
-<?php foreach($data_list as $value):?>
+<?php foreach($data_list as $device):?>
 <?php $list_num=$_POST['action'];
 $button='<button class="btn btn-primary btn-user btn-block js_deleteButton">削除</button>';?>
-<?php if($list_num===$value['id']):?>
+<?php if($list_num===$device['id']):?>
   <?php $num=0; $num ++;?>
                     <tr>
                     <td><?=$num?></form></td>
-                              <td><a href="../../..//detail?id=<?=$value['id']?>" ><?=$value['name']?></a>
-                                <?php if($value['lte']===0):?>
+                              <td><a href="../../..//detail?rental_device_id=<?=$device['id']?>" ><?=$device['name']?></a>
+                                <?php if($device['lte']===0):?>
                                             <i class="fas fa-fw fa-mobile-alt"></i>
                                 <?php else:?>
                                             <i class="fas fa-fw"></i>
                                 <?php endif;?>
-                                <?php if($value['wifi']===0):?>
+                                <?php if($device['wifi']===0):?>
                                             <i class="fas fa-fw fa-wifi"></i>
                                 <?php endif;?>
-                              <br><?=$value['os']?>
+                              <br><?=$device['os']?>
                               </td><td><?=$button?></td>
                   </tr>
 <?php endif;?>

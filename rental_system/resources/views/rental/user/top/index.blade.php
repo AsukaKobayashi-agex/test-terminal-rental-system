@@ -55,36 +55,44 @@
                     ?>
 
                     <tbody>
-                    @foreach($all_device_list as $value)
+                    @foreach($all_device_list as $device)
                         <tr>
-                            <td><input type="checkbox" form="action" class="checkbox" name="action[]" value="<?=$value['rental_device_id']?>"></td>
+                            <td><input type="checkbox" form="action" class="checkbox" name="action[]" value="<?=$device['rental_device_id']?>"></td>
                             <td>
-                                <a class="text-lg" href="/detail?id=<?=$value['rental_device_id']?>" >
-                                    @if($value['device_category']==1)
-                                        <?=$value['device_name']?>
-                                    @elseif($value['device_category']== 2)
-                                    <?=$value['charger_name']?>
+                                @if($device['device_category']===1)
+                                    @if($device['test_device_category']===1)
+                                        <a class="text-lg" href="/detail-mobile?rental_device_id=<?=$device['rental_device_id']?>" >
+                                        <?=$device['device_name']?>
+                                        </a>
+                                    @elseif($device['test_device_category']===2)
+                                        <a class="text-lg" href="/detail-pc?rental_device_id=<?=$device['rental_device_id']?>" >
+                                            <?=$device['device_name']?>
+                                        </a>
                                     @endif
-                                </a>
+                                @elseif($device['device_category']===2)
+                                        <a class="text-lg" href="/detail-charger?rental_device_id=<?=$device['rental_device_id']?>" >
+                                            <?=$device['charger_name']?>
+                                        </a>
+                                @endif
                             </td>
                             <td>
-                            @if($value['status']===1)
-                                @if($userid==$value['user_id'])
+                            @if($device['status']===1)
+                                @if($userid==$device['user_id'])
                                     <form name='return' method="post" action="/return">
                                         @csrf
-                                        <button type="submit" class="btn btn-danger btn-block" name="action[]"  value="<?=$value['rental_device_id']?>">返却</button>
+                                        <button type="submit" class="btn btn-danger btn-block" name="action[]"  value="<?=$device['rental_device_id']?>">返却</button>
                                     </form>
                                 @else
                                     <form name='rent-user' method="post" action="/rent-user">
                                         @csrf
-                                        <button type="submit" class="btn btn-outline-dark btn-block" name="user_id"  value="<?=$value['user_id']?>"><?=$value['name']?><br>(<?=$value['rental_datetime']?>)</button>
+                                        <button type="submit" class="btn btn-outline-dark btn-block" name="user_id"  value="<?=$device['user_id']?>"><?=$device['name']?><br>(<?=date('m月d日 G時i分',strtotime($device['rental_datetime']))?>)</button>
                                     </form>
                                 @endif
 
                             @else
                                 <form name='rental' method="post" action="/rental">
                                     @csrf
-                                    <button type="submit" class="btn btn-primary btn-block" name="action[]"  value="<?=$value['rental_device_id']?>">貸出</button>
+                                    <button type="submit" class="btn btn-primary btn-block" name="action[]"  value="<?=$device['rental_device_id']?>">貸出</button>
                                 </form>
                             @endif
                             </td>
