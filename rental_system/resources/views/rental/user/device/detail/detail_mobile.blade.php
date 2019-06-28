@@ -21,7 +21,7 @@
                     <div class="h2 mb-2 font-weight-bold text-gray-800"><?=$detail['device_name']?></div>
                 </div>
             </div>
-            <div class="card w-100 shadow px-2">
+            <div class="w-100 shadow px-2">
                 <div class="row">
                     <div class="col-sm-6 p-0 m-0">
                         <div class="card h-100">
@@ -131,7 +131,7 @@
     <!--詳細情報-->
     <div class="row">
         <div class="col-sm-6">
-            <div class="card w-100 shadow mb-4 px-2">
+            <div class="w-100 shadow mb-4 px-2">
                 <div class="row">
                     <div class="col-sm-6 p-0 m-0">
                         <div class="card h-100">
@@ -210,7 +210,7 @@
     </div>
     <div class="row">
         <div class="col-sm-6">
-            <div class="card w-100 shadow mb-4 px-2">
+            <div class="w-100 shadow mb-4 px-2">
                 <div class="row">
                     <div class="col-sm-6 p-0 m-0">
                         <div class="card h-100">
@@ -283,7 +283,7 @@
         </div>
     </div>
 
-    <div>
+    <div >
         <a href="#" onclick="window.history.back(); return false;" class="btn btn-secondary btn-user btn-block">戻る</a>
     </div>
 
