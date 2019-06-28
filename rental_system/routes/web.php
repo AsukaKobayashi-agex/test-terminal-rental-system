@@ -73,6 +73,8 @@ Route::group(['middleware' => ['force_https', /*'user.authed'*/]], function () {
 
     Route::match(['get','post'],'/detail-mobile', 'User\DetailMobileController@detail_mobile');
 
+    Route::match(['get','post'],'/detail-pc', 'User\DetailPcController@detail_pc');
+
     Route::get('help/users-guide', 'User\UsersGuideController@users_guide');
 
     Route::match(['get','post'],'/pc', 'User\DevicePcController@pc');

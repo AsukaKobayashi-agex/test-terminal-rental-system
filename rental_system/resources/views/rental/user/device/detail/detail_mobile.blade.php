@@ -195,7 +195,7 @@
         <div class="col-sm-6 mb-4">
             <div class="card border-left-success shadow mb-4 h-100">
                 <div class="card-header py-2">
-                    <h6 class="m-0 font-weight-bold text-success">インストールアプリ</h6>
+                    <h6 class="m-0 font-weight-bold text-success">インストール済みアプリ</h6>
                 </div>
                 <div class="card-body">
                     @foreach($installed_app_list as $app)
@@ -271,7 +271,7 @@
         </div>
         <div class="col-sm-6 mb-4">
             <div class="card border-left-warning shadow mb-4 h-100">
-                <div class="card-header py-3">
+                <div class="card-header py-2">
                     <h6 class="m-0 font-weight-bold text-warning">備考</h6>
                 </div>
                 <div class="card-body">
