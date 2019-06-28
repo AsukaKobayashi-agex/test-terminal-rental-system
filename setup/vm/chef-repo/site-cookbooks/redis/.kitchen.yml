@@ -1,0 +1,16 @@
+---
+driver_plugin: docker
+driver_config:
+  require_chef_omnibus: true
+
+platforms:
+- name: centos-6
+  driver_config:
+    image: centos
+
+suites:
+- name: default
+  run_list: 
+    - recipe[redis_2_cookbook]
+    - recipe[redis_2_cookbook::redis_install]
+  attributes: {}

@@ -33,11 +33,18 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "app/",
+            "Rental\\": "Packages/Rental",
+            "MyCommon\\": "Packages/MyCommon"
         },
         "classmap": [
             "database/seeds",
             "database/factories"
+        ],
+        "files": [
+            "Packages/MyCommon/Helpers/common_helper.php",
+            "Packages/MyCommon/Helpers/file_helper.php",
+            "Packages/MyCommon/Helpers/text_converter_helper.php"
         ]
     },
     "autoload-dev": {

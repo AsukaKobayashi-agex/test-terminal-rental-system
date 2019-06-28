@@ -1,0 +1,6 @@
+本番DB
+    接続先          https://54.199.165.252/
+    データベース    sys_rental
+
+20190604_1000_CreateDatabase.sql 2019/06/04 原田
+

@@ -1,0 +1,48 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+  config.vm.box = "centos73"
+  config.vm.box_url = "https://github.com/CommanderK5/packer-centos-template/releases/download/0.7.3/vagrant-centos-7.3.box"
+
+  config.vm.hostname = "vm.rental-system"
+  config.vm.network "private_network", ip: "192.168.33.10"
+
+  config.vm.synced_folder "../../rental_system", "/var/www/rental_system", :create => true, :owner => 'vagrant', :group => 'vagrant', :mount_options => ['dmode=777', 'fmode=777']
+
+  config.vm.provider :virtualbox do |vb|
+    vb.memory = 1024
+    #ケーブル接続あり状態をエミュレート
+    vb.customize ["modifyvm", :id, "--cableconnected1", "on"]
+    #NATエンジンのプロキシがすべてのゲストマシンのDNS要求をホストマシンのDNSサーバーに要求します。
+    #vb.customize ["modifyvm", :id, "--natdnsproxy1", "off"]
+    #NATエンジンがDNS要求を処理する際にホストのリゾルバ機構を使うようになります。
+    #vb.customize ["modifyvm", :id, "--natdnshostresolver1", "off"]
+  end
+
+  config.vm.boot_timeout = 1200
+
+  config.omnibus.chef_version = "12.18.31"
+
+  config.vm.provision "chef_solo" do |chef|
+    # chef.version = "12.18.31"
+    chef.cookbooks_path = "./chef-repo/site-cookbooks"
+
+    chef.run_list = %w[
+      recipe[remi]
+      recipe[httpd]
+      recipe[httpd::ssl]
+      recipe[php]
+      recipe[mysql]
+      recipe[jenkins]
+      recipe[redis]
+      recipe[composer]
+      recipe[imagemagick]
+    ]
+
+  end
+
+end
