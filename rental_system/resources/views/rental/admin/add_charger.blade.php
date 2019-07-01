@@ -9,10 +9,7 @@
 
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">充電器を登録する</h1>
-                    <p class="mb-4"></p>
-
-                    <p class="mb-4">
-                        登録する充電器の情報を記入してください。
+                    <p class="mb-4"> 登録する充電器の情報を記入してください。</p>
 
                     <div class="m-0 font-weight-bold text-primary">
 
@@ -25,7 +22,12 @@
 
                             <div class="form-group">
                                 <label>充電器タイプ</label>
-                                <input type="text" class="form-control" name="charger_type">
+                                <select class="form-control" name="charger_type">
+                                    <option value="1">USB TYPE-B</option>
+                                    <option value="2">USB　TYPE-C</option>
+                                    <option value="3">iphone ライトニング</option>
+                                    <option value="4">iphone 旧型</option>
+                                </select>
                             </div>
 
                         </form>

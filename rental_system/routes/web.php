@@ -30,14 +30,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['force_https', /*'admin.auth
     // スマホ
     Route::get('/add_sp','Admin\Add_spController@view');
     // PC
+    Route::get('/add_pc', 'Admin\AddPcController@form');
+    Route::post('/add_pc/action','Admin\AddPcController@action');
 
     // 充電器
     Route::get('/add_charger', 'Admin\AddChargerController@form');
     Route::post('/add_charger/action', 'Admin\AddChargerController@action');
 
-    //追加アクション画面
-
-    Route::post('charger_action','Admin\Add_chargerController@confirm');
 
     //端末削除画面
     Route::get('/delete','Admin\DeleteController@view');
