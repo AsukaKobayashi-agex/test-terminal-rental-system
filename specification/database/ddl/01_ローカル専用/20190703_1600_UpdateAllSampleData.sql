@@ -217,10 +217,10 @@ INSERT INTO `test_device_pc` (`test_device_id`, `pc_account_name`, `mail_address
 DELETE FROM `user`;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` (`user_id`, `name`, `password`, `address`, `devision_id`, `group_id`, `registration_date`, `update_date`) VALUES
-	(1, '山根　瑞葵', '1114703', 'yamane-mizuki@agex.co.jp', 10, 1010, '2019-06-18 14:38:43', '2019-06-18 14:38:43'),
-	(2, '小林　明日香', '1114703', 'yamane-mizuki@agex.co.jp', 20, 2020, '2019-06-18 14:38:43', '2019-06-18 14:38:43'),
-	(3, '原田　翔平', '1114703', 'yamane-mizuki@agex.co.jp', 30, 3030, '2019-06-18 14:38:43', '2019-06-18 14:38:43'),
-	(4, '徳永　迅', '1114703', 'yamane-mizuki@agex.co.jp', 40, 4020, '2019-06-18 14:38:43', '2019-06-18 14:38:43');
+	(1, '山根　瑞葵', 'yamane', 'yamane-mizuki@agex.co.jp', 10, 1010, '2019-06-18 14:38:43', '2019-06-18 14:38:43'),
+	(2, '小林　明日香', 'kobayashi', 'kobayashi-asuka@agex.co.jp', 20, 2020, '2019-06-18 14:38:43', '2019-06-18 14:38:43'),
+	(3, '原田　翔平', 'harada', 'harada-shohei@agex.co.jp', 30, 3030, '2019-06-18 14:38:43', '2019-06-18 14:38:43'),
+	(4, '徳永　迅', 'tokunaga', 'tokunaga-zin@agex.co.jp', 40, 4020, '2019-06-18 14:38:43', '2019-06-18 14:38:43');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
