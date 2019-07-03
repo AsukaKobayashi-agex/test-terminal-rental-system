@@ -64,7 +64,15 @@ Route::group(['middleware' => ['force_https', /*'user.authed'*/]], function () {
     // TOPページ
     Route::match(['get','post'],'/', 'User\UserTopController@index');
 
-    Route::get('/login', 'User\LoginController@login');
+    Route::get('/login', [
+    'uses'=>'User\LoginController@login',
+    'as'=>'user.login'
+    ]);
+
+    Route::post('/login', [
+    'uses'=>'User\LoginController@postLogin',
+    'as'=>'user.login'
+    ]);
 
     Route::get('/sign-up', 'User\SignUpController@sign_up');
 

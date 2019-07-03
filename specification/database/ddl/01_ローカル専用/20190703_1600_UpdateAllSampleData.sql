@@ -180,9 +180,9 @@ INSERT INTO `test_device_basic` (`test_device_id`, `rental_device_id`, `device_n
 	(10, 8, 'タブレット２', 1, 1, '11.3.1'),
 	(11, 9, 'ipad', 1, 2, '3.5.2'),
 	(12, 10, 'ipad pro', 1, 2, '6.5.2'),
-	(13, 12, 'pasokon', 2, 3, '10'),
-	(14, 12, 'パーソナル・コンピューター', 2, 3, '4'),
-	(15, 12, 'ThinkPad', 2, 3, '41');
+	(13, 13, 'pasokon', 2, 3, '10'),
+	(14, 14, 'パーソナル・コンピューター', 2, 3, '4'),
+	(15, 15, 'ThinkPad', 2, 3, '41');
 /*!40000 ALTER TABLE `test_device_basic` ENABLE KEYS */;
 
 -- テーブル sys_rental.test_device_mobile: ~7 rows (約) のデータをダンプしています
