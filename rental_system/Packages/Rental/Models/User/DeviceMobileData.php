@@ -82,7 +82,6 @@ Add_sql;
             foreach($search_os_versions as $word){
                 $i ++;
                 $bind_params["os_version{$i}"] = "%".$word."%";
-                preDump($bind_params);
                 $sql .= <<< Add_sql
 
 and os_version like :os_version{$i}

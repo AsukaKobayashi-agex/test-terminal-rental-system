@@ -29,7 +29,7 @@
                     <div class="form-group">
                       <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="E-emailアドレスを入力">
                     </div>
-                    <a href="login.php" class="btn btn-primary btn-user btn-block">
+                    <a href="login.blade.php" class="btn btn-primary btn-user btn-block">
                       パスワードをリセット
                     </a>
                   </form>
@@ -38,7 +38,7 @@
                     <a class="small" href="sign_up.php">アカウントを作成</a>
                   </div>
                   <div class="text-center">
-                    <a class="small" href="login.php">既にアカウントを持っている</a>
+                    <a class="small" href="login.blade.php">既にアカウントを持っている</a>
                   </div>
                 </div>
                 <?php include('common/footer.php'); ?>

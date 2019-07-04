@@ -12,8 +12,13 @@
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="table-layout:fixed;">
                         <thead>
                         <tr>
-                            <th width=40px><input type="checkbox" id="check_all"></th>
-                            <th>端末名/OS</th>
+                        <th width=40px class="align-middle text-center">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="check_all">
+                                <label class="custom-control-label" for="check_all"></label>
+                            </div>
+                        </th>
+<th>端末名/OS</th>
                             <th width=40%></th>
                         </tr>
                         </thead>
@@ -61,16 +66,33 @@
                         @component('rental.user.common.bundle_bar')
                         @endcomponent
 
-                        <?php
-                        //preDump($all_device_list);
-                        $userid = "1";
-                        ?>
+                    <?php
+                    //preDump($all_device_list);
+                    $userid = "1";
+                    $i = 1;
+                    ?>
+                        @if(empty($pc_device_list))
+                            <tr class="font-weight-bold">
+                                <td></td>
+                                <td>一致する項目はありません</td>
+                                <td></td>
+                            </tr>
+                        @endif
 
                         <tbody>@foreach($pc_device_list as $device)
-                            <tr>
-                                <td><input type="checkbox" class="checkbox" form="action" name="action[]" value="<?=$device['rental_device_id']?>"></td>
+                            <tr class="font-weight-bold">
+                            <td class="text-center align-middle">
+                                <div class="custom-control custom-checkbox">
+                                    @php
+                                    $i ++
+                                    @endphp
+                                    <input type="checkbox" class="checkbox custom-control-input" form="action" name="action[]" value="<?=$device['rental_device_id']?>" id="customCheck<?=$i?>">
+                                    <label class="custom-control-label" for="customCheck<?=$i?>"></label>
+                                </div>
+                            </td>
+
                                 <td>
-                                    <a class="text-lg" href="/detail-pc?rental_device_id=<?=$device['test_device_id']?>" ><?=$device['device_name']?></a>
+                                    <a class="text-lg text-success" href="/detail-pc?rental_device_id=<?=$device['test_device_id']?>" ><?=$device['device_name']?></a>
                                     <br>
                                     @if($device['os']==3)
                                         Windows
@@ -83,7 +105,7 @@
                                 <?=$device['os_version']?>
 
                                 </td>
-                                <td>
+                                <td class="align-middle"
                                     @if($device['status']===1)
                                         @if($userid==$device['user_id'])
                                             <form id='return' method="post" action="/return">

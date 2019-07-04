@@ -3,13 +3,16 @@
 namespace Rental\Models\Admin;
 
 use Rental\Models\_common\RentalDeviceData;
+use Rental\Models\_common\RentalStateData;
 
 class AddChargerData
 {
     protected $_rental_device_model;
-    public function __construct(RentalDeviceData $rental_device)
+    protected $_rental_state_model;
+    public function __construct(RentalDeviceData $rental_device, RentalStateData $rental_state)
     {
         $this->_rental_device_model = $rental_device;
+        $this->_rental_state_model = $rental_state;
     }
 
     public function insertChargerData($param)
@@ -21,6 +24,7 @@ class AddChargerData
             $rental_device_id = $this->_insertRentalDevice();
 
             // todo: レンタル状態テーブルにデータを登録する
+            $this->_insertRentalState($rental_device_id);
 
             // 充電機テーブルにデータを登録する
             $charger_id = $this->_insertCharger($rental_device_id, $param);
@@ -43,6 +47,13 @@ class AddChargerData
         ];
         $rental_device_id = $this->_rental_device_model->insertRentalDevice($data);
         return $rental_device_id;
+    }
+
+    protected function _insertRentalState($rental_device_id)
+    {
+        $_data = [
+            'rental_device_id' =>$rental_device_id
+        ];
     }
 
     protected function _insertCharger($rental_device_id, $param)
