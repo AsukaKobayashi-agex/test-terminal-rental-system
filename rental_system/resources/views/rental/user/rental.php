@@ -30,10 +30,10 @@
               <h6 class="m-0 font-weight-bold text-primary">予約端末一覧</h6>
             </div>
             <div class="card-body">
-              <div class="table-responsive">
+              <div >
 
               <!--予約端末テーブル-->
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="table-layout:fixed;">
+                <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0" style="table-layout:fixed;">
                   <?php $cate='rental';
                   include('common/database.php'); ?>
                   <thead>

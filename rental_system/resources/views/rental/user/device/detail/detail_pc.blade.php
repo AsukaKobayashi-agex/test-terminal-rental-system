@@ -77,7 +77,7 @@
                                     @else
                                         <form id='rent-user' method="post" action="/rent-user">
                                             @csrf
-                                            <button type="submit" class="btn btn-outline-dark btn-block" name="user_id"  value="<?=$detail['user_id']?>"><?=$detail['name']?><br>(<?=date('m月d日 G時i分',strtotime($detail['rental_datetime']))?>)</button>
+                                            <button type="submit" class="btn btn-outline-dark btn-light btn-block" name="user_id"  value="<?=$detail['user_id']?>"><?=$detail['name']?><span class="d-md-block d-none">(<?=date('m月d日 G時i分',strtotime($detail['rental_datetime']))?>)</span></button>
                                         </form>
                                     @endif
 
@@ -137,8 +137,8 @@
     </div>
 
     <div >
-        <a href="#" onclick="window.history.back(); return false;" class="btn btn-secondary btn-user btn-block">戻る</a>
-    </div>
+        <a href="#" onclick="window.close(); return false;" class="btn btn-secondary btn-user btn-block">閉じる</a>
+</div>
 
 
 @endsection

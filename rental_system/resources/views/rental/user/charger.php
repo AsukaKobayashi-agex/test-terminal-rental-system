@@ -34,9 +34,9 @@
               <h6 class="m-0 font-weight-bold text-primary">充電器一覧</h6>
             </div>
             <div class="card-body">
-              <div class="table-responsive">
+              <div >
                 <form method="post" id="check">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="table-layout:fixed;">
+                <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0" style="table-layout:fixed;">
 
                   <thead>
                     <tr>
