@@ -52,7 +52,7 @@ and mobile_type = :type
 Add_sql;
         };
 
-        if(isset($param['search_word']) and !empty($param['search_word'])) {
+        if(isset($param['search_word'])) {
             $search_word=preg_replace("|　|"," ",$param['search_word']);
             $search_words = explode(" ",$search_word);
             $i=0;
@@ -61,7 +61,7 @@ Add_sql;
                 $bind_params["device_name{$i}"] = "%".$word."%";
                 $sql .= <<< Add_sql
 
-and device_name like :device_name{$i}
+and device_name collate utf8mb4_unicode_ci like :device_name{$i}
 
 Add_sql;
             }};
@@ -75,7 +75,7 @@ and os = :os
 Add_sql;
         };
 
-        if(isset($param['os_version']) and !empty($param['os_version'])) {
+        if(isset($param['os_version'])) {
             $search_os_version=preg_replace("|　|"," ",$param['os_version']);
             $search_os_versions = explode(" ",$search_os_version);
             $i=0;
@@ -84,7 +84,7 @@ Add_sql;
                 $bind_params["os_version{$i}"] = "%".$word."%";
                 $sql .= <<< Add_sql
 
-and os_version like :os_version{$i}
+and os_version collate utf8mb4_unicode_ci like :os_version{$i}
 
 Add_sql;
         }};
@@ -103,22 +103,27 @@ Add_sql;
             $bind_params['wifi'] = $param['wifi'];
             $sql .= <<< Add_sql
 
-and wifi_line like :wifi
+and wifi_line = :wifi
 
 Add_sql;
         };
 
-        if(isset($param['status'])) {
+        if(isset($param['status']) && strpos($param['status'], 'user') === false) {
             $bind_params['status'] = $param['status'];
             $sql .= <<< Add_sql
 
-and status like :status
+and status = :status
+
+Add_sql;
+        }elseif(isset($param['status']) && strpos($param['status'],'user') !== false){
+            $bind_params['user_id'] = ltrim($param['status'],'user=');
+            $sql .= <<< Add_sql
+
+and rs.user_id = :user_id
 
 Add_sql;
         };
-
-
-        $sql .= "order by device_category,device_name;";
+        $sql .= "order by device_category,mobile_type,device_name;";
 
 
 

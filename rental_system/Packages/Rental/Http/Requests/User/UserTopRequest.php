@@ -43,7 +43,7 @@ class UserTopRequest extends FormRequest
     public function messages()
     {
         return [
-            'search_word.max' => '検索文字数が多すぎます'
+            'search_word.max' => '検索文字数が多すぎます(最大半角100文字)'
         ];
     }
 

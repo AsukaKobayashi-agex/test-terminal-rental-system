@@ -1,6 +1,10 @@
 @extends('rental.user.common.user_base')
 @section('content')
     <!-- Page Heading -->
+    <?php
+    //preDump($all_device_list);
+    $userid = "1";
+    ?>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
@@ -8,51 +12,51 @@
             <h6 class="m-0 font-weight-bold text-primary">PC端末一覧</h6>
         </div>
         <div class="card-body">
-            <div class="table-responsive">
-                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="table-layout:fixed;">
+            <div >
+                    <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0" style="table-layout:fixed;">
                         <thead>
-                        <tr>
-                        <th width=40px class="align-middle text-center">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="check_all">
-                                <label class="custom-control-label" for="check_all"></label>
-                            </div>
-                        </th>
-<th>端末名/OS</th>
-                            <th width=40%></th>
-                        </tr>
+                            <tr>
+                                <th width=40px class="align-middle text-center">
+                                    <div class="custom-control custom-checkbox {{empty($pc_device_list) ? 'invisible' : null}}">
+                                        <input type="checkbox" class="custom-control-input" id="check_all">
+                                        <label class="custom-control-label" for="check_all"></label>
+                                    </div>
+                                </th>
+                                <th>端末名/OS</th>
+                                <th width=40%></th>
+                            </tr>
                         </thead>
 
                         <div name="search_bar">
                             @if(count($errors) > 0)
-                                <ul>
-                                    @foreach ($errors->all() as $error)
-                                        <li>{{ $error }}</li>
-                                    @endforeach
-                                </ul>
+                            <ul class="alert alert-danger">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
                             @endif
-
-                            <div class="form-group row">
+                        <div class="form-group row">
                                 <form name='search' method="post" action="#">
                                     @csrf
                                     <div class="col-sm-4 mb-3 mb-sm-0">
-                                        <input type="search" name="search_word" class="form-control form-control-user" value="" placeholder="端末名を入力" >
+                                        <input type="search" name="search_word" class="form-control form-control-user" value="{{isset($_POST['search_word']) ? $_POST['search_word']: null}}" placeholder="端末名を入力" >
                                     </div>
                                     <div class="col-sm-2 mb-3 mb-sm-0">
                                         <select name="os" class="form-control form-control-user">
                                             <option value="" selected>OS</option>
-                                            <option value="3">Windows</option>
-                                            <option value="4">Mac OS</option>
+                                            <option value="3" {{isset($_POST['os'])&&$_POST['os']==="3" ? 'selected': null}}>Windows</option>
+                                            <option value="4" {{isset($_POST['os'])&&$_POST['os']==="4" ? 'selected': null}}>Mac OS</option>
                                         </select>
                                     </div>
                                     <div class="col-sm-2 mb-3 mb-sm-0">
-                                        <input type="search" name="os_version" class="form-control form-control-user" value="" placeholder="OSバージョン" >
+                                        <input type="search" name="os_version" class="form-control form-control-user" value="{{isset($_POST['os_version']) ? $_POST['os_version']: null}}" placeholder="OSバージョン" >
                                     </div>
                                     <div class="col-sm-2 mb-3 mb-sm-0">
                                         <select name="status" class="form-control form-control-user">
-                                            <option value=""selected>ステータス</option>
-                                            <option value="0">貸出可</option>
-                                            <option value="1">貸出中</option>
+                                        <option value="" >ステータス</option>
+                                        <option value="0" {{isset($_POST['status']) && $_POST['status']==="0" ? 'selected': null}}>貸出可</option>
+                                        <option value="1"{{isset($_POST['status'])&&$_POST['status']==="1" ? 'selected': null}}>貸出中</option>
+                                        <option value="user=<?=$userid?>" {{isset($_POST['status'])&&$_POST['status']=="user=$userid" ? 'selected': null}}>返却</option>
                                         </select>
                                     </div>
 
@@ -66,11 +70,6 @@
                         @component('rental.user.common.bundle_bar')
                         @endcomponent
 
-                    <?php
-                    //preDump($all_device_list);
-                    $userid = "1";
-                    $i = 1;
-                    ?>
                         @if(empty($pc_device_list))
                             <tr class="font-weight-bold">
                                 <td></td>
@@ -81,18 +80,20 @@
 
                         <tbody>@foreach($pc_device_list as $device)
                             <tr class="font-weight-bold">
-                            <td class="text-center align-middle">
-                                <div class="custom-control custom-checkbox">
-                                    @php
-                                    $i ++
-                                    @endphp
-                                    <input type="checkbox" class="checkbox custom-control-input" form="action" name="action[]" value="<?=$device['rental_device_id']?>" id="customCheck<?=$i?>">
-                                    <label class="custom-control-label" for="customCheck<?=$i?>"></label>
-                                </div>
-                            </td>
+                                <td class="text-center align-middle">
+                                    <div class="custom-control custom-checkbox">
+                                        @if(!isset($i))
+                                        @php($i = 1)
+                                        @else
+                                        @php($i++)
+                                        @endif
+                                        <input type="checkbox" class="checkbox custom-control-input" form="action" name="action[]" value="<?=$device['rental_device_id']?>" id="customCheck<?=$i?>">
+                                        <label class="custom-control-label" for="customCheck<?=$i?>"></label>
+                                    </div>
+                                </td>
 
                                 <td>
-                                    <a class="text-lg text-success" href="/detail-pc?rental_device_id=<?=$device['test_device_id']?>" ><?=$device['device_name']?></a>
+                                    <a class="text-lg text-success" target="_blank" href="/detail-pc?rental_device_id=<?=$device['test_device_id']?>" ><?=$device['device_name']?></a>
                                     <br>
                                     @if($device['os']==3)
                                         Windows
@@ -105,7 +106,7 @@
                                 <?=$device['os_version']?>
 
                                 </td>
-                                <td class="align-middle"
+                                <td class="align-middle">
                                     @if($device['status']===1)
                                         @if($userid==$device['user_id'])
                                             <form id='return' method="post" action="/return">
@@ -115,7 +116,7 @@
                                         @else
                                             <form id='rent-user' method="post" action="/rent-user">
                                                 @csrf
-                                                <button type="submit" class="btn btn-outline-dark btn-block" name="user_id"  value="<?=$device['user_id']?>"><?=$device['name']?><br>(<?=date('m月d日 G時i分',strtotime($device['rental_datetime']))?>)</button>
+                                                <button type="submit" class="btn btn-outline-dark btn-light btn-block" name="user_id"  value="<?=$device['user_id']?>"><?=$device['name']?><span class="d-md-block d-none">(<?=date('m月d日 G時i分',strtotime($device['rental_datetime']))?>)</span></button>
                                             </form>
                                         @endif
 

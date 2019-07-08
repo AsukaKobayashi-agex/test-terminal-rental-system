@@ -76,7 +76,10 @@ Route::group(['middleware' => ['force_https', /*'user.authed'*/]], function () {
 
     Route::get('/sign-up', 'User\SignUpController@sign_up');
 
-    Route::match(['get','post'],'/mylist', 'User\MylistController@mylist');
+    Route::match(['get','post'],'/mylist', [
+        'uses'=>'User\MylistController@mylist',
+        'as'=>'user.mylist'
+    ]);
 
     Route::match(['get','post'],'/detail-mobile', 'User\DetailMobileController@detail_mobile');
 

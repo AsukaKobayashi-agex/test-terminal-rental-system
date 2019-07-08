@@ -45,8 +45,8 @@ class DevicePcRequest extends FormRequest
     public function messages()
     {
         return [
-            'search_word.max' => '検索ワード : 文字数が多すぎます',
-            'os_version.max' => 'OSバージョン : 文字数が多すぎます'
+            'search_word.max' => '検索ワード : 文字数が多すぎます(最大：半角100文字)',
+            'os_version.max' => 'OSバージョン : 文字数が多すぎます(最大：半角50文字)'
         ];
     }
 
