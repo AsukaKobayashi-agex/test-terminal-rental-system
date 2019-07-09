@@ -23,7 +23,7 @@ class AddChargerData
             // レンタル品テーブルにデータを登録する
             $rental_device_id = $this->_insertRentalDevice();
 
-            // todo: レンタル状態テーブルにデータを登録する
+            // レンタル状態テーブルにデータを登録する
             $this->_insertRentalState($rental_device_id);
 
             // 充電機テーブルにデータを登録する
@@ -51,9 +51,7 @@ class AddChargerData
 
     protected function _insertRentalState($rental_device_id)
     {
-        $_data = [
-            'rental_device_id' =>$rental_device_id
-        ];
+        return $this->_rental_state_model->insertRentalState($rental_device_id);
     }
 
     protected function _insertCharger($rental_device_id, $param)
