@@ -94,7 +94,7 @@
             </div>
         </div>
         <div class="col-sm-6">
-            <div class="card border-left-primary h-100 shadow">
+            <div class="card border-left-primary shadow">
                 <div class="card-body">
                     @if($detail['device_img']===1)
                         <img class="rounded w-100 h-100" src="/bootsample/img/1g.jpg">

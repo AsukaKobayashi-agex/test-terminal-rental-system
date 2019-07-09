@@ -4,7 +4,7 @@ namespace Rental\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class LoginRequest extends FormRequest
+class MylistRequest extends FormRequest
 {
     protected $_inputs = [];
 
@@ -29,25 +29,23 @@ class LoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'email'=> 'required',
-            'password'=>'required|min:4'
+            'mylist_name'=>'min:1|:max:100'
         ];
     }
 
     public function attributes()
     {
         return [
-            'email'=> 'メールアドレス',
-            'password'=>'パスワード'
+            'mylist_name'=>'マイリスト名'
         ];
     }
 
     public function messages()
     {
         return [
-            'email.required'=> 'メールアドレスを入力してください',
-            'password.required'=>'パスワードを入力してください',
-            'password.min'=>'パスワードは半角４文字以上です'
+            'mylist_name.required'=>'マイリスト名を入力してください',
+            'mylist_name.min'=>'マイリスト名を入力してください',
+            'mylist_name.max'=>'マイリスト名が長すぎます（最大：半角100文字）'
         ];
     }
 

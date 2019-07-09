@@ -3,9 +3,9 @@
     <!-- Page Heading -->
 
     @php
-        //exit(var_dump($installed_app_list));
+        //exit(var_dump($detail_list));
         $userid=1;
-    $detail=$detail_list[0];
+        $detail=$detail_list[0];
     @endphp
 
 
@@ -117,7 +117,7 @@
             </div>
         </div>
         <div class="col-sm-6">
-            <div class="card border-left-primary h-100 shadow">
+            <div class="card border-left-primary shadow">
                 <div class="card-body">
                     @if($detail['device_img']===1)
                         <img class="rounded w-100 h-100" src="/bootsample/img/1g.jpg">
@@ -261,7 +261,11 @@
                                 <h6 class="m-0 font-weight-bold text-success">発売日</h6>
                             </div>
                             <div class="card-body text-center">
-                                <div class="h5 mb-2 font-weight-bold text-gray-800"><?=date('Y年m月d日',strtotime($detail['launch_date']))?></div>
+                                <div class="h5 mb-2 font-weight-bold text-gray-800">
+                                    @if($detail['launch_date'] !== "1900-01-01")
+                                        <?=date('Y年m月d日',strtotime($detail['launch_date']))?>
+                                    @endif
+                                </div>
                             </div>
                         </div>
                     </div>

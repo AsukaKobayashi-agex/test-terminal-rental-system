@@ -41,7 +41,8 @@ where archive_flag = :archive_flag
 End_of_sql;
 
         if(isset($param['search_word'])) {
-            $search_word=preg_replace("|　|"," ",$param['search_word']);
+            $search=preg_replace("|　|"," ",$param['search_word']);
+            $search_word=mb_convert_kana($search,"KV","UTF-8");
             $search_words = explode(" ",$search_word);
             $i=0;
             foreach($search_words as $word){
@@ -70,7 +71,6 @@ Add_sql;
             foreach($search_os_versions as $word){
                 $i ++;
                 $bind_params["os_version{$i}"] = "%".$word."%";
-                preDump($bind_params);
                 $sql .= <<< Add_sql
 
 and os_version collate utf8mb4_unicode_ci like :os_version{$i}

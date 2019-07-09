@@ -42,7 +42,7 @@ End_of_sql;
 
         if(isset($param['search_word'])) {
             $search=preg_replace("|　|"," ",$param['search_word']);
-            $search_word=mb_convert_kana($search,"KV");
+            $search_word=mb_convert_kana($search,"KV","UTF-8");
             $search_words = explode(" ",$search_word);
             $i=0;
         foreach($search_words as $word){

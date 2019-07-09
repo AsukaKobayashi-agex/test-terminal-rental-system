@@ -15,16 +15,16 @@
         <div>
                 <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0" style="table-layout:fixed;">
                     <thead>
-                    <tr>
-                        <th width=40px class="align-middle text-center">
-                            <div class="custom-control custom-checkbox {{empty($all_device_list) ? 'invisible' : null}}">
-                                <input type="checkbox" class="custom-control-input " id="check_all">
-                                <label class="custom-control-label" for="check_all"></label>
-                            </div>
-                        </th>
-                        <th>端末名</th>
-                        <th width=40%></th>
-                    </tr>
+                        <tr>
+                            <th width=40px class="align-middle text-center">
+                                <div class="custom-control custom-checkbox {{empty($all_device_list) ? 'invisible' : null}}">
+                                    <input type="checkbox" class="custom-control-input " id="check_all">
+                                    <label class="custom-control-label" for="check_all"></label>
+                                </div>
+                            </th>
+                            <th>端末名</th>
+                            <th width=40%></th>
+                        </tr>
                     </thead>
 
                     <div id="search_bar">
@@ -71,13 +71,13 @@
                     @foreach($all_device_list as $device)
                         <tr  class="font-weight-bold">
                             <td class="text-center align-middle">
-                                <div class="custom-control custom-checkbox">
+                                <div class="custom-control custom-checkbox checkbox">
                                     @if(!isset($i))
                                     @php($i = 1)
                                     @else
                                     @php($i++)
                                     @endif
-                                    <input type="checkbox" class="checkbox custom-control-input" form="action" name="action[]" value="<?=$device['rental_device_id']?>" id="customCheck<?=$i?>">
+                                    <input type="checkbox" class="custom-control-input" form="action" name="action[]" value="<?=$device['rental_device_id']?>" id="customCheck<?=$i?>">
                                     <label class="custom-control-label" for="customCheck<?=$i?>"></label>
                                 </div>
                             </td>

@@ -93,7 +93,7 @@
                                 </td>
 
                                 <td>
-                                    <a class="text-lg text-success" target="_blank" href="/detail-pc?rental_device_id=<?=$device['test_device_id']?>" ><?=$device['device_name']?></a>
+                                    <a class="text-lg text-success" target="_blank" href="/detail-pc?rental_device_id=<?=$device['rental_device_id']?>" ><?=$device['device_name']?></a>
                                     <br>
                                     @if($device['os']==3)
                                         Windows
