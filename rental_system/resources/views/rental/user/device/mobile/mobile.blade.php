@@ -109,7 +109,7 @@
                                 </td>
 
                                 <td>
-                                    <a class="text-lg" target="_blank" href="/detail-mobile?rental_device_id=<?=$device['test_device_id']?>" ><?=$device['device_name']?></a>
+                                    <a class="text-lg" target="_blank" href="/detail-mobile?rental_device_id=<?=$device['rental_device_id']?>" ><?=$device['device_name']?></a>
                                      @if($device['wifi_line']===1)
                                     <i class="fas fa-fw fa-wifi"></i>
                                     @else
