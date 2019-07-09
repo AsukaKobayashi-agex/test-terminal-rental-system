@@ -89,7 +89,7 @@
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="Q&A.php">Q&A</a>
+                <!--<a class="collapse-item" href="Q&A.php">Q&A</a>-->
                 <a class="collapse-item" href="/help/users-guide">利用マニュアル</a>
                 <!--<a class="collapse-item" href="utilities-other.html">問い合わせ</a>-->
             </div>
