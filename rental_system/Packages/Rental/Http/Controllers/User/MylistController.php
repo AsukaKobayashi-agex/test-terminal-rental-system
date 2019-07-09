@@ -28,7 +28,6 @@ class MylistController extends Controller
 
         $service->deleteMylistDevice($param);
 
-        // todo: デバイス一覧へリダイレクト
         return redirect('/mylist');
     }
 
@@ -38,7 +37,15 @@ class MylistController extends Controller
 
         $service->renameMylist($param);
 
-        // todo: デバイス一覧へリダイレクト
+        return redirect('/mylist');
+    }
+
+    public function delete_mylist(MylistRequest $request, MylistService $service)
+    {
+        $param = $request->all();
+
+        $service->deleteMylist($param);
+
         return redirect('/mylist');
     }
 

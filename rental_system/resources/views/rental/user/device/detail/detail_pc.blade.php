@@ -72,7 +72,7 @@
                                     @if($userid==$detail['user_id'])
                                         <form id='return' method="post" action="/return">
                                             @csrf
-                                            <button type="submit" class="btn btn-danger btn-block" name="action[]"  value="<?=$detail['rental_device_id']?>">返却</button>
+                                            <button type="submit" class="btn btn-danger btn-block" name="rental_device_id[]"  value="<?=$detail['rental_device_id']?>">返却</button>
                                         </form>
                                     @else
                                         <form id='rent-user' method="post" action="/rent-user">
@@ -84,7 +84,7 @@
                                 @else
                                     <form id='rental' method="post" action="/rental">
                                         @csrf
-                                        <button type="submit" class="btn btn-primary btn-block" name="action[]"  value="<?=$detail['rental_device_id']?>">貸出</button>
+                                        <button type="submit" class="btn btn-primary btn-block" name="rental_device_id[]"  value="<?=$detail['rental_device_id']?>">貸出</button>
                                     </form>
                                 @endif
                             </div>

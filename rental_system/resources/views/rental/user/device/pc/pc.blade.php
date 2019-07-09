@@ -81,13 +81,13 @@
                         <tbody>@foreach($pc_device_list as $device)
                             <tr class="font-weight-bold">
                                 <td class="text-center align-middle">
-                                    <div class="custom-control custom-checkbox">
+                                    <div class="custom-control custom-checkbox checkbox">
                                         @if(!isset($i))
                                         @php($i = 1)
                                         @else
                                         @php($i++)
                                         @endif
-                                        <input type="checkbox" class="checkbox custom-control-input" form="action" name="action[]" value="<?=$device['rental_device_id']?>" id="customCheck<?=$i?>">
+                                        <input type="checkbox" class="custom-control-input" form="action" name="rental_device_id[]" value="<?=$device['rental_device_id']?>" id="customCheck<?=$i?>">
                                         <label class="custom-control-label" for="customCheck<?=$i?>"></label>
                                     </div>
                                 </td>
@@ -111,7 +111,7 @@
                                         @if($userid==$device['user_id'])
                                             <form id='return' method="post" action="/return">
                                                 @csrf
-                                                <button type="submit" class="btn btn-danger btn-block" name="action[]"  value="<?=$device['rental_device_id']?>">返却</button>
+                                                <button type="submit" class="btn btn-danger btn-block" name="rental_device_id[]"  value="<?=$device['rental_device_id']?>">返却</button>
                                             </form>
                                         @else
                                             <form id='rent-user' method="post" action="/rent-user">
@@ -123,7 +123,7 @@
                                     @else
                                         <form id='rental' method="post" action="/rental">
                                             @csrf
-                                            <button type="submit" class="btn btn-primary btn-block" name="action[]"  value="<?=$device['rental_device_id']?>">貸出</button>
+                                            <button type="submit" class="btn btn-primary btn-block" name="rental_device_id[]"  value="<?=$device['rental_device_id']?>">貸出</button>
                                         </form>
                                     @endif
                                 </td>

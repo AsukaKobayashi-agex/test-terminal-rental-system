@@ -39,10 +39,11 @@ $i = 1;
 @foreach($all_mylist as $mylist)
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h4 class="m-0 font-weight-bold text-primary">
+        <div class="h4 m-0 font-weight-bold text-primary">
             <?=$mylist['mylist_name']?>
             <a class="text-xs text-primary btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#renameModal<?=$mylist['mylist_id']?>"><i class="fas fa-fw fa-pen"></i></a>
-        </h4>
+            <a class="text-xs btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#mylistDeleteModal<?=$mylist['mylist_id']?>">削除</a>
+        </div>
         <!--   名前編集モーダル -->
         <div class="modal fade" id="renameModal<?=$mylist['mylist_id']?>" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
             <div class="modal-dialog">
@@ -54,7 +55,7 @@ $i = 1;
                         </button>
                     </div>
                     <div class="modal-body">
-                        <h4>マイリストの名前を入力<br></h4>
+                        <h4>マイリストの名前を入力</h4>
                         <form name="rename<?=$mylist['mylist_id']?>" method="post" action="/mylist/rename">
                             @csrf
                             <input type="hidden" name="mylist_id"  value="<?=$mylist['mylist_id']?>">
@@ -68,7 +69,30 @@ $i = 1;
                 </div>
             </div>
         </div>
-
+        <!--   マイリスト削除確認モーダル -->
+        <div class="modal fade" id="mylistDeleteModal<?=$mylist['mylist_id']?>" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">マイリスト削除</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <h4>マイリストを削除します。</h4>
+                        <form name="deletemylist<?=$mylist['mylist_id']?>" method="post" action="/mylist/delete-mylist">
+                            @csrf
+                            <input type="hidden" name="mylist_id"  value="<?=$mylist['mylist_id']?>">
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">いいえ</button>
+                        <a class="btn btn-primary" href="javascript:document.deletemylist<?=$mylist['mylist_id']?>.submit()">はい</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="card-body">
         <div >
@@ -104,7 +128,7 @@ $i = 1;
                                     $i ++;
                                     $exist = 1;
                                     @endphp
-                                    <input type="checkbox" class="custom-control-input" form="action" name="action[]" value="<?=$device['rental_device_id']?>" id="customCheck<?=$i?>">
+                                    <input type="checkbox" class="custom-control-input" form="action" name="rental_device_id[]" value="<?=$device['rental_device_id']?>" id="customCheck<?=$i?>">
                                     <label class="custom-control-label" for="customCheck<?=$i?>"></label>
                                 </div>
                             </td>
@@ -134,7 +158,7 @@ $i = 1;
                                 @if($userid==$device['user_id'])
                                     <form name='return' method="post" action="/return">
                                         @csrf
-                                        <button type="submit" class="btn btn-outline-light bg-danger btn-block" name="action[]"  value="<?=$device['rental_device_id']?>">返却</button>
+                                        <button type="submit" class="btn btn-outline-light bg-danger btn-block" name="rental_device_id[]"  value="<?=$device['rental_device_id']?>">返却</button>
                                     </form>
                                 @else
                                     <form name='rent-user' method="post" action="/rent-user">
@@ -146,7 +170,7 @@ $i = 1;
                             @else
                                 <form name='rental' method="post" action="/rental">
                                     @csrf
-                                    <button type="submit" class="btn btn-primary btn-block" name="action[]"  value="<?=$device['rental_device_id']?>">貸出</button>
+                                    <button type="submit" class="btn btn-primary btn-block" name="rental_device_id[]"  value="<?=$device['rental_device_id']?>">貸出</button>
                                 </form>
                             @endif
                             </td>

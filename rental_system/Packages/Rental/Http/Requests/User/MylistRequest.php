@@ -29,7 +29,7 @@ class MylistRequest extends FormRequest
     public function rules()
     {
         return [
-            'mylist_name'=>'min:1|:max:100'
+            'mylist_name'=>'min:1|:max:50'
         ];
     }
 

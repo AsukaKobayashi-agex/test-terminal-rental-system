@@ -29,11 +29,11 @@
 
                     <div id="search_bar">
                         @if(count($errors) > 0)
-                        <ul class="alert alert-danger">
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
+                            <ul class="alert alert-danger">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
                         @endif
                         <div class="form-group row">
                             <form id='search' method="post" action="#">
@@ -77,7 +77,7 @@
                                     @else
                                     @php($i++)
                                     @endif
-                                    <input type="checkbox" class="custom-control-input" form="action" name="action[]" value="<?=$device['rental_device_id']?>" id="customCheck<?=$i?>">
+                                    <input type="checkbox" class="custom-control-input" form="action" name="rental_device_id[]" value="<?=$device['rental_device_id']?>" id="customCheck<?=$i?>">
                                     <label class="custom-control-label" for="customCheck<?=$i?>"></label>
                                 </div>
                             </td>
@@ -107,7 +107,7 @@
                                 @if($userid==$device['user_id'])
                                     <form name='return' method="post" action="/return">
                                         @csrf
-                                        <button type="submit" class="btn btn-outline-light bg-danger btn-block" name="action[]"  value="<?=$device['rental_device_id']?>">返却</button>
+                                        <button type="submit" class="btn btn-danger btn-block" name="rental_device_id[]"  value="<?=$device['rental_device_id']?>">返却</button>
                                     </form>
                                 @else
                                     <form name='rent-user' method="post" action="/rent-user">
@@ -124,7 +124,7 @@
                             @else
                                 <form name='rental' method="post" action="/rental">
                                     @csrf
-                                    <button type="submit" class="btn btn-primary btn-block" name="action[]"  value="<?=$device['rental_device_id']?>">貸出</button>
+                                    <button type="submit" class="btn btn-primary btn-block" name="rental_device_id[]"  value="<?=$device['rental_device_id']?>">貸出</button>
                                 </form>
                             @endif
                             </td>

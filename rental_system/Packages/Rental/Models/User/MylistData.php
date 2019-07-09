@@ -22,7 +22,7 @@ where user_id = :user_id
 End_of_sql;
 
 
-        $sql .= "order by update_date;";
+        $sql .= "order by update_date DESC;";
 
 
 
@@ -98,6 +98,12 @@ End_of_sql;
             'mylist_name' => $param['mylist_name']
         ];
         \DB::table('mylist')->where('mylist_id', $param['mylist_id'])->update($update_data);
+        return true;
+    }
+
+    public function deleteMylist($param)
+    {
+        \DB::table('mylist')->where('mylist_id', $param['mylist_id'])->delete();
         return true;
     }
 

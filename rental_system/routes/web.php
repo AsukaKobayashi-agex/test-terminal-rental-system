@@ -82,6 +82,7 @@ Route::group(['middleware' => ['force_https', /*'user.authed'*/]], function () {
     ]);
     Route::post('/mylist/delete', 'User\MylistController@delete');
     Route::post('/mylist/rename', 'User\MylistController@rename');
+    Route::post('/mylist/delete-mylist', 'User\MylistController@delete_mylist');
 
 
     Route::match(['get','post'],'/detail-mobile', 'User\DetailMobileController@detail_mobile');
@@ -107,5 +108,6 @@ Route::group(['middleware' => ['force_https', /*'user.authed'*/]], function () {
     Route::match(['get','post'],'/profile', 'User\ProfileController@profile');
 
     Route::match(['get','post'],'/mylist-register', 'User\MylistRegisterController@mylist_register');
+    Route::post('/mylist-register/register', 'User\MylistRegisterController@register');
 
 });
