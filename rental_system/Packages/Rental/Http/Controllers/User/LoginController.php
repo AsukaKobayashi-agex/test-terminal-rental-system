@@ -22,9 +22,11 @@ class LoginController extends Controller
     public function postLogin(LoginRequest $request)
     {
         $param = $request->all();
-    if(Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')])){
-        return redirect()->route('user.profile');
-    }
-        return redirect()->back();
+        return view('rental.user.auth.login');
+
+        /*if(Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')])){
+            return redirect()->route('user.mylist');
+        }
+            return redirect()->back();*/
     }
 }

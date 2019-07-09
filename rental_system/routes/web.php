@@ -80,6 +80,9 @@ Route::group(['middleware' => ['force_https', /*'user.authed'*/]], function () {
         'uses'=>'User\MylistController@mylist',
         'as'=>'user.mylist'
     ]);
+    Route::post('/mylist/delete', 'User\MylistController@delete');
+    Route::post('/mylist/rename', 'User\MylistController@rename');
+
 
     Route::match(['get','post'],'/detail-mobile', 'User\DetailMobileController@detail_mobile');
 

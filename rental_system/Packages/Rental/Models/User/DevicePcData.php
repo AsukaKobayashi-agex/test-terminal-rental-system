@@ -71,7 +71,6 @@ Add_sql;
             foreach($search_os_versions as $word){
                 $i ++;
                 $bind_params["os_version{$i}"] = "%".$word."%";
-                preDump($bind_params);
                 $sql .= <<< Add_sql
 
 and os_version collate utf8mb4_unicode_ci like :os_version{$i}

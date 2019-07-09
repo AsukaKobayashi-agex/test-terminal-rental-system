@@ -10,13 +10,13 @@
           <div class="card-body p-0">
             <!-- Nested Row within Card Body -->
             <div class="row">
-              <div class="col-lg-6 d-none d-lg-block dflex align-items-baseline">
-                  <img src="/bootsample/img/smartphone.jfif" width=100% >
+              <div class="col-lg-6 d-none d-lg-block dflex align-items-baseline w-100 h-100">
+                  <img class="h-100 w-100" src="/bootsample/img/smartphone.jfif" >
               </div>
               <div class="col-lg-6">
                 <div class="p-5">
                   <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">ようこそ!</h1>
+                    <h1 class="h4 text-gray-900 mb-4">ようこそ !</h1>
                   </div>
                     @if(count($errors) > 0)
                         <ul class="alert alert-danger">
@@ -28,10 +28,10 @@
                     <form class="user" action="{{ route('user.login') }}" method="post">
                         @csrf
                         <div class="form-group">
-                          <input type="email" class="form-control form-control-user" id="email" aria-describedby="emailHelp" placeholder="E-mailアドレスを入力">
+                          <input type="email" name="email" class="form-control form-control-user" id="email" aria-describedby="emailHelp" placeholder="E-mailアドレスを入力">
                         </div>
                         <div class="form-group">
-                          <input type="password" class="form-control form-control-user" id="password" placeholder="パスワード">
+                          <input type="password" name="password" class="form-control form-control-user" id="password" placeholder="パスワード">
                         </div>
                         <div class="form-group">
                           <div class="custom-control custom-checkbox small">
@@ -39,9 +39,7 @@
                             <label class="custom-control-label" for="customCheck">ログイン情報を記憶する</label>
                           </div>
                         </div>
-                        <a href="/" class="btn btn-primary btn-user btn-block">
-                          ログイン
-                        </a>
+                        <input type="submit" value="ログイン" class="btn btn-primary btn-user btn-block" >
                         <hr>
                     </form>
                   <!--<div class="text-center">
