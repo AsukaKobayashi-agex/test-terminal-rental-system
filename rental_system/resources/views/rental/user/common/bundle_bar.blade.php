@@ -1,6 +1,6 @@
 <div id="bundle_bar">
     <div class="form-group row">
-        <form method="post" id="action">
+        <form method="post" id="bundle">
             @csrf
         <div class="col-lg-6 mb-3 mb-sm-0">
         </div>

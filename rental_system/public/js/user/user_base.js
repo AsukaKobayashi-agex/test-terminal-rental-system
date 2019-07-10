@@ -2,7 +2,7 @@
 $(function () {
     //チェックがない場合に全チェックボタンを外し、一括ボタンを無効化
     $('.checkbox label,.checkbox input').click(function () {
-        if ($('.checkbox').length === $('.checkbox:checked').length) {
+        if ($('.checkbox').length === $('.checkbox :checked').length) {
             $('#check_all').prop('checked', 'checked');
         } else {
             $('#check_all').prop('checked', false);

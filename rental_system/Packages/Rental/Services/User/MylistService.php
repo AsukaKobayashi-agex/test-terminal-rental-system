@@ -33,4 +33,10 @@ class MylistService
         return true;
     }
 
+    public function deleteMylist($param)
+    {
+        $this->_model->deleteMylist($param);
+        return true;
+    }
+
 }
