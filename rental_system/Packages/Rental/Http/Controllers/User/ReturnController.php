@@ -3,19 +3,19 @@
 namespace Rental\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
-use Rental\Http\Requests\User\RentalRequest;
-use Rental\Services\User\RentalService;
+use Rental\Http\Requests\User\ReturnRequest;
+use Rental\Services\User\ReturnService;
 
 
 /**
  * ユーザー画面TOP
  *
- * Class RentalController
+ * Class ReturnController
  * @package Rental\Http\Controllers\User
  */
-class RentalController extends Controller
+class ReturnController extends Controller
 {
-    public function view(RentalRequest $request, RentalService $service)
+    public function view(ReturnRequest $request, ReturnService $service)
     {
         //$param = $request->old(null,[]);
         $param = $request->all();
@@ -25,13 +25,13 @@ class RentalController extends Controller
         //preDump($param,1);
         $data = $service->getData($param);
         //var_dump($data);
-        return view('rental.user.device_action.rental')->with($data);
+        return view('rental.user.device_action.return')->with($data);
     }
 
-    public function rental(RentalRequest $request, RentalService $service)
+    public function return(ReturnRequest $request, ReturnService $service)
     {
         $param = $request->all();
-        $service->rentalDevice($param);
+        $service->returnDevice($param);
 
         return redirect('/mylist');
     }

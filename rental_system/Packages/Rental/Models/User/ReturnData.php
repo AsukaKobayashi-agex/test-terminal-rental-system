@@ -3,14 +3,15 @@
 namespace Rental\Models\User;
 
 
-class RentalData
+class ReturnData
 {
 
-    public function getAllRentalDevice($param)
+    public function getAllReturnDevice($param)
     {
         // バインド値設定
         $bind_params = [
             'archive_flag' => 0,
+            'user_id' => 1,
         ];
 
         $sql = <<< End_of_sql
@@ -44,26 +45,26 @@ End_of_sql;
 Add_sql;
         };
 
-        $sql .= "order by status,device_category,test_device_category,device_name,charger_name;";
+        $sql .= "order by status DESC,user_id=:user_id DESC,device_category,test_device_category,device_name,charger_name;";
 
         return stdClassToArray(\DB::select($sql, $bind_params));
     }
 
 
-    public function rentalDevice($param)
+    public function returnDevice($param)
     {
         \DB::beginTransaction();
         try {
             foreach ($param['rental_device_id'] as $device){
-                $now = nowDateTime();
+                $defaultDateTime = defaultDateTime();
                 $data = [
-                    'status'=> 1,
-                    'user_id' => 1,
-                    'rental_datetime' => $now,
-                    'scheduled_return_datetime' => date("Y-m-d 23:59:59",strtotime($now)),
+                    'status'=> 0,
+                    'user_id' => 0,
+                    'rental_datetime' => $defaultDateTime,
+                    'scheduled_return_datetime' => $defaultDateTime,
                 ];
                 $where = [
-                    'status'=> 0,
+                    'status'=> 1,
                     'rental_device_id'=> $device
                 ];
                 \DB::table('rental_state')->where($where)->update($data);
@@ -86,7 +87,7 @@ Add_sql;
         $insert_data = [
             'rental_device_id'=>$device,
             'user_id' => $data['user_id'],
-            'action_type' => 1,
+            'action_type' => 2,
             'registration_datetime' => $now,
         ];
 

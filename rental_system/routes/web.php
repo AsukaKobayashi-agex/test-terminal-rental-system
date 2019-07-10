@@ -104,7 +104,8 @@ Route::group(['middleware' => ['force_https', /*'user.authed'*/]], function () {
     Route::match(['get','post'],'/rental', 'User\RentalController@view');
     Route::post('/rental/rental', 'User\RentalController@rental');
 
-    Route::match(['get','post'],'/return', 'User\ReturnController@return');
+    Route::match(['get','post'],'/return', 'User\ReturnController@view');
+    Route::post('/return/return', 'User\ReturnController@return');
 
     Route::match(['get','post'],'/profile', 'User\ProfileController@profile');
 
