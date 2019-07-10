@@ -11,7 +11,9 @@ $i = 1;
 
 <!-- DataTales Example -->
 @if(empty($all_mylist))
-    <h4 class="font-weight-bold">登録されているマイリストはありません</h4>
+    <div>
+        <h4 class="font-weight-bold text-lg-center my-5">登録されているマイリストはありません</h4>
+    </div>
 @else
 <div class="form-group row" id="bundle_bar">
     <form class="w-100" method="post" id="action">

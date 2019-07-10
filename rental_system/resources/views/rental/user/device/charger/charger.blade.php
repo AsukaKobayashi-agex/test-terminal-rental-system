@@ -87,7 +87,7 @@
                                         @else
                                         @php($i++)
                                         @endif
-                                        <input type="checkbox" class="custom-control-input" form="action" name="rental_device_id[]" value="<?=$device['rental_device_id']?>" id="customCheck<?=$i?>">
+                                        <input type="checkbox" class="custom-control-input" form="bundle" name="rental_device_id[]" value="<?=$device['rental_device_id']?>" id="customCheck<?=$i?>">
                                         <label class="custom-control-label" for="customCheck<?=$i?>"></label>
                                     </div>
                                 </td>

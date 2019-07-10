@@ -104,6 +104,7 @@ End_of_sql;
     public function deleteMylist($param)
     {
         \DB::table('mylist')->where('mylist_id', $param['mylist_id'])->delete();
+        \DB::table('mylist_device')->where('mylist_id', $param['mylist_id'])->delete();
         return true;
     }
 
