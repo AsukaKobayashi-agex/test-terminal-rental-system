@@ -56,6 +56,7 @@ class AddChargerData
 
     protected function _insertCharger($rental_device_id, $param)
     {
+        //preDump($param,1);
         $charger_data = [
             'rental_device_id' => $rental_device_id,
             'charger_name' => $param['charger_name'],

@@ -17,7 +17,8 @@
                             @csrf
                             <div class="form-group">
                                 <label>充電器名</label>
-                                <input type="text" class="form-control" name="charger_name">
+                                <input type="text" class="form-control" name="charger_name" required value="{{old('charger_name')}}">
+                                {{$errors->first('charger_name')}}
                             </div>
 
                             <div class="form-group">

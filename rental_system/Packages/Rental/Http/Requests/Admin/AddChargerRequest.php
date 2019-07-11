@@ -2,6 +2,7 @@
 
 namespace Rental\Http\Requests\Admin;
 
+use http\Env\Request;
 use Illuminate\Foundation\Http\FormRequest;
 
 class AddChargerRequest extends FormRequest
@@ -29,20 +30,24 @@ class AddChargerRequest extends FormRequest
     public function rules()
     {
         return [
-            // todo: validationルールを設定する
+            'charger_name' => 'required|max:100'
         ];
     }
 
     public function attributes()
     {
         return [
-            // todo: 名称を設定する
+            'charger_name' => '充電器名'
         ];
     }
 
     public function messages()
     {
-        return [];
+        return [
+            'charger_name.required' =>'充電器名を入力してください',
+            'charger_name.max' =>'充電器名は100文字以内で記入してください'
+        ];
+
     }
 
     // ----------------------------------------------------
