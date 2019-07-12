@@ -19,6 +19,8 @@ class UserTopController extends Controller
     {
         $param = $request->all();
         $data = $service->getData($param);
+        $data['search_word'] = $request -> input('search_word');
+        $data['status'] = $request -> input('status');
         return view('rental.user.top.index')->with($data);
     }
 }

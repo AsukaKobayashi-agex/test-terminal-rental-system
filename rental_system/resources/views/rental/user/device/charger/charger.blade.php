@@ -39,23 +39,23 @@
                                 <form name='search' method="post" action="#">
                                     @csrf
                                     <div class="col-sm-4 mb-3 mb-sm-0">
-                                        <input type="search" name="search_word" class="form-control form-control-user" value="{{isset($_POST['search_word']) ? $_POST['search_word']: null}}" placeholder="端末名を入力" >
+                                        <input type="search" name="search_word" class="form-control form-control-user" value="{{$search_word}}" placeholder="端末名を入力" >
                                     </div>
                                     <div class="col-sm-2 px-1 mb-3 mb-sm-0">
                                         <select name="charger_type" class="form-control form-control-user">
                                             <option value="">充電器タイプ</option>
-                                            <option value="1" {{isset($_POST['charger_type']) && $_POST['charger_type']==="1" ? 'selected': null}}>USB TYPE-B</option>
-                                            <option value="2"{{isset($_POST['charger_type']) && $_POST['charger_type']==="2" ? 'selected': null}}>USB TYPE-C</option>
-                                            <option value="3" {{isset($_POST['charger_type']) && $_POST['charger_type']==="3" ? 'selected': null}}>iphone ライトニング</option>
-                                            <option value="4" {{isset($_POST['charger_type']) && $_POST['charger_type']==="4" ? 'selected': null}}>iphone 旧型</option>
+                                            <option value="1" {{$charger_type==="1" ? 'selected': null}}>USB TYPE-B</option>
+                                            <option value="2"{{$charger_type==="2" ? 'selected': null}}>USB TYPE-C</option>
+                                            <option value="3" {{$charger_type==="3" ? 'selected': null}}>iphone ライトニング</option>
+                                            <option value="4" {{$charger_type==="4" ? 'selected': null}}>iphone 旧型</option>
                                         </select>
                                     </div>
                                     <div class="col-sm-2 mb-3 mb-sm-0">
                                         <select name="status" class="form-control form-control-user">
                                         <option value="" >ステータス</option>
-                                        <option value="0" {{isset($_POST['status']) && $_POST['status']==="0" ? 'selected': null}}>貸出可</option>
-                                        <option value="1"{{isset($_POST['status'])&&$_POST['status']==="1" ? 'selected': null}}>貸出中</option>
-                                        <option value="user=<?=$userid?>" {{isset($_POST['status'])&&$_POST['status']=="user=$userid" ? 'selected': null}}>返却</option>
+                                        <option value="0" {{$status==="0" ? 'selected': null}}>貸出可</option>
+                                        <option value="1"{{$status==="1" ? 'selected': null}}>貸出中</option>
+                                        <option value="user=<?=$userid?>" {{$status=="user=$userid" ? 'selected': null}}>返却</option>
                                     </select>
                                     </div>
 

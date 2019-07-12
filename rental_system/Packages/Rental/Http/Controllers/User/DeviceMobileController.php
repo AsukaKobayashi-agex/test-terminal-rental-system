@@ -19,6 +19,13 @@ class DeviceMobileController extends Controller
     {
         $param = $request->all();
         $data = $service->getData($param);
+        $data['search_word'] = $request -> input('search_word');
+        $data['status'] = $request -> input('status');
+        $data['wifi'] = $request -> input('wifi');
+        $data['com_line'] = $request -> input('com_line');
+        $data['type'] = $request -> input('type');
+        $data['os'] = $request -> input('os');
+        $data['os_version'] = $request -> input('os_version');
         return view('rental.user.device.mobile.mobile')->with($data);
     }
 }

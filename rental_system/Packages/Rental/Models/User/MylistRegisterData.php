@@ -91,11 +91,7 @@ Add_sql;
             }else{
                 $mylist_id = $param['mylist_id'];
                 foreach ($param['rental_device_id'] as $device){
-                    $insert_data = [
-                        'mylist_id' => $mylist_id,
-                        'rental_device_id' => $device
-                    ];
-                    \DB::table('mylist_device')->insert($insert_data);
+                    \DB::insert(\DB::raw("INSERT IGNORE INTO mylist_device(mylist_id, rental_device_id) VALUES ({$mylist_id},{$device});"));
                 }
             }
             $update_data = [

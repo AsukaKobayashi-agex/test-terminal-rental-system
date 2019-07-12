@@ -18,6 +18,10 @@ class DevicePcController extends Controller
     {
         $param = $request->all();
         $data = $service->getData($param);
+        $data['search_word'] = $request -> input('search_word');
+        $data['status'] = $request -> input('status');
+        $data['os'] = $request -> input('os');
+        $data['os_version'] = $request -> input('os_version');
         return view('rental.user.device.pc.pc')->with($data);
     }
 }

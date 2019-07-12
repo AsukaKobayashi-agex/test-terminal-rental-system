@@ -39,24 +39,24 @@
                                 <form name='search' method="post" action="#">
                                     @csrf
                                     <div class="col-sm-4 mb-3 mb-sm-0">
-                                        <input type="search" name="search_word" class="form-control form-control-user" value="{{isset($_POST['search_word']) ? $_POST['search_word']: null}}" placeholder="端末名を入力" >
+                                        <input type="search" name="search_word" class="form-control form-control-user" value="{{$search_word}}" placeholder="端末名を入力" >
                                     </div>
                                     <div class="col-sm-2 mb-3 mb-sm-0">
                                         <select name="os" class="form-control form-control-user">
                                             <option value="" selected>OS</option>
-                                            <option value="3" {{isset($_POST['os'])&&$_POST['os']==="3" ? 'selected': null}}>Windows</option>
-                                            <option value="4" {{isset($_POST['os'])&&$_POST['os']==="4" ? 'selected': null}}>Mac OS</option>
+                                            <option value="3" {{$os==="3" ? 'selected': null}}>Windows</option>
+                                            <option value="4" {{$os==="4" ? 'selected': null}}>Mac OS</option>
                                         </select>
                                     </div>
                                     <div class="col-sm-2 mb-3 mb-sm-0">
-                                        <input type="search" name="os_version" class="form-control form-control-user" value="{{isset($_POST['os_version']) ? $_POST['os_version']: null}}" placeholder="OSバージョン" >
+                                        <input type="number" name="os_version" class="form-control form-control-user" value="{{$os_version}}" placeholder="OSバージョン" >
                                     </div>
                                     <div class="col-sm-2 mb-3 mb-sm-0">
                                         <select name="status" class="form-control form-control-user">
                                         <option value="" >ステータス</option>
-                                        <option value="0" {{isset($_POST['status']) && $_POST['status']==="0" ? 'selected': null}}>貸出可</option>
-                                        <option value="1"{{isset($_POST['status'])&&$_POST['status']==="1" ? 'selected': null}}>貸出中</option>
-                                        <option value="user=<?=$userid?>" {{isset($_POST['status'])&&$_POST['status']=="user=$userid" ? 'selected': null}}>返却</option>
+                                        <option value="0" {{$status==="0" ? 'selected': null}}>貸出可</option>
+                                        <option value="1"{{$status==="1" ? 'selected': null}}>貸出中</option>
+                                        <option value="user=<?=$userid?>" {{$status=="user=$userid" ? 'selected': null}}>返却</option>
                                         </select>
                                     </div>
 

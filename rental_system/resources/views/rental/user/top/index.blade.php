@@ -2,7 +2,7 @@
 @section('content')
 <!-- Page Heading -->
 @php
-    //preDump($_POST['search_word']);
+    preDump($_POST['search_word']);
     $userid = "1";
 @endphp
 
@@ -39,14 +39,14 @@
                             <form id='search' method="post" action="#">
                                 @csrf
                                 <div class="col-sm-4 mb-3 mb-sm-0">
-                                    <input type="search" name="search_word" class="form-control form-control-user" value="{{isset($_POST['search_word']) ? $_POST['search_word']: null}}" placeholder="端末名を入力" >
+                                    <input type="search" name="search_word" class="form-control form-control-user" value="{{$search_word}}" placeholder="端末名を入力" >
                                 </div>
                                 <div class="col-sm-2 mb-3 mb-sm-0">
                                     <select name="status" class="form-control form-control-user">
                                         <option value="" >ステータス</option>
-                                        <option value="0" {{isset($_POST['status']) && $_POST['status']==="0" ? 'selected': null}}>貸出可</option>
-                                        <option value="1"{{isset($_POST['status'])&&$_POST['status']==="1" ? 'selected': null}}>貸出中</option>
-                                        <option value="user=<?=$userid?>" {{isset($_POST['status'])&&$_POST['status']=="user=$userid" ? 'selected': null}}>返却</option>
+                                        <option value="0" {{$status==="0" ? 'selected': null}}>貸出可</option>
+                                        <option value="1"{{$status==="1" ? 'selected': null}}>貸出中</option>
+                                        <option value="user=<?=$userid?>" {{$status=="user=$userid" ? 'selected': null}}>返却</option>
                                     </select>
                                 </div>
                                 <div class="col-sm-2 mb-3 mb-sm-0">

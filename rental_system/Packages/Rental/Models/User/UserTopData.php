@@ -2,8 +2,25 @@
 
 namespace Rental\Models\User;
 
+use Rental\Models\_common\GetUserInfo;
+
+
 class UserTopData
 {
+    protected $_get_user_info;
+    public function __construct(GetUserInfo $userInfo)
+    {
+        $this->_get_user_info = $userInfo;
+    }
+
+
+    public function getUserInfo($param){
+        $param['user_id'] = 1;
+        $user_info = $this -> _get_user_info -> getUserInfo($param);
+
+        return $user_info;
+    }
+
     public function getAllUserTop($param)
     {
         // バインド値設定
@@ -66,9 +83,12 @@ and status = :status
 Add_sql;
         }elseif(isset($param['status']) && strpos($param['status'],'user') !== false){
             $bind_params['user_id'] = ltrim($param['status'],'user=');
+            $bind_params['status'] = 1;
             $sql .= <<< Add_sql
 
 and rs.user_id = :user_id
+and status = :status
+
 
 Add_sql;
         };

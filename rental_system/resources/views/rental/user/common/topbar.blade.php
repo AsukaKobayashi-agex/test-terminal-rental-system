@@ -16,18 +16,11 @@
 
         <div class="topbar-divider d-none d-sm-block"></div>
 
-    <?php
-    $username = ["山根","瑞葵"];
-    $userid = "1";
-    $div="コンサル";
-    $group="第２グループ";
-    $email="hogehoge@agex.co.jp";
-    ?>
     <!-- Nav Item - User Information -->
         <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?=$div?><br/><?=$group?></span>
-                <span class="mr-2 d-none d-lg-inline text-gray-900"><?=$username[0]?>&emsp;<?=$username[1]?></span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?=$user_info['devision_id']?><br/><?=$user_info['group_id']?></span>
+                <span class="mr-2 d-none d-lg-inline text-gray-900"><?=$user_info['name']?></span>
             </a>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
