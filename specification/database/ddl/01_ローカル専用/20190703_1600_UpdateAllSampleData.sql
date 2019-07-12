@@ -148,7 +148,7 @@ INSERT INTO `rental_state` (`rental_device_id`, `status`, `user_id`, `rental_dat
 	(4, 1, 3, '2019-06-18 14:38:43', '2019-06-18 23:59:59'),
 	(5, 0, 0, '2019-06-18 14:38:43', '2019-06-18 23:59:59'),
 	(6, 1, 1, '2019-06-18 14:38:43', '2019-06-18 23:59:59'),
-	(7, 0, 0, '2019-06-18 14:38:43', '2019-06-18 23:59:59'),
+	(7, 0, 1, '2019-06-18 14:38:43', '2019-06-18 23:59:59'),
 	(8, 1, 2, '2019-06-18 14:38:43', '2019-06-18 23:59:59'),
 	(9, 1, 4, '2019-06-18 14:38:43', '2019-06-18 23:59:59'),
 	(10, 1, 1, '2019-06-18 14:38:43', '2019-06-18 23:59:59'),
@@ -180,9 +180,9 @@ INSERT INTO `test_device_basic` (`test_device_id`, `rental_device_id`, `device_n
 	(10, 8, 'タブレット２', 1, 1, '11.3.1'),
 	(11, 9, 'ipad', 1, 2, '3.5.2'),
 	(12, 10, 'ipad pro', 1, 2, '6.5.2'),
-	(13, 13, 'pasokon', 2, 3, '10'),
-	(14, 14, 'パーソナル・コンピューター', 2, 3, '4'),
-	(15, 15, 'ThinkPad', 2, 3, '41');
+	(13, 12, 'pasokon', 2, 3, '10'),
+	(14, 12, 'パーソナル・コンピューター', 2, 3, '4'),
+	(15, 12, 'ThinkPad', 2, 3, '41');
 /*!40000 ALTER TABLE `test_device_basic` ENABLE KEYS */;
 
 -- テーブル sys_rental.test_device_mobile: ~7 rows (約) のデータをダンプしています
@@ -217,10 +217,10 @@ INSERT INTO `test_device_pc` (`test_device_id`, `pc_account_name`, `mail_address
 DELETE FROM `user`;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` (`user_id`, `name`, `password`, `address`, `devision_id`, `group_id`, `registration_date`, `update_date`) VALUES
-	(1, '山根　瑞葵', 'yamane', 'yamane-mizuki@agex.co.jp', 10, 1010, '2019-06-18 14:38:43', '2019-06-18 14:38:43'),
-	(2, '小林　明日香', 'kobayashi', 'kobayashi-asuka@agex.co.jp', 20, 2020, '2019-06-18 14:38:43', '2019-06-18 14:38:43'),
-	(3, '原田　翔平', 'harada', 'harada-shohei@agex.co.jp', 30, 3030, '2019-06-18 14:38:43', '2019-06-18 14:38:43'),
-	(4, '徳永　迅', 'tokunaga', 'tokunaga-zin@agex.co.jp', 40, 4020, '2019-06-18 14:38:43', '2019-06-18 14:38:43');
+	(1, '山根　瑞葵', '1114703', 'yamane-mizuki@agex.co.jp', 10, 1010, '2019-06-18 14:38:43', '2019-06-18 14:38:43'),
+	(2, '小林　明日香', '1114703', 'yamane-mizuki@agex.co.jp', 20, 2020, '2019-06-18 14:38:43', '2019-06-18 14:38:43'),
+	(3, '原田　翔平', '1114703', 'yamane-mizuki@agex.co.jp', 30, 3030, '2019-06-18 14:38:43', '2019-06-18 14:38:43'),
+	(4, '徳永　迅', '1114703', 'yamane-mizuki@agex.co.jp', 40, 4020, '2019-06-18 14:38:43', '2019-06-18 14:38:43');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
