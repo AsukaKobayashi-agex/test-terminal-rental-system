@@ -28,9 +28,12 @@ Route::group(['prefix' => 'admin', 'middleware' => ['force_https', /*'admin.auth
 
     // 端末追加
     // スマホ
-    Route::get('/add_sp','Admin\Add_spController@view');
+    Route::get('/add_sp','Admin\AddSpController@form');
+    Route::post('/add_sp/action','Admin\AddSpController@action');
+
     // PC
     Route::get('/add_pc', 'Admin\AddPcController@form');
+    // Route::get('/add_pc', 'Admin\AddPcController@software_name');
     Route::post('/add_pc/action','Admin\AddPcController@action');
 
     // 充電器
@@ -46,6 +49,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['force_https', /*'admin.auth
 
     //端末編集画面
     Route::get('/edit','Admin\EditController@view');
+
+    Route::get('/edit_charger','Admin\EditChargerController@form');
+
     Route::get('/contract_plan','Admin\Contract_planController@view');
     Route::get('/os_prevention','Admin\OS_preventionController@view');
     Route::get('/remarks','Admin\RemarksController@view');

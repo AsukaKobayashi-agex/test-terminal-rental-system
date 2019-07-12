@@ -17,7 +17,8 @@
                             @csrf
                             <div class="form-group">
                                 <label>充電器名</label>
-                                <input type="text" class="form-control" name="charger_name">
+                                <input type="text" class="form-control" name="charger_name" required value="{{old('charger_name')}}">
+                                {{$errors->first('charger_name')}}
                             </div>
 
                             <div class="form-group">
@@ -91,7 +92,29 @@
 
 @push('scripts')
 <script>
-function form_submit() {
+
+
+    // 変換前
+    var beforeStr = new Array('ｧ','ｨ','ｩ','ｪ','ｫ','ｬ','ｭ','ｮ','ｯ','ｰ','ｳﾞ','ｶﾞ','ｷﾞ','ｸﾞ','ｹﾞ','ｺﾞ','ｻﾞ','ｼﾞ','ｽﾞ','ｾﾞ','ｿﾞ','ﾀﾞ','ﾁﾞ','ﾂﾞ','ﾃﾞ','ﾄﾞ','ﾊﾞ','ﾋﾞ','ﾌﾞ','ﾍﾞ','ﾎﾞ','ﾊﾟ','ﾋﾟ','ﾌﾟ','ﾍﾟ','ﾎﾟ','ｱ','ｲ','ｳ','ｴ','ｵ','ｶ','ｷ','ｸ','ｹ','ｺ','ｻ','ｼ','ｽ','ｾ','ｿ','ﾀ','ﾁ','ﾂ','ﾃ','ﾄ','ﾅ','ﾆ','ﾇ','ﾈ','ﾉ','ﾊ','ﾋ','ﾌ','ﾍ','ﾎ','ﾏ','ﾐ','ﾑ','ﾒ','ﾓ','ﾔ','ﾕ','ﾖ','ﾗ','ﾘ','ﾙ','ﾚ','ﾛ','ﾜ','ｦ','ﾝ');
+    // 変換後
+    var afterStr = new Array('ァ','ィ','ゥ','ェ','ォ','ャ','ュ','ョ','ッ','ー','ヴ','ガ','ギ','グ','ゲ','ゴ','ザ','ジ','ズ','ゼ','ゾ','ダ','ヂ','ヅ','デ','ド','バ','ビ','ブ','ベ','ボ','パ','ピ','プ','ペ','ポ','ア','イ','ウ','エ','オ','カ','キ','ク','ケ','コ','サ','シ','ス','セ','ソ','タ','チ','ツ','テ','ト','ナ','ニ','ヌ','ネ','ノ','ハ','ヒ','フ','ヘ','ホ','マ','ミ','ム','メ','モ','ヤ','ユ','ヨ','ラ','リ','ル','レ','ロ','ワ','ヲ','ン');
+
+    function convertStr(str) {
+        var fullStr = str;
+        for(var i = 0; i < beforeStr.length; i++) {
+            fullStr = fullStr.replace(new RegExp(beforeStr[i], 'g'), afterStr[i]);
+        }
+        return fullStr;
+    }
+    $(function() {
+        $('.form-control').on('blur', function() {
+            var str = $(this).val();
+            $(this).val(convertStr(str));
+        });
+
+    });
+
+    function form_submit() {
     document.charger_form.submit();
 }
 </script>
