@@ -10,6 +10,9 @@ $i = 1;
 ?>
 
 <!-- DataTales Example -->
+<div>
+    <h5 class="font-weight-bold text-primary my-5">マイリスト一覧</h5>
+</div>
 @if(empty($all_mylist))
     <div>
         <h4 class="font-weight-bold text-lg-center my-5">登録されているマイリストはありません</h4>
