@@ -121,6 +121,8 @@
                 <div class="card-body">
                     @if($detail['device_img']===1)
                         <img class="rounded w-100 h-100" src="/bootsample/img/1g.jpg">
+                    @else
+                        <img class="rounded w-100 h-100" src="/bootsample/img/noImage.png">
                     @endif
                 </div>
             </div>
@@ -247,8 +249,6 @@
                                         microSIM
                                     @elseif($detail['sim_card']==4)
                                         miniSIM
-                                    @else
-                                        その他
                                     @endif
 
                                 </div>

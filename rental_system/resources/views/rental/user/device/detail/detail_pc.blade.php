@@ -98,6 +98,8 @@
                 <div class="card-body">
                     @if($detail['device_img']===1)
                         <img class="rounded w-100 h-100" src="/bootsample/img/1g.jpg">
+                    @else
+                        <img class="rounded w-100 h-100" src="/bootsample/img/device.jpg">
                     @endif
                 </div>
             </div>
