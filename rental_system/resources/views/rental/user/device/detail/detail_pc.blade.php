@@ -72,19 +72,19 @@
                                     @if($userid==$detail['user_id'])
                                         <form id='return' method="post" action="/return">
                                             @csrf
-                                            <button type="submit" class="btn btn-danger btn-block" name="action[]"  value="<?=$detail['rental_device_id']?>">返却</button>
+                                            <button type="submit" class="btn btn-danger btn-block" name="rental_device_id[]"  value="<?=$detail['rental_device_id']?>">返却</button>
                                         </form>
                                     @else
                                         <form id='rent-user' method="post" action="/rent-user">
                                             @csrf
-                                            <button type="submit" class="btn btn-outline-dark btn-block" name="user_id"  value="<?=$detail['user_id']?>"><?=$detail['name']?><br>(<?=date('m月d日 G時i分',strtotime($detail['rental_datetime']))?>)</button>
+                                            <button type="submit" class="btn btn-outline-dark btn-light btn-block" name="user_id"  value="<?=$detail['user_id']?>"><?=$detail['name']?><span class="d-md-block d-none">(<?=date('m月d日 G時i分',strtotime($detail['rental_datetime']))?>)</span></button>
                                         </form>
                                     @endif
 
                                 @else
                                     <form id='rental' method="post" action="/rental">
                                         @csrf
-                                        <button type="submit" class="btn btn-primary btn-block" name="action[]"  value="<?=$detail['rental_device_id']?>">貸出</button>
+                                        <button type="submit" class="btn btn-primary btn-block" name="rental_device_id[]"  value="<?=$detail['rental_device_id']?>">貸出</button>
                                     </form>
                                 @endif
                             </div>
@@ -94,7 +94,7 @@
             </div>
         </div>
         <div class="col-sm-6">
-            <div class="card border-left-primary h-100 shadow">
+            <div class="card border-left-primary shadow">
                 <div class="card-body">
                     @if($detail['device_img']===1)
                         <img class="rounded w-100 h-100" src="/bootsample/img/1g.jpg">
@@ -137,8 +137,8 @@
     </div>
 
     <div >
-        <a href="#" onclick="window.history.back(); return false;" class="btn btn-secondary btn-user btn-block">戻る</a>
-    </div>
+        <a href="#" onclick="window.close(); return false;" class="btn btn-secondary btn-user btn-block">閉じる</a>
+</div>
 
 
 @endsection

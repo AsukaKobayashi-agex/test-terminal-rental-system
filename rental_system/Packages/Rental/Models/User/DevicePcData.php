@@ -40,8 +40,9 @@ where archive_flag = :archive_flag
 
 End_of_sql;
 
-        if(isset($param['search_word']) and !empty($param['search_word'])) {
-            $search_word=preg_replace("|　|"," ",$param['search_word']);
+        if(isset($param['search_word'])) {
+            $search=preg_replace("|　|"," ",$param['search_word']);
+            $search_word=mb_convert_kana($search,"KV","UTF-8");
             $search_words = explode(" ",$search_word);
             $i=0;
             foreach($search_words as $word){
@@ -49,7 +50,7 @@ End_of_sql;
                 $bind_params["device_name{$i}"] = "%".$word."%";
                 $sql .= <<< Add_sql
 
-and device_name like :device_name{$i}
+and device_name collate utf8mb4_unicode_ci like :device_name{$i}
 
 Add_sql;
             }};
@@ -63,33 +64,35 @@ and os = :os
 Add_sql;
         };
 
-        if(isset($param['os_version']) and !empty($param['os_version'])) {
+        if(isset($param['os_version'])) {
             $search_os_version=preg_replace("|　|"," ",$param['os_version']);
             $search_os_versions = explode(" ",$search_os_version);
             $i=0;
             foreach($search_os_versions as $word){
                 $i ++;
                 $bind_params["os_version{$i}"] = "%".$word."%";
-                preDump($bind_params);
                 $sql .= <<< Add_sql
 
-and os_version like :os_version{$i}
+and os_version collate utf8mb4_unicode_ci like :os_version{$i}
 
 Add_sql;
         }};
 
-        if(isset($param['status'])) {
+        if(isset($param['status']) && strpos($param['status'], 'user') === false) {
             $bind_params['status'] = $param['status'];
             $sql .= <<< Add_sql
 
-and status like :status
+and status = :status
 
 Add_sql;
-        };
+        }elseif(isset($param['status']) && strpos($param['status'],'user') !== false){
+            $bind_params['user_id'] = ltrim($param['status'],'user=');
+            $sql .= <<< Add_sql
 
+and rs.user_id = :user_id
 
-
-        $sql .= "order by device_category,device_name;";
+Add_sql;
+        };$sql .= "order by device_category,device_name;";
 
 
 

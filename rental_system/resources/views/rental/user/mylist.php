@@ -44,10 +44,10 @@
               <h6 class="m-0 font-weight-bold text-primary">プロジェクト①</h6>
             </div>
             <div class="card-body">
-              <div class="table-responsive">
+              <div >
 
               <!--登録端末テーブル-->
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="table-layout:fixed;">
+                <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0" style="table-layout:fixed;">
                   <?php include('common/database.php'); ?>
                   <thead>
                     <tr>
@@ -108,10 +108,10 @@
               <h6 class="m-0 font-weight-bold text-primary">プロジェクト②</h6>
             </div>
             <div class="card-body">
-              <div class="table-responsive">
+              <div >
 
               <!--登録端末テーブル-->
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="table-layout:fixed;">
+                <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0" style="table-layout:fixed;">
                   <?php include('common/database.php'); ?>
                   <thead>
                     <tr>
@@ -172,10 +172,10 @@
               <h6 class="m-0 font-weight-bold text-primary">プロジェクト③</h6>
             </div>
             <div class="card-body">
-              <div class="table-responsive">
+              <div >
 
               <!--登録端末テーブル-->
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" style="table-layout:fixed;">
+                <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0" style="table-layout:fixed;">
                   <?php include('common/database.php'); ?>
                   <thead>
                     <tr>

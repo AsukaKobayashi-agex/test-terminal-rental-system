@@ -1,4 +1,5 @@
 
+
 @extends('rental.admin.common.include')
 
 @section('content')
@@ -7,53 +8,29 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">PCを登録する</h1>
-        <p class="mb-4"> 登録するPCの情報を記入してください。</p>
+        <h1 class="h3 mb-2 text-gray-800">充電器を登録する</h1>
+        <p class="mb-4"> 登録する充電器の情報を記入してください。</p>
 
         <div class="m-0 font-weight-bold text-primary">
 
-            <form method="post" name="pc_form" action="/admin/add_pc/action/">
+            <form method="post" name="charger_form" action="/admin/add_charger/action/">
                 @csrf
                 <div class="form-group">
-                    <label>OS</label>
-                    <select class="form-control" name="os">
-                        <option value="3">Windows</option>
-                        <option value="4">MacOS</option>
+                    <label>充電器名</label>
+                    <input type="text" class="form-control" name="charger_name" required value="{{old('charger_name')}}">
+                    {{$errors->first('charger_name')}}
+                </div>
+
+                <div class="form-group">
+                    <label>充電器タイプ</label>
+                    <select class="form-control" name="charger_type">
+                        <option value="1">USB TYPE-B</option>
+                        <option value="2">USB　TYPE-C</option>
+                        <option value="3">iphone ライトニング</option>
+                        <option value="4">iphone 旧型</option>
                     </select>
                 </div>
 
-                <div class="form-group">
-                    <label>コンピュータ名</label>
-                    <input type="text" class="form-control" name="pc_account_name">
-                    {{$errors->first('pc_account_name')}}
-                </div>
-
-                <div class="form-group">
-                    <label>ソフトウェア</label>
-                        @foreach($software_master as $d)
-                        <div>
-                            <label><input type="checkbox" name="software_id[]" value="{!! $d->software_id !!}" >{{$d->software_name}}</label>
-                        </div>
-                        @endforeach
-                </div>
-
-                <div class="form-group">
-                    <label>アドレス</label>
-                    <input type="text" class="form-control" name="mail_address">
-                    {{$errors->first('mail_address')}}
-                </div>
-
-                <div class="form-group">
-                    <label>備考(ユーザー向け)</label>
-                    <textarea class="form-control" name=memo rows="5"></textarea>
-                    {{$errors->first('memo')}}
-                </div>
-
-                <div class="form-group">
-                    <label>備考(管理者向け)</label>
-                    <textarea class="form-control" name=admin_memo rows="5"></textarea>
-                    {{$errors->first('admin_memo')}}
-                </div>
             </form>
         </div>
     </div>
@@ -116,7 +93,7 @@
 @push('scripts')
     <script>
         function form_submit() {
-            document.pc_form.submit();
+            document.charger_form.submit();
         }
     </script>
 @endpush

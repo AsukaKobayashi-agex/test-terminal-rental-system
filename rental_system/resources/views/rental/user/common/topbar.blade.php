@@ -10,6 +10,7 @@
 
     <ul class="navbar-nav ml-auto">
         <div class="d-flex align-items-center ">
+            @php(date_default_timezone_set('Asia/Tokyo'))
             <h4 class="text-lg-left text-primary"><?=date('Y/m/d D H:i')?></h4>
         </div>
 

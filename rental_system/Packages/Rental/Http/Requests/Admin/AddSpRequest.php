@@ -46,7 +46,18 @@ class AddSpRequest extends FormRequest
 
     public function messages()
     {
-        return [];
+        return [
+            'device_name.required' =>'端末名を入力してください',
+            'device_name.max' =>'端末名は100文字以内で記入してください',
+            'number.required' =>'電話番号を入力してください',
+            'number.max' =>'電話番号は100文字以内で記入してください',
+            'display_size.required' =>'画面サイズを入力してください',
+            'display_size.max' =>'画面サイズは100文字以内で記入してください',
+            'resolution.required' =>'解像度を入力してください',
+            'resolution.max' =>'解像度は100文字以内で記入してください',
+            'memo.max' =>'備考は1000文字以内で記入してください',
+            'admin_memo.max' =>'備考は1000文字以内で記入してください'
+        ];
     }
 
     protected function _format($inputs)

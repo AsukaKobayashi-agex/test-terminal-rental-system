@@ -4,7 +4,7 @@ namespace Rental\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserTopRequest extends FormRequest
+class MylistRequest extends FormRequest
 {
     protected $_inputs = [];
 
@@ -29,21 +29,23 @@ class UserTopRequest extends FormRequest
     public function rules()
     {
         return [
-            'search_word' => 'max:100'
+            'mylist_name'=>'min:1|:max:50'
         ];
     }
 
     public function attributes()
     {
         return [
-            'search_word' => '検索ワード'
+            'mylist_name'=>'マイリスト名'
         ];
     }
 
     public function messages()
     {
         return [
-            'search_word.max' => '検索文字数が多すぎます(最大半角100文字)'
+            'mylist_name.required'=>'マイリスト名を入力してください',
+            'mylist_name.min'=>'マイリスト名を入力してください',
+            'mylist_name.max'=>'マイリスト名が長すぎます（最大：半角100文字）'
         ];
     }
 

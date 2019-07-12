@@ -44,7 +44,14 @@ class AddPcRequest extends FormRequest
 
     public function messages()
     {
-        return [];
+        return [
+            'pc_account_name.required' =>'コンピュータ名を入力してください',
+            'pc_account_name.max' =>'コンピュータ名は100文字以内で記入してください',
+            'mail_address.required' =>'メールアドレスを入力してください',
+            'mail_address.max' =>'メールアドレスは100文字以内で記入してください',
+            'memo.max' =>'備考は1000文字以内で記入してください',
+            'admin_memo.max' =>'備考は1000文字以内で記入してください'
+        ];
     }
 
     protected function _format($inputs)
@@ -54,6 +61,4 @@ class AddPcRequest extends FormRequest
         return \Format::format($inputs,$rules);
     }
 }
-
-
 

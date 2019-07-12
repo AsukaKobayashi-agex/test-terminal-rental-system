@@ -4,7 +4,7 @@ namespace Rental\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserTopRequest extends FormRequest
+class LoginRequest extends FormRequest
 {
     protected $_inputs = [];
 
@@ -29,21 +29,25 @@ class UserTopRequest extends FormRequest
     public function rules()
     {
         return [
-            'search_word' => 'max:100'
+            'email'=> 'required',
+            'password'=>'required|min:4'
         ];
     }
 
     public function attributes()
     {
         return [
-            'search_word' => '検索ワード'
+            'email'=> 'メールアドレス',
+            'password'=>'パスワード'
         ];
     }
 
     public function messages()
     {
         return [
-            'search_word.max' => '検索文字数が多すぎます(最大半角100文字)'
+            'email.required'=> 'メールアドレスを入力してください',
+            'password.required'=>'パスワードを入力してください',
+            'password.min'=>'パスワードは半角４文字以上です'
         ];
     }
 

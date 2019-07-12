@@ -4,7 +4,7 @@ namespace Rental\Http\Requests\User;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UserTopRequest extends FormRequest
+class RentalRequest extends FormRequest
 {
     protected $_inputs = [];
 
@@ -14,12 +14,16 @@ class UserTopRequest extends FormRequest
             return $this->_inputs;
         }
 
+        //$inputs = $this->old();
+        //preDump($inputs,1);
         $inputs = parent::all();
 
         // Format
         $this->_inputs = $this->_format($inputs);
         return $this->_inputs;
     }
+
+
 
     public function authorize()
     {
@@ -29,23 +33,21 @@ class UserTopRequest extends FormRequest
     public function rules()
     {
         return [
-            'search_word' => 'max:100'
         ];
     }
 
     public function attributes()
     {
         return [
-            'search_word' => '検索ワード'
         ];
     }
 
     public function messages()
     {
         return [
-            'search_word.max' => '検索文字数が多すぎます(最大半角100文字)'
         ];
     }
+
 
     // ----------------------------------------------------
 

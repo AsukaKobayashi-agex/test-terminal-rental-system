@@ -49,6 +49,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['force_https', /*'admin.auth
 
     //端末編集画面
     Route::get('/edit','Admin\EditController@view');
+
+    Route::get('/edit_charger','Admin\EditChargerController@form');
+
     Route::get('/contract_plan','Admin\Contract_planController@view');
     Route::get('/os_prevention','Admin\OS_preventionController@view');
     Route::get('/remarks','Admin\RemarksController@view');
@@ -67,11 +70,26 @@ Route::group(['middleware' => ['force_https', /*'user.authed'*/]], function () {
     // TOPページ
     Route::match(['get','post'],'/', 'User\UserTopController@index');
 
-    Route::get('/login', 'User\LoginController@login');
+    Route::get('/login', [
+    'uses'=>'User\LoginController@login',
+    'as'=>'user.login'
+    ]);
+
+    Route::post('/login', [
+    'uses'=>'User\LoginController@postLogin',
+    'as'=>'user.login'
+    ]);
 
     Route::get('/sign-up', 'User\SignUpController@sign_up');
 
-    Route::match(['get','post'],'/mylist', 'User\MylistController@mylist');
+    Route::match(['get','post'],'/mylist', [
+        'uses'=>'User\MylistController@mylist',
+        'as'=>'user.mylist'
+    ]);
+    Route::post('/mylist/delete', 'User\MylistController@delete');
+    Route::post('/mylist/rename', 'User\MylistController@rename');
+    Route::post('/mylist/delete-mylist', 'User\MylistController@delete_mylist');
+
 
     Route::match(['get','post'],'/detail-mobile', 'User\DetailMobileController@detail_mobile');
 
@@ -89,12 +107,15 @@ Route::group(['middleware' => ['force_https', /*'user.authed'*/]], function () {
 
     Route::match(['get','post'],'/rent-user', 'User\RentUserController@rent_user');
 
-    Route::match(['get','post'],'/rental', 'User\RentalController@rental');
+    Route::match(['get','post'],'/rental', 'User\RentalController@view');
+    Route::post('/rental/rental', 'User\RentalController@rental');
 
-    Route::match(['get','post'],'/return', 'User\ReturnController@return');
+    Route::match(['get','post'],'/return', 'User\ReturnController@view');
+    Route::post('/return/return', 'User\ReturnController@return');
 
     Route::match(['get','post'],'/profile', 'User\ProfileController@profile');
 
     Route::match(['get','post'],'/mylist-register', 'User\MylistRegisterController@mylist_register');
+    Route::post('/mylist-register/register', 'User\MylistRegisterController@register');
 
 });
