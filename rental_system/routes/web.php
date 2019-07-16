@@ -18,11 +18,14 @@ Route::group(['prefix' => 'admin', 'middleware' => ['force_https', /*'admin.auth
     // TOPページ(端末一覧)
     Route::get('/', 'Admin\TopController@index');
 
-    //充電器一覧
-    Route::get('/index_charger', 'Admin\Index\IndexChargerController@view');
+    //一覧画面（スマホ）
+    Route::get('/index_sp', 'Admin\Index\IndexSpController@view');
 
-    //PC一覧
+    //一覧画面（PC）
     Route::get('/index_pc', 'Admin\Index\IndexPcController@view');
+
+    //一覧（充電器）
+    Route::get('/index_charger', 'Admin\Index\IndexChargerController@view');
 
     //端末詳細ページ
     Route::get('/information','Admin\InformationController@view');
