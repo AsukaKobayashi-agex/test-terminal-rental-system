@@ -21,7 +21,7 @@ class AddPcController extends Controller
 
         $form_data = $service->getFormData();
 
-        return view('rental.admin.add_pc')->with($form_data);
+        return view('rental.admin.device.add_pc')->with($form_data);
     }
 
     public function action(AddPcRequest $request, AddPcService $service)

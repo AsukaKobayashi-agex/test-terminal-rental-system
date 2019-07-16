@@ -8,6 +8,7 @@ class TestDeviceBasicData
     {
         $insert_data = [
             'rental_device_id' =>$rental_device_id,
+            'device_name' =>$param['device_name'],
             'test_device_category' => $data['test_device_category'],
             'os' => $param['os']
         ];
