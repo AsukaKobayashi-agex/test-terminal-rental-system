@@ -16,6 +16,7 @@ class DetailMobileService
     public function getData($param)
     {
         $data = [];
+        $data['user_info'] = $this->_model->getUserInfo($param);
         $data['detail_list'] = $this->_model->getAllDetailMobile($param);
         $data['installed_app_list'] = $this->_model->getAllInstalledApp($param);
         return $data;

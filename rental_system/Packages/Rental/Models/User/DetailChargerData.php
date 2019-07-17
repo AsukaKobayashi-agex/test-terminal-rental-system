@@ -2,8 +2,25 @@
 
 namespace Rental\Models\User;
 
+use Rental\Models\_common\GetUserInfo;
+
+
 class DetailChargerData
 {
+    protected $_get_user_info;
+    public function __construct(GetUserInfo $userInfo)
+    {
+        $this->_get_user_info = $userInfo;
+    }
+
+
+    public function getUserInfo($param){
+        $param['user_id'] = 1;
+        $user_info = $this -> _get_user_info -> getUserInfo($param);
+
+        return $user_info;
+    }
+
     public function getAllDetailCharger($param)
     {
         // バインド値設定

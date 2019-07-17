@@ -16,6 +16,7 @@ class DetailChargerService
     public function getData($param)
     {
         $data = [];
+        $data['user_info'] = $this->_model->getUserInfo($param);
         $data['detail_list'] = $this->_model->getAllDetailCharger($param);
         return $data;
     }
