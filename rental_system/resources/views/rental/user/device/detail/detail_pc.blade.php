@@ -4,8 +4,8 @@
 
     @php
         //exit(var_dump($detail_list));
-        $userid=1;
-    $detail=$detail_list[0];
+
+
     @endphp
 
 
@@ -69,13 +69,13 @@
                             </div>
                             <div class="card-body">
                                 @if($detail['status']===1)
-                                    @if($userid==$detail['user_id'])
+                                    @if($user_info['user_id']==$detail['user_id'])
                                         <form id='return' method="post" action="/return">
                                             @csrf
                                             <button type="submit" class="btn btn-danger btn-block" name="rental_device_id[]"  value="<?=$detail['rental_device_id']?>">返却</button>
                                         </form>
                                     @else
-                                        <form id='rent-user' method="post" action="/rent-user">
+                                        <form id='rent-user' method="post" action="/rent-user" target="_blank">
                                             @csrf
                                             <button type="submit" class="btn btn-outline-dark btn-light btn-block" name="user_id"  value="<?=$detail['user_id']?>"><?=$detail['name']?><span class="d-md-block d-none">(<?=date('m月d日 G時i分',strtotime($detail['rental_datetime']))?>)</span></button>
                                         </form>

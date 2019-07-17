@@ -64,7 +64,9 @@ Add_sql;
         $sql .= ";";
 
 
-        return stdClassToArray(\DB::select($sql, $bind_params));
+        $detail = stdClassToArray(\DB::select($sql, $bind_params));
+
+        return $detail[0];
     }
 
 }
