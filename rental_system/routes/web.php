@@ -18,6 +18,15 @@ Route::group(['prefix' => 'admin', 'middleware' => ['force_https', /*'admin.auth
     // TOPページ(端末一覧)
     Route::get('/', 'Admin\TopController@index');
 
+    //一覧画面（スマホ）
+    Route::get('/index_sp', 'Admin\Index\IndexSpController@view');
+
+    //一覧画面（PC）
+    Route::get('/index_pc', 'Admin\Index\IndexPcController@view');
+
+    //一覧（充電器）
+    Route::get('/index_charger', 'Admin\Index\IndexChargerController@view');
+
     //端末詳細ページ
     Route::get('/information','Admin\InformationController@view');
 
@@ -26,26 +35,19 @@ Route::group(['prefix' => 'admin', 'middleware' => ['force_https', /*'admin.auth
     Route::get('/forgot-password','Admin\LoginController@forgot_password');
     Route::get('/register','Admin\LoginController@register');
 
-    // 端末追加
-    // スマホ
+    // 追加画面（スマホ）
     Route::get('/add_sp','Admin\AddSpController@form');
     Route::post('/add_sp/action','Admin\AddSpController@action');
 
-    // PC
+    // 追加画面（PC）
     Route::get('/add_pc', 'Admin\AddPcController@form');
-    // Route::get('/add_pc', 'Admin\AddPcController@software_name');
     Route::post('/add_pc/action','Admin\AddPcController@action');
 
-    // 充電器
+    // 追加画面（充電器）
     Route::get('/add_charger', 'Admin\AddChargerController@form');
     Route::post('/add_charger/action', 'Admin\AddChargerController@action');
 
 
-    //端末削除画面
-    Route::get('/delete','Admin\DeleteController@view');
-
-    //端末保管画面
-    Route::get('/archive','Admin\ArchiveController@view');
 
     //端末編集画面
     Route::get('/edit','Admin\EditController@view');
@@ -56,11 +58,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['force_https', /*'admin.auth
     Route::get('/os_prevention','Admin\OS_preventionController@view');
     Route::get('/remarks','Admin\RemarksController@view');
 
-    //ユーザー管理画面
-    Route::get('/user_admin','Admin\User_adminController@view');
-
-    //ルール編集画面
-    Route::get('/rule','Admin\RuleController@view');
 });
 
 //==============================================================

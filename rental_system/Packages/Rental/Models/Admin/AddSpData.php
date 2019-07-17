@@ -67,6 +67,7 @@ class AddSpData
     protected function _insertTestDeviceBasic($rental_device_id,$param)
     {
         $data = [
+            'device_name'=>$param['device_name'],
             'test_device_category' => 1,
             'os' => $param['os']
         ];

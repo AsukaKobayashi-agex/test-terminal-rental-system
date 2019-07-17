@@ -18,7 +18,7 @@ class AddChargerController extends Controller
     {
         // Memo: validation エラーになったときは、
         //       画面に描画するデータあり
-        return view('rental.admin.add_charger');
+        return view('rental.admin.device.add_charger');
     }
 
     public function action(AddChargerRequest $request, AddChargerService $service)
