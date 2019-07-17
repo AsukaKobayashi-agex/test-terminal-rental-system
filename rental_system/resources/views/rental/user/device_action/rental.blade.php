@@ -3,7 +3,7 @@
 <!-- Page Heading -->
 @php
     //preDump($_POST['search_word']);
-    $userid = "1";
+
 @endphp
 
 <!-- DataTales Example -->

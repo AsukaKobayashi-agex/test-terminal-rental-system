@@ -3,16 +3,13 @@
 <!-- Page Heading -->
 <?php
 //exit(preDump($all_mylist));
-$userid = "1";
+
 $i = 1;
 //var_dump($all_mylist_device);
 //var_dump($all_mylist);
 ?>
 
 <!-- DataTales Example -->
-<div>
-    <h5 class="font-weight-bold text-primary my-5">マイリスト一覧</h5>
-</div>
 @if(empty($all_mylist))
     <div>
         <h4 class="font-weight-bold text-lg-center my-5">登録されているマイリストはありません</h4>
@@ -20,13 +17,13 @@ $i = 1;
 @else
 <div class="form-group row" id="bundle_bar">
     <form class="w-100" method="post" id="action">
+        <span class="h4 font-weight-bold text-primary my-5">マイリスト一覧</span>
         @csrf
-        <div class="d-flex d-block">
-            <div class="col-sm-8 mb-3 mb-sm-0"></div>
-            <div class="col-sm-2 mb-3 mb-sm-0">
+        <div class="d-flex justify-content-end">
+            <div class="w-25 mb-3 mx-3">
                 <button type="submit" class="btn btn-primary btn-user btn-block bundle" disabled="disabled" formaction="/rental">一括貸出</button>
             </div>
-            <div class="col-sm-2 mb-3 mb-sm-0">
+            <div class="w-25 mb-3 mx-3">
                 <button type="submit" class="btn btn-danger btn-user btn-block bundle" disabled="disabled" formaction="/return">一括返却</button>
             </div>
         </div>
@@ -160,13 +157,13 @@ $i = 1;
                             @endif
                             <td>
                             @if($device['status']===1)
-                                @if($userid==$device['user_id'])
+                                @if($user_info['user_id']==$device['user_id'])
                                     <form name='return' method="post" action="/return">
                                         @csrf
                                         <button type="submit" class="btn btn-outline-light bg-danger btn-block" name="rental_device_id[]"  value="<?=$device['rental_device_id']?>">返却</button>
                                     </form>
                                 @else
-                                    <form name='rent-user' method="post" action="/rent-user">
+                                    <form name='rent-user' method="post" action="/rent-user" target="_blank">
                                         @csrf
                                         <button type="submit" class="btn btn-outline-dark btn-light btn-block" name="user_id"  value="<?=$device['user_id']?>"><?=$device['name']?><span class="d-md-block d-none">(<?=date('m月d日 G時i分',strtotime($device['rental_datetime']))?>)</span></button>
                                     </form>

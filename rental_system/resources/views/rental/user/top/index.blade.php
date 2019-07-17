@@ -2,9 +2,10 @@
 @section('content')
 <!-- Page Heading -->
 @php
-    preDump($_POST['search_word']);
-    $userid = "1";
+    //preDump($user_info);
+
 @endphp
+
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
@@ -46,7 +47,7 @@
                                         <option value="" >ステータス</option>
                                         <option value="0" {{$status==="0" ? 'selected': null}}>貸出可</option>
                                         <option value="1"{{$status==="1" ? 'selected': null}}>貸出中</option>
-                                        <option value="user=<?=$userid?>" {{$status=="user=$userid" ? 'selected': null}}>返却</option>
+                                        <option value="user=<?=$user_info['user_id']?>" {{$status=="user={$user_info['user_id']}" ? 'selected': null}}>返却</option>
                                     </select>
                                 </div>
                                 <div class="col-sm-2 mb-3 mb-sm-0">
@@ -104,13 +105,13 @@
                             @endif
                             <td>
                             @if($device['status']===1)
-                                @if($userid==$device['user_id'])
+                                @if($user_info['user_id']==$device['user_id'])
                                     <form name='return' method="post" action="/return">
                                         @csrf
                                         <button type="submit" class="btn btn-danger btn-block" name="rental_device_id[]"  value="<?=$device['rental_device_id']?>">返却</button>
                                     </form>
                                 @else
-                                    <form name='rent-user' method="post" action="/rent-user">
+                                    <form name='rent-user' method="post" action="/rent-user" target="_blank">
                                         @csrf
                                         <button type="submit" class="btn btn-outline-dark btn-light btn-block" name="user_id"  value="<?=$device['user_id']?>">
                                             <?=$device['name']?>

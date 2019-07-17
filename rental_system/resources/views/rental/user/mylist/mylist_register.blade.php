@@ -3,7 +3,7 @@
 <!-- Page Heading -->
 @php
     //preDump($_POST['search_word']);
-    $userid = "1";
+
 @endphp
 
 <!-- DataTales Example -->
@@ -92,7 +92,7 @@
                     </select>
                 </div>
                 <div class="form-group col-sm-6">
-                    <input type="text" id="newMylist"  class="form-control mb-3 mb-sm-0" name="mylist_name" value="{{ old('mylist_name') }}" placeholder="新規マイリスト名" autocomplete="off" disabled="disabled">
+                    <input type="text" id="newMylist"  class="form-control mb-3 mb-sm-0 {{$errors->has('mylist_name')? 'alert-danger':null}}" name="mylist_name" value="{{ old('mylist_name') }}" placeholder="新規マイリスト名" autocomplete="off" disabled="disabled">
                 </div>
             </form>
                 <div class="col-sm-3 mb-3 mb-sm-0">
