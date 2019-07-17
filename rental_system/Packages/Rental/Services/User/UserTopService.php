@@ -16,6 +16,7 @@ class UserTopService
     public function getData($param)
     {
         $data = [];
+        $data['user_info'] = $this->_model->getUserInfo($param);
         $data['all_device_list'] = $this->_model->getAllUserTop($param);
         return $data;
     }

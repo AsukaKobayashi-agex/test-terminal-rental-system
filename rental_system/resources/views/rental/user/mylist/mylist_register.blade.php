@@ -3,7 +3,7 @@
 <!-- Page Heading -->
 @php
     //preDump($_POST['search_word']);
-    $userid = "1";
+
 @endphp
 
 <!-- DataTales Example -->
@@ -33,13 +33,13 @@
                 <tbody>
                 <tr class="font-weight-bold" id="noDevice" hidden>
                     <td></td>
-                    <td>一致する項目はありません</td>
+                    <td>選択されている端末はありません</td>
                     <td></td>
                 </tr>
 
                 @foreach($register_device_list as $device)
                     <tr  class="font-weight-bold">
-                        <td class="text-center align-middle">
+                        <td class="text-center align-middle px-1">
                             <div class="text-lg-center text-dark font-weight-bold">
                                 @if(!isset($i))
                                 @php($i = 1)
@@ -92,7 +92,7 @@
                     </select>
                 </div>
                 <div class="form-group col-sm-6">
-                    <input type="text" id="newMylist"  class="form-control mb-3 mb-sm-0" name="mylist_name" value="{{ old('mylist_name') }}" placeholder="新規マイリスト名" autocomplete="off" disabled="disabled">
+                    <input type="text" id="newMylist"  class="form-control mb-3 mb-sm-0 {{$errors->has('mylist_name')? 'alert-danger':null}}" name="mylist_name" value="{{ old('mylist_name') }}" placeholder="新規マイリスト名" autocomplete="off" disabled="disabled">
                 </div>
             </form>
                 <div class="col-sm-3 mb-3 mb-sm-0">

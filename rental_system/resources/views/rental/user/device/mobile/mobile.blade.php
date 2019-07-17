@@ -3,7 +3,7 @@
     <!-- Page Heading -->
     <?php
     //preDump($all_device_list);
-    $userid = "1";
+
     ?>
 
     <!-- DataTales Example -->
@@ -38,43 +38,50 @@
                             <div class="form-group row">
                                 <form name='search' method="post" action="#">
                                     @csrf
-                                    <div class="col-sm-2 px-1 mb-sm-0">
-                                        <input type="search" name="search_word" class="form-control form-control-user" value="{{isset($_POST['search_word']) ? $_POST['search_word']: null}}" placeholder="端末名を入力" >
+                                    <div class="col-sm-2 px-1 mb-3">
+                                        <input type="search" name="search_word" class="form-control form-control-user" value="{{$search_word}}" placeholder="端末名を入力" >
                                     </div>
-                                    <div class="col-sm-2 px-1 mb-sm-0">
-                                        <select name="os" class="form-control form-control-user">
-                                            <option value="">OS</option>
-                                            <option value="1" {{isset($_POST['os'])&&$_POST['os']==="1" ? 'selected': null}}>Android</option>
-                                            <option value="2" {{isset($_POST['os'])&&$_POST['os']==="2" ? 'selected': null}}>iOS</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-sm-2 px-1 mb-sm-0">
-                                        <input type="search" name="os_version" class="form-control form-control-user" value="{{isset($_POST['os_version']) ? $_POST['os_version']: null}}" placeholder="OSバージョン" >
-                                    </div>
-
-                                    <div class="col-sm-2 px-1 mb-sm-0">
-                                        <select name="wifi" class="form-control">
-                                            <option value="">Wi-Fi</option>
-                                            <option value="0" {{isset($_POST['wifi'])&&$_POST['wifi']==="0" ? 'selected': null}}>なし</option>
-                                            <option value="1" {{isset($_POST['wifi'])&&$_POST['wifi']==="1" ? 'selected': null}}>あり</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-sm-2 px-1 mb-sm-0">
-                                        <select name="com_line" class="form-control form-control-user">
-                                            <option value="">モバイル回線</option>
-                                            <option value="0" {{isset($_POST['com_line']) && $_POST['com_line']==="0" ? 'selected': null}}>なし</option>
-                                            <option value="1" {{isset($_POST['com_line']) && $_POST['com_line']==="1" ? 'selected': null}}>あり</option>
+                                    <div class="col-sm-2 px-1 mb-3">
+                                        <select name="type" class="form-control form-control-user">
+                                            <option value="">カテゴリ</option>
+                                            <option value="1" {{$type==="1" ? 'selected': null}}>スマホ</option>
+                                            <option value="2" {{$type==="2" ? 'selected': null}}>タブレット</option>
                                         </select>
                                     </div>
                                     <div class="col-sm-2 px-1 mb-3">
-                                        <select name="status" class="form-control form-control-user">
-                                            <option value="" >ステータス</option>
-                                            <option value="0" {{isset($_POST['status']) && $_POST['status']==="0" ? 'selected': null}}>貸出可</option>
-                                            <option value="1"{{isset($_POST['status'])&&$_POST['status']==="1" ? 'selected': null}}>貸出中</option>
-                                            <option value="user=<?=$userid?>" {{isset($_POST['status'])&&$_POST['status']=="user=$userid" ? 'selected': null}}>返却</option>
+                                        <select name="os" class="form-control form-control-user">
+                                            <option value="">OS</option>
+                                            <option value="1" {{($os==="1") ? 'selected': null}}>Android</option>
+                                            <option value="2" {{($os==="2") ? 'selected': null}}>iOS</option>
                                         </select>
                                     </div>
-                                    <div class="col-sm-10 px-1">
+                                    <div class="col-sm-2 px-1 mb-3">
+                                        <input type="number" name="os_version" class="form-control form-control-user" value="{{$os_version}}" placeholder="OSバージョン" >
+                                    </div>
+
+                                    <div class="col-sm-2 px-1 mb-3">
+                                        <select name="wifi" class="form-control">
+                                            <option value="">Wi-Fi</option>
+                                            <option value="0" {{$wifi==="0" ? 'selected': null}}>なし</option>
+                                            <option value="1" {{$wifi==="1" ? 'selected': null}}>あり</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-2 px-1 mb-3">
+                                        <select name="com_line" class="form-control form-control-user">
+                                            <option value="">モバイル回線</option>
+                                            <option value="0" {{$com_line==="0" ? 'selected': null}}>なし</option>
+                                            <option value="1" {{$com_line==="1" ? 'selected': null}}>あり</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-8 px-1">
+                                    </div>
+                                    <div class="col-sm-2 px-1">
+                                        <select name="status" class="form-control form-control-user">
+                                            <option value="" >ステータス</option>
+                                            <option value="0" {{$status==="0" ? 'selected': null}}>貸出可</option>
+                                            <option value="1"{{$status==="1" ? 'selected': null}}>貸出中</option>
+                                            <option value="user=<?=$user_info['user_id']?>" {{$status=="user={$user_info['user_id']}" ? 'selected': null}}>返却</option>
+                                        </select>
                                     </div>
                                     <div class="col-sm-2 px-1">
                                         <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-fw fa-search"></i>
@@ -131,13 +138,13 @@
                                 </td>
                                 <td class="align-middle">
                                     @if($device['status']===1)
-                                        @if($userid==$device['user_id'])
+                                        @if($user_info['user_id']==$device['user_id'])
                                             <form id='return' method="post" action="/return">
                                                 @csrf
                                                 <button type="submit" class="btn btn-danger btn-block" name="rental_device_id[]"  value="<?=$device['rental_device_id']?>">返却</button>
                                             </form>
                                         @else
-                                            <form id='rent-user' method="post" action="/rent-user">
+                                            <form id='rent-user' method="post" action="/rent-user" target="_blank">
                                                 @csrf
                                                 <button type="submit" class="btn btn-outline-dark btn-light btn-block" name="user_id"  value="<?=$device['user_id']?>"><?=$device['name']?><span class="d-md-block d-none">(<?=date('m月d日 G時i分',strtotime($device['rental_datetime']))?>)</span></button>
                                             </form>

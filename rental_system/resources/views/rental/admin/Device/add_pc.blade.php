@@ -23,7 +23,13 @@
                 </div>
 
                 <div class="form-group">
-                    <label>コンピュータ名</label>
+                    <label>端末名</label>
+                    <input type="text" class="form-control" name="device_name">
+                    {{$errors->first('device_name')}}
+                </div>
+
+                <div class="form-group">
+                    <label>PCアカウント名</label>
                     <input type="text" class="form-control" name="pc_account_name">
                     {{$errors->first('pc_account_name')}}
                 </div>

@@ -29,7 +29,7 @@ class MylistRequest extends FormRequest
     public function rules()
     {
         return [
-            'mylist_name'=>'min:1|:max:50'
+            'mylist_name'=>'min:1|max:50'
         ];
     }
 
@@ -43,9 +43,8 @@ class MylistRequest extends FormRequest
     public function messages()
     {
         return [
-            'mylist_name.required'=>'マイリスト名を入力してください',
             'mylist_name.min'=>'マイリスト名を入力してください',
-            'mylist_name.max'=>'マイリスト名が長すぎます（最大：半角100文字）'
+            'mylist_name.max'=>'マイリスト名が長すぎます（最大：50文字）'
         ];
     }
 

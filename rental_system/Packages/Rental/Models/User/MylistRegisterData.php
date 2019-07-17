@@ -2,9 +2,26 @@
 
 namespace Rental\Models\User;
 
+use Rental\Models\_common\GetUserInfo;
+
 
 class MylistRegisterData
 {
+    protected $_get_user_info;
+    public function __construct(GetUserInfo $userInfo)
+    {
+        $this->_get_user_info = $userInfo;
+    }
+
+
+    public function getUserInfo($param){
+        $param['user_id'] = 1;
+        $user_info = $this -> _get_user_info -> getUserInfo($param);
+
+        return $user_info;
+    }
+
+
 
     public function getAllMylistRegister($param)
     {
@@ -91,11 +108,7 @@ Add_sql;
             }else{
                 $mylist_id = $param['mylist_id'];
                 foreach ($param['rental_device_id'] as $device){
-                    $insert_data = [
-                        'mylist_id' => $mylist_id,
-                        'rental_device_id' => $device
-                    ];
-                    \DB::table('mylist_device')->insert($insert_data);
+                    \DB::insert(\DB::raw("INSERT IGNORE INTO mylist_device(mylist_id, rental_device_id) VALUES ({$mylist_id},{$device});"));
                 }
             }
             $update_data = [

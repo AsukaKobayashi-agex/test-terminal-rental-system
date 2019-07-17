@@ -3,7 +3,7 @@
 <!-- Page Heading -->
 @php
     //preDump($_POST['search_word']);
-    $userid = "1";
+
 @endphp
 
 <!-- DataTales Example -->
@@ -39,7 +39,7 @@
 
                 @foreach($rental_device_list as $device)
                     <tr  class="font-weight-bold {{$device['status']!==0 ? 'table-active':null}}">
-                        <td class="text-center align-middle">
+                        <td class="text-center align-middle px-1">
                             <div class="text-lg-center font-weight-bold">
                                 @if(!isset($i))
                                 @php($i = 1)
