@@ -61,7 +61,7 @@
 <?php foreach($data_list as $device):?>
 <?php $list_num=['0001','0005','0009','1001'];?>
 <?php       if($device['status']==1):?>
-        <?php         if($userid===$device['who']){
+        <?php         if($user_info['user_id']===$device['who']){
             $button="<a href=\"/return?id=$device[id]\" class=\"btn btn-danger btn-user btn-block\">返却</a>";
         }else{
             $button="<a href=\"/rent-user\" class=\"btn btn-outline-dark btn-user btn-block\">{$userdata["{$device['who']}"]['name'][0]}{$userdata["{$device['who']}"]['name'][1]}<br>({$device['when']})</a>";
@@ -125,7 +125,7 @@
 <?php foreach($data_list as $device):?>
 <?php $list_num=['0001','0005','0009','1001'];?>
 <?php       if($device['status']==1):?>
-        <?php         if($userid===$device['who']){
+        <?php         if($user_info['user_id']===$device['who']){
             $button="<a href=\"/return?id=$device[id]\" class=\"btn btn-danger btn-user btn-block\">返却</a>";
         }else{
             $button="<a href=\"/rent-user\" class=\"btn btn-outline-dark btn-user btn-block\">{$userdata["{$device['who']}"]['name'][0]}{$userdata["{$device['who']}"]['name'][1]}<br>({$device['when']})</a>";
@@ -189,7 +189,7 @@
 <?php foreach($data_list as $device):?>
 <?php $list_num=['0001','0005','0009','1001'];?>
 <?php       if($device['status']==1):?>
-        <?php         if($userid===$device['who']){
+        <?php         if($user_info['user_id']===$device['who']){
             $button="<a href=\"/return?id=$device[id]\" class=\"btn btn-danger btn-user btn-block\">返却</a>";
         }else{
             $button="<a href=\"/rent-user\" class=\"btn btn-outline-dark btn-user btn-block\">{$userdata["{$device['who']}"]['name'][0]}{$userdata["{$device['who']}"]['name'][1]}<br>({$device['when']})</a>";

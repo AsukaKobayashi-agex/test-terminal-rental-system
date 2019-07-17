@@ -16,6 +16,7 @@ class DeviceMobileService
     public function getData($param)
     {
         $data = [];
+        $data['user_info'] = $this->_model->getUserInfo($param);
         $data['mobile_device_list'] = $this->_model->getAllDeviceMobile($param);
         return $data;
     }

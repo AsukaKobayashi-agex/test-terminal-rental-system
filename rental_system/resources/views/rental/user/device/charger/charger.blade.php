@@ -3,7 +3,7 @@
     <!-- Page Heading -->
     <?php
     //preDump($all_device_list);
-    $userid = "1";
+
     ?>
 
     <!-- DataTales Example -->
@@ -55,7 +55,7 @@
                                         <option value="" >ステータス</option>
                                         <option value="0" {{$status==="0" ? 'selected': null}}>貸出可</option>
                                         <option value="1"{{$status==="1" ? 'selected': null}}>貸出中</option>
-                                        <option value="user=<?=$userid?>" {{$status=="user=$userid" ? 'selected': null}}>返却</option>
+                                        <option value="user=<?=$user_info['user_id']?>" {{$status=="user={$user_info['user_id']}" ? 'selected': null}}>返却</option>
                                     </select>
                                     </div>
 
@@ -108,13 +108,13 @@
                                 </td>
                                 <td class="align-middle">
                                     @if($device['status']===1)
-                                        @if($userid==$device['user_id'])
+                                        @if($user_info['user_id']==$device['user_id'])
                                             <form id='return' method="post" action="/return">
                                                 @csrf
                                                 <button type="submit" class="btn btn-danger btn-block" name="rental_device_id[]"  value="<?=$device['rental_device_id']?>">返却</button>
                                             </form>
                                         @else
-                                            <form id='rent-user' method="post" action="/rent-user">
+                                            <form id='rent-user' method="post" action="/rent-user" target="_blank">
                                                 @csrf
                                                 <button type="submit" class="btn btn-outline-dark btn-light btn-block" name="user_id"  value="<?=$device['user_id']?>"><?=$device['name']?><span class="d-md-block d-none">(<?=date('m月d日 G時i分',strtotime($device['rental_datetime']))?>)</span></button>
                                             </form>

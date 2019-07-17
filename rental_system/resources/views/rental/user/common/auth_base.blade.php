@@ -14,6 +14,9 @@
   @component('rental.user.common.corescript')
   @endcomponent
 
+
+  @stack('scripts')
+
 </body>
 
 </html>

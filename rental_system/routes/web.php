@@ -77,7 +77,9 @@ Route::group(['middleware' => ['force_https', /*'user.authed'*/]], function () {
     'as'=>'user.login'
     ]);
 
-    Route::get('/sign-up', 'User\SignUpController@sign_up');
+    Route::get('/sign-up', 'User\SignUpController@view');
+    Route::post('/sign-up/sign-up', 'User\SignUpController@sign_up');
+    Route::match(['get','post'],'/sign-up/sign-up-confirm', 'User\SignUpController@sign_up_confirm');
 
     Route::match(['get','post'],'/mylist', [
         'uses'=>'User\MylistController@mylist',
@@ -110,7 +112,8 @@ Route::group(['middleware' => ['force_https', /*'user.authed'*/]], function () {
     Route::match(['get','post'],'/return', 'User\ReturnController@view');
     Route::post('/return/return', 'User\ReturnController@return');
 
-    Route::match(['get','post'],'/profile', 'User\ProfileController@profile');
+    Route::match(['get','post'],'/profile', 'User\UserProfileController@user_profile');
+    Route::post('/profile/change-profile', 'User\UserProfileController@change_profile');
 
     Route::match(['get','post'],'/mylist-register', 'User\MylistRegisterController@mylist_register');
     Route::post('/mylist-register/register', 'User\MylistRegisterController@register');

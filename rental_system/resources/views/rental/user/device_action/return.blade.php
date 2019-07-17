@@ -3,7 +3,7 @@
 <!-- Page Heading -->
 @php
     //preDump($_POST['search_word']);
-    $userid = 1;
+    $user_info['user_id'] = 1;
 @endphp
 
 <!-- DataTales Example -->
@@ -38,7 +38,7 @@
                 </tr>
 
                 @foreach($return_device_list as $device)
-                    <tr  class="font-weight-bold {{$device['status']===1 && $device['user_id']=== $userid  ? null:'table-active'}}">
+                    <tr  class="font-weight-bold {{$device['status']===1 && $device['user_id']=== $user_info['user_id']  ? null:'table-active'}}">
                         <td class="text-center align-middle px-1">
                             <div class="text-lg-center font-weight-bold">
                                 @if(!isset($i))
@@ -48,7 +48,7 @@
                                 @endif
                                 <?=$i?>
                             </div>
-                            @if($device['status']===1 && $device['user_id']=== $userid)
+                            @if($device['status']===1 && $device['user_id']=== $user_info['user_id'])
                                 <input type="hidden" form="return_device" name="rental_device_id[]" value="<?=$device['rental_device_id']?>">
                             @endif
                         </td>
@@ -68,7 +68,7 @@
                                     <?=$device['charger_name']?>
                                 </a>
                         @endif
-                            @if(!($device['status']===1 && $device['user_id'] === $userid))
+                            @if(!($device['status']===1 && $device['user_id'] === $user_info['user_id']))
                                 <span class="text-danger">※返却できません</span>
                             @endif
                         </td>

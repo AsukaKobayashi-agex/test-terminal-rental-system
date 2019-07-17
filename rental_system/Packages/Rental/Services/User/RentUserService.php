@@ -2,13 +2,13 @@
 
 namespace Rental\Services\User;
 
-use Rental\Models\User\DetailChargerData;
+use Rental\Models\User\RentUserData;
 
-class DetailChargerService
+class RentUserService
 {
     protected $_model;
 
-    public function __construct(DetailChargerData $model)
+    public function __construct(RentUserData $model)
     {
         $this->_model = $model;
     }
@@ -17,7 +17,7 @@ class DetailChargerService
     {
         $data = [];
         $data['user_info'] = $this->_model->getUserInfo($param);
-        $data['detail'] = $this->_model->getAllDetailCharger($param);
+        $data['rent_user_info'] = $this->_model->getRentUserInfo($param);
         return $data;
     }
 }
