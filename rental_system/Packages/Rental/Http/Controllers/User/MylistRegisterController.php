@@ -33,7 +33,7 @@ class MylistRegisterController extends Controller
         $param = $request->all();
         $service->registerDevice($param);
 
-        return redirect('/mylist');
+        return redirect('/mylist')->with('flash_message','マイリストの登録を完了しました');
     }
 
 }

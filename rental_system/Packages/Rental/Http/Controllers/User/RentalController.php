@@ -33,7 +33,7 @@ class RentalController extends Controller
         $param = $request->all();
         $service->rentalDevice($param);
 
-        return redirect('/mylist');
+        return redirect('/')->with('flash_message','貸出を完了しました');
     }
 
 }

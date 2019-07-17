@@ -37,7 +37,7 @@ class MylistController extends Controller
 
         $service->renameMylist($param);
 
-        return redirect('/mylist');
+        return redirect('/mylist')->with('flash_message','マイリストの名前を変更しました');
     }
 
     public function delete_mylist(MylistRequest $request, MylistService $service)
@@ -46,7 +46,7 @@ class MylistController extends Controller
 
         $service->deleteMylist($param);
 
-        return redirect('/mylist');
+        return redirect('/mylist')->with('flash_message','マイリストを削除しました');
     }
 
 }

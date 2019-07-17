@@ -33,7 +33,7 @@ class ReturnController extends Controller
         $param = $request->all();
         $service->returnDevice($param);
 
-        return redirect('/mylist');
+        return redirect('/')->with('flash_message','返却を完了しました');
     }
 
 }
