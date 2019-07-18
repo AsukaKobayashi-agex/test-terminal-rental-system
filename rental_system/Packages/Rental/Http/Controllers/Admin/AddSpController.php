@@ -11,7 +11,7 @@ class AddSpController extends Controller
     public function form(AddSpService $service)
     {
         $form_data = $service->getFormData();
-        return view('rental.admin.device.add_sp')->with($form_data);
+        return view('rental.admin.Device.add_sp')->with($form_data);
     }
 
     public function action(AddSpRequest $request, AddSpService $service)
