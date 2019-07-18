@@ -1,6 +1,16 @@
 
 $(function () {
     //チェックがない場合に全チェックボタンを外し、一括ボタンを無効化
+    $('footer').ready(function(){
+        if ($('#dataTable :checked').length !== 0) {
+            $('.bundle').removeAttr('disabled')
+        } else {
+            $('.bundle').attr('disabled', true)
+        }
+    });
+
+
+
     $('.checkbox label,.checkbox input').click(function () {
         if ($('.checkbox').length === $('.checkbox :checked').length) {
             $('#check_all').prop('checked', 'checked');
@@ -133,5 +143,19 @@ $(function () {
 
     });
 
+    $(".deleteButton").click(function(){
+        $(this).parents('tr').remove();
+        if($('tbody input').length === 0) {
+            $("#noDevice").removeAttr('hidden');
+            $("#agree").attr('disabled', 'disabled')
+        }
+    });
+
+    $("#agree").ready(function(){
+        if($('tbody input').length === 0) {
+            $("#noDevice").removeAttr('hidden');
+            $("#agree").attr('disabled', 'disabled')
+        }
+    });
 
 });
