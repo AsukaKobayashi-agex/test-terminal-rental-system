@@ -32,7 +32,8 @@
                         <option value="50" {{$user_info['division_id']===50 ? 'selected': null}}>経営本部</option>
                     </select>
                     <select name="group_id" id="group" class="form-control" >
-                        <option class="con" value="1010" {{$user_info['group_id']===1010 ? 'selected': null}} hidden>第1グループ</option>
+                        <option value="">グループを選択</option>
+                        <option class="con" value="1010" {{$user_info['group_id']==1010 ? 'selected': null}} hidden>第1グループ</option>
                         <option class="con" value="1020" {{$user_info['group_id']===1020 ? 'selected': null}} hidden>第2グループ</option>
                         <option class="con" value="1030" {{$user_info['group_id']===1030 ? 'selected': null}} hidden>事業運営グループ</option>
                         <option class="ss" value="2010" {{$user_info['group_id']===2010 ? 'selected': null}} hidden>第1ソリューショングループ</option>
@@ -83,55 +84,3 @@
 </div>
 
 @endsection
-
-@push('scripts')
-    <script>
-        $(function(){
-
-            $('#group').ready(function(){
-                $('#division').change();
-            });
-
-
-            $('#division').change(function() {
-                if($('#division').val() === "10") {
-                    $('.con').removeAttr('hidden');
-                }else{
-                    $('.con').attr('hidden',true);
-
-                }
-
-                if($('#division').val() === "20") {
-                    $('.ss').removeAttr('hidden');
-                }else{
-                    $('.ss').attr('hidden',true);
-
-                }
-
-                if($('#division').val() === "30") {
-                    $('.cre').removeAttr('hidden');
-                }else{
-                    $('.cre').attr('hidden',true);
-
-                }
-
-                if($('#division').val() === "40") {
-                    $('.sk').removeAttr('hidden');
-                }else{
-                    $('.sk').attr('hidden',true);
-
-                }
-
-                if($('#division').val() === "50") {
-                    $('.mng').removeAttr('hidden');
-                }else{
-                    $('.mng').attr('hidden',true);
-
-                }
-
-                $('#group').val("");
-            });
-        });
-
-    </script>
-@endpush

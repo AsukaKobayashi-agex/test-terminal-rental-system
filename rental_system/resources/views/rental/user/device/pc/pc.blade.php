@@ -38,20 +38,20 @@
                         <div class="form-group row">
                                 <form name='search' method="post" action="#">
                                     @csrf
-                                    <div class="col-sm-4 mb-3 mb-sm-0">
+                                    <div class="col-lg-4 mb-3 mb-lg-0">
                                         <input type="search" name="search_word" class="form-control form-control-user" value="{{$search_word}}" placeholder="端末名を入力" >
                                     </div>
-                                    <div class="col-sm-2 mb-3 mb-sm-0">
+                                    <div class="col-lg-2 mb-3 mb-lg-0">
                                         <select name="os" class="form-control form-control-user">
                                             <option value="" selected>OS</option>
                                             <option value="3" {{$os==="3" ? 'selected': null}}>Windows</option>
                                             <option value="4" {{$os==="4" ? 'selected': null}}>Mac OS</option>
                                         </select>
                                     </div>
-                                    <div class="col-sm-2 mb-3 mb-sm-0">
+                                    <div class="col-lg-2 mb-3 mb-lg-0">
                                         <input type="number" name="os_version" class="form-control form-control-user" value="{{$os_version}}" placeholder="OSバージョン" >
                                     </div>
-                                    <div class="col-sm-2 mb-3 mb-sm-0">
+                                    <div class="col-lg-2 mb-3 mb-lg-0">
                                         <select name="status" class="form-control form-control-user">
                                         <option value="" >ステータス</option>
                                         <option value="0" {{$status==="0" ? 'selected': null}}>貸出可</option>
@@ -60,7 +60,7 @@
                                         </select>
                                     </div>
 
-                                    <div class="col-sm-2">
+                                    <div class="col-lg-2">
                                         <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-fw fa-search"></i>
                                         </button>
                                     </div>
@@ -72,9 +72,9 @@
 
                         @if(empty($pc_device_list))
                             <tr class="font-weight-bold">
-                                <td></td>
-                                <td>一致する項目はありません</td>
-                                <td></td>
+                                <td class="align-middle"></td>
+                                <td class="align-middle">一致する項目はありません</td>
+                                <td class="align-middle"></td>
                             </tr>
                         @endif
 
@@ -92,7 +92,7 @@
                                     </div>
                                 </td>
 
-                                <td>
+                                <td class="align-middle">
                                     <a class="text-lg text-success" target="_blank" href="/detail-pc?rental_device_id=<?=$device['rental_device_id']?>" ><?=$device['device_name']?></a>
                                     <br>
                                     @if($device['os']==3)

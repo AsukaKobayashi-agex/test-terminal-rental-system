@@ -41,7 +41,12 @@ select
     status,
     rs.user_id,
     name,
-    rental_datetime
+    rental_datetime,
+    wifi_line,
+    communication_line,
+    os,
+    os_version,
+    ch.charger_type
 from rental_device as rd
 inner join rental_state as rs
     on rd.rental_device_id = rs.rental_device_id

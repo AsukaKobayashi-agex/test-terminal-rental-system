@@ -71,9 +71,9 @@
 
                         @if(empty($charger_list))
                             <tr class="font-weight-bold">
-                                <td></td>
-                                <td>一致する項目はありません</td>
-                                <td></td>
+                                <td class="align-middle"></td>
+                                <td class="align-middle">一致する項目はありません</td>
+                                <td class="align-middle"></td>
                             </tr>
                         @endif
 
@@ -91,7 +91,7 @@
                                         <label class="custom-control-label" for="customCheck<?=$i?>"></label>
                                     </div>
                                 </td>
-                                <td>
+                                <td class="align-middle">
                                     <a class="text-lg text-warning" target="_blank" href="/detail-charger?rental_device_id=<?=$device['rental_device_id']?>" ><?=$device['charger_name']?></a>
                                     <br>
                                     @if($device['charger_type']==1)
