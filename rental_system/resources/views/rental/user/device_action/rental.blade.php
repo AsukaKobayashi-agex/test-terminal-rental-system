@@ -32,9 +32,9 @@
 
                 <tbody>
                 <tr class="font-weight-bold" id="noDevice" hidden>
-                    <td></td>
-                    <td>貸出可能な端末はありません</td>
-                    <td></td>
+                    <td class="align-middle"></td>
+                    <td class="align-middle">貸出可能な端末はありません</td>
+                    <td class="align-middle"></td>
                 </tr>
 
                 @foreach($rental_device_list as $device)
@@ -52,7 +52,7 @@
                                 <input type="hidden" form="rental_device" name="rental_device_id[]" value="<?=$device['rental_device_id']?>">
                             @endif
                         </td>
-                        <td>
+                        <td class="align-middle">
                         @if($device['device_category']===1)
                             @if($device['test_device_category']===1)
                                     <a class="text-lg text-primary" target="_blank" href="/detail-mobile?rental_device_id=<?=$device['rental_device_id']?>" >
@@ -72,7 +72,7 @@
                                 <span class="text-danger">※貸出できません</span>
                             @endif
                         </td>
-                        <td>
+                        <td class="align-middle">
                             <button class="btn btn-primary btn-user btn-block deleteButton">削除</button>
                         </td>
                     </tr>
@@ -117,22 +117,3 @@
 
 
 @endsection
-
-@push('scripts')
-    <script>
-        $(".deleteButton").click(function(){
-            $(this).parents('tr').remove();
-            if($('tbody tr').length === 1) {
-                $("#noDevice").removeAttr('hidden');
-                $("#agree").attr('disabled', 'disabled')
-            }
-        });
-
-        $("#agree").ready(function(){
-            if($('tbody input').length === 0) {
-                $("#noDevice").removeAttr('hidden');
-                $("#agree").attr('disabled', 'disabled')
-            }
-        });
-    </script>
-@endpush

@@ -38,44 +38,45 @@
                             <div class="form-group row">
                                 <form name='search' method="post" action="#">
                                     @csrf
-                                    <div class="col-sm-2 px-1 mb-3">
+                                    <div class="col-lg-2 px-1 mb-3">
                                         <input type="search" name="search_word" class="form-control form-control-user" value="{{$search_word}}" placeholder="端末名を入力" >
                                     </div>
-                                    <div class="col-sm-2 px-1 mb-3">
+                                    <div class="col-lg-2 px-1 mb-3">
                                         <select name="type" class="form-control form-control-user">
                                             <option value="">カテゴリ</option>
                                             <option value="1" {{$type==="1" ? 'selected': null}}>スマホ</option>
                                             <option value="2" {{$type==="2" ? 'selected': null}}>タブレット</option>
                                         </select>
                                     </div>
-                                    <div class="col-sm-2 px-1 mb-3">
+                                    <div class="col-lg-2 px-1 mb-3">
                                         <select name="os" class="form-control form-control-user">
                                             <option value="">OS</option>
                                             <option value="1" {{($os==="1") ? 'selected': null}}>Android</option>
                                             <option value="2" {{($os==="2") ? 'selected': null}}>iOS</option>
                                         </select>
                                     </div>
-                                    <div class="col-sm-2 px-1 mb-3">
+                                    <div class="col-lg-2 px-1 mb-3">
                                         <input type="number" name="os_version" class="form-control form-control-user" value="{{$os_version}}" placeholder="OSバージョン" >
                                     </div>
 
-                                    <div class="col-sm-2 px-1 mb-3">
-                                        <select name="wifi" class="form-control">
+                                    <div class="col-lg-2 px-1 mb-3">
+                                       <select name="wifi" class="form-control">
                                             <option value="">Wi-Fi</option>
-                                            <option value="0" {{$wifi==="0" ? 'selected': null}}>なし</option>
-                                            <option value="1" {{$wifi==="1" ? 'selected': null}}>あり</option>
+                                            <option value="0" {{$wifi==="0" ? 'selected': null}}><span><i class="fas fa-fw fa-wifi"></i></span>
+                                                Wi-Fiなし</option>
+                                            <option value="1" {{$wifi==="1" ? 'selected': null}}>Wi-Fiあり</option>
                                         </select>
                                     </div>
-                                    <div class="col-sm-2 px-1 mb-3">
-                                        <select name="com_line" class="form-control form-control-user">
-                                            <option value="">モバイル回線</option>
-                                            <option value="0" {{$com_line==="0" ? 'selected': null}}>なし</option>
-                                            <option value="1" {{$com_line==="1" ? 'selected': null}}>あり</option>
+                                    <div class="col-lg-2 px-1 mb-3">
+                                        <select name="com_line" class="form-control">
+                                            <option value="">モバイル</option>
+                                            <option value="0" {{$com_line==="0" ? 'selected': null}}>モバイル回線なし</option>
+                                            <option value="1" {{$com_line==="1" ? 'selected': null}}>モバイル回線あり</option>
                                         </select>
                                     </div>
-                                    <div class="col-sm-8 px-1">
+                                    <div class="col-lg-8 px-1">
                                     </div>
-                                    <div class="col-sm-2 px-1">
+                                    <div class="col-lg-2 px-1">
                                         <select name="status" class="form-control form-control-user">
                                             <option value="" >ステータス</option>
                                             <option value="0" {{$status==="0" ? 'selected': null}}>貸出可</option>
@@ -83,7 +84,7 @@
                                             <option value="user=<?=$user_info['user_id']?>" {{$status=="user={$user_info['user_id']}" ? 'selected': null}}>返却</option>
                                         </select>
                                     </div>
-                                    <div class="col-sm-2 px-1">
+                                    <div class="col-lg-2 px-1">
                                         <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-fw fa-search"></i>
                                         </button>
                                     </div>
@@ -95,9 +96,9 @@
 
                         @if(empty($mobile_device_list))
                             <tr class="font-weight-bold">
-                                <td></td>
-                                <td>一致する項目はありません</td>
-                                <td></td>
+                                <td class="align-middle"></td>
+                                <td class="align-middle">一致する項目はありません</td>
+                                <td class="align-middle"></td>
                             </tr>
                         @endif
 
@@ -115,7 +116,7 @@
                                     </div>
                                 </td>
 
-                                <td>
+                                <td class="align-middle">
                                     <a class="text-lg" target="_blank" href="/detail-mobile?rental_device_id=<?=$device['rental_device_id']?>" ><?=$device['device_name']?></a>
                                      @if($device['wifi_line']===1)
                                     <i class="fas fa-fw fa-wifi"></i>
