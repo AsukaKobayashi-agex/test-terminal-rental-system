@@ -30,6 +30,7 @@ class IndexChargerRequest extends FormRequest
     {
         return [
             'search_word' => 'max:100',
+            'search_id' => 'max:11'
         ];
     }
 
@@ -37,6 +38,7 @@ class IndexChargerRequest extends FormRequest
     {
         return [
             'search_word' => '検索ワード',
+            'search_id' => '検索ID'
         ];
     }
 
@@ -44,6 +46,7 @@ class IndexChargerRequest extends FormRequest
     {
         return [
             'search_word.max' => '検索ワード : 文字数が多すぎます(最大100文字)',
+            'search_id.max' => '検索文字数が多すぎます(最大11文字)'
         ];
     }
 

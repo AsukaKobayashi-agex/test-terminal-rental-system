@@ -29,24 +29,30 @@ class IndexPcRequest extends FormRequest
     public function rules()
     {
         return [
+            'search_id' => 'max:11',
             'search_word' => 'max:100',
-            'os_version' => 'max:50'
+            'os_version' => 'max:50',
+            'search_account' => 'max100'
         ];
     }
 
     public function attributes()
     {
         return [
+            'search_id' => '検索ID',
             'search_word' => '検索ワード',
-            'os_version' => 'OSバージョン'
+            'os_version' => 'OSバージョン',
+            'search_account' => 'PCアカウント名'
         ];
     }
 
     public function messages()
     {
         return [
+            'search_id.max' => '検索文字数が多すぎます(最大11文字)',
             'search_word.max' => '検索ワード : 文字数が多すぎます(最大：100文字)',
-            'os_version.max' => 'OSバージョン : 文字数が多すぎます(最大：50文字)'
+            'os_version.max' => 'OSバージョン : 文字数が多すぎます(最大：50文字)',
+            'search_account' => 'PCアカウント名 : 文字数が多すぎます(最大：100文字)'
         ];
     }
 

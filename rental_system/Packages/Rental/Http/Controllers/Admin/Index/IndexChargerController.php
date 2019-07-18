@@ -12,9 +12,10 @@ class IndexChargerController extends Controller
     {
         $param = $request->all();
         $data = $service->getData($param);
+        $data['search_id'] = $request -> input('search_id');
         $data['search_word'] = $request -> input('search_word');
         $data['status'] = $request -> input('status');
         $data['charger_type'] = $request -> input('charger_type');
-        return view('rental.admin.device.index_charger')->with($data);
+        return view('rental.admin.Device.index_charger')->with($data);
     }
 }

@@ -52,7 +52,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['force_https', /*'admin.auth
     //端末編集画面
     Route::get('/edit','Admin\EditController@view');
 
-    Route::get('/edit_charger','Admin\EditChargerController@form');
+    Route::get('/edit_charger','Admin\Edit\EditChargerController@view');
 
     Route::get('/contract_plan','Admin\Contract_planController@view');
     Route::get('/os_prevention','Admin\OS_preventionController@view');

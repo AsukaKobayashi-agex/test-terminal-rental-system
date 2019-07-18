@@ -17,6 +17,7 @@
                 <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0" style="table-layout:fixed;">
                     <thead>
                     <tr>
+                        <th width=100px >端末ID</th>
                         <th>端末名</th>
                         <th>OS</th>
                         <th>PCアカウント名</th>
@@ -34,7 +35,10 @@
                         <div class="form-group row">
                             <form name='search' method="post" action="#">
                                 @csrf
-                                <div class="col-sm-4 mb-3 mb-sm-0">
+                                <div class="col-sm-2 mb-4">
+                                    <input type="number" name="search_id" class="form-control form-control-user" value="{{$search_id}}" placeholder="端末IDを入力" >
+                                </div>
+                                <div class="col-sm-2 mb-3 mb-sm-0">
                                     <input type="search" name="search_word" class="form-control form-control-user" value="{{$search_word}}" placeholder="端末名を入力" >
                                 </div>
                                 <div class="col-sm-2 mb-3 mb-sm-0">
@@ -47,18 +51,22 @@
                                 <div class="col-sm-2 mb-3 mb-sm-0">
                                     <input type="number" name="os_version" class="form-control form-control-user" value="{{$os_version}}" placeholder="OSバージョン" >
                                 </div>
-
+                                <div class="col-sm-2 mb-3 mb-sm-0">
+                                    <input type="search" name="search_account" class="form-control form-control-user" value="{{$search_account}}" placeholder="PCアカウント名を入力" >
+                                </div>
                                 <div class="col-sm-2">
                                     <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-fw fa-search"></i>
                                     </button>
                                 </div>
                             </form>
-                            <a href="#" class="btn btn-primary btn-icon-split">
+                            <div class="col-sm-4">
+                                <a href="add_pc" class="btn btn-success btn-icon-split float-left">
                                 <span class="icon text-white-50">
                                   <i class="fas fa-flag"></i>
                                 </span>
-                                <span class="text" data-toggle="modal" data-target="#basicModal">追加</span>
-                            </a>
+                                    <span class="text px-4">端末を追加する</span>
+                                </a>
+                            </div>
                         </div>
                     </div>
 
@@ -72,7 +80,10 @@
 
                     <tbody>@foreach($pc_device_list as $device)
                         <tr class="font-weight-bold">
-                            <td class="text-center align-middle">
+                            <td>
+                                <?=$device['rental_device_id']?>
+                            </td>
+                            <td>
                                 <a class="text-lg text-success" target="_blank" href="/detail-pc?rental_device_id=<?=$device['rental_device_id']?>" ><?=$device['device_name']?></a>
                             </td>
 

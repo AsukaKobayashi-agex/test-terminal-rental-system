@@ -28,6 +28,6 @@ class IndexSpController extends Controller
         $data['os'] = $request -> input('os');
         $data['os_version'] = $request -> input('os_version');
         $data['search_carrier'] = $request -> input('search_carrier');
-        return view('rental.admin.device.index_sp')->with($data);
+        return view('rental.admin.Device.index_sp')->with($data);
     }
 }
