@@ -63,9 +63,9 @@
                     <tbody>
                     @if(empty($all_device_list))
                         <tr class="font-weight-bold">
-                            <td></td>
-                            <td>一致する項目はありません</td>
-                            <td></td>
+                            <td class="align-middle"></td>
+                            <td class="align-middle">一致する項目はありません</td>
+                            <td class="align-middle"></td>
                         </tr>
                     @endif
 
@@ -84,26 +84,71 @@
                             </td>
                             @if($device['device_category']===1)
                                 @if($device['test_device_category']===1)
-                                    <td >
+                                    <td class="align-middle">
                                         <a class="text-lg text-primary" target="_blank" href="/detail-mobile?rental_device_id=<?=$device['rental_device_id']?>" >
                                             <?=$device['device_name']?>
                                         </a>
+                                        @if($device['wifi_line']===1)
+                                            <i class="fas fa-fw fa-wifi"></i>
+                                        @else
+                                            <i class="fas fa-fw"></i>
+                                        @endif
+                                        @if($device['communication_line']===1)
+                                            <i class="fas fa-fw fa-mobile-alt"></i>
+                                        @endif
+                                        <br>
+                                        @if($device['os']==1)
+                                            Android
+                                        @elseif($device['os']==2)
+                                            iOS
+                                        @else
+                                            Other OS
+                                        @endif
+                                        <?=$device['os_version']?>
+
                                     </td>
                                 @elseif($device['test_device_category']===2)
-                                    <td>
+                                    <td class="align-middle">
                                         <a class="text-lg text-success" target="_blank" href="/detail-pc?rental_device_id=<?=$device['rental_device_id']?>" >
                                             <?=$device['device_name']?>
                                         </a>
+                                        <br>
+                                        @if($device['os']==1)
+                                            Android
+                                        @elseif($device['os']==2)
+                                            iOS
+                                        @elseif($device['os']==3)
+                                            Windows
+                                        @elseif($device['os']==4)
+                                            Mac OS
+                                        @else
+                                        Other OS
+                                        @endif
+                                        <?=$device['os_version']?>
+
                                     </td>
                                 @endif
                             @elseif($device['device_category']===2)
-                                <td>
+                                <td class="align-middle">
                                     <a class="text-lg text-warning" target="_blank" href="/detail-charger?rental_device_id=<?=$device['rental_device_id']?>" >
                                         <?=$device['charger_name']?>
                                     </a>
+                                    <br>
+                                    @if($device['charger_type']==1)
+                                        USB TYPE-B
+                                    @elseif($device['charger_type']==2)
+                                        USB TYPE-C
+                                    @elseif($device['charger_type']==3)
+                                        iphone ライトニング
+                                    @elseif($device['charger_type']==4)
+                                        iphone 旧型
+                                    @else
+                                        Other
+                                    @endif
+
                                 </td>
                             @endif
-                            <td>
+                            <td  class="text-center align-middle">
                             @if($device['status']===1)
                                 @if($user_info['user_id']==$device['user_id'])
                                     <form name='return' method="post" action="/return">
@@ -136,5 +181,6 @@
         </div>
     </div>
 </div>
+
 
 @endsection

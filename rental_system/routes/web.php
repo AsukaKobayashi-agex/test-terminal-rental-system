@@ -16,16 +16,16 @@
 //==============================================================
 Route::group(['prefix' => 'admin', 'middleware' => ['force_https', /*'admin.authed'*/]], function() {
     // TOPページ(端末一覧)
-    Route::get('/', 'Admin\TopController@index');
+    Route::match(['get','post'],'/index_all', 'Admin\Index\IndexAllController@view');
 
     //一覧画面（スマホ）
-    Route::get('/index_sp', 'Admin\Index\IndexSpController@view');
+    Route::match(['get','post'],'/index_sp', 'Admin\Index\IndexSpController@view');
 
     //一覧画面（PC）
-    Route::get('/index_pc', 'Admin\Index\IndexPcController@view');
+    Route::match(['get','post'],'/index_pc', 'Admin\Index\IndexPcController@view');
 
     //一覧（充電器）
-    Route::get('/index_charger', 'Admin\Index\IndexChargerController@view');
+    Route::match(['get','post'],'/index_charger', 'Admin\Index\IndexChargerController@view');
 
     //端末詳細ページ
     Route::get('/information','Admin\InformationController@view');

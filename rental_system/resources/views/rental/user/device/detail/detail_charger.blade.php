@@ -13,7 +13,7 @@
         <div class="col-sm-6">
             <div class="card border-left-primary shadow mb-4">
                 <div class="card-header py-2">
-                    <h6 class="m-0 font-weight-bold text-primary">端末名</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">充電器名</h6>
                 </div>
                 <div class="card-body text-center">
                     <div class="h2 mb-2 font-weight-bold text-gray-800"><?=$detail['charger_name']?></div>
