@@ -79,6 +79,8 @@
 @component('rental.user.common.scroll_to_top')
 @endcomponent
 
+@stack('fixed_button')
+
 @component('rental.user.common.logout_modal')
 @endcomponent
 
