@@ -15,6 +15,9 @@
 // 管理画面
 //==============================================================
 Route::group(['prefix' => 'admin', 'middleware' => ['force_https', /*'admin.authed'*/]], function() {
+
+    //一覧画面
+
     // TOPページ(端末一覧)
     Route::match(['get','post'],'/index_all', 'Admin\Index\IndexAllController@view');
 
@@ -24,16 +27,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['force_https', /*'admin.auth
     //一覧画面（PC）
     Route::match(['get','post'],'/index_pc', 'Admin\Index\IndexPcController@view');
 
-    //一覧（充電器）
+    //一覧画面（充電器）
     Route::match(['get','post'],'/index_charger', 'Admin\Index\IndexChargerController@view');
 
-    //端末詳細ページ
-    Route::get('/information','Admin\InformationController@view');
 
-    //Loginページ
-    Route::get('/login','Admin\LoginController@login');
-    Route::get('/forgot-password','Admin\LoginController@forgot_password');
-    Route::get('/register','Admin\LoginController@register');
+//-----------------------------------------------------------------------------------------------
+
+    //追加画面
 
     // 追加画面（スマホ）
     Route::get('/add_sp','Admin\AddSpController@form');
@@ -47,17 +47,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['force_https', /*'admin.auth
     Route::get('/add_charger', 'Admin\AddChargerController@form');
     Route::post('/add_charger/action', 'Admin\AddChargerController@action');
 
+//-----------------------------------------------------------------------------------------------
 
-
-    //端末編集画面
-    Route::get('/edit','Admin\EditController@view');
-
-    Route::get('/edit_charger','Admin\Edit\EditChargerController@view');
-
-    Route::get('/contract_plan','Admin\Contract_planController@view');
-    Route::get('/os_prevention','Admin\OS_preventionController@view');
-    Route::get('/remarks','Admin\RemarksController@view');
-
+    
 });
 
 //==============================================================
