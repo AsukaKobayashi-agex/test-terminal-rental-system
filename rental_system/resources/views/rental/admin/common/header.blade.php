@@ -20,7 +20,6 @@
     <link href="/bootsample/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
     <div class="container-fluid">
-        @yield('content')
     </div>
 
 
