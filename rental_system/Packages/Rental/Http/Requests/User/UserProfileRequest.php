@@ -30,7 +30,9 @@ class UserProfileRequest extends FormRequest
     {
         return [
             'name' => 'min:1|max:50',
-            'address' => 'email|min:1|max:100'
+            'address' => 'min:1|email|max:100',
+            'division_id' => 'numeric',
+            'group_id' => 'numeric'
         ];
     }
 
@@ -38,7 +40,10 @@ class UserProfileRequest extends FormRequest
     {
         return [
             'name' => 'ユーザー名',
-            'address' => 'メールアドレス'
+            'address' => 'メールアドレス',
+            'division_id' => '事業部',
+            'group_id' => 'グループ'
+
         ];
     }
 
@@ -49,7 +54,9 @@ class UserProfileRequest extends FormRequest
             'name.min' => 'ユーザー名を入力してください',
             'address.min' => 'メールアドレスを入力してください',
             'address.max' => 'メールアドレスは最大100文字です',
-            'address.email' => 'メールアドレスを入力してください'
+            'address.email' => 'メールアドレスを入力してください',
+            'division_id.numeric' => '事業部を選択してください',
+            'group_id.numeric' => 'グループを選択してください'
         ];
     }
 

@@ -40,7 +40,7 @@
     <li  {!! (Request::is('mobile') ? 'class="nav-item active"' : 'class="nav-item"') !!}>
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-mobile"></i>
-            <span >モバイル</span>
+            <span>モバイル</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
@@ -51,12 +51,12 @@
                 <form method="get" name="android" action="/mobile">
                     <input type="hidden" name="type" value="1">
                     <input type="hidden" name="os" value="1">
-                    <a class="collapse-item text-center" href="javascript:android.submit()">Android</a>
+                    <a class="collapse-item ml-4" href="javascript:android.submit()">Android</a>
                 </form>
                 <form method="get" name="ios" action="/mobile">
                     <input type="hidden" name="type" value="1">
                     <input type="hidden" name="os" value="2">
-                    <a class="collapse-item text-center" href="javascript:ios.submit()">iOS</a>
+                    <a class="collapse-item ml-4" href="javascript:ios.submit()">iOS</a>
                 </form>
                 <form method="get" name="tablet" action="/mobile">
                     <input type="hidden" name="type" value="2">

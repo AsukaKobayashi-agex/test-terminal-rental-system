@@ -37,6 +37,7 @@
                                     <input type="hidden" name="division_id" value="<?=$input['division_id']?>">
                                     <label>事業部：</label>
                                     <div class="h5 text-center">
+                                        {{$input['division_id']==0 ? '所属なし' : null}}
                                         {{$input['division_id']==10 ? 'コンサルティング' : null}}
                                         {{$input['division_id']==20 ? "システムソリューション":null}}
                                         {{$input['division_id']==30 ? 'クリエイティブ':null }}
@@ -48,9 +49,10 @@
                                     <input type="hidden" name="group_id" value="<?=$input['group_id']?>">
                                     <label>グループ：</label>
                                     <div class="h5 text-center">
+                                        {{$input['group_id']==0 ? '所属なし': null}}
                                         {{$input['group_id']==1010 ? '第1グループ': null}}
                                         {{$input['group_id']==1020 ? '第2グループ': null}}
-                                        {{$input['group_id']==1030 ? '事業運営グループ': null}}
+                                        {{$input['group_id']==1030 ? '事業企画グループ': null}}
                                         {{$input['group_id']==2010 ? '第1ソリューショングループ': null}}
                                         {{$input['group_id']==2020 ? '第2ソリューショングループ': null}}
                                         {{$input['group_id']==2030 ? '事業運営グループ': null}}
