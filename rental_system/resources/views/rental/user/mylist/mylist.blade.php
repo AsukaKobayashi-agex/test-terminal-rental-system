@@ -19,9 +19,9 @@ $i = 1;
     <form class="w-100" method="post" id="action">
         @csrf
         <div class="d-flex">
-            <span class="h4 w-25 font-weight-bold text-primary float-left">マイリスト一覧</span>
+            <span class="h4 w-25 font-weight-bold text-primary">マイリスト一覧</span>
             <div class="w-75 mx-3 text-right">
-                <button type="submit" class="btn btn-primary btn-user col-md-3 bundle" disabled="disabled" formaction="/rental">一括貸出</button>
+                <button type="submit" class="btn btn-primary btn-user col-md-3 mb-md-0 mb-2 bundle" disabled="disabled" formaction="/rental">一括貸出</button>
                 <button type="submit" class="btn btn-danger btn-user col-md-3 bundle" disabled="disabled" formaction="/return">一括返却</button>
             </div>
         </div>
@@ -42,7 +42,7 @@ $i = 1;
         <div class="h4 m-0 font-weight-bold text-primary">
             <?=$mylist['mylist_name']?>
             <a class="text-xs text-primary btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#renameModal<?=$mylist['mylist_id']?>"><i class="fas fa-fw fa-pen"></i></a>
-            <a class="text-xs btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#mylistDeleteModal<?=$mylist['mylist_id']?>">削除</a>
+            <a class="text-xs text-danger btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#mylistDeleteModal<?=$mylist['mylist_id']?>">削除</a>
         </div>
         <!--   名前編集モーダル -->
         <div class="modal fade" id="renameModal<?=$mylist['mylist_id']?>" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
@@ -80,7 +80,7 @@ $i = 1;
                         </button>
                     </div>
                     <div class="modal-body">
-                        <h4>マイリストを削除します。よろしいですか？</h4>
+                        <h4>マイリストを削除します。<br>よろしいですか？</h4>
                         <form name="deletemylist<?=$mylist['mylist_id']?>" method="post" action="/mylist/delete-mylist">
                             @csrf
                             <input type="hidden" name="mylist_id"  value="<?=$mylist['mylist_id']?>">
@@ -88,7 +88,7 @@ $i = 1;
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">いいえ</button>
-                        <a class="btn btn-primary" href="javascript:document.deletemylist<?=$mylist['mylist_id']?>.submit()">削除</a>
+                        <a class="btn btn-danger" href="javascript:document.deletemylist<?=$mylist['mylist_id']?>.submit()">削除</a>
                     </div>
                 </div>
             </div>
@@ -174,14 +174,14 @@ $i = 1;
                                 </form>
                             @endif
                             </td>
-                            <td class="align-middle">
+                            <td class="align-middle px-sm-2 px-0">
                                 @php($i= "{$device['rental_device_id']}"."{$mylist['mylist_id']}")
                                 <form name="delete_form<?=$i?>" id="delete_form<?=$i?>" method="post" action="/mylist/delete">
                                     @csrf
                                     <input type="hidden" name="delete_device_id"  value="<?=$device['rental_device_id']?>">
                                     <input type="hidden" name="delete_mylist_id"  value="<?=$mylist['mylist_id']?>">
                                 </form>
-                                <button type="button" data-toggle="modal" data-target="#deleteModal<?=$i?>" class="btn btn-primary btn-user btn-block ">削除</button>
+                                <button type="button" data-toggle="modal" data-target="#deleteModal<?=$i?>" class="btn btn-primary btn-user btn-block px-0 align-middle"><span class="d-lg-inline d-none">削除</span><span class="d-lg-none">x</span></button>
                             </td>
                         </tr>
                         <!--   削除モーダル -->

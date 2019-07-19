@@ -3,7 +3,6 @@
 <!-- Page Heading -->
 @php
     //preDump($_POST['search_word']);
-
 @endphp
 
 <!-- DataTales Example -->
