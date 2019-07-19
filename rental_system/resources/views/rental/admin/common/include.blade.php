@@ -185,8 +185,11 @@
             <!-- End of Topbar -->
 
             <!-- Begin Page Content -->
-            @section('content')
-            @show
+            <div class="container-fluid">
+                @section('content')
+                @show
+            </div>
+
             <!-- /.container-fluid -->
 
         </div>
