@@ -18,11 +18,12 @@ class IndexPcController extends Controller
     {
         $param = $request->all();
         $data = $service->getData($param);
+        $data['search_id'] = $request -> input('search_id');
         $data['search_word'] = $request -> input('search_word');
         $data['status'] = $request -> input('status');
         $data['os'] = $request -> input('os');
         $data['os_version'] = $request -> input('os_version');
-        $data['pc_account_name'] = $request -> input('pc_account_name');
-        return view('rental.admin.device.index_pc')->with($data);
+        $data['search_account'] = $request -> input('search_account');
+        return view('rental.admin.Device.index_pc')->with($data);
     }
 }

@@ -25,6 +25,7 @@
                     <div class="d-block text font-weight-bold text-primary text-uppercase mb-1 p-2">所属</div>
                     {{--division--}}
                     <div class="text-center mb-3">
+                        {{$rent_user_info['division_id']===0 ? '所属なし' : null}}
                         {{$rent_user_info['division_id']===10 ? 'コンサルティング' : null}}
                         {{$rent_user_info['division_id']===20 ? "システムソリューション":null}}
                         {{$rent_user_info['division_id']===30 ? 'クリエイティブ':null }}
@@ -34,9 +35,10 @@
                     </div>
                     {{--group--}}
                     <div class="text-center mb-3">
+                        {{$rent_user_info['group_id']===0 ? '所属なし': null}}
                         {{$rent_user_info['group_id']===1010 ? '第1グループ': null}}
                         {{$rent_user_info['group_id']===1020 ? '第2グループ': null}}
-                        {{$rent_user_info['group_id']===1030 ? '事業運営グループ': null}}
+                        {{$rent_user_info['group_id']===1030 ? '事業企画グループ': null}}
                         {{$rent_user_info['group_id']===2010 ? '第1ソリューショングループ': null}}
                         {{$rent_user_info['group_id']===2020 ? '第2ソリューショングループ': null}}
                         {{$rent_user_info['group_id']===2030 ? '事業運営グループ': null}}

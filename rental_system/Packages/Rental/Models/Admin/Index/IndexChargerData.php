@@ -36,6 +36,15 @@ where archive_flag = :archive_flag
 
 End_of_sql;
 
+        if(isset($param['search_id'])) {
+            $bind_params["rental_device_id"] =$param['search_id'];
+            $sql .= <<< Add_sql
+
+and rd.rental_device_id = :rental_device_id
+
+Add_sql;
+        };
+
         if(isset($param['search_word'])) {
             $search=preg_replace("|　|"," ",$param['search_word']);
             $search_word=mb_convert_kana($search,"KV","UTF-8");
