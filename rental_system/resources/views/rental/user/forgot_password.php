@@ -27,7 +27,7 @@
                   </div>
                   <form class="user">
                     <div class="form-group">
-                      <input type="email" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="E-emailアドレスを入力">
+                      <input type="email" class="form-control" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="E-emailアドレスを入力">
                     </div>
                     <a href="login.blade.php" class="btn btn-primary btn-user btn-block">
                       パスワードをリセット

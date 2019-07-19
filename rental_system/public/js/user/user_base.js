@@ -9,6 +9,14 @@ $(function () {
         }
     });
 
+    $('footer').ready(function(){
+        if ($('.data-table :checked').length !== 0) {
+            $('.bundle').removeAttr('disabled')
+        } else {
+            $('.bundle').attr('disabled', true)
+        }
+    });
+
 
 
     $('.checkbox label,.checkbox input').click(function () {
