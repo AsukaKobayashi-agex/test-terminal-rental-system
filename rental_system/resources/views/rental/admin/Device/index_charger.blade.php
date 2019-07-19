@@ -88,7 +88,7 @@
                                 <?=$device['rental_device_id']?>
                             </td>
                             <td>
-                                <a class="text-lg text-warning" href="edit_charger?rental_device_id=<?=$device['rental_device_id']?>" ><?=$device['charger_name']?></a>
+                                <a class="text-lg text-warning" href="#?rental_device_id=<?=$device['rental_device_id']?>" ><?=$device['charger_name']?></a>
                             </td>
                            <td>
                                @if($device['charger_type']==1)
