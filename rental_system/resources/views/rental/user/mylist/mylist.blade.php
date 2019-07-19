@@ -54,18 +54,19 @@ $i = 1;
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body">
-                        <h4>マイリストの名前を入力</h4>
-                        <form name="rename<?=$mylist['mylist_id']?>" method="post" action="/mylist/rename">
-                            @csrf
-                            <input type="hidden" name="mylist_id"  value="<?=$mylist['mylist_id']?>">
-                            <input type="text" class="form-control form-control-user" name="mylist_name"  value="<?=$mylist['mylist_name']?>">
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
-                        <a class="btn btn-primary" href="javascript:document.rename<?=$mylist['mylist_id']?>.submit()">変更</a>
-                    </div>
+                    <form name="rename<?=$mylist['mylist_id']?>" method="post" action="/mylist/rename">
+                        @csrf
+
+                            <div class="modal-body">
+                            <h4>マイリストの名前を入力</h4>
+                                <input type="hidden" name="mylist_id"  value="<?=$mylist['mylist_id']?>">
+                                <input type="text" class="form-control" name="mylist_name"  value="<?=$mylist['mylist_name']?>" required>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
+                            <button type="submit" class="btn btn-primary btn-user" href="javascript:document.rename<?=$mylist['mylist_id']?>.submit()">変更</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

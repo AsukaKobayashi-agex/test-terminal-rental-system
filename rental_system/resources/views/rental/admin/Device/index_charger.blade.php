@@ -35,13 +35,13 @@
                             <form name='search' method="post" action="#">
                                 @csrf
                                 <div class="col-sm-2 mb-4">
-                                    <input type="number" name="search_id" class="form-control form-control-user" value="{{$search_id}}" placeholder="端末ID" >
+                                    <input type="number" name="search_id" class="form-control" value="{{$search_id}}" placeholder="端末ID" >
                                 </div>
                                 <div class="col-sm-3 mb-3 mb-sm-0">
-                                    <input type="search" name="search_word" class="form-control form-control-user" value="{{$search_word}}" placeholder="端末名を入力" >
+                                    <input type="search" name="search_word" class="form-control" value="{{$search_word}}" placeholder="端末名を入力" >
                                 </div>
                                 <div class="col-sm-2 px-1 mb-3 mb-sm-0">
-                                    <select name="charger_type" class="form-control form-control-user">
+                                    <select name="charger_type" class="form-control">
                                         <option value="">充電器タイプ</option>
                                         <option value="1" {{$charger_type==="1" ? 'selected': null}}>USB TYPE-B</option>
                                         <option value="2"{{$charger_type==="2" ? 'selected': null}}>USB TYPE-C</option>
