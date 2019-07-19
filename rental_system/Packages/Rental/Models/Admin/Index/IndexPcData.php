@@ -43,6 +43,15 @@ where archive_flag = :archive_flag
 
 End_of_sql;
 
+        if(isset($param['search_id'])) {
+            $bind_params["rental_device_id"] =$param['search_id'];
+            $sql .= <<< Add_sql
+
+and rd.rental_device_id = :rental_device_id
+
+Add_sql;
+        };
+
         if(isset($param['search_word'])) {
             $search=preg_replace("|　|"," ",$param['search_word']);
             $search_word=mb_convert_kana($search,"KV","UTF-8");
@@ -81,21 +90,22 @@ and os_version collate utf8mb4_unicode_ci like :os_version{$i}
 Add_sql;
             }};
 
-        if(isset($param['status']) && strpos($param['status'], 'user') === false) {
-            $bind_params['status'] = $param['status'];
-            $sql .= <<< Add_sql
+        if(isset($param['search_account'])) {
+            $search=preg_replace("|　|"," ",$param['search_account']);
+            $search_account=mb_convert_kana($search,"KV","UTF-8");
+            $search_accounts = explode(" ",$search_account);
+            $i=0;
+            foreach($search_accounts as $account){
+                $i ++;
+                $bind_params["pc_account_name{$i}"] = "%".$account."%";
+                $sql .= <<< Add_sql
 
-and status = :status
+and pc_account_name collate utf8mb4_unicode_ci like :pc_account_name{$i}
 
 Add_sql;
-        }elseif(isset($param['status']) && strpos($param['status'],'user') !== false){
-            $bind_params['user_id'] = ltrim($param['status'],'user=');
-            $sql .= <<< Add_sql
+            }};
 
-and rs.user_id = :user_id
-
-Add_sql;
-        };$sql .= "order by device_category,device_name;";
+$sql .= "order by device_category,device_name;";
 
 
 

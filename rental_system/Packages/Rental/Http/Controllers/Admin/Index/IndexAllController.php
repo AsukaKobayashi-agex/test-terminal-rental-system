@@ -21,6 +21,6 @@ class IndexAllController extends Controller
         $data = $service->getData($param);
         $data['search_word'] = $request -> input('search_word');
         $data['search_id'] = $request -> input('search_id');
-        return view('rental.Admin.device.index_all')->with($data);
+        return view('rental.Admin.Device.index_all')->with($data);
     }
 }
