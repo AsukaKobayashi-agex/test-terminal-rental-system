@@ -97,9 +97,9 @@
             <div class="card border-left-primary shadow">
                 <div class="card-body">
                     @if($detail['device_img']===1)
-                        <img class="rounded w-100 h-100" src="/bootsample/img/1g.jpg">
+                        <img class="rounded w-100 h-100" src="/bootsample/img/1g.jpg" alt="device_image">
                     @else
-                        <img class="rounded w-100 h-100" src="/bootsample/img/device.jpg">
+                        <img class="rounded w-100 h-100" src="/bootsample/img/noImage.png" alt="no_image">
                     @endif
                 </div>
             </div>

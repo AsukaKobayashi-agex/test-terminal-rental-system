@@ -7,6 +7,12 @@
     $userid = "1";
     ?>
 
+    @if (session('success'))
+        <div class="alert alert-success text-center">
+            {{ session('success') }}
+        </div>
+    @endif
+
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
@@ -17,12 +23,13 @@
                 <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0" style="table-layout:fixed;">
                     <thead>
                     <tr>
+                        <th width=100px >端末ID</th>
                         <th>充電器名</th>
                         <th>充電器タイプ</th>
                     </tr>
                     </thead>
 
-                    <div name="search_bar">
+                    <div name="search_bar" class="mb-3">
                         @if(count($errors) > 0)
                             <ul class="alert alert-danger">
                                 @foreach ($errors->all() as $error)
@@ -33,7 +40,10 @@
                         <div class="form-group row">
                             <form name='search' method="post" action="#">
                                 @csrf
-                                <div class="col-sm-4 mb-3 mb-sm-0">
+                                <div class="col-sm-2 mb-4">
+                                    <input type="number" name="search_id" class="form-control form-control-user" value="{{$search_id}}" placeholder="端末ID" >
+                                </div>
+                                <div class="col-sm-3 mb-3 mb-sm-0">
                                     <input type="search" name="search_word" class="form-control form-control-user" value="{{$search_word}}" placeholder="端末名を入力" >
                                 </div>
                                 <div class="col-sm-2 px-1 mb-3 mb-sm-0">
@@ -46,17 +56,19 @@
                                     </select>
                                 </div>
 
-                                <span class="col-sm-2">
+                                <div class="col-sm-2">
                                     <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-fw fa-search"></i>
                                     </button>
-                                </span>
+                                </div>
                             </form>
-                            <a href="#" class="btn btn-primary btn-icon-split">
+                            <div class="col-sm-3">
+                                <a href="add_charger" class="btn btn-success btn-icon-split float-right">
                                 <span class="icon text-white-50">
                                   <i class="fas fa-flag"></i>
                                 </span>
-                                <span class="text" data-toggle="modal" data-target="#basicModal">追加</span>
-                            </a>
+                                    <span class="text px-4">端末を追加する</span>
+                                </a>
+                            </div>
                         </div>
                     </div>
 
@@ -73,7 +85,10 @@
                     @foreach($charger_list as $device)
                         <tr class="font-weight-bold">
                             <td>
-                                <a class="text-lg text-warning" target="_blank" href="/detail-charger?rental_device_id=<?=$device['rental_device_id']?>" ><?=$device['charger_name']?></a>
+                                <?=$device['rental_device_id']?>
+                            </td>
+                            <td>
+                                <a class="text-lg text-warning" href="#?rental_device_id=<?=$device['rental_device_id']?>" ><?=$device['charger_name']?></a>
                             </td>
                            <td>
                                @if($device['charger_type']==1)

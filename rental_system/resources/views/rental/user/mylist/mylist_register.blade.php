@@ -32,9 +32,9 @@
 
                 <tbody>
                 <tr class="font-weight-bold" id="noDevice" hidden>
-                    <td></td>
-                    <td>選択されている端末はありません</td>
-                    <td></td>
+                    <td class="align-middle"></td>
+                    <td class="align-middle">選択されている端末はありません</td>
+                    <td class="align-middle"></td>
                 </tr>
 
                 @foreach($register_device_list as $device)
@@ -52,26 +52,26 @@
                         </td>
                         @if($device['device_category']===1)
                             @if($device['test_device_category']===1)
-                                <td >
+                                <td class="align-middle">
                                     <a class="text-lg text-primary" target="_blank" href="/detail-mobile?rental_device_id=<?=$device['rental_device_id']?>" >
                                         <?=$device['device_name']?>
                                     </a>
                                 </td>
                             @elseif($device['test_device_category']===2)
-                                <td>
+                                <td class="align-middle">
                                     <a class="text-lg text-success" target="_blank" href="/detail-pc?rental_device_id=<?=$device['rental_device_id']?>" >
                                         <?=$device['device_name']?>
                                     </a>
                                 </td>
                             @endif
                         @elseif($device['device_category']===2)
-                            <td>
+                            <td class="align-middle">
                                 <a class="text-lg text-warning" target="_blank" href="/detail-charger?rental_device_id=<?=$device['rental_device_id']?>" >
                                     <?=$device['charger_name']?>
                                 </a>
                             </td>
                         @endif
-                        <td>
+                        <td class="align-middle">
                             <button class="btn btn-primary btn-user btn-block deleteButton">削除</button>
                         </td>
                     </tr>
@@ -81,7 +81,7 @@
         </div>
         <h6 class="m-0 font-weight-bold text-secondary">登録するマイリストを選択</h6>
         <div class="d-flex d-inline">
-            <form class="col-sm-6 d-flex d-inline" method="post" name="register_device" id="register_device" action="/mylist-register/register">
+            <form class="col-sm-6 d-flex d-inline" method="post" name="register_device" id="register_device" action="/mylist-register/register" onsubmit="return false;">
                 @csrf
                 <div class="form-group col-sm-6">
                     <select class="form-control mb-3 mb-sm-0" id="mylist" name="mylist_id" >
@@ -99,7 +99,7 @@
                     <a href="#" onclick="window.history.back(); return false;" class="btn btn-secondary btn-block">キャンセル</a>
                 </div>
                 <div class="col-sm-3 mb-3 mb-sm-0">
-                    <button class="btn btn-primary btn-block" data-toggle="modal" data-target="#checkModal" Id="agree">
+                    <button type="submit" class="btn btn-success btn-block" data-toggle="modal" data-target="#checkModal" Id="agree">
                         確定
                     </button>
                 </div>
@@ -120,7 +120,7 @@
             <div class="modal-body">選択したデバイスをマイリストに登録します。</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">キャンセル</button>
-                <a class="btn btn-primary" href="javascript:document.register_device.submit()">はい</a>
+                <a class="btn btn-success" href="javascript:document.register_device.submit()">はい</a>
             </div>
         </div>
     </div>

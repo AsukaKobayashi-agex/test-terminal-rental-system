@@ -4,7 +4,7 @@ namespace Rental\Http\Requests\Admin\Index;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class IndexChargerRequest extends FormRequest
+class IndexAllRequest extends FormRequest
 {
     protected $_inputs = [];
 
@@ -45,7 +45,7 @@ class IndexChargerRequest extends FormRequest
     public function messages()
     {
         return [
-            'search_word.max' => '検索ワード : 文字数が多すぎます(最大100文字)',
+            'search_word.max' => '検索文字数が多すぎます(最大100文字)',
             'search_id.max' => '検索文字数が多すぎます(最大11文字)'
         ];
     }

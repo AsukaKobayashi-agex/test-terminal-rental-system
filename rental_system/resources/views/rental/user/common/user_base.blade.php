@@ -35,7 +35,7 @@
                     {{--group--}}
                     {{$user_info['group_id']===1010 ? '第1グループ': null}}
                     {{$user_info['group_id']===1020 ? '第2グループ': null}}
-                    {{$user_info['group_id']===1030 ? '事業運営グループ': null}}
+                    {{$user_info['group_id']===1030 ? '事業企画グループ': null}}
                     {{$user_info['group_id']===2010 ? '第1ソリューショングループ': null}}
                     {{$user_info['group_id']===2020 ? '第2ソリューショングループ': null}}
                     {{$user_info['group_id']===2030 ? '事業運営': null}}
@@ -78,6 +78,8 @@
 
 @component('rental.user.common.scroll_to_top')
 @endcomponent
+
+@stack('fixed_button')
 
 @component('rental.user.common.logout_modal')
 @endcomponent

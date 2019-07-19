@@ -38,12 +38,14 @@
                                         <option class="division" value="30" {{ old('division_id')==30 ? 'selected' : null }}>クリエイティブ</option>
                                         <option class="division" value="40" {{ old('division_id')==40 ? 'selected' : null }}>Sharing Kyoto</option>
                                         <option class="division" value="50" {{ old('division_id')==50 ? 'selected' : null }}>経営本部</option>
+                                        <option class="division" value="0" {{ old('division_id')==0 ? 'selected' : null }}>所属なし</option>
                                     </select>
                                     <select class="form-control {{$errors->has('group_id')? 'alert-danger':null}}" name="group_id" id="group">
                                         <option value="">グループを選択*</option>
+</option>
                                         <option class="con" value="1010" hidden {{ old('group_id')==1010 ? 'selected' : null }}>第1グループ</option>
                                         <option class="con" value="1020" hidden {{ old('group_id')==1020 ? 'selected' : null }}>第2グループ</option>
-                                        <option class="con" value="1030" hidden {{ old('group_id')==1030 ? 'selected' : null }}>事業運営グループ</option>
+                                        <option class="con" value="1030" hidden {{ old('group_id')==1030 ? 'selected' : null }}>事業企画グループ</option>
                                         <option class="ss" value="2010" hidden {{ old('group_id')==2010 ? 'selected' : null }}>第1ソリューショングループ</option>
                                         <option class="ss" value="2020" hidden {{ old('group_id')==2020 ? 'selected' : null }}>第2ソリューショングループ</option>
                                         <option class="ss" value="2030" hidden {{ old('group_id')==2030 ? 'selected' : null }}>事業運営グループ</option>
@@ -54,6 +56,7 @@
                                         <option class="mng" value="5010" hidden {{ old('group_id')==5010 ? 'selected' : null }}>総務・法務グループ</option>
                                         <option class="mng" value="5020" hidden {{ old('group_id')==5020 ? 'selected' : null }}>経営企画・情報システムグループ</option>
                                         <option class="mng" value="5030" hidden {{ old('group_id')==5030 ? 'selected' : null }}>人事・経理グループ</option>
+                                        <option class="con" value="0" hidden {{ old('group_id')==0 ? 'selected' : null }}>所属なし
                                     </select>
                                 </div>
                             </div>
@@ -86,63 +89,3 @@
 
 @endsection
 
-@push('scripts')
-    <script>
-        $(function(){
-            $('#group').ready(function(){
-                $('#division').change();
-            });
-
-
-
-            $('#division').change(function() {
-
-                if($('#division').val() === "10") {
-                   $('.con').removeAttr('hidden');
-                }else{
-                    $('.con').attr('hidden',true);
-
-                }
-
-                if($('#division').val() === "20") {
-                   $('.ss').removeAttr('hidden');
-                }else{
-                    $('.ss').attr('hidden',true);
-
-                }
-
-                if($('#division').val() === "30") {
-                   $('.cre').removeAttr('hidden');
-                }else{
-                    $('.cre').attr('hidden',true);
-
-                }
-
-                if($('#division').val() === "40") {
-                   $('.sk').removeAttr('hidden');
-                }else{
-                    $('.sk').attr('hidden',true);
-
-                }
-
-                if($('#division').val() === "50") {
-                   $('.mng').removeAttr('hidden');
-                }else{
-                    $('.mng').attr('hidden',true);
-
-                }
-
-                $('#group').val("");
-            });
-
-            $('#repeatPassword').change(function() {
-                if($(this).val() !== $('#password').val()) {
-                   $(this).addClass("alert-danger");
-                }else{
-                    $(this).removeClass("alert-danger");
-                }
-            });
-        });
-
-    </script>
-@endpush

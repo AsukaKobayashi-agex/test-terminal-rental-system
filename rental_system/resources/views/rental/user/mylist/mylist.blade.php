@@ -17,14 +17,12 @@ $i = 1;
 @else
 <div class="form-group row" id="bundle_bar">
     <form class="w-100" method="post" id="action">
-        <span class="h4 font-weight-bold text-primary my-5">マイリスト一覧</span>
         @csrf
-        <div class="d-flex justify-content-end">
-            <div class="w-25 mb-3 mx-3">
-                <button type="submit" class="btn btn-primary btn-user btn-block bundle" disabled="disabled" formaction="/rental">一括貸出</button>
-            </div>
-            <div class="w-25 mb-3 mx-3">
-                <button type="submit" class="btn btn-danger btn-user btn-block bundle" disabled="disabled" formaction="/return">一括返却</button>
+        <div class="d-flex">
+            <span class="h4 w-25 font-weight-bold text-primary">マイリスト一覧</span>
+            <div class="w-75 mx-3 text-right">
+                <button type="submit" class="btn btn-primary btn-user col-md-3 mb-md-0 mb-2 bundle" disabled="disabled" formaction="/rental">一括貸出</button>
+                <button type="submit" class="btn btn-danger btn-user col-md-3 bundle" disabled="disabled" formaction="/return">一括返却</button>
             </div>
         </div>
     </form>
@@ -44,7 +42,7 @@ $i = 1;
         <div class="h4 m-0 font-weight-bold text-primary">
             <?=$mylist['mylist_name']?>
             <a class="text-xs text-primary btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#renameModal<?=$mylist['mylist_id']?>"><i class="fas fa-fw fa-pen"></i></a>
-            <a class="text-xs btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#mylistDeleteModal<?=$mylist['mylist_id']?>">削除</a>
+            <a class="text-xs text-danger btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#mylistDeleteModal<?=$mylist['mylist_id']?>">削除</a>
         </div>
         <!--   名前編集モーダル -->
         <div class="modal fade" id="renameModal<?=$mylist['mylist_id']?>" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
@@ -65,8 +63,8 @@ $i = 1;
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">いいえ</button>
-                        <a class="btn btn-primary" href="javascript:document.rename<?=$mylist['mylist_id']?>.submit()">はい</a>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
+                        <a class="btn btn-primary" href="javascript:document.rename<?=$mylist['mylist_id']?>.submit()">変更</a>
                     </div>
                 </div>
             </div>
@@ -82,7 +80,7 @@ $i = 1;
                         </button>
                     </div>
                     <div class="modal-body">
-                        <h4>マイリストを削除します。</h4>
+                        <h4>マイリストを削除します。<br>よろしいですか？</h4>
                         <form name="deletemylist<?=$mylist['mylist_id']?>" method="post" action="/mylist/delete-mylist">
                             @csrf
                             <input type="hidden" name="mylist_id"  value="<?=$mylist['mylist_id']?>">
@@ -90,7 +88,7 @@ $i = 1;
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">いいえ</button>
-                        <a class="btn btn-primary" href="javascript:document.deletemylist<?=$mylist['mylist_id']?>.submit()">はい</a>
+                        <a class="btn btn-danger" href="javascript:document.deletemylist<?=$mylist['mylist_id']?>.submit()">削除</a>
                     </div>
                 </div>
             </div>
@@ -136,26 +134,26 @@ $i = 1;
                             </td>
                             @if($device['device_category']===1)
                                 @if($device['test_device_category']===1)
-                                    <td >
+                                    <td class="align-middle">
                                         <a class="text-lg text-primary" target="_blank" href="/detail-mobile?rental_device_id=<?=$device['rental_device_id']?>" >
                                             <?=$device['device_name']?>
                                         </a>
                                     </td>
                                 @elseif($device['test_device_category']===2)
-                                    <td>
+                                    <td class="align-middle">
                                         <a class="text-lg text-success" target="_blank" href="/detail-pc?rental_device_id=<?=$device['rental_device_id']?>" >
                                             <?=$device['device_name']?>
                                         </a>
                                     </td>
                                 @endif
                             @elseif($device['device_category']===2)
-                                <td>
+                                <td class="align-middle">
                                     <a class="text-lg text-warning" target="_blank" href="/detail-charger?rental_device_id=<?=$device['rental_device_id']?>" >
                                         <?=$device['charger_name']?>
                                     </a>
                                 </td>
                             @endif
-                            <td>
+                            <td class="align-middle">
                             @if($device['status']===1)
                                 @if($user_info['user_id']==$device['user_id'])
                                     <form name='return' method="post" action="/return">
@@ -165,7 +163,7 @@ $i = 1;
                                 @else
                                     <form name='rent-user' method="post" action="/rent-user" target="_blank">
                                         @csrf
-                                        <button type="submit" class="btn btn-outline-dark btn-light btn-block" name="user_id"  value="<?=$device['user_id']?>"><?=$device['name']?><span class="d-md-block d-none">(<?=date('m月d日 G時i分',strtotime($device['rental_datetime']))?>)</span></button>
+                                        <button type="submit" class="btn btn-light btn-outline-dark btn-block" name="user_id"  value="<?=$device['user_id']?>"><?=$device['name']?><span class="d-md-block d-none">(<?=date('m月d日 G時i分',strtotime($device['rental_datetime']))?>)</span></button>
                                     </form>
                                 @endif
 
@@ -176,14 +174,14 @@ $i = 1;
                                 </form>
                             @endif
                             </td>
-                            <td>
+                            <td class="align-middle px-sm-2 px-0">
                                 @php($i= "{$device['rental_device_id']}"."{$mylist['mylist_id']}")
                                 <form name="delete_form<?=$i?>" id="delete_form<?=$i?>" method="post" action="/mylist/delete">
                                     @csrf
                                     <input type="hidden" name="delete_device_id"  value="<?=$device['rental_device_id']?>">
                                     <input type="hidden" name="delete_mylist_id"  value="<?=$mylist['mylist_id']?>">
                                 </form>
-                                <button type="button" data-toggle="modal" data-target="#deleteModal<?=$i?>" class="btn btn-primary btn-user btn-block ">削除</button>
+                                <button type="button" data-toggle="modal" data-target="#deleteModal<?=$i?>" class="btn btn-primary btn-user btn-block px-0 align-middle"><span class="d-lg-inline d-none">削除</span><span class="d-lg-none">x</span></button>
                             </td>
                         </tr>
                         <!--   削除モーダル -->
@@ -210,10 +208,10 @@ $i = 1;
                     @endforeach
                     @if(!in_array("{$mylist['mylist_id']}", $mylist_id))
                         <tr class="font-weight-bold">
-                            <td></td>
-                            <td>登録されている端末はありません</td>
-                            <td></td>
-                            <td></td>
+                            <td class="align-middle"></td>
+                            <td class="align-middle">登録されている端末はありません</td>
+                            <td class="align-middle"></td>
+                            <td class="align-middle"></td>
                         </tr>
                     @endif
                     </tbody>

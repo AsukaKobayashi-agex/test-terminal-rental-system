@@ -32,9 +32,9 @@
 
                 <tbody>
                 <tr class="font-weight-bold" id="noDevice" hidden>
-                    <td></td>
-                    <td>返却可能な端末はありません</td>
-                    <td></td>
+                    <td class="align-middle"></td>
+                    <td class="align-middle">返却可能な端末はありません</td>
+                    <td class="align-middle"></td>
                 </tr>
 
                 @foreach($return_device_list as $device)
@@ -52,7 +52,7 @@
                                 <input type="hidden" form="return_device" name="rental_device_id[]" value="<?=$device['rental_device_id']?>">
                             @endif
                         </td>
-                        <td>
+                        <td class="align-middle">
                         @if($device['device_category']===1)
                             @if($device['test_device_category']===1)
                                     <a class="text-lg text-primary" target="_blank" href="/detail-mobile?rental_device_id=<?=$device['rental_device_id']?>" >
@@ -72,7 +72,7 @@
                                 <span class="text-danger">※返却できません</span>
                             @endif
                         </td>
-                        <td>
+                        <td class="align-middle">
                             <button class="btn btn-primary btn-user btn-block deleteButton">削除</button>
                         </td>
                     </tr>
@@ -88,7 +88,7 @@
                 <a href="#" onclick="window.history.back(); return false;" class="btn btn-secondary btn-block">キャンセル</a>
             </div>
             <div class="col-sm-3 mb-3 mb-sm-0">
-                <button class="btn btn-primary btn-block" data-toggle="modal" data-target="#checkModal" Id="agree">
+                <button class="btn btn-danger btn-block" data-toggle="modal" data-target="#checkModal" Id="agree">
                     確定
                 </button>
             </div>
@@ -109,7 +109,7 @@
             <div class="modal-body">選択したデバイスの返却を確定しますか？</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">キャンセル</button>
-                <a class="btn btn-primary" href="javascript:document.return_device.submit()">はい</a>
+                <a class="btn btn-danger" href="javascript:document.return_device.submit()">はい</a>
             </div>
         </div>
     </div>

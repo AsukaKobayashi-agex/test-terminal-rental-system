@@ -4,7 +4,7 @@ namespace Rental\Http\Requests\Admin\Index;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class IndexChargerRequest extends FormRequest
+class IndexSpRequest extends FormRequest
 {
     protected $_inputs = [];
 
@@ -29,24 +29,27 @@ class IndexChargerRequest extends FormRequest
     public function rules()
     {
         return [
+            'search_id' => 'max:11',
             'search_word' => 'max:100',
-            'search_id' => 'max:11'
+            'os_version' => 'max:50'
         ];
     }
 
     public function attributes()
     {
         return [
+            'search_id' => '検索ID',
             'search_word' => '検索ワード',
-            'search_id' => '検索ID'
+            'os_version' => 'OSバージョン'
         ];
     }
 
     public function messages()
     {
         return [
-            'search_word.max' => '検索ワード : 文字数が多すぎます(最大100文字)',
-            'search_id.max' => '検索文字数が多すぎます(最大11文字)'
+            'search_id.max' => '検索文字数が多すぎます(最大11文字)',
+            'search_word.max' => '検索ワード : 文字数が多すぎます(最大：100文字)',
+            'os_version.max' => 'OSバージョン : 文字数が多すぎます(最大：50文字)'
         ];
     }
 
