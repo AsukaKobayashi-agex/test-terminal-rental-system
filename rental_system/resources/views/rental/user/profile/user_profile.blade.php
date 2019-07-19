@@ -30,12 +30,13 @@
                         <option value="30" {{$user_info['division_id']===30 ? 'selected': null}}>クリエイティブ</option>
                         <option value="40" {{$user_info['division_id']===40 ? 'selected': null}}>Sharing Kyoto</option>
                         <option value="50" {{$user_info['division_id']===50 ? 'selected': null}}>経営本部</option>
+                        <option value="0" {{$user_info['division_id']===0 ? 'selected': null}}>所属なし</option>
                     </select>
                     <select name="group_id" id="group" class="form-control" >
                         <option value="">グループを選択</option>
                         <option class="con" value="1010" {{$user_info['group_id']==1010 ? 'selected': null}} hidden>第1グループ</option>
                         <option class="con" value="1020" {{$user_info['group_id']===1020 ? 'selected': null}} hidden>第2グループ</option>
-                        <option class="con" value="1030" {{$user_info['group_id']===1030 ? 'selected': null}} hidden>事業運営グループ</option>
+                        <option class="con" value="1030" {{$user_info['group_id']===1030 ? 'selected': null}} hidden>事業企画グループ</option>
                         <option class="ss" value="2010" {{$user_info['group_id']===2010 ? 'selected': null}} hidden>第1ソリューショングループ</option>
                         <option class="ss" value="2020" {{$user_info['group_id']===2020 ? 'selected': null}} hidden>第2ソリューショングループ</option>
                         <option class="ss" value="2030" {{$user_info['group_id']===2030 ? 'selected': null}} hidden>事業運営グループ</option>
@@ -46,6 +47,7 @@
                         <option class="mng" value="5010" {{$user_info['group_id']===5010 ? 'selected': null}} hidden>総務・法務グループ</option>
                         <option class="mng" value="5020" {{$user_info['group_id']===5020 ? 'selected': null}} hidden>経営企画・情報システムグループ</option>
                         <option class="mng" value="5030" {{$user_info['group_id']===5030 ? 'selected': null}} hidden>人事・経理グループ</option>
+                        <option value="0" {{$user_info['group_id']==0 ? 'selected': null}}>所属なし</option>
                     </select>
                     <div class="d-block text font-weight-bold text-primary text-uppercase mb-1 p-2">メールアドレス</div>
                     <div class="d-block text-center mb-2">
@@ -57,7 +59,7 @@
         </form>
         <div class="d-flex justify-content-end">
             <a href="/" class="btn btn-secondary btn-user px-4 mx-2">キャンセル</a>
-            <button class="btn btn-primary w-50" data-toggle="modal" data-target="#checkModal" Id="agree">
+            <button class="btn btn-primary w-50" data-toggle="modal" data-target="#checkModal"s>
                 確定
             </button>
         </div>
