@@ -4,14 +4,38 @@ namespace Rental\Models\_common;
 
 class UserData
 {
- public function insertUser($data)
- {
-     $default_time = 1900/1/1;
-     $insert_data = [
+    const TABLE = 'user';
 
-     ];
+    public function getUserAuthData($credentials)
+    {
+        $result = \DB::table(self::TABLE)
+            ->select(
+                'user_id',
+                'name',
+                'password',
+                'address',
+                'division_id',
+                'group_id'
+            )
+            ->where('address', \Arr::get($credentials, 'address'))
+            ->where('password', \Arr::get($credentials, 'password'))
+            ->first();
+        return stdClassToArray($result);
+    }
 
-     $user_id = \DB::table('user')->insertGetId($insert_data);
-     return $user_id;
- }
+    public function getUserAuthDataById($user_id)
+    {
+        $result = \DB::table(self::TABLE)
+            ->select(
+                'user_id',
+                'name',
+                'password',
+                'address',
+                'division_id',
+                'group_id'
+            )
+            ->where('user_id', $user_id)
+            ->first();
+        return stdClassToArray($result);
+    }
 }

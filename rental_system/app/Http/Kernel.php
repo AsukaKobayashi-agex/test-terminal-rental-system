@@ -63,6 +63,10 @@ class Kernel extends HttpKernel
 
         // HTTPS強制
         'force_https' => \MyCommon\Http\Middleware\ForceHttpsAccess::class,
+
+        // user: ログインチェック
+        'user.authed' => \Rental\Http\Middleware\UserAuthed::class,
+        'user.unauthed' => \Rental\Http\Middleware\UserUnAuthed::class,
     ];
 
     /**

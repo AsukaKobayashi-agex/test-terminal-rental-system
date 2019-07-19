@@ -29,7 +29,7 @@ class LoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'email'=> 'required',
+            'address'=> 'required',
             'password'=>'required|min:4'
         ];
     }
@@ -37,7 +37,7 @@ class LoginRequest extends FormRequest
     public function attributes()
     {
         return [
-            'email'=> 'メールアドレス',
+            'address'=> 'メールアドレス',
             'password'=>'パスワード'
         ];
     }
@@ -45,7 +45,7 @@ class LoginRequest extends FormRequest
     public function messages()
     {
         return [
-            'email.required'=> 'メールアドレスを入力してください',
+            'address.required'=> 'メールアドレスを入力してください',
             'password.required'=>'パスワードを入力してください',
             'password.min'=>'パスワードは半角４文字以上です'
         ];
