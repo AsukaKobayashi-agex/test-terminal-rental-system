@@ -24,25 +24,24 @@
                         <form class="user" method="post" action="/sign-up/sign-up-confirm">
                             @csrf
                             <div class="form-group">
-                                    <input type="text" class="form-control form-control-user {{$errors->has('username')? 'alert-danger':null}}" name="username" value="{{ old('username') }}" placeholder="氏名*">
+                                    <input type="text" class="form-control {{$errors->has('username')? 'alert-danger':null}}" name="username" value="{{ old('username') }}" placeholder="氏名*" required>
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control form-control-user {{$errors->has('address')? 'alert-danger':null}}" name="address" value="{{ old('address') }}" placeholder="メールアドレス*">
+                                <input type="email" class="form-control {{$errors->has('address')? 'alert-danger':null}}" name="address" value="{{ old('address') }}" placeholder="メールアドレス*" required>
                             </div>
                             <div class="form-group">
                                 <div class="mb-3 mb-sm-0">
-                                    <select class="form-control mb-3 {{$errors->has('division_id')? 'alert-danger':null}}" name="division_id"  id="division">
-                                        <option class="division" value="">事業部を選択*</option>
+                                    <select class="form-control mb-3 {{$errors->has('division_id')? 'alert-danger':null}}" name="division_id"  id="division" required>
+                                        <option class="division" value="" selected>事業部を選択*</option>
                                         <option class="division" value="10" {{ old('division_id')==10 ? 'selected' : null }}>コンサルティング</option>
                                         <option class="division" value="20" {{ old('division_id')==20 ? 'selected' : null }}>システムソリューション</option>
                                         <option class="division" value="30" {{ old('division_id')==30 ? 'selected' : null }}>クリエイティブ</option>
                                         <option class="division" value="40" {{ old('division_id')==40 ? 'selected' : null }}>Sharing Kyoto</option>
                                         <option class="division" value="50" {{ old('division_id')==50 ? 'selected' : null }}>経営本部</option>
-                                        <option class="division" value="0" {{ old('division_id')==0 ? 'selected' : null }}>所属なし</option>
+                                        <option class="division" value="0" {{ old('division_id')===0 ? 'selected' : null }}>所属なし</option>
                                     </select>
-                                    <select class="form-control {{$errors->has('group_id')? 'alert-danger':null}}" name="group_id" id="group">
+                                    <select class="form-control {{$errors->has('group_id')? 'alert-danger':null}}" name="group_id" id="group" required>
                                         <option value="">グループを選択*</option>
-</option>
                                         <option class="con" value="1010" hidden {{ old('group_id')==1010 ? 'selected' : null }}>第1グループ</option>
                                         <option class="con" value="1020" hidden {{ old('group_id')==1020 ? 'selected' : null }}>第2グループ</option>
                                         <option class="con" value="1030" hidden {{ old('group_id')==1030 ? 'selected' : null }}>事業企画グループ</option>
@@ -56,16 +55,16 @@
                                         <option class="mng" value="5010" hidden {{ old('group_id')==5010 ? 'selected' : null }}>総務・法務グループ</option>
                                         <option class="mng" value="5020" hidden {{ old('group_id')==5020 ? 'selected' : null }}>経営企画・情報システムグループ</option>
                                         <option class="mng" value="5030" hidden {{ old('group_id')==5030 ? 'selected' : null }}>人事・経理グループ</option>
-                                        <option class="con" value="0" hidden {{ old('group_id')==0 ? 'selected' : null }}>所属なし
+                                        <option value="0" {{ old('group_id')===0 ? 'selected' : null }}>所属なし</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-sm-6 mb-3 mb-sm-0">
-                                    <input type="password" class="form-control form-control-user {{$errors->has('password')? 'alert-danger':null}}" id="password" name="password" placeholder="パスワード*(4文字以上)">
+                                    <input type="password" class="form-control {{$errors->has('password')? 'alert-danger':null}}" id="password" name="password" placeholder="パスワード*(4文字以上)" required minlength="4">
                                 </div>
                                 <div class="col-sm-6">
-                                    <input type="password" class="form-control form-control-user {{$errors->has('repeatPassword')? 'alert-danger':null}}" id="repeatPassword" name="repeatPassword" placeholder="パスワードを再入力*">
+                                    <input type="password" class="form-control {{$errors->has('repeatPassword')? 'alert-danger':null}}" id="repeatPassword" name="repeatPassword" placeholder="パスワードを再入力*" required minlength="4">
                                 </div>
                             </div>
                             <div class="form-group">

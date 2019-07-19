@@ -35,10 +35,10 @@
                             <form id='search' method="post" action="#">
                                 @csrf
                                 <div class="col-sm-2 mb-4">
-                                    <input type="number" name="search_id" class="form-control form-control-user" value="{{$search_id}}" placeholder="端末IDを入力" >
+                                    <input type="number" name="search_id" class="form-control" value="{{$search_id}}" placeholder="端末IDを入力" >
                                 </div>
                                 <div class="col-sm-4 mb-3">
-                                    <input type="search" name="search_word" class="form-control form-control-user" value="{{$search_word}}" placeholder="端末名を入力" >
+                                    <input type="search" name="search_word" class="form-control" value="{{$search_word}}" placeholder="端末名を入力" >
                                 </div>
                                 <div class="col-sm-2 mb-3">
                                     <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-fw fa-search"></i>

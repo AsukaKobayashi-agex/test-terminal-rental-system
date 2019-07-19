@@ -7,7 +7,7 @@ class GetUserInfo
 {
     public function getUserInfo($param){
         $bind_params=[
-            'user_id' => $param['user_id']
+            'user_id' => \Arr::get($param, 'user_id', 0)
         ];
 
         $sql = <<< End_of_sql
@@ -22,8 +22,8 @@ where user_id = :user_id;
 
 End_of_sql;
 
-        $user_info = stdClassToArray(\DB::select($sql, $bind_params));
+        $user_info = stdClassToArray(\DB::selectOne($sql, $bind_params));
 
-        return $user_info[0];
+        return $user_info;
     }
 }

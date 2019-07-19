@@ -39,20 +39,20 @@
                                 <form name='search' method="post" action="#">
                                     @csrf
                                     <div class="col-lg-4 mb-3 mb-lg-0">
-                                        <input type="search" name="search_word" class="form-control form-control-user" value="{{$search_word}}" placeholder="端末名を入力" >
+                                        <input type="search" name="search_word" class="form-control" value="{{$search_word}}" placeholder="端末名を入力" >
                                     </div>
                                     <div class="col-lg-2 mb-3 mb-lg-0">
-                                        <select name="os" class="form-control form-control-user">
+                                        <select name="os" class="form-control">
                                             <option value="" selected>OS</option>
                                             <option value="3" {{$os==="3" ? 'selected': null}}>Windows</option>
                                             <option value="4" {{$os==="4" ? 'selected': null}}>Mac OS</option>
                                         </select>
                                     </div>
                                     <div class="col-lg-2 mb-3 mb-lg-0">
-                                        <input type="number" name="os_version" class="form-control form-control-user" value="{{$os_version}}" placeholder="OSバージョン" >
+                                        <input type="number" name="os_version" class="form-control" value="{{$os_version}}" placeholder="OSバージョン" >
                                     </div>
                                     <div class="col-lg-2 mb-3 mb-lg-0">
-                                        <select name="status" class="form-control form-control-user">
+                                        <select name="status" class="form-control">
                                         <option value="" >ステータス</option>
                                         <option value="0" {{$status==="0" ? 'selected': null}}>貸出可</option>
                                         <option value="1"{{$status==="1" ? 'selected': null}}>貸出中</option>

@@ -19,6 +19,8 @@
             </ul>
         @endif
         <div>
+            <form method="post" name="rental_device" id="rental_device" action="/rental/rental">
+                @csrf
             <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0" style="table-layout:fixed;">
                 <thead>
                     <tr>
@@ -78,11 +80,9 @@
                 @endforeach
                 </tbody>
             </table>
-        </div>
-        <div class="d-flex d-inline">
-            <form class="col-sm-6 d-flex d-inline" method="post" name="rental_device" id="rental_device" action="/rental/rental">
-                @csrf
             </form>
+        </div>
+        <div class="d-flex d-inline justify-content-end">
             <div class="col-sm-3 mb-3 mb-sm-0">
                 <a href="#" onclick="window.history.back(); return false;" class="btn btn-secondary btn-block">キャンセル</a>
             </div>

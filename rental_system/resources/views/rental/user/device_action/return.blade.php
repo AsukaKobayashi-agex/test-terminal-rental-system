@@ -20,70 +20,71 @@
             </ul>
         @endif
         <div>
-            <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0" style="table-layout:fixed;">
-                <thead>
-                    <tr>
-                        <th width=40px class="align-middle text-center">
-                        </th>
-                        <th>端末名</th>
-                        <th width=40%></th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                <tr class="font-weight-bold" id="noDevice" hidden>
-                    <td class="align-middle"></td>
-                    <td class="align-middle">返却可能な端末はありません</td>
-                    <td class="align-middle"></td>
-                </tr>
-
-                @foreach($return_device_list as $device)
-                    <tr  class="font-weight-bold {{$device['status']===1 && $device['user_id']=== $user_info['user_id']  ? null:'table-active'}}">
-                        <td class="text-center align-middle px-1">
-                            <div class="text-lg-center font-weight-bold">
-                                @if(!isset($i))
-                                @php($i = 1)
-                                @else
-                                @php($i++)
-                                @endif
-                                <?=$i?>
-                            </div>
-                            @if($device['status']===1 && $device['user_id']=== $user_info['user_id'])
-                                <input type="hidden" form="return_device" name="rental_device_id[]" value="<?=$device['rental_device_id']?>">
-                            @endif
-                        </td>
-                        <td class="align-middle">
-                        @if($device['device_category']===1)
-                            @if($device['test_device_category']===1)
-                                    <a class="text-lg text-primary" target="_blank" href="/detail-mobile?rental_device_id=<?=$device['rental_device_id']?>" >
-                                        <?=$device['device_name']?>
-                                    </a>
-                            @elseif($device['test_device_category']===2)
-                                    <a class="text-lg text-success" target="_blank" href="/detail-pc?rental_device_id=<?=$device['rental_device_id']?>" >
-                                        <?=$device['device_name']?>
-                                    </a>
-                            @endif
-                        @elseif($device['device_category']===2)
-                                <a class="text-lg text-warning" target="_blank" href="/detail-charger?rental_device_id=<?=$device['rental_device_id']?>" >
-                                    <?=$device['charger_name']?>
-                                </a>
-                        @endif
-                            @if(!($device['status']===1 && $device['user_id'] === $user_info['user_id']))
-                                <span class="text-danger">※返却できません</span>
-                            @endif
-                        </td>
-                        <td class="align-middle">
-                            <button class="btn btn-primary btn-user btn-block deleteButton">削除</button>
-                        </td>
-                    </tr>
-                @endforeach
-                </tbody>
-            </table>
-        </div>
-        <div class="d-flex d-inline">
-            <form class="col-sm-6 d-flex d-inline" method="post" name="return_device" id="return_device" action="/return/return">
+            <form method="post" name="return_device" id="return_device" action="/return/return">
                 @csrf
+
+                <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0" style="table-layout:fixed;">
+                    <thead>
+                        <tr>
+                            <th width=40px class="align-middle text-center">
+                            </th>
+                            <th>端末名</th>
+                            <th width=40%></th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr class="font-weight-bold" id="noDevice" hidden>
+                        <td class="align-middle"></td>
+                        <td class="align-middle">返却可能な端末はありません</td>
+                        <td class="align-middle"></td>
+                    </tr>
+
+                    @foreach($return_device_list as $device)
+                        <tr  class="font-weight-bold {{$device['status']===1 && $device['user_id']=== $user_info['user_id']  ? null:'table-active'}}">
+                            <td class="text-center align-middle px-1">
+                                <div class="text-lg-center font-weight-bold">
+                                    @if(!isset($i))
+                                    @php($i = 1)
+                                    @else
+                                    @php($i++)
+                                    @endif
+                                    <?=$i?>
+                                </div>
+                                @if($device['status']===1 && $device['user_id']=== $user_info['user_id'])
+                                    <input type="hidden" form="return_device" name="rental_device_id[]" value="<?=$device['rental_device_id']?>">
+                                @endif
+                            </td>
+                            <td class="align-middle">
+                            @if($device['device_category']===1)
+                                @if($device['test_device_category']===1)
+                                        <a class="text-lg text-primary" target="_blank" href="/detail-mobile?rental_device_id=<?=$device['rental_device_id']?>" >
+                                            <?=$device['device_name']?>
+                                        </a>
+                                @elseif($device['test_device_category']===2)
+                                        <a class="text-lg text-success" target="_blank" href="/detail-pc?rental_device_id=<?=$device['rental_device_id']?>" >
+                                            <?=$device['device_name']?>
+                                        </a>
+                                @endif
+                            @elseif($device['device_category']===2)
+                                    <a class="text-lg text-warning" target="_blank" href="/detail-charger?rental_device_id=<?=$device['rental_device_id']?>" >
+                                        <?=$device['charger_name']?>
+                                    </a>
+                            @endif
+                                @if(!($device['status']===1 && $device['user_id'] === $user_info['user_id']))
+                                    <span class="text-danger">※返却できません</span>
+                                @endif
+                            </td>
+                            <td class="align-middle">
+                                <button class="btn btn-primary btn-user btn-block deleteButton">削除</button>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
             </form>
+        </div>
+        <div class="d-flex d-inline justify-content-end">
             <div class="col-sm-3 mb-3 mb-sm-0">
                 <a href="#" onclick="window.history.back(); return false;" class="btn btn-secondary btn-block">キャンセル</a>
             </div>

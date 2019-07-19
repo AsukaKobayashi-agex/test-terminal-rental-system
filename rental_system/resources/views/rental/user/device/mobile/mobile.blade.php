@@ -39,24 +39,24 @@
                                 <form name='search' method="post" action="#">
                                     @csrf
                                     <div class="col-lg-2 px-1 mb-3">
-                                        <input type="search" name="search_word" class="form-control form-control-user" value="{{$search_word}}" placeholder="端末名を入力" >
+                                        <input type="search" name="search_word" class="form-control" value="{{$search_word}}" placeholder="端末名を入力" >
                                     </div>
                                     <div class="col-lg-2 px-1 mb-3">
-                                        <select name="type" class="form-control form-control-user">
+                                        <select name="type" class="form-control">
                                             <option value="">カテゴリ</option>
                                             <option value="1" {{$type==="1" ? 'selected': null}}>スマホ</option>
                                             <option value="2" {{$type==="2" ? 'selected': null}}>タブレット</option>
                                         </select>
                                     </div>
                                     <div class="col-lg-2 px-1 mb-3">
-                                        <select name="os" class="form-control form-control-user">
+                                        <select name="os" class="form-control">
                                             <option value="">OS</option>
                                             <option value="1" {{($os==="1") ? 'selected': null}}>Android</option>
                                             <option value="2" {{($os==="2") ? 'selected': null}}>iOS</option>
                                         </select>
                                     </div>
                                     <div class="col-lg-2 px-1 mb-3">
-                                        <input type="number" name="os_version" class="form-control form-control-user" value="{{$os_version}}" placeholder="OSバージョン" >
+                                        <input type="number" name="os_version" class="form-control" value="{{$os_version}}" placeholder="OSバージョン" >
                                     </div>
 
                                     <div class="col-lg-2 px-1 mb-3">
@@ -77,7 +77,7 @@
                                     <div class="col-lg-8 px-1">
                                     </div>
                                     <div class="col-lg-2 px-1">
-                                        <select name="status" class="form-control form-control-user">
+                                        <select name="status" class="form-control">
                                             <option value="" >ステータス</option>
                                             <option value="0" {{$status==="0" ? 'selected': null}}>貸出可</option>
                                             <option value="1"{{$status==="1" ? 'selected': null}}>貸出中</option>
