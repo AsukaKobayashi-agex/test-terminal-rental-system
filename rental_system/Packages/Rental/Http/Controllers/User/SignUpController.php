@@ -29,6 +29,11 @@ class SignUpController extends Controller
     {
         $param = $request->all();
         $service->createNewAccount($param);
+        if (!\Auth::guard('user')->attempt($param)) {
+            // ログイン失敗
+            return redirect()->back();
+        }
+        // ログイン成功
         return redirect('/')->with('flash_message','アカウントが作成されました');
     }
 }

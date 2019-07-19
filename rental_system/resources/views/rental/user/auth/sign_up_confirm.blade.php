@@ -75,9 +75,6 @@
                             </button>
                         </form>
                         <hr>
-                        <div class="text-center">
-                            <a class="small" href="/login">既にアカウントを持っている</a>
-                        </div>
                     </div>
                     @component('rental.user.common.footer')
                     @endcomponent

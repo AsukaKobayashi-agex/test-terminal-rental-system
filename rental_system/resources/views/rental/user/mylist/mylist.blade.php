@@ -156,7 +156,7 @@ $i = 1;
                             @endif
                             <td class="align-middle">
                             @if($device['status']===1)
-                                @if($user_info['user_id']==$device['user_id'])
+                                @if(isset($user_info) && $user_info['user_id']==$device['user_id'])
                                     <form name='return' method="post" action="/return">
                                         @csrf
                                         <button type="submit" class="btn btn-outline-light bg-danger btn-block" name="rental_device_id[]"  value="<?=$device['rental_device_id']?>">返却</button>

@@ -16,7 +16,9 @@ class RentUserService
     public function getData($param)
     {
         $data = [];
-        $data['user_info'] = $this->_model->getUserInfo($param);
+        if(\Auth::guard('user')->check()){
+            $data['user_info'] = $this->_model->getUserInfo($param);
+}
         $data['rent_user_info'] = $this->_model->getRentUserInfo($param);
         return $data;
     }

@@ -47,7 +47,9 @@
                                         <option value="" >ステータス</option>
                                         <option value="0" {{$status==="0" ? 'selected': null}}>貸出可</option>
                                         <option value="1"{{$status==="1" ? 'selected': null}}>貸出中</option>
-                                        <option value="user=<?=$user_info['user_id']?>" {{$status=="user={$user_info['user_id']}" ? 'selected': null}}>返却</option>
+                                        @if(\Auth::guard('user')->check())
+                                            <option value="user=<?=$user_info['user_id']?>" {{$status=="user={$user_info['user_id']}" ? 'selected': null}}>返却</option>
+                                        @endif
                                     </select>
                                 </div>
                                 <div class="col-sm-2 mb-3 mb-sm-0">
@@ -150,7 +152,7 @@
                             @endif
                             <td  class="text-center align-middle">
                             @if($device['status']===1)
-                                @if($user_info['user_id']==$device['user_id'])
+                                @if(isset($user_info) && $user_info['user_id']==$device['user_id'])
                                     <form name='return' method="post" action="/return">
                                         @csrf
                                         <button type="submit" class="btn btn-danger btn-block" name="rental_device_id[]"  value="<?=$device['rental_device_id']?>">返却</button>

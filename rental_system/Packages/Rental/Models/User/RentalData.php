@@ -15,7 +15,7 @@ class RentalData
 
 
     public function getUserInfo($param){
-        $param['user_id'] = 1;
+        $param['user_id'] = \Auth::guard('user')->id();
         $user_info = $this -> _get_user_info -> getUserInfo($param);
 
         return $user_info;
@@ -75,7 +75,7 @@ Add_sql;
                 $now = nowDateTime();
                 $data = [
                     'status'=> 1,
-                    'user_id' => 1,
+                    'user_id' => \Auth::guard('user')->id(),
                     'rental_datetime' => $now,
                     'scheduled_return_datetime' => date("Y-m-d 23:59:59",strtotime($now)),
                 ];
@@ -102,7 +102,7 @@ Add_sql;
         $now = nowDateTime();
         $insert_data = [
             'rental_device_id'=>$device,
-            'user_id' => $data['user_id'],
+            'user_id' => \Auth::guard('user')->id(),
             'action_type' => 1,
             'registration_datetime' => $now,
         ];

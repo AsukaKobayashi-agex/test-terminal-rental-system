@@ -11,7 +11,7 @@
             <div class="modal-body">ログアウトすると現在の進行状況は失われます。</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">キャンセル</button>
-                <a class="btn btn-primary" href="/login">ログアウト</a>
+                <a class="btn btn-primary" href="/logout">ログアウト</a>
             </div>
         </div>
     </div>

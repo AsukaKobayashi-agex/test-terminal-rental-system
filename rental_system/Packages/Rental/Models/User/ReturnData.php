@@ -15,7 +15,7 @@ class ReturnData
 
 
     public function getUserInfo($param){
-        $param['user_id'] = 1;
+        $param['user_id'] = \Auth::guard('user')->id();
         $user_info = $this -> _get_user_info -> getUserInfo($param);
 
         return $user_info;
@@ -27,7 +27,7 @@ class ReturnData
         // バインド値設定
         $bind_params = [
             'archive_flag' => 0,
-            'user_id' => 1,
+            'user_id' => \Auth::guard('user')->id(),
         ];
 
         $sql = <<< End_of_sql
@@ -97,12 +97,12 @@ Add_sql;
         return true;
     }
 
-    public function createHistory($device,$data)
+    public function createHistory($device)
     {
         $now = nowDateTime();
         $insert_data = [
             'rental_device_id'=>$device,
-            'user_id' => $data['user_id'],
+            'user_id' => \Auth::guard('user')->id(),
             'action_type' => 2,
             'registration_datetime' => $now,
         ];

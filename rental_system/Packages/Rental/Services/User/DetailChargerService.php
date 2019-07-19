@@ -16,7 +16,9 @@ class DetailChargerService
     public function getData($param)
     {
         $data = [];
-        $data['user_info'] = $this->_model->getUserInfo($param);
+        if(\Auth::guard('user')->check()){
+            $data['user_info'] = $this->_model->getUserInfo($param);
+}
         $data['detail'] = $this->_model->getAllDetailCharger($param);
         return $data;
     }

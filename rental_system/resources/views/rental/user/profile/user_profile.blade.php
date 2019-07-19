@@ -20,7 +20,6 @@
             @csrf
             <div class="row">
                 <div class="col-lg-12 mb-4">
-                    <input type="hidden" name="user_id" value="<?=$user_info['user_id']?>">
                     <div class="d-block text font-weight-bold text-primary text-uppercase mb-1 p-2">ユーザーネーム</div>
                     <input type="text" class="form-control {{$errors->has('name')? 'alert-danger':null}}" name="name" value="<?=$user_info['name']?>" placeholder="氏名">
                     <div class="d-block text font-weight-bold text-primary text-uppercase mb-1 p-2">所属</div>

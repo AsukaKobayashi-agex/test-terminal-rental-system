@@ -28,20 +28,10 @@
                     <form class="user" action="{{ route('user.login') }}" method="post">
                         @csrf
                         <div class="form-group">
-<<<<<<< HEAD
-                          <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="E-mailアドレスを入力">
-=======
-                          <input type="email" name="address" class="form-control" id="email" aria-describedby="emailHelp" placeholder="E-mailアドレスを入力">
->>>>>>> 1fa25d553a600f9f0ccd1f0b12259a15ac22b9ec
+                          <input type="email" name="address" class="form-control" id="email" aria-describedby="emailHelp" placeholder="メールアドレスを入力">
                         </div>
                         <div class="form-group">
                           <input type="password" name="password" class="form-control" id="password" placeholder="パスワード">
-                        </div>
-                        <div class="form-group">
-                          <div class="custom-control custom-checkbox small">
-                            <input type="checkbox" class="custom-control-input" id="customCheck">
-                            <label class="custom-control-label" for="customCheck">ログイン情報を記憶する</label>
-                          </div>
                         </div>
                         <input type="submit" value="ログイン" class="btn btn-primary btn-user btn-block" >
                         <hr>

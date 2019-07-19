@@ -22,7 +22,7 @@ class LoginController extends Controller
     public function postLogin(LoginRequest $request)
     {
         $param = $request->all();
-        if (!\AUth::guard('user')->attempt($param)) {
+        if (!\Auth::guard('user')->attempt($param)) {
             // ログイン失敗
             return redirect()->back();
         }

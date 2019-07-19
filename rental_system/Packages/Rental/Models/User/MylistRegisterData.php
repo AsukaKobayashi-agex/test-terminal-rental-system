@@ -15,7 +15,7 @@ class MylistRegisterData
 
 
     public function getUserInfo($param){
-        $param['user_id'] = 1;
+        $param['user_id'] = \Auth::guard('user')->id();
         $user_info = $this -> _get_user_info -> getUserInfo($param);
 
         return $user_info;
@@ -27,7 +27,7 @@ class MylistRegisterData
     {
         // バインド値設定
         $bind_params = [
-            'user_id' => 1
+            'user_id' => \Auth::guard('user')->id()
         ];
 
         $sql = <<< End_of_sql
@@ -95,7 +95,7 @@ Add_sql;
                 // 新規マイリストを作成
                 $data=[
                     'mylist_name' => $param['mylist_name'],
-                    'user_id' => 1
+                    'user_id' => \Auth::guard('user')->id()
                 ];
                 $mylist_id = $this->createNewMylist($data);
                 foreach ($param['rental_device_id'] as $device){
@@ -131,7 +131,7 @@ Add_sql;
         $now = nowDateTime();
         $insert_data = [
             'mylist_name' => $data['mylist_name'],
-            'user_id' => $data['user_id'],
+            'user_id' => \Auth::guard('user')->id(),
             'registration_date' => $now,
             'update_date' => $now
         ];
