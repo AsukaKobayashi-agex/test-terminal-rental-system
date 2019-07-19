@@ -43,7 +43,6 @@
             <div class="sidebar-brand-text mx-3">管理者画面</div>
         </a>
 
-        <!-- Divider -->
         <hr class="sidebar-divider">
 
 
