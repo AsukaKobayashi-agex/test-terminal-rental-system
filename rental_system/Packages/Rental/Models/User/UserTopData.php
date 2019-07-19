@@ -15,8 +15,8 @@ class UserTopData
 
 
     public function getUserInfo($param){
-        $param['user_id'] = 1;
-        $user_info = $this -> _get_user_info -> getUserInfo($param);
+        $param['user_id'] = \Auth::guard('user')->id();
+        $user_info = $this->_get_user_info->getUserInfo($param);
 
         return $user_info;
     }

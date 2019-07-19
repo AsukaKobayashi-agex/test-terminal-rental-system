@@ -176,6 +176,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         Rental\Providers\ValidatorServiceProvider::class,
+        Rental\Providers\UserAuthServiceProvider::class,
     ],
 
     /*

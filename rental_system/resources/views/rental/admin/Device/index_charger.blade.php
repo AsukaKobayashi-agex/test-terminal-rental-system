@@ -7,6 +7,12 @@
     $userid = "1";
     ?>
 
+    @if (session('success'))
+        <div class="alert alert-success text-center">
+            {{ session('success') }}
+        </div>
+    @endif
+
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">
@@ -82,7 +88,7 @@
                                 <?=$device['rental_device_id']?>
                             </td>
                             <td>
-                                <a class="text-lg text-warning" target="_blank" href="/detail-charger?rental_device_id=<?=$device['rental_device_id']?>" ><?=$device['charger_name']?></a>
+                                <a class="text-lg text-warning" href="#?rental_device_id=<?=$device['rental_device_id']?>" ><?=$device['charger_name']?></a>
                             </td>
                            <td>
                                @if($device['charger_type']==1)

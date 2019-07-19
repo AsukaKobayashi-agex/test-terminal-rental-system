@@ -28,7 +28,11 @@
                     <form class="user" action="{{ route('user.login') }}" method="post">
                         @csrf
                         <div class="form-group">
+<<<<<<< HEAD
                           <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="E-mailアドレスを入力">
+=======
+                          <input type="email" name="address" class="form-control" id="email" aria-describedby="emailHelp" placeholder="E-mailアドレスを入力">
+>>>>>>> 1fa25d553a600f9f0ccd1f0b12259a15ac22b9ec
                         </div>
                         <div class="form-group">
                           <input type="password" name="password" class="form-control" id="password" placeholder="パスワード">

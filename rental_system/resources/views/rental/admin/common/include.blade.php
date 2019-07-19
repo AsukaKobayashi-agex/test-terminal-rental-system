@@ -43,7 +43,6 @@
             <div class="sidebar-brand-text mx-3">管理者画面</div>
         </a>
 
-        <!-- Divider -->
         <hr class="sidebar-divider">
 
 
@@ -185,8 +184,11 @@
             <!-- End of Topbar -->
 
             <!-- Begin Page Content -->
-            @section('content')
-            @show
+            <div class="container-fluid">
+                @section('content')
+                @show
+            </div>
+
             <!-- /.container-fluid -->
 
         </div>

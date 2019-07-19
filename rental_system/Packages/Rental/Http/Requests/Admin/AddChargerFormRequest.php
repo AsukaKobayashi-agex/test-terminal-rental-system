@@ -1,10 +1,10 @@
 <?php
 
-namespace Rental\Http\Requests\User;
+namespace Rental\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class LoginRequest extends FormRequest
+class AddChargerFromRequest extends FormRequest
 {
     protected $_inputs = [];
 
@@ -14,7 +14,7 @@ class LoginRequest extends FormRequest
             return $this->_inputs;
         }
 
-        $inputs = parent::all();
+        $inputs = $this->old(null, []) + parent::all();
 
         // Format
         $this->_inputs = $this->_format($inputs);
@@ -28,27 +28,17 @@ class LoginRequest extends FormRequest
 
     public function rules()
     {
-        return [
-            'address'=> 'required',
-            'password'=>'required|min:4'
-        ];
+        return [];
     }
 
     public function attributes()
     {
-        return [
-            'address'=> 'メールアドレス',
-            'password'=>'パスワード'
-        ];
+        return [];
     }
 
     public function messages()
     {
-        return [
-            'address.required'=> 'メールアドレスを入力してください',
-            'password.required'=>'パスワードを入力してください',
-            'password.min'=>'パスワードは半角４文字以上です'
-        ];
+        return [];
     }
 
     // ----------------------------------------------------
