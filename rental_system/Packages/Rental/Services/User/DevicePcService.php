@@ -16,7 +16,9 @@ class DevicePcService
     public function getData($param)
     {
         $data = [];
-        $data['user_info'] = $this->_model->getUserInfo($param);
+        if(\Auth::guard('user')->check()){
+            $data['user_info'] = $this->_model->getUserInfo($param);
+}
         $data['pc_device_list'] = $this->_model->getAllDevicePc($param);
         return $data;
     }

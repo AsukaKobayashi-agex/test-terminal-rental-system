@@ -24,15 +24,15 @@
 
 
     <!-- Nav Item - Pages Collapse Menu -->
-
-    <li {!! (Request::is('mylist') ? 'class="nav-item active"' : 'class="nav-item"') !!}>
-        <a class="nav-link" href="/mylist">
-            <i class="fas fa-fw fa-list-alt"></i>
-            <span>マイリスト</span>
-        </a>
-    </li>
-    <hr class="sidebar-divider d-none d-md-block">
-
+    @if(\Auth::guard('user')->check())
+        <li {!! (Request::is('mylist') ? 'class="nav-item active"' : 'class="nav-item"') !!}>
+            <a class="nav-link" href="/mylist">
+                <i class="fas fa-fw fa-list-alt"></i>
+                <span>マイリスト</span>
+            </a>
+        </li>
+        <hr class="sidebar-divider d-none d-md-block">
+    @endif
     <div class="sidebar-heading">
         カテゴリ別
     </div>

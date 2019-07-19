@@ -15,7 +15,7 @@ class UserProfileData
 
 
     public function getUserInfo($param){
-        $param['user_id'] = 1;
+        $param['user_id'] = \Auth::guard('user')->id();
         $user_info = $this -> _get_user_info -> getUserInfo($param);
 
         return $user_info;
@@ -29,7 +29,7 @@ class UserProfileData
             'address' => $param['address']
         ];
 
-        \DB::table('user')->where('user_id', $param['user_id'])->update($update_data);
+        \DB::table('user')->where('user_id', \Auth::guard('user')->id())->update($update_data);
 
         return true;
     }

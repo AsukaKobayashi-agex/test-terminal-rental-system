@@ -15,6 +15,9 @@
 // 管理画面
 //==============================================================
 Route::group(['prefix' => 'admin', 'middleware' => ['force_https', /*'admin.authed'*/]], function() {
+
+    //一覧画面
+
     // TOPページ(端末一覧)
     Route::match(['get','post'],'/index_all', 'Admin\Index\IndexAllController@view');
 
@@ -24,16 +27,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['force_https', /*'admin.auth
     //一覧画面（PC）
     Route::match(['get','post'],'/index_pc', 'Admin\Index\IndexPcController@view');
 
-    //一覧（充電器）
+    //一覧画面（充電器）
     Route::match(['get','post'],'/index_charger', 'Admin\Index\IndexChargerController@view');
 
-    //端末詳細ページ
-    Route::get('/information','Admin\InformationController@view');
 
-    //Loginページ
-    Route::get('/login','Admin\LoginController@login');
-    Route::get('/forgot-password','Admin\LoginController@forgot_password');
-    Route::get('/register','Admin\LoginController@register');
+//-----------------------------------------------------------------------------------------------
+
+    //追加画面
 
     // 追加画面（スマホ）
     Route::get('/add_sp','Admin\AddSpController@form');
@@ -47,17 +47,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['force_https', /*'admin.auth
     Route::get('/add_charger', 'Admin\AddChargerController@form');
     Route::post('/add_charger/action', 'Admin\AddChargerController@action');
 
+//-----------------------------------------------------------------------------------------------
 
-
-    //端末編集画面
-    Route::get('/edit','Admin\EditController@view');
-
-    Route::get('/edit_charger','Admin\Edit\EditChargerController@view');
-
-    Route::get('/contract_plan','Admin\Contract_planController@view');
-    Route::get('/os_prevention','Admin\OS_preventionController@view');
-    Route::get('/remarks','Admin\RemarksController@view');
-
+    
 });
 
 //==============================================================
@@ -75,14 +67,15 @@ Route::group(['middleware' => ['force_https']], function () {
             'uses' => 'User\LoginController@postLogin',
             'as' => 'user.login'
         ]);
+
+        Route::get('/sign-up', 'User\SignUpController@view');
+        Route::post('/sign-up/sign-up', 'User\SignUpController@sign_up');
+        Route::match(['get','post'],'/sign-up/sign-up-confirm', 'User\SignUpController@sign_up_confirm');
     });
 
     // ログインならアクセス出来る画面
     Route::group(['middleware' => ['user.authed']], function () {
 
-        Route::get('/sign-up', 'User\SignUpController@view');
-        Route::post('/sign-up/sign-up', 'User\SignUpController@sign_up');
-        Route::match(['get','post'],'/sign-up/sign-up-confirm', 'User\SignUpController@sign_up_confirm');
 
         Route::match(['get','post'],'/mylist', [
             'uses'=>'User\MylistController@mylist',
@@ -92,22 +85,6 @@ Route::group(['middleware' => ['force_https']], function () {
         Route::post('/mylist/rename', 'User\MylistController@rename');
         Route::post('/mylist/delete-mylist', 'User\MylistController@delete_mylist');
 
-
-        Route::match(['get','post'],'/detail-mobile', 'User\DetailMobileController@detail_mobile');
-
-        Route::match(['get','post'],'/detail-pc', 'User\DetailPcController@detail_pc');
-
-        Route::match(['get','post'],'/detail-charger', 'User\DetailChargerController@detail_charger');
-
-        Route::get('help/users-guide', 'User\UsersGuideController@users_guide');
-
-        Route::match(['get','post'],'/pc', 'User\DevicePcController@pc');
-
-        Route::match(['get','post'],'/charger', 'User\DeviceChargerController@charger');
-
-        Route::match(['get','post'],'/mobile', 'User\DeviceMobileController@mobile');
-
-        Route::match(['get','post'],'/rent-user', 'User\RentUserController@rent_user');
 
         Route::match(['get','post'],'/rental', 'User\RentalController@view');
         Route::post('/rental/rental', 'User\RentalController@rental');
@@ -121,11 +98,32 @@ Route::group(['middleware' => ['force_https']], function () {
         Route::match(['get','post'],'/mylist-register', 'User\MylistRegisterController@mylist_register');
         Route::post('/mylist-register/register', 'User\MylistRegisterController@register');
 
+        Route::get('/logout', 'User\LogoutController@logout');
+
     });
 
     // ログイン・ログアウトに関わらずアクセスできる画面
         // TOPページ
         Route::match(['get','post'],'/', 'User\UserTopController@index');
+
+
+    Route::match(['get','post'],'/detail-mobile', 'User\DetailMobileController@detail_mobile');
+
+    Route::match(['get','post'],'/detail-pc', 'User\DetailPcController@detail_pc');
+
+    Route::match(['get','post'],'/detail-charger', 'User\DetailChargerController@detail_charger');
+
+    Route::get('help/users-guide', 'User\UsersGuideController@users_guide');
+
+    Route::match(['get','post'],'/pc', 'User\DevicePcController@pc');
+
+    Route::match(['get','post'],'/charger', 'User\DeviceChargerController@charger');
+
+    Route::match(['get','post'],'/mobile', 'User\DeviceMobileController@mobile');
+
+
+    Route::match(['get','post'],'/rent-user', 'User\RentUserController@rent_user');
+
 });
 
 
