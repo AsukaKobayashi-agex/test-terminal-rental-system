@@ -47,6 +47,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['force_https', /*'admin.auth
     Route::get('/add_charger', 'Admin\AddChargerController@form');
     Route::post('/add_charger/action', 'Admin\AddChargerController@action');
 
+//-----------------------------------------------------------------------------------------------
+
+    
+});
 
 //==============================================================
 // ユーザー画面
