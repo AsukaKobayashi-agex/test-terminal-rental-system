@@ -14,42 +14,48 @@
 //==============================================================
 // 管理画面
 //==============================================================
-Route::group(['prefix' => 'admin', 'middleware' => ['force_https', /*'admin.authed'*/]], function() {
+Route::group(['prefix' => 'admin', 'middleware' => ['force_https']], function() {
 
-    //一覧画面
+    Route::group(['middleware' => ['admin.unauthed']], function () {
+        Route::get('login', 'Admin\Login\LoginController@form');
+        Route::post('login', 'Admin\Login\LoginController@login');
+    });
 
-    // TOPページ(端末一覧)
-    Route::match(['get','post'],'/index_all', 'Admin\Index\IndexAllController@view');
+    Route::group(['middleware' => ['admin.authed']], function () {
 
-    //一覧画面（スマホ）
-    Route::match(['get','post'],'/index_sp', 'Admin\Index\IndexSpController@view');
+        //一覧画面
 
-    //一覧画面（PC）
-    Route::match(['get','post'],'/index_pc', 'Admin\Index\IndexPcController@view');
+        // TOPページ(端末一覧)
+        Route::match(['get','post'],'/index_all', 'Admin\Index\IndexAllController@view');
 
-    //一覧画面（充電器）
-    Route::match(['get','post'],'/index_charger', 'Admin\Index\IndexChargerController@view');
+        //一覧画面（スマホ）
+        Route::match(['get','post'],'/index_sp', 'Admin\Index\IndexSpController@view');
 
+        //一覧画面（PC）
+        Route::match(['get','post'],'/index_pc', 'Admin\Index\IndexPcController@view');
 
-//-----------------------------------------------------------------------------------------------
+        //一覧画面（充電器）
+        Route::match(['get','post'],'/index_charger', 'Admin\Index\IndexChargerController@view');
 
-    //追加画面
+        //-----------------------------------------------------------------------------------------------
 
-    // 追加画面（スマホ）
-    Route::get('/add_sp','Admin\AddSpController@form');
-    Route::post('/add_sp/action','Admin\AddSpController@action');
+        //追加画面
 
-    // 追加画面（PC）
-    Route::get('/add_pc', 'Admin\AddPcController@form');
-    Route::post('/add_pc/action','Admin\AddPcController@action');
+        // 追加画面（スマホ）
+        Route::get('/add_sp','Admin\AddSpController@form');
+        Route::post('/add_sp/action','Admin\AddSpController@action');
 
-    // 追加画面（充電器）
-    Route::get('/add_charger', 'Admin\AddChargerController@form');
-    Route::post('/add_charger/action', 'Admin\AddChargerController@action');
+        // 追加画面（PC）
+        Route::get('/add_pc', 'Admin\AddPcController@form');
+        Route::post('/add_pc/action','Admin\AddPcController@action');
 
-//-----------------------------------------------------------------------------------------------
+        // 追加画面（充電器）
+        Route::get('/add_charger', 'Admin\AddChargerController@form');
+        Route::post('/add_charger/action', 'Admin\AddChargerController@action');
 
-    
+        //-----------------------------------------------------------------------------------------------
+
+    });
 });
 
 //==============================================================

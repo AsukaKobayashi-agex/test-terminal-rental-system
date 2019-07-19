@@ -67,6 +67,9 @@ class Kernel extends HttpKernel
         // user: ログインチェック
         'user.authed' => \Rental\Http\Middleware\UserAuthed::class,
         'user.unauthed' => \Rental\Http\Middleware\UserUnAuthed::class,
+        // admin: ログインチェック
+        'admin.authed' => \Rental\Http\Middleware\AdminAuthed::class,
+        'admin.unauthed' => \Rental\Http\Middleware\AdminUnAuthed::class,
     ];
 
     /**
