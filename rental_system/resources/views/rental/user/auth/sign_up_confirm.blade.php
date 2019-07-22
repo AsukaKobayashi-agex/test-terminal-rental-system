@@ -26,17 +26,17 @@
                             <div class="form-group">
                                     <input type="hidden" name="username" value="<?=$input['username']?>">
                                     <label>氏名：</label>
-                                    <div class="h5 text-center"><?=$input['username']?></div>
+                                    <div class="h5 text-left w-75 mx-auto mb-3"><?=$input['username']?></div>
                             </div>
                             <div class="form-group">
                                     <input type="hidden" name="address" value="<?=$input['address']?>">
                                     <label>メールアドレス：</label>
-                                    <div class="h5 text-center"><?=$input['address']?></div>
+                                    <div class="h5 text-left w-75 mx-auto mb-3"><?=$input['address']?></div>
                             </div>
                             <div class="form-group">
                                     <input type="hidden" name="division_id" value="<?=$input['division_id']?>">
                                     <label>事業部：</label>
-                                    <div class="h5 text-center">
+                                    <div class="h5 text-left w-75 mx-auto mb-3">
                                         {{$input['division_id']==0 ? '所属なし' : null}}
                                         {{$input['division_id']==10 ? 'コンサルティング' : null}}
                                         {{$input['division_id']==20 ? "システムソリューション":null}}
@@ -48,7 +48,7 @@
                             <div class="form-group">
                                     <input type="hidden" name="group_id" value="<?=$input['group_id']?>">
                                     <label>グループ：</label>
-                                    <div class="h5 text-center">
+                                    <div class="h5 text-left w-75 mx-auto mb-3">
                                         {{$input['group_id']==0 ? '所属なし': null}}
                                         {{$input['group_id']==1010 ? '第1グループ': null}}
                                         {{$input['group_id']==1020 ? '第2グループ': null}}
@@ -68,11 +68,12 @@
                             <div class="form-group mb-5">
                                     <input type="hidden" name="password" value="<?=$input['password']?>">
                                     <label>パスワード：</label>
-                                    <div type="password" class="h5 text-center "><?=preg_replace("/./","●",$input['password'])?></div>
+                                    <div type="password" class="h5 text-left w-75 mx-auto mb-3 "><?=preg_replace("/./","●",$input['password'])?></div>
                             </div>
                             <button type="submit" class="btn btn-primary btn-user btn-block">
                                 登録
                             </button>
+                            <a href="#" onclick="window.history.back(); return false;" class="btn btn-secondary btn-user btn-block">キャンセル</a>
                         </form>
                         <hr>
                     </div>
