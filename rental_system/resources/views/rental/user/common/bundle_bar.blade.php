@@ -1,5 +1,5 @@
 <div id="bundle_bar" class="form-group row d-md-flex justify-content-end">
-    <form method="post" id="bundle">
+    <form method="post" id="bundle" onsubmit="return bundleSubmit()">
         @csrf
         <div class="mx-2">
             <button type="submit" class="btn btn-primary btn-user btn-block bundle px-5" disabled="disabled" formaction="/rental">一括貸出</button>

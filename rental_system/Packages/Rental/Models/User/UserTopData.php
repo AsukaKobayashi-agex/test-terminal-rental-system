@@ -101,8 +101,8 @@ Add_sql;
 
         $sql .= "order by device_category,test_device_category,mobile_type,device_name,charger_name;";
 
+        $selected = \DB::select($sql, $bind_params);
 
-
-        return stdClassToArray(\DB::select($sql, $bind_params));
+        return stdClassToArray($selected);
     }
 }
