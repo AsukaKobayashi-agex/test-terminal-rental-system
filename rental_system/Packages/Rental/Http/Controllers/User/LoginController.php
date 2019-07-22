@@ -4,7 +4,6 @@ namespace Rental\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use Rental\Http\Requests\User\LoginRequest;
-use App\Http\Middleware\Authenticate;
 
 /**
  * ユーザー画面TOP

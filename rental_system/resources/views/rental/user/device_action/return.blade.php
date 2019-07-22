@@ -1,10 +1,6 @@
 @extends('rental.user.common.user_base')
 @section('content')
 <!-- Page Heading -->
-@php
-    //preDump($_POST['search_word']);
-    $user_info['user_id'] = 1;
-@endphp
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">

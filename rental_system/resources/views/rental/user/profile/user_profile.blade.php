@@ -60,7 +60,7 @@
             <a href="/" class="btn btn-secondary btn-user px-4 mx-2">キャンセル</a>
             <button class="btn btn-primary w-50" data-toggle="modal" data-target="#checkModal"s>
                 確定
-            </button>
+            </button >
         </div>
     </div>
 </div>
