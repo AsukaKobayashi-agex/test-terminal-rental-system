@@ -88,9 +88,11 @@ and status = :status
 Add_sql;
         }elseif(isset($param['status']) && strpos($param['status'],'user') !== false){
             $bind_params['user_id'] = ltrim($param['status'],'user=');
+            $bind_params['status'] = 1;
             $sql .= <<< Add_sql
 
 and rs.user_id = :user_id
+and status = :status
 
 Add_sql;
         };$sql .= "order by device_category,charger_name;";
