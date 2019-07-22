@@ -40,6 +40,10 @@ return [
             'driver' => 'user_auth_guard',
             'provider' => 'users'
         ],
+        'admin' => [
+            'driver' => 'admin_auth_guard',
+            'provider' => 'admins'
+        ],
     ],
 
     /*
@@ -62,6 +66,9 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'user_provider',
+        ],
+        'admins' => [
+            'driver' => 'admin_provider',
         ],
     ]
 

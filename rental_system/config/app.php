@@ -177,6 +177,7 @@ return [
 
         Rental\Providers\ValidatorServiceProvider::class,
         Rental\Providers\UserAuthServiceProvider::class,
+        Rental\Providers\AdminAuthServiceProvider::class,
     ],
 
     /*
