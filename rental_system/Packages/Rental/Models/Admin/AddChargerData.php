@@ -4,16 +4,30 @@ namespace Rental\Models\Admin;
 
 use Rental\Models\_common\RentalDeviceData;
 use Rental\Models\_common\RentalStateData;
+use Rental\Models\_common\AdminAccountData;
+
 
 class AddChargerData
 {
+    protected $_get_admin_info;
     protected $_rental_device_model;
     protected $_rental_state_model;
-    public function __construct(RentalDeviceData $rental_device, RentalStateData $rental_state)
+
+    public function __construct(AdminAccountData $adminInfo,RentalDeviceData $rental_device, RentalStateData $rental_state)
     {
+        $this->_get_admin_info = $adminInfo;
         $this->_rental_device_model = $rental_device;
         $this->_rental_state_model = $rental_state;
+
     }
+
+    public function getAdminAccountData(){
+        $admin_account_id = \Auth::guard('admin')->id();
+        $admin_info = $this->_get_admin_info->getUserAuthDataById($admin_account_id);
+
+        return $admin_info;
+    }
+
 
     public function insertChargerData($param)
     {
