@@ -41,7 +41,7 @@
                         <div class="form-group row">
                             <form name='search' method="post" action="#">
                                 @csrf
-                                <div class="col-sm-2 mb-4">
+                                <div class="col-sm-2 mb-3">
                                     <input type="number" name="search_id" class="form-control" value="{{$search_id}}" placeholder="端末IDを入力" >
                                 </div>
                                 <div class="col-sm-2 mb-3 mb-sm-0">
@@ -55,31 +55,32 @@
                                     </select>
                                 </div>
                                 <div class="col-sm-2 mb-3 mb-sm-0">
-                                    <input type="number" name="os_version" class="form-control" value="{{$os_version}}" placeholder="OSバージョン" >
+                                    <input type="text" name="os_version" class="form-control" value="{{$os_version}}" placeholder="OSバージョン" >
                                 </div>
                                 <div class="col-sm-2 mb-3 mb-sm-0">
-                                    <input type="search" name="search_account" class="form-control" value="{{$search_account}}" placeholder="PCアカウント名を入力" >
+                                    <input type="search" name="search_account" class="form-control" value="{{$search_account}}" placeholder="PCアカウント名" >
                                 </div>
                                 <div class="col-sm-2">
                                     <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-fw fa-search"></i>
                                     </button>
                                 </div>
                             </form>
-                            <div class="col-sm-4">
-                                <a href="add_pc" class="btn btn-success btn-icon-split float-left">
+                        </div>
+                            <div class="form-group float-left row mx-2">
+                                <a href="add_pc" class="btn btn-success btn-icon-split float-right">
                                 <span class="icon text-white-50">
                                   <i class="fas fa-flag"></i>
                                 </span>
-                                    <span class="text px-4">端末を追加する</span>
+                                    <span class="text">PC端末を追加する</span>
                                 </a>
                             </div>
-                        </div>
                     </div>
 
                     @if(empty($pc_device_list))
                         <tr class="font-weight-bold">
                             <td></td>
                             <td>一致する項目はありません</td>
+                            <td></td>
                             <td></td>
                         </tr>
                     @endif

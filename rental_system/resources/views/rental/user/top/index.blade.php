@@ -1,4 +1,7 @@
+
 @extends('rental.user.common.user_base')
+@section('subTitle',"ホーム")
+
 @section('content')
 <!-- Page Heading -->
 @php

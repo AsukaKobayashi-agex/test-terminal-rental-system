@@ -14,11 +14,13 @@ use Rental\Services\Admin\AddChargerService;
  */
 class AddChargerController extends Controller
 {
-    public function form()
+    public function form(AddChargerService $service)
     {
+        $data = $service->getData();
         // Memo: validation エラーになったときは、
         //       画面に描画するデータあり
-        return view('rental.admin.Device.add_charger');
+
+        return view('rental.admin.Device.add_charger')->with($data);
     }
 
     public function action(AddChargerRequest $request, AddChargerService $service)

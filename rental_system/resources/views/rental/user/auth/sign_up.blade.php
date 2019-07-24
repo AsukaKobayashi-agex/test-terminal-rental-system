@@ -1,4 +1,6 @@
 @extends('rental.user.common.auth_base')
+@section('subTitle',"アカウント作成")
+
 @section('content')
 
     <div class="card o-hidden {{ old('group_id')==10 ? 'selected' : null }} border-0 shadow-lg my-5">

@@ -30,8 +30,10 @@ class AddPcRequest extends FormRequest
         return[
             'device_name' => 'required|max:100',
             'pc_account_name' => 'required|max:100',
-            'mail_address' => 'required|max:100',
-            'memo' => 'max:1000',
+            'os_version' => 'required|max:100',
+            'device_img' => 'image|max:3000',
+            'mail_address' => 'max:100',
+            'memo' => 'max:10',
             'admin_memo' => 'max:1000'
         ];
     }
@@ -50,6 +52,10 @@ class AddPcRequest extends FormRequest
             'device_name.max' =>'端末名は100文字以内で記入してください',
             'pc_account_name.required' =>'コンピュータ名を入力してください',
             'pc_account_name.max' =>'コンピュータ名は100文字以内で記入してください',
+            'device_img.image' =>'アップロードできるのは画像ファイルのみです',
+            'device_img.max' =>'画像ファイルが大きすぎます',
+            'os_version.required' =>'OSのバージョンを入力してください',
+            'os_version.max' =>'OSのバージョンは100文字以内で記入してください',
             'mail_address.required' =>'メールアドレスを入力してください',
             'mail_address.max' =>'メールアドレスは100文字以内で記入してください',
             'memo.max' =>'備考は1000文字以内で記入してください',

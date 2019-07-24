@@ -14,7 +14,7 @@
     @endif
 
     <!-- DataTales Example -->
-    <div class="card shadow mb-4">
+    <div class="card shadow mb-3">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">モバイル端末一覧</h6>
         </div>
@@ -41,52 +41,57 @@
                         <div class="form-group row">
                             <form name='search' method="post" action="#">
                                 @csrf
-                                <div class="col-sm-2 mb-4">
-                                    <input type="number" name="search_id" class="form-control" value="{{$search_id}}" placeholder="端末IDを入力" >
+                                <div class="w-100">
+                                    <div class="col-lg-2 float-left mb-3">
+                                        <input type="number" name="search_id" class="form-control" value="{{$search_id}}" placeholder="端末IDを入力" >
+                                    </div>
+                                    <div class="col-lg-4 float-left mb-3">
+                                        <input type="search" name="search_word" class="form-control" value="{{$search_word}}" placeholder="端末名を入力" >
+                                    </div>
+                                    <div class="col-lg-2 float-left mb-3">
+                                        <select name="type" class="form-control">
+                                            <option value="">カテゴリ</option>
+                                            <option value="1" {{$type==="1" ? 'selected': null}}>スマホ</option>
+                                            <option value="2" {{$type==="2" ? 'selected': null}}>タブレット</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-2 float-left mb-3">
+                                        <select name="os" class="form-control">
+                                            <option value="">OS</option>
+                                            <option value="1" {{($os==="1") ? 'selected': null}}>Android</option>
+                                            <option value="2" {{($os==="2") ? 'selected': null}}>iOS</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-2 float-left mb-3">
+                                        <input type="text" name="os_version" class="form-control" value="{{$os_version}}" placeholder="OSバージョン" >
+                                    </div>
+
                                 </div>
-                                <div class="col-sm-2 px-1 ">
-                                    <input type="search" name="search_word" class="form-control" value="{{$search_word}}" placeholder="端末名を入力" >
-                                </div>
-                                <div class="col-sm-2 px-1 ">
-                                    <select name="type" class="form-control">
-                                        <option value="">カテゴリ</option>
-                                        <option value="1" {{$type==="1" ? 'selected': null}}>スマホ</option>
-                                        <option value="2" {{$type==="2" ? 'selected': null}}>タブレット</option>
-                                    </select>
-                                </div>
-                                <div class="col-sm-1 px-1 ">
-                                    <select name="os" class="form-control">
-                                        <option value="">OS</option>
-                                        <option value="1" {{($os==="1") ? 'selected': null}}>Android</option>
-                                        <option value="2" {{($os==="2") ? 'selected': null}}>iOS</option>
-                                    </select>
-                                </div>
-                                <div class="col-sm-2 px-1 ">
-                                    <input type="number" name="os_version" class="form-control" value="{{$os_version}}" placeholder="OSバージョン" >
-                                </div>
-                                <div class="col-sm-2 px-1 ">
-                                    <select name="search_carrier" class="form-control">
-                                        <option value="">キャリア</option>
-                                        <option value="1" {{($search_carrier==="1") ? 'selected': null}}>docomo</option>
-                                        <option value="2" {{($search_carrier==="2") ? 'selected': null}}>au</option>
-                                        <option value="3" {{($search_carrier==="3") ? 'selected': null}}>softbank</option>
-                                        <option value="0" {{($search_carrier==="0") ? 'selected': null}}>なし</option>
-                                    </select>
-                                </div>
-                                <div class="col-sm-1 px-1">
-                                    <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-fw fa-search"></i>
-                                    </button>
+                                <div class="w-100 d-flex d-inline justify-content-end">
+                                    <div class="col-lg-2 mb-3">
+                                        <select name="search_carrier" class="form-control">
+                                            <option value="">キャリア</option>
+                                            <option value="1" {{($search_carrier==="1") ? 'selected': null}}>docomo</option>
+                                            <option value="2" {{($search_carrier==="2") ? 'selected': null}}>au</option>
+                                            <option value="3" {{($search_carrier==="3") ? 'selected': null}}>softbank</option>
+                                            <option value="0" {{($search_carrier==="0") ? 'selected': null}}>なし</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-2 mb-3">
+                                        <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-fw fa-search"></i>
+                                        </button>
+                                    </div>
                                 </div>
                             </form>
-                            <div class="col-sm-2">
+                        </div>
+                            <div class="form-group float-left row mx-2">
                                 <a href="add_sp" class="btn btn-success btn-icon-split float-right">
                                 <span class="icon text-white-50">
                                   <i class="fas fa-flag"></i>
                                 </span>
-                                    <span class="text">端末を追加する</span>
+                                    <span class="text">モバイル端末を追加する</span>
                                 </a>
                             </div>
-                        </div>
                     </div>
 
                     @if(empty($mobile_device_list))

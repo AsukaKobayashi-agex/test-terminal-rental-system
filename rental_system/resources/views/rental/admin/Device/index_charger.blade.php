@@ -40,7 +40,7 @@
                         <div class="form-group row">
                             <form name='search' method="post" action="#">
                                 @csrf
-                                <div class="col-sm-2 mb-4">
+                                <div class="col-sm-2 mb-3">
                                     <input type="number" name="search_id" class="form-control" value="{{$search_id}}" placeholder="端末ID" >
                                 </div>
                                 <div class="col-sm-3 mb-3 mb-sm-0">
@@ -61,15 +61,15 @@
                                     </button>
                                 </div>
                             </form>
-                            <div class="col-sm-3">
+                        </div>
+                            <div class="form-group float-left row mx-2">
                                 <a href="add_charger" class="btn btn-success btn-icon-split float-right">
                                 <span class="icon text-white-50">
                                   <i class="fas fa-flag"></i>
                                 </span>
-                                    <span class="text px-4">端末を追加する</span>
+                                    <span class="text">充電器を追加する</span>
                                 </a>
                             </div>
-                        </div>
                     </div>
 
 

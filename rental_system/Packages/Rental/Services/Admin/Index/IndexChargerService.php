@@ -17,6 +17,9 @@ class IndexChargerService
     {
         $data = [];
         $data['charger_list'] = $this->_model->getAllIndexCharger($param);
+        if(\Auth::guard('admin')->check()) {
+            $data['admin_info'] = $this->_model->getAdminAccountData();
+        }
         return $data;
     }
 }

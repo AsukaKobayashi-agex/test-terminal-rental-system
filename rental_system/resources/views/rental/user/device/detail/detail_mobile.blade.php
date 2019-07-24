@@ -1,4 +1,6 @@
 @extends('rental.user.common.user_base')
+@section('subTitle',"端末詳細")
+
 @section('content')
     <!-- Page Heading -->
 
@@ -120,7 +122,7 @@
             <div class="card border-left-primary shadow">
                 <div class="card-body h-100">
                     @if($detail['device_img']===1)
-                        <img class="rounded w-100 h-100" src="/bootsample/img/1g.jpg" alt="device_image">
+                        <img class="rounded w-100 h-100" src="bootsample/img/device_image_{{$detail['rental_device_id']}}.jpg" alt="device_image">
                     @else
                         <img class="rounded w-100 h-100" src="/bootsample/img/noImage.png" alt="no_image">
                     @endif

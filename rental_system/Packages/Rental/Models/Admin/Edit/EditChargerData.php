@@ -2,23 +2,23 @@
 
 namespace Rental\Models\Admin\Edit;
 
-use Rental\Models\_common\GetUserInfo;
+use Rental\Models\_common\AdminAccountData;
+
 
 
 class EditChargerData
 {
-    protected $_get_user_info;
-    public function __construct(GetUserInfo $userInfo)
+    protected $_get_admin_info;
+    public function __construct(AdminAccountData $adminInfo)
     {
-        $this->_get_user_info = $userInfo;
+        $this->_get_admin_info = $adminInfo;
     }
 
+    public function getAdminAccountData(){
+        $admin_account_id = \Auth::guard('admin')->id();
+        $admin_info = $this->_get_admin_info->getUserAuthDataById($admin_account_id);
 
-    public function getUserInfo($param){
-        $param['user_id'] = 1;
-        $user_info = $this -> _get_user_info -> getUserInfo($param);
-
-        return $user_info;
+        return $admin_info;
     }
 
     public function getAllEditCharger($param)

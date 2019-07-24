@@ -1,4 +1,6 @@
 @extends('rental.user.common.user_base')
+@section('subTitle',"ユーザー詳細")
+
 @section('content')
 <!-- Page Heading -->
 {{--}}@php(var_dump($rent_user_info))--}}

@@ -29,9 +29,12 @@ class AddSpRequest extends FormRequest
     {
         return[
             'device_name' => 'required|max:100',
-            'number' => 'required|max:50',
-            'display_size' => 'required|max:100',
-            'resolution' => 'required|max:100',
+            'number' => 'max:50',
+            'os_version' => 'required|max:50',
+            'mail_address' => 'max:100',
+            'display_size' => 'max:100',
+            'resolution' => 'max:100',
+            'device_img' => 'image|max:3000',
             'memo' => 'max:1000',
             'admin_memo' => 'max:1000'
         ];
@@ -49,11 +52,11 @@ class AddSpRequest extends FormRequest
         return [
             'device_name.required' =>'端末名を入力してください',
             'device_name.max' =>'端末名は100文字以内で記入してください',
-            'number.required' =>'電話番号を入力してください',
             'number.max' =>'電話番号は100文字以内で記入してください',
-            'display_size.required' =>'画面サイズを入力してください',
+            'os_version.max' =>'OSバージョンは50文字以内で記入してください',
+            'os_version.required' =>'OSバージョンを入力してください',
+            'mail_address.max' => 'メールアドレスは100文字以内で記入してください',
             'display_size.max' =>'画面サイズは100文字以内で記入してください',
-            'resolution.required' =>'解像度を入力してください',
             'resolution.max' =>'解像度は100文字以内で記入してください',
             'memo.max' =>'備考は1000文字以内で記入してください',
             'admin_memo.max' =>'備考は1000文字以内で記入してください'
