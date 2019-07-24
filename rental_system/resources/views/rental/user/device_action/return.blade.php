@@ -1,4 +1,6 @@
 @extends('rental.user.common.user_base')
+@section('subTitle',"返却")
+
 @section('content')
 <!-- Page Heading -->
 
@@ -114,22 +116,3 @@
 
 
 @endsection
-
-@push('scripts')
-    <script>
-        $(".deleteButton").click(function(){
-            $(this).parents('tr').remove();
-            if($('tbody tr').length === 1) {
-                $("#noDevice").removeAttr('hidden');
-                $("#agree").attr('disabled', 'disabled')
-            }
-        });
-
-        $("#agree").ready(function(){
-            if($('tbody input').length === 0) {
-                $("#noDevice").removeAttr('hidden');
-                $("#agree").attr('disabled', 'disabled')
-            }
-        });
-    </script>
-@endpush

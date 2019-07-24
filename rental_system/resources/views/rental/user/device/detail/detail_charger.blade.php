@@ -1,4 +1,6 @@
 @extends('rental.user.common.user_base')
+@section('subTitle',"端末詳細")
+
 @section('content')
     <!-- Page Heading -->
 
