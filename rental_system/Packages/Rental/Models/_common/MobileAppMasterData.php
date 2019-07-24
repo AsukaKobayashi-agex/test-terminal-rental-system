@@ -21,4 +21,11 @@ class MobileAppMasterData
         $data = \DB::table(self::TABLE_NAME)->get();
         return $data;
     }
+
+    public function getEdit()
+    {
+        $data = stdClasstoArray( \DB::table(self::TABLE_NAME)->get());
+        return $data;
+    }
+
 }

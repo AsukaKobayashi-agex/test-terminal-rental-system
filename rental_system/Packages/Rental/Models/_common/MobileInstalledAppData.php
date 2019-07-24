@@ -8,7 +8,7 @@ class MobileInstalledAppData
     {
         $now = nowDateTime();
 
-        foreach($param['software_id'] as $mobile_app_id){
+        foreach($param['mobile_app_id'] as $mobile_app_id){
             $insert_data[] = [
                 'test_device_id' =>$param['test_device_id'],
                 'mobile_app_id' =>$mobile_app_id,

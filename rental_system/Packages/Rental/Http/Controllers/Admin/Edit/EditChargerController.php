@@ -14,10 +14,22 @@ use Rental\Services\Admin\Edit\EditChargerService;
  */
 class EditChargerController extends Controller
 {
-    public function view(EditChargerRequest $request, EditChargerService $service)
+    public function view(EditChargerService $service)
+    {
+        $param = \Request::all();
+        $data = $service->getData($param);
+        return view('rental.admin.Device.edit_charger')->with($data);
+    }
+
+    public function action(EditChargerRequest $request, EditChargerService $service)
     {
         $param = $request->all();
-        $data = $service->getData($param);
-        return view('rental.admin.Device.Edit_charger')->with($data);
+        // preDump($param, 1);
+
+        $service->registerData($param);
+
+        // todo: デバイス一覧へリダイレクト
+        //exit('データ登録完了！！');
+        return redirect('/admin/index_charger')->with('success','充電器情報を更新しました！');
     }
 }
