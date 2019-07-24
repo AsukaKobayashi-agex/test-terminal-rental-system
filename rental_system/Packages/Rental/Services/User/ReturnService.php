@@ -16,9 +16,6 @@ class ReturnService
     public function getData($param)
     {
         $data = [];
-        if(\Auth::guard('user')->check()){
-            $data['user_info'] = $this->_model->getUserInfo($param);
-        }
         $data['return_device_list'] = $this->_model->getAllReturnDevice($param);
         return $data;
     }

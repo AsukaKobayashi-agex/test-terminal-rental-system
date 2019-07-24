@@ -63,6 +63,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['force_https']], function() 
 // ユーザー画面
 //==============================================================
 Route::group(['middleware' => ['force_https']], function () {
+
+
+
+
     // ログアウトならアクセス出来る画面
     Route::group(['middleware' => ['user.unauthed']], function () {
         Route::get('/login', [
