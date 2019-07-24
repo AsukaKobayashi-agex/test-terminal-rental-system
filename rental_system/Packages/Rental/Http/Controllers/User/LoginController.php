@@ -23,7 +23,7 @@ class LoginController extends Controller
         $param = $request->all();
         if (!\Auth::guard('user')->attempt($param)) {
             // ログイン失敗
-            return redirect()->back();
+            return redirect()->back()->with('loginError','ログイン情報が間違っています');
         }
         // ログイン成功
         return redirect()->route('user.mylist');

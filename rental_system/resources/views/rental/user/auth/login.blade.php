@@ -27,6 +27,11 @@
                             @endforeach
                         </ul>
                     @endif
+                    @if (session('loginError'))
+                        <div class="alert alert-danger text-center">
+                            {{ session('loginError') }}
+                        </div>
+                    @endif
                     <form class="user" action="{{ route('user.login') }}" method="post">
                         @csrf
                         <div class="form-group">
@@ -35,7 +40,7 @@
                         <div class="form-group">
                           <input type="password" name="password" class="form-control" id="password" placeholder="パスワード">
                         </div>
-                        <input type="submit" value="ログイン" class="btn btn-primary btn-user btn-block" >
+                        <input type="submit" value="ログイン" class="btn btn-primary btn-user btn-block">
                         <hr>
                     </form>
                   <!--<div class="text-center">

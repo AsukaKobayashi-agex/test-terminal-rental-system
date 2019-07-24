@@ -62,23 +62,24 @@
                                     </div>
 
                                     <div class="col-lg-2 px-1 mb-3">
-                                       <select name="wifi" class="form-control">
+                                        <label class="h-100 py-2 m-0 w-25 text-center"><span><i class="fas fa-fw fa-wifi"></i></span></label>
+                                       <select name="wifi" class="form-control w-75 float-right">
                                             <option value="">Wi-Fi</option>
-                                            <option value="0" {{$wifi==="0" ? 'selected': null}}><span><i class="fas fa-fw fa-wifi"></i></span>
-                                                Wi-Fiなし</option>
-                                            <option value="1" {{$wifi==="1" ? 'selected': null}}>Wi-Fiあり</option>
+                                            <option value="0" {{$wifi==="0" ? 'selected': null}}>なし</option>
+                                            <option value="1" {{$wifi==="1" ? 'selected': null}}>あり</option>
                                         </select>
                                     </div>
                                     <div class="col-lg-2 px-1 mb-3">
-                                        <select name="com_line" class="form-control">
-                                            <option value="">モバイル</option>
-                                            <option value="0" {{$com_line==="0" ? 'selected': null}}>モバイル回線なし</option>
-                                            <option value="1" {{$com_line==="1" ? 'selected': null}}>モバイル回線あり</option>
+                                        <label class="h-100 py-2 m-0  w-25 text-center"><span><i class="fas fa-fw fa-mobile-alt"></i></span></label>
+                                        <select name="com_line" class="form-control w-75 float-right">
+                                            <option value="">モバイル回線</option>
+                                            <option value="0" {{$com_line==="0" ? 'selected': null}}>なし</option>
+                                            <option value="1" {{$com_line==="1" ? 'selected': null}}>あり</option>
                                         </select>
                                     </div>
                                     <div class="col-lg-8 px-1">
                                     </div>
-                                    <div class="col-lg-2 px-1">
+                                    <div class="col-lg-2 px-1 mb-3">
                                         <select name="status" class="form-control">
                                             <option value="" >ステータス</option>
                                             <option value="0" {{$status==="0" ? 'selected': null}}>貸出可</option>
@@ -88,7 +89,7 @@
                                         @endif
                                         </select>
                                     </div>
-                                    <div class="col-lg-2 px-1">
+                                    <div class="col-lg-2 px-1 mb-3">
                                         <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-fw fa-search"></i>
                                         </button>
                                     </div>

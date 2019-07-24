@@ -1,5 +1,5 @@
 <!-- Sidebar -->
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled" id="accordionSidebar">
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center p-2" href="/">
@@ -78,30 +78,29 @@
             <span>充電器</span>
         </a>
     </li>
-    <hr class="sidebar-divider d-none d-md-block">
+    <!--<hr class="sidebar-divider d-none d-md-block">-->
 
 
     <!-- Nav Item - Utilities Collapse Menu -->
-    <li  {!! (Request::is('help') ? 'class="nav-item active"' : 'class="nav-item"') !!}>
+    <!--<li>
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fas fa-fw fa-info-circle"></i>
             <span>ヘルプ</span>
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <!--<a class="collapse-item" href="Q&A.php">Q&A</a>-->
+                <a class="collapse-item" href="Q&A.php">Q&A</a>
                 <a class="collapse-item" href="/help/users-guide">利用マニュアル</a>
-                <!--<a class="collapse-item" href="utilities-other.html">問い合わせ</a>-->
+                <a class="collapse-item" href="utilities-other.html">問い合わせ</a>
             </div>
         </div>
-    </li>
+    </li>-->
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 
     <!-- Sidebar Toggler (Sidebar) -->
-    <div class="text-center d-none d-md-inline">
+    <!--<div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
-    </div>
-
+    </div>-->
 </ul>
 <!-- End of Sidebar -->

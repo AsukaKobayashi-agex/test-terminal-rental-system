@@ -51,6 +51,7 @@
                                         <option value="0" {{$status==="0" ? 'selected': null}}>貸出可</option>
                                         <option value="1"{{$status==="1" ? 'selected': null}}>貸出中</option>
                                         @if(\Auth::guard('user')->check())
+
                                             <option value="user=<?=$user_info['user_id']?>" {{$status=="user={$user_info['user_id']}" ? 'selected': null}}>返却</option>
                                         @endif
                                     </select>

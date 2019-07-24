@@ -16,9 +16,6 @@ class UserProfileService
     public function getData($param)
     {
         $data = [];
-        if(\Auth::guard('user')->check()){
-            $data['user_info'] = $this->_model->getUserInfo($param);
-}
         return $data;
     }
 
