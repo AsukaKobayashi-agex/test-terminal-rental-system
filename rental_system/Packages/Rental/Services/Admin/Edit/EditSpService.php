@@ -4,7 +4,7 @@ namespace Rental\Services\Admin\Edit;
 
 use Rental\Models\_common\MobileAppMasterData;
 use Rental\Models\_common\MobileCarrierData;
-use Rental\Models\ADmin\Edit\EditSpData;
+use Rental\Models\Admin\Edit\EditSpData;
 
 class EditSpService
 {
