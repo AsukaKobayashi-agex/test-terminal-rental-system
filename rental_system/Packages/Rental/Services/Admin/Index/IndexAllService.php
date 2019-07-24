@@ -17,6 +17,9 @@ class IndexAllService
     {
         $data = [];
         $data['all_device_list'] = $this->_model->getIndexAll($param);
+        if(\Auth::guard('user')->check()) {
+            $data['admin_info'] = $this->_model->getAdminAccountData();
+        }
         return $data;
     }
 }

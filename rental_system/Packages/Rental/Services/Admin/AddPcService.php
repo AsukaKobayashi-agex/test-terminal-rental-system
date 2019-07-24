@@ -20,12 +20,15 @@ class AddPcService
     {
         $ret = [];
         $ret['software_master'] = $this->_software_master->getAll();
+        if(\Auth::guard('user')->check()) {
+            $data['admin_info'] = $this->_model->getAdminAccountData();
+        }
         return $ret;
     }
 
     public function registerData($param)
     {
-        $this->_add_model->insertPcData($param);
-        return true;
+        $rental_device_id = $this->_add_model->insertPcData($param);
+        return $rental_device_id;
     }
 }

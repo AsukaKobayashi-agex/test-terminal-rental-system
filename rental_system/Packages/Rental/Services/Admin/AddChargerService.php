@@ -16,6 +16,9 @@ class AddChargerService
     public function registerData($param)
     {
         $this->_model->insertChargerData($param);
+        if(\Auth::guard('user')->check()) {
+            $data['admin_info'] = $this->_model->getAdminAccountData();
+        }
         return true;
     }
 }

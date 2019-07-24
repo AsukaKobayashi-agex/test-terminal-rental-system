@@ -21,15 +21,18 @@ class AddSpService
 
     public function getFormData()
     {
-        $ret = [];
-        $ret['mobile_carrier'] = $this->_mobile_carrier->getAll();
-        $ret['mobile_app_master'] = $this->_mobile_app_master->getAll();
-        return $ret;
+        $data = [];
+        $data['mobile_carrier'] = $this->_mobile_carrier->getAll();
+        $data['mobile_app_master'] = $this->_mobile_app_master->getAll();
+        if(\Auth::guard('user')->check()) {
+            $data['admin_info'] = $this->_model->getAdminAccountData();
+        }
+        return $data;
     }
 
     public function registerData($param)
     {
-        $this->_model->insertSpData($param);
-        return true;
+        $rental_device_id =  $this->_model->insertSpData($param);
+        return $rental_device_id;
     }
 }
