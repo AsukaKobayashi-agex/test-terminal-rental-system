@@ -35,6 +35,7 @@ select
     archive_flag,
     status,
     rs.user_id,
+    charger_id,
     name,
     rental_datetime,
     charger_name,
@@ -69,4 +70,32 @@ Add_sql;
         return $detail[0];
     }
 
+    public function updateChargerData($param)
+    {
+        // トランザクション開始
+        \DB::beginTransaction();
+        try {
+
+            // 充電機テーブルにデータを登録する
+            $charger_id = $this->_updateCharger($param);
+
+            // トランザクション終了
+            \DB::commit();
+        } catch (\Exception $e) {
+            \DB::rollBack();
+            throw $e;
+        }
+
+        return $charger_id;
+    }
+
+    protected function _updateCharger($param)
+    {
+        //preDump($param,1);
+        $charger_data = [
+            'charger_name' => mb_convert_kana($param['charger_name'],'KV'),
+            'charger_type' => $param['charger_type']
+        ];
+        return \DB::table('charger')->where('charger_id',$param['charger_id'])->update($charger_data);
+    }
 }

@@ -19,7 +19,7 @@ class AddPcService
     public function getFormData()
     {
         $data = [];
-        $data['software_master'] = $this->_software_master->getAll();
+        $data['software_master'] = $this->_software_master->getAdd();
         if(\Auth::guard('admin')->check()) {
             $data['admin_info'] = $this->_model->getAdminAccountData();
         }

@@ -1985,7 +1985,55 @@ if ( ! function_exists('asciiConvertFullWidth'))
 
     }
 
-// ------------------------------------------------------------------------
+    // ------------------------------------------------------------------------
+
+    if ( ! function_exists('nullToEmpty'))
+    {
+        /**
+         * zeroToEmpty
+         *
+         * 文字列が「NULL」の場合、「(空)」に変換します。
+         *
+         * @access	public
+         * @param string $inputStr 変換対象の文字列
+         * @return string 変換後の文字列
+         */
+        function nullToEmpty($inputStr = '')
+        {
+            if (is_null($inputStr)) {
+                return '';
+            }
+
+            return $inputStr;
+        }
+
+    }
+
+    // ------------------------------------------------------------------------
+
+    if ( ! function_exists('nullToDefaultDate'))
+    {
+        /**
+         * zeroToEmpty
+         *
+         * 文字列が「NULL」の場合、「(空)」に変換します。
+         *
+         * @access	public
+         * @param string $inputStr 変換対象の文字列
+         * @return string 変換後の文字列
+         */
+        function nullToDefaultDate($inputStr = 1900/01/01)
+        {
+            if (is_null($inputStr)) {
+                return '1900/01/01';
+            }
+
+            return $inputStr;
+        }
+
+    }
+
+    // ------------------------------------------------------------------------
 
     if ( ! function_exists('forceToEmpty'))
     {
