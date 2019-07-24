@@ -1,4 +1,6 @@
 @extends('rental.user.common.user_base')
+@section('subTitle',"PC一覧")
+
 @section('content')
     <!-- Page Heading -->
     <?php
@@ -49,7 +51,7 @@
                                         </select>
                                     </div>
                                     <div class="col-lg-2 mb-3 mb-lg-0">
-                                        <input type="number" name="os_version" class="form-control" value="{{$os_version}}" placeholder="OSバージョン" >
+                                        <input type="search" name="os_version" class="form-control" value="{{$os_version}}" placeholder="OSバージョン" >
                                     </div>
                                     <div class="col-lg-2 mb-3 mb-lg-0">
                                         <select name="status" class="form-control">

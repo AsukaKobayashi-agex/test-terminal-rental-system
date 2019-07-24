@@ -1,4 +1,6 @@
 @extends('rental.user.common.user_base')
+@section('subTitle',"マイリスト登録")
+
 @section('content')
 <!-- Page Heading -->
 @php

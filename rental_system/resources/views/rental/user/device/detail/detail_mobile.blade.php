@@ -1,4 +1,6 @@
 @extends('rental.user.common.user_base')
+@section('subTitle',"端末詳細")
+
 @section('content')
     <!-- Page Heading -->
 
@@ -92,7 +94,7 @@
                             </div>
                             <div class="card-body">
                                 @if($detail['status']===1)
-                                    @if($user_info['user_id']==$detail['user_id'])
+                                    @if(isset($user_info) && $user_info['user_id']==$detail['user_id'])
                                         <form id='return' method="post" action="/return">
                                             @csrf
                                             <button type="submit" class="btn btn-danger btn-block" name="rental_device_id[]"  value="<?=$detail['rental_device_id']?>">返却</button>
@@ -118,9 +120,9 @@
         </div>
         <div class="col-sm-6">
             <div class="card border-left-primary shadow">
-                <div class="card-body">
+                <div class="card-body h-100">
                     @if($detail['device_img']===1)
-                        <img class="rounded w-100 h-100" src="/bootsample/img/1g.jpg" alt="device_image">
+                        <img class="rounded w-100 h-100" src="bootsample/img/device_image_{{$detail['rental_device_id']}}.jpg" alt="device_image">
                     @else
                         <img class="rounded w-100 h-100" src="/bootsample/img/noImage.png" alt="no_image">
                     @endif

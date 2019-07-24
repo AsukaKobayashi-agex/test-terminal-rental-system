@@ -32,7 +32,7 @@ class IndexPcRequest extends FormRequest
             'search_id' => 'max:11',
             'search_word' => 'max:100',
             'os_version' => 'max:50',
-            'search_account' => 'max100'
+            'search_account' => 'max:100'
         ];
     }
 

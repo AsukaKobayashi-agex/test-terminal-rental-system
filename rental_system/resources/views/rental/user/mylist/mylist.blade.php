@@ -1,4 +1,6 @@
 @extends('rental.user.common.user_base')
+@section('subTitle',"マイリスト")
+
 @section('content')
 <!-- Page Heading -->
 <?php
@@ -159,7 +161,7 @@ $i = 1;
                                 @if(isset($user_info) && $user_info['user_id']==$device['user_id'])
                                     <form name='return' method="post" action="/return">
                                         @csrf
-                                        <button type="submit" class="btn btn-outline-light bg-danger btn-block" name="rental_device_id[]"  value="<?=$device['rental_device_id']?>">返却</button>
+                                        <button type="submit" class="btn btn-danger btn-block" name="rental_device_id[]"  value="<?=$device['rental_device_id']?>">返却</button>
                                     </form>
                                 @else
                                     <form name='rent-user' method="post" action="/rent-user" target="_blank">

@@ -2,6 +2,9 @@
 <html lang="ja">
 
 @component('rental.user.common.header')
+    @slot('title')
+        テスト端末貸出システム｜@yield('subTitle')
+    @endslot
 @endcomponent
 
 <body class="bg-gradient-primary">

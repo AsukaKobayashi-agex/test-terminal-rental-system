@@ -1,4 +1,6 @@
 @extends('rental.user.common.auth_base')
+@section('subTitle',"ログイン")
+
 @section('content')
 
     <!-- Outer Row -->
@@ -28,7 +30,7 @@
                     <form class="user" action="{{ route('user.login') }}" method="post">
                         @csrf
                         <div class="form-group">
-                          <input type="email" name="address" class="form-control" id="email" aria-describedby="emailHelp" placeholder="メールアドレスを入力">
+                          <input type="email" name="address" class="form-control" id="email" aria-describedby="emailHelp" placeholder="メールアドレスを入力" value="{{old('address')}}">
                         </div>
                         <div class="form-group">
                           <input type="password" name="password" class="form-control" id="password" placeholder="パスワード">
@@ -41,6 +43,9 @@
                   </div>-->
                   <div class="text-center">
                     <a class="small" href="/sign-up">アカウント作成</a>
+                  </div>
+                  <div class="text-center">
+                    <a class="small" href="/">ログインせずに使う</a>
                   </div>
                 </div>
                   @component('rental.user.common.footer')

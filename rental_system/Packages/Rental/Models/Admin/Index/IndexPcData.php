@@ -2,8 +2,26 @@
 
 namespace Rental\Models\Admin\Index;
 
+use Rental\Models\_common\AdminAccountData;
+
+
 class IndexPcData
 {
+    protected $_get_admin_info;
+    public function __construct(AdminAccountData $adminInfo)
+    {
+        $this->_get_admin_info = $adminInfo;
+    }
+
+    public function getAdminAccountData(){
+        $admin_account_id = \Auth::guard('admin')->id();
+        $admin_info = $this->_get_admin_info->getUserAuthDataById($admin_account_id);
+
+        return $admin_info;
+    }
+
+
+
     const TABLE_NAME = 'test_device_pc';
 
     public function getAllIndexPc($param)

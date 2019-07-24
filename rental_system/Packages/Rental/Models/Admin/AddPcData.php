@@ -6,6 +6,8 @@ use Rental\Models\_common\PcSoftwareData;
 use Rental\Models\_common\RentalDeviceData;
 use Rental\Models\_common\RentalStateData;
 use Rental\Models\_common\TestDeviceBasicData;
+use Rental\Models\_common\AdminAccountData;
+
 
 class AddPcData
 {
@@ -13,12 +15,23 @@ class AddPcData
     protected $_rental_state_model;
     protected $_test_device_basic_model;
     protected $_pc_software_model;
-    public function __construct(RentalDeviceData $rental_device,TestDeviceBasicData $test_device_basic,RentalStateData $rental_state,PcSoftwareData $pc_software)
+    protected $_get_admin_info;
+
+    public function __construct(RentalDeviceData $rental_device,TestDeviceBasicData $test_device_basic,RentalStateData $rental_state,PcSoftwareData $pc_software,AdminAccountData $adminInfo)
     {
         $this->_rental_device_model = $rental_device;
         $this->_rental_state_model = $rental_state;
         $this->_test_device_basic_model = $test_device_basic;
         $this->_pc_software_model = $pc_software;
+        $this->_get_admin_info = $adminInfo;
+
+    }
+
+    public function getAdminAccountData(){
+        $admin_account_id = \Auth::guard('admin')->id();
+        $admin_info = $this->_get_admin_info->getUserAuthDataById($admin_account_id);
+
+        return $admin_info;
     }
 
     public function insertPcData($param)
@@ -38,13 +51,18 @@ class AddPcData
             $this->_insertPcData($test_device_id,$param);
 
             //PCソフトウェアテーブルにデータを登録する
-            $this ->_insertPcSoftware($test_device_id,$param);
+            if(isset($param['software_id'])){
+                $this->_pc_software_model->insertPcSoftware($test_device_id,$param);;
+
+            }
 
             \DB::commit();
         } catch (\Exception $e) {
             \DB::rollback();
             throw $e;
         }
+
+        return $rental_device_id;
     }
 
     protected function _insertRentalDevice()
@@ -67,7 +85,8 @@ class AddPcData
         $data = [
             'device_name'=>$param['device_name'],
             'test_device_category' => 2,
-            'os' => $param['os']
+            'os' => $param['os'],
+            'os_version' => $param['os_version']
         ];
         $test_device_id = $this->_test_device_basic_model->insertTestDeviceBasic($rental_device_id, $data,$param);
         return $test_device_id;
@@ -75,25 +94,20 @@ class AddPcData
 
     protected function _insertPcData($test_device_id,$param)
     {
-        $default_time ='1900/1/1';
+        if(isset($param['device_img'])){
+            $device_img = 1;
+        }else{
+            $device_img = 0;
+        }
         $pc_data = [
             'test_device_id' => $test_device_id,
             'pc_account_name' => $param['pc_account_name'],
-            'mail_address' => $param['mail_address'],
-            'os_update' => $default_time,
-            'memo' => $param['memo'],
-            'admin_memo' => $param['admin_memo']
+            'mail_address' => "{$param['mail_address']}",
+            'device_img' => $device_img,
+            'memo' => "{$param['memo']}",
+            'admin_memo' => "{$param['admin_memo']}"
         ];
         return \DB::table('test_device_pc')->insert($pc_data);
     }
 
-    protected function _insertPcSoftware($test_device_id,$param)
-    {
-        //preDump($param,1);
-        $data = [
-            'test_device_id'=>$test_device_id,
-            'software_id' =>$param['software_id']
-        ];
-        return $this->_pc_software_model->insertPcSoftware($data);
-    }
 }

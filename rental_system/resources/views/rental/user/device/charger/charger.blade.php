@@ -1,4 +1,6 @@
 @extends('rental.user.common.user_base')
+@section('subTitle',"充電器一覧")
+
 @section('content')
     <!-- Page Heading -->
     <?php

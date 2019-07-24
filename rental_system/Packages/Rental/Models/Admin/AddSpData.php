@@ -6,6 +6,8 @@ use Rental\Models\_common\RentalDeviceData;
 use Rental\Models\_common\RentalStateData;
 use Rental\Models\_common\TestDeviceBasicData;
 use Rental\Models\_common\MobileInstalledAppData;
+use Rental\Models\_common\AdminAccountData;
+
 
 class AddSpData
 {
@@ -13,14 +15,26 @@ class AddSpData
     protected $_rental_state_model;
     protected $_test_device_basic_model;
     protected $_mobile_installed_app_model;
+    protected $_get_admin_info;
 
-    public function __construct(RentalDeviceData $rental_device,TestDeviceBasicData $test_device_basic,RentalStateData $rental_state,MobileInstalledAppData $mobile_installed_app)
+
+    public function __construct(RentalDeviceData $rental_device,TestDeviceBasicData $test_device_basic,RentalStateData $rental_state,MobileInstalledAppData $mobile_installed_app,AdminAccountData $adminInfo)
     {
         $this->_rental_device_model = $rental_device;
         $this->_rental_state_model = $rental_state;
         $this->_test_device_basic_model = $test_device_basic;
         $this->_mobile_installed_app_model = $mobile_installed_app;
+        $this->_get_admin_info = $adminInfo;
+
     }
+
+    public function getAdminAccountData(){
+        $admin_account_id = \Auth::guard('admin')->id();
+        $admin_info = $this->_get_admin_info->getUserAuthDataById($admin_account_id);
+
+        return $admin_info;
+    }
+
 
     public function insertSpData($param)
     {
@@ -39,14 +53,17 @@ class AddSpData
             $this->_insertSpData($test_device_id,$param);
 
             //インストール済みアプリテーブルにデータを登録する
-            $this->_insertMobileInstalledApp($test_device_id,$param);
-
+            if (isset($param['mobile_app_id'])) {
+                $this->_mobile_installed_app_model->insertMobileInstalledApp($test_device_id,$param);
+            }
 
             \DB::commit();
         } catch (\Exception $e) {
             \DB::rollback();
             throw $e;
         }
+
+        return $rental_device_id;
     }
 
     protected function _insertRentalDevice()
@@ -69,7 +86,8 @@ class AddSpData
         $data = [
             'device_name'=>$param['device_name'],
             'test_device_category' => 1,
-            'os' => $param['os']
+            'os' => $param['os'],
+            'os_version' => $param['os_version']
         ];
         $test_device_id = $this->_test_device_basic_model->insertTestDeviceBasic($rental_device_id, $data,$param);
         return $test_device_id;
@@ -77,30 +95,29 @@ class AddSpData
 
     protected function _insertSpData($test_device_id,$param)
     {
+        if(isset($param['device_img'])){
+            $device_img = 1;
+        }else{
+            $device_img = 0;
+        }
+
         $sp_data = [
             'test_device_id' => $test_device_id,
             'carrier_id' => $param['carrier_id'],
             'mobile_type' => $param['mobile_type'],
-            'number' => $param['number'],
-            'mail_address' => $param['mail_address'],
+            'number' => "{$param['number']}",
+            'mail_address' => "{$param['mail_address']}",
             'wifi_line' => $param['wifi_line'],
             'communication_line' => $param['communication_line'],
+            'device_img' => $device_img,
+            'launch_date' => isset($param['launch_date']) ? $param['launch_date']:"1900/1/1",
             'sim_card' => $param['sim_card'],
             'charger_type' => $param['charger_type'],
-            'resolution' => $param['resolution'],
-            'display_size' => $param['display_size'],
-            'memo' => $param['memo'],
-            'admin_memo' => $param['admin_memo']
+            'resolution' => "{$param['resolution']}",
+            'display_size' => "{$param['display_size']}",
+            'memo' => "{$param['memo']}",
+            'admin_memo' => "{$param['admin_memo']}"
         ];
         return \DB::table('test_device_mobile')->insert($sp_data);
-    }
-
-    protected function _insertMobileInstalledApp($test_device_id,$param)
-    {
-        $data = [
-            'test_device_id'=>$test_device_id,
-            'software_id' =>$param['mobile_app_id']
-        ];
-        return $this->_mobile_installed_app_model->insertMobileInstalledApp($data);
     }
 }

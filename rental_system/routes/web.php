@@ -54,6 +54,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['force_https']], function() 
         Route::post('/add_charger/action', 'Admin\AddChargerController@action');
 
         //-----------------------------------------------------------------------------------------------
+        Route::get('/logout', 'Admin\Login\LogoutController@logout');
 
     });
 });
