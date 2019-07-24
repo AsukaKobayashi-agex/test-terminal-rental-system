@@ -4,9 +4,7 @@ namespace Rental\Models\Admin\Edit;
 
 use Rental\Models\_common\GetUserInfo;
 use Rental\Models\_common\MobileInstalledAppData;
-use Rental\Models\_common\RentalDeviceData;
-use Rental\Models\_common\RentalStateData;
-use Rental\Models\_common\TestDeviceBasicData;
+use Rental\Models\_common\AdminAccountData;
 
 
 error_reporting(0);
@@ -14,20 +12,20 @@ class EditSpData
 {
     protected $_get_user_info;
     protected $_mobile_installed_app_model;
+    protected $_get_admin_info;
 
-    public function __construct(GetUserInfo $userInfo,MobileInstalledAppData $mobile_installed_app)
+    public function __construct(GetUserInfo $userInfo,MobileInstalledAppData $mobile_installed_app,AdminAccountData $adminInfo)
     {
-        $this->_get_user_info = $userInfo;
         $this->_mobile_installed_app_model = $mobile_installed_app;
+        $this->_get_admin_info = $adminInfo;
     }
 
 
-    public function getUserInfo($param)
-    {
-        $param['user_id'] = 1;
-        $user_info = $this->_get_user_info->getUserInfo($param);
+    public function getAdminAccountData(){
+        $admin_account_id = \Auth::guard('admin')->id();
+        $admin_info = $this->_get_admin_info->getUserAuthDataById($admin_account_id);
 
-        return $user_info;
+        return $admin_info;
     }
 
 
@@ -179,7 +177,11 @@ Add_sql;
 
     protected function _updateSpData($param)
     {
-        //Arr::get($param,'launch_date','1900/01/01');
+        if(isset($param['device_img'])){
+            $device_img = 1;
+        }else{
+            $device_img = 0;
+        }
 
         $sp_data = [
             'carrier_id' => $param['carrier_id'],
@@ -188,6 +190,7 @@ Add_sql;
             'mail_address' => $param['mail_address'],
             'wifi_line' => $param['wifi_line'],
             'communication_line' => $param['communication_line'],
+            'device_img' => $device_img,
             'sim_card' => $param['sim_card'],
             'charger_type' => $param['charger_type'],
             'resolution' => mb_convert_kana($param['resolution'],'n'),
@@ -209,11 +212,12 @@ Add_sql;
         if (empty($param['mobile_app_id']) || !is_array($param['mobile_app_id'])) {
             return;
         }
+        $test_device_id = $param['test_device_id'];
         $data = [
-            'test_device_id'=>$param['test_device_id'],
+            'test_device_id'=>$test_device_id,
             'mobile_app_id' =>$param['mobile_app_id']
         ];
-        return $this->_mobile_installed_app_model->insertMobileInstalledApp($data);
+        return $this->_mobile_installed_app_model->insertMobileInstalledApp($test_device_id,$data);
     }
 
 

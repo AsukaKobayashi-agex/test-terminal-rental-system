@@ -20,12 +20,14 @@ class EditSpService
     public function getData($param)
     {
         $data = [];
-        $data['user_info'] = $this->_model->getUserInfo($param);
         $data['detail'] = $this->_model->getAllEditSp($param);
         $data['installed_app'] = $this->_model->getAllInstalledApp($param);
         $data['detail']['memo'] = nl2br($data['detail']['memo']);
         $data['mobile_carrier'] = $this->_mobile_carrier->getAll();
         $data['mobile_app_master'] = $this->_mobile_app_master->getEdit();
+        if(\Auth::guard('admin')->check()) {
+            $data['admin_info'] = $this->_model->getAdminAccountData();
+        }
         return $data;
     }
 

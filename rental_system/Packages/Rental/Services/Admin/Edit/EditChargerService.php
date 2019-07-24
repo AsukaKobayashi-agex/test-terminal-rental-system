@@ -16,10 +16,10 @@ class EditChargerService
     public function getData($param)
     {
         $data = [];
+        $data['detail'] = $this->_model->getAllEditCharger($param);
         if(\Auth::guard('admin')->check()) {
             $data['admin_info'] = $this->_model->getAdminAccountData();
         }
-        $data['detail'] = $this->_model->getAllEditCharger($param);
         return $data;
     }
 

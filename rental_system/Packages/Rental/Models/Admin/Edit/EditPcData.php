@@ -2,25 +2,24 @@
 
 namespace Rental\Models\Admin\Edit;
 
-use Rental\Models\_common\GetUserInfo;
 use Rental\Models\_common\PcSoftwareData;
+use Rental\Models\_common\AdminAccountData;
 
 error_reporting(0);
 class EditPcData
 {
-    protected $_get_user_info;
-    public function __construct(GetUserInfo $userInfo,PcSoftwareData $pc_software)
+    protected $_get_admin_info;
+    public function __construct(PcSoftwareData $pc_software,AdminAccountData $adminInfo)
     {
-        $this->_get_user_info = $userInfo;
         $this->_pc_software_model = $pc_software;
+        $this->_get_admin_info = $adminInfo;
     }
 
+    public function getAdminAccountData(){
+        $admin_account_id = \Auth::guard('admin')->id();
+        $admin_info = $this->_get_admin_info->getUserAuthDataById($admin_account_id);
 
-    public function getUserInfo($param){
-        $param['user_id'] = 1;
-        $user_info = $this -> _get_user_info -> getUserInfo($param);
-
-        return $user_info;
+        return $admin_info;
     }
 
 
@@ -167,9 +166,15 @@ Add_sql;
 
     protected function _updatePcData($param)
     {
+        if(isset($param['device_img'])){
+            $device_img = 1;
+        }else{
+            $device_img = 0;
+        }
         $pc_data = [
             'pc_account_name' => $param['pc_account_name'],
             'mail_address' => $param['mail_address'],
+            'device_img' => $device_img,
             'memo' => $param['memo'],
             'admin_memo' => $param['admin_memo']
         ];
@@ -187,11 +192,12 @@ Add_sql;
         if (empty($param['software_id']) || !is_array($param['software_id'])) {
             return;
         }
+        $test_device_id = $param['test_device_id'];
         $data = [
             'test_device_id'=>$param['test_device_id'],
             'software_id' =>$param['software_id']
         ];
-        return $this->_pc_software_model->insertPcSoftware($data);
+        return $this->_pc_software_model->insertPcSoftware($test_device_id,$data);
     }
     
 }

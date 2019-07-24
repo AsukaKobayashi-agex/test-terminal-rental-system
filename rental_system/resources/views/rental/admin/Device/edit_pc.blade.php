@@ -22,7 +22,7 @@
 
         <div class="m-0 font-weight-bold text-primary">
 
-            <form method="post" name="pc_form" action="/admin/edit_pc/action/" onsubmit="return false;">
+            <form method="post" name="pc_form" action="/admin/edit_pc/action/" onsubmit="return false;" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
                     <input type="hidden" class="form-control" name="test_device_id" value="<?=$detail['test_device_id']?>">
@@ -39,7 +39,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label>OSバージョン<span class="m-0 font-weight-bold text-info">（任意）</span></label>
+                    <label>OSバージョン<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
                     <input type="text" class="form-control" name="os_version" value="<?=$detail['os_version']?>">
                 </div>
 
@@ -60,6 +60,16 @@
                 <div class="form-group">
                     <label>メールアドレス<span class="m-0 font-weight-bold text-info">（任意）</span></label>
                     <input type="text" class="form-control" name="mail_address" value="<?=$detail['mail_address']?>">
+                </div>
+
+                <div class="form-group">
+                    <label>端末画像<span class="m-0 font-weight-bold text-info">（任意）</span></label>
+                    <input type="file" name="device_img">
+                    @if($errors->has('device_img'))
+                        <span class="text-danger">
+                                {{$errors->first('device_img')}}
+                                </span>
+                    @endif
                 </div>
 
                 <div class="form-group">

@@ -29,7 +29,7 @@ class EditPcRequest extends FormRequest
     public function rules()
     {
         return [
-            'os_version' => 'max:50',
+            'os_version' => 'required|max:50',
             'device_name' => 'required|max:100',
             'pc_account_name' => 'max:100',
             'mail_address' => 'max:100',
@@ -47,6 +47,7 @@ class EditPcRequest extends FormRequest
     public function messages()
     {
         return [
+            'os_version.required' =>'OSバージョンを入力してください',
             'os_version.max' =>'OSバージョンは50文字以内で記入してください',
             'device_name.required' =>'端末名を入力してください',
             'device_name.max' =>'端末名は100文字以内で記入してください',
@@ -62,7 +63,6 @@ class EditPcRequest extends FormRequest
     protected function _format($inputs)
     {
         $rules = [
-            'os_version' => ['nullToEmpty'],
             'pc_account_name' => ['nullToEmpty', 'dependedCharConvert'],
             'mail_address' => ['nullToEmpty', 'mailFormat'],
             'memo' => ['nullToEmpty', 'dependedCharConvert'],

@@ -36,7 +36,7 @@
 
                     <div class="m-0 font-weight-bold text-primary">
 
-                        <form method="post" name="sp_form" action="/admin/edit_sp/action/" onsubmit="return false;">
+                        <form method="post" name="sp_form" action="/admin/edit_sp/action/" onsubmit="return false;" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <input type="hidden" class="form-control" name="test_device_id" value="<?=$detail['test_device_id']?>">
@@ -71,6 +71,19 @@
                             </div>
 
                             <div class="form-group">
+                                <label>OS<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
+                                <select class="form-control" name="os">
+                                    <option value="1"{{$detail['os']=== 1 ? 'selected': null}}>Android</option>
+                                    <option value="2"{{$detail['os']=== 2 ? 'selected': null}}>iOS</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>OSバージョン<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
+                                <input type="text" class="form-control" name="os_version" value="<?=$detail['os_version']?>">
+                            </div>
+
+                            <div class="form-group">
                                 <label>キャリア<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
                                 <select class="form-control" name="carrier_id">
                                     @foreach($mobile_carrier as $d)
@@ -98,19 +111,6 @@
                                     <option value="4"{{$detail['charger_type']=== 4 ? 'selected': null}}>iphone　旧型</option>
                                     <option value="5"{{$detail['charger_type']=== 5 ? 'selected': null}}>その他</option>
                                 </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label>OS<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
-                                <select class="form-control" name="os">
-                                    <option value="1"{{$detail['os']=== 1 ? 'selected': null}}>Android</option>
-                                    <option value="2"{{$detail['os']=== 2 ? 'selected': null}}>iOS</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label>OSバージョン<span class="m-0 font-weight-bold text-info">（任意）</span></label>
-                                <input type="text" class="form-control" name="os_version" value="<?=$detail['os_version']?>">
                             </div>
 
                             <div class="form-group">
@@ -145,6 +145,16 @@
                                         <label><input type="checkbox" name="mobile_app_id[]" value="{!! $d['mobile_app_id']!!}"<?= in_array($d['mobile_app_id'],$installed_app) ? 'checked' : ''?>>{{$d['app_name']}}</label>
                                     </div>
                                 @endforeach
+                            </div>
+
+                            <div class="form-group">
+                                <label>端末画像<span class="m-0 font-weight-bold text-info">（任意）</span></label>
+                                <input type="file" name="device_img">
+                                @if($errors->has('device_img'))
+                                    <span class="text-danger">
+                            {{$errors->first('device_img')}}
+                            </span>
+                                @endif
                             </div>
 
                             <div class="form-group">

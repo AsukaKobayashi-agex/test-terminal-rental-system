@@ -31,6 +31,7 @@ class EditSpRequest extends FormRequest
         return [
             'device_name' => 'required|max:100',
             'number' => 'max:50',
+            'os_version' => 'required|max:50',
             'mail_address' => 'max:100',
             'display_size' => 'max:100',
             'resolution' => 'max:100',
@@ -51,6 +52,8 @@ class EditSpRequest extends FormRequest
             'device_name.required' =>'端末名を入力してください',
             'device_name.max' =>'端末名は100文字以内で記入してください',
             'number.max' =>'電話番号は100文字以内で記入してください',
+            'os_version.max' =>'OSバージョンは50文字以内で記入してください',
+            'os_version.required' =>'OSバージョンを入力してください',
             'display_size.max' =>'画面サイズは100文字以内で記入してください',
             'resolution.max' =>'解像度は100文字以内で記入してください',
             'memo.max' =>'備考は1000文字以内で記入してください',
