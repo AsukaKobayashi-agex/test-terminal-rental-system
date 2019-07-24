@@ -25,10 +25,15 @@
                             @endforeach
                         </ul>
                     @endif
+                    @if (session('loginError'))
+                        <div class="alert alert-danger text-center">
+                            {{ session('loginError') }}
+                        </div>
+                    @endif
                     <form class="user" action="/admin/login/" method="post">
                         @csrf
                         <div class="form-group">
-                          <input type="email" name="address" class="form-control" id="email" aria-describedby="emailHelp" placeholder="メールアドレスを入力">
+                          <input type="email" name="address" class="form-control" id="email" aria-describedby="emailHelp" placeholder="メールアドレスを入力" value="{{old('address')}}">
                         </div>
                         <div class="form-group">
                           <input type="password" name="password" class="form-control" id="password" placeholder="パスワード">

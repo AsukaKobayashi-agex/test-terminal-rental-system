@@ -16,9 +16,6 @@ class DetailMobileService
     public function getData($param)
     {
         $data = [];
-        if(\Auth::guard('user')->check()){
-            $data['user_info'] = $this->_model->getUserInfo($param);
-}
         $data['detail'] = $this->_model->getAllDetailMobile($param);
         $data['detail']['memo'] = nl2br($data['detail']['memo']);
         $data['installed_app_list'] = $this->_model->getAllInstalledApp($param);

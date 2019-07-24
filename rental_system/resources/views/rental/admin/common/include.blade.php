@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>@yield('title')テスト端末貸出システム</title>
+    <title>@yield('title')[管理者]テスト端末貸出システム</title>
 
 
     <!-- Custom fonts for this template -->

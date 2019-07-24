@@ -16,9 +16,6 @@ class DeviceMobileService
     public function getData($param)
     {
         $data = [];
-        if(\Auth::guard('user')->check()){
-            $data['user_info'] = $this->_model->getUserInfo($param);
-}
         $data['mobile_device_list'] = $this->_model->getAllDeviceMobile($param);
         return $data;
     }

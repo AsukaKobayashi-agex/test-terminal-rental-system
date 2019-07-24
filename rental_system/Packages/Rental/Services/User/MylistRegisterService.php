@@ -16,9 +16,6 @@ class MylistRegisterService
     public function getData($param)
     {
         $data = [];
-        if(\Auth::guard('user')->check()){
-            $data['user_info'] = $this->_model->getUserInfo($param);
-        }
         $data['register_device_list'] = $this->_model->getAllRegisterDevice($param);
         $data['all_mylist'] = $this->_model->getAllMylistRegister($param);
         return $data;
