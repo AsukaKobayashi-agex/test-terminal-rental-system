@@ -56,6 +56,20 @@ Route::group(['prefix' => 'admin', 'middleware' => ['force_https']], function() 
         //-----------------------------------------------------------------------------------------------
         Route::get('/logout', 'Admin\Login\LogoutController@logout');
 
+        //編集画面
+
+        //編集画面（SP）
+        Route::get('/edit_sp','Admin\Edit\EditSpController@view');
+        Route::post('/edit_sp/action','Admin\Edit\EditSpController@action');
+
+        //編集画面（PC）
+        Route::get('/edit_pc','Admin\Edit\EditPcController@view');
+        Route::post('/edit_pc/action','Admin\Edit\EditPcController@action');
+
+        //編集画面（充電器）
+        Route::get('/edit_charger','Admin\Edit\EditChargerController@view');
+        Route::post('/edit_charger/action','Admin\Edit\EditChargerController@action');
+
     });
 });
 

@@ -29,18 +29,22 @@ class EditChargerRequest extends FormRequest
     public function rules()
     {
         return [
+            'charger_name' => 'required|max:100'
         ];
     }
 
     public function attributes()
     {
         return [
+            'charger_name' => '充電器名'
         ];
     }
 
     public function messages()
     {
         return [
+            'charger_name.required' =>'充電器名を入力してください',
+            'charger_name.max' =>'充電器名は100文字以内で記入してください'
         ];
     }
 

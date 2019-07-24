@@ -4,30 +4,37 @@
 
 @section('content')
 
+
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">充電器情報を編集する</h1>
     <p class="mb-4"> 充電器の情報を記入してください。</p>
+    @if ($errors->first())
+        <div class="alert alert-danger text-center">
+            {{ $errors->first('charger_name')}}
+        </div>
+    @endif
 
     <div class="m-0 font-weight-bold text-primary">
 
-        <form method="post" name="charger_form" action="/admin/edit_charger/action/">
+        <form method="post" name="charger_form" action="/admin/edit_charger/action/" onsubmit="return false;">
             @csrf
+            <input type="hidden" class="form-control" name="charger_id" value="<?=$detail['charger_id']?>">
             <div class="form-group">
-                <label>充電器名</label>
-                <input type="text" class="form-control" name="charger_name" required value="{{old('charger_name')}}">
-                {{$errors->first('charger_name')}}
+                <label>充電器名<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
+                <input type="text" class="form-control" name="charger_name" value="<?=$detail['charger_name']?>">
             </div>
 
             <div class="form-group">
-                <label>充電器タイプ</label>
+                <label>充電器タイプ<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
                 <select class="form-control" name="charger_type">
-                    <option value="1">USB TYPE-B</option>
-                    <option value="2">USB　TYPE-C</option>
-                    <option value="3">iphone ライトニング</option>
-                    <option value="4">iphone 旧型</option>
+                    <option value="1"{{$detail['charger_type']=== 1 ? 'selected': null}}>USB TYPE-B</option>
+                    <option value="2"{{$detail['charger_type']=== 2 ? 'selected': null}}>USB　TYPE-C</option>
+                    <option value="3"{{$detail['charger_type']=== 3 ? 'selected': null}}>iphone ライトニング</option>
+                    <option value="4"{{$detail['charger_type']=== 4 ? 'selected': null}}>iphone 旧型</option>
+                    <option value="5"{{$detail['charger_type']=== 5 ? 'selected': null}}>その他</option>
                 </select>
             </div>
 
@@ -61,7 +68,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">いいえ</button>
-                <a href="edit.blade.php"><button type="button" class="btn btn-primary">はい</button></a>
+                <a href="index_charger"><button type="button" class="btn btn-primary">はい</button></a>
             </div>
         </div>
     </div>
@@ -82,40 +89,10 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">いいえ</button>
-                <button type="button" class="btn btn-primary" onclick="form_submit()">はい</button>
+                <a type="button" class="btn btn-primary" href="javascript:document.charger_form.submit()">はい</a>
             </div>
         </div>
     </div>
 </div>
 
 @endsection
-
-@push('scripts')
-<script>
-
-
-    // 変換前
-    var beforeStr = new Array('ｧ','ｨ','ｩ','ｪ','ｫ','ｬ','ｭ','ｮ','ｯ','ｰ','ｳﾞ','ｶﾞ','ｷﾞ','ｸﾞ','ｹﾞ','ｺﾞ','ｻﾞ','ｼﾞ','ｽﾞ','ｾﾞ','ｿﾞ','ﾀﾞ','ﾁﾞ','ﾂﾞ','ﾃﾞ','ﾄﾞ','ﾊﾞ','ﾋﾞ','ﾌﾞ','ﾍﾞ','ﾎﾞ','ﾊﾟ','ﾋﾟ','ﾌﾟ','ﾍﾟ','ﾎﾟ','ｱ','ｲ','ｳ','ｴ','ｵ','ｶ','ｷ','ｸ','ｹ','ｺ','ｻ','ｼ','ｽ','ｾ','ｿ','ﾀ','ﾁ','ﾂ','ﾃ','ﾄ','ﾅ','ﾆ','ﾇ','ﾈ','ﾉ','ﾊ','ﾋ','ﾌ','ﾍ','ﾎ','ﾏ','ﾐ','ﾑ','ﾒ','ﾓ','ﾔ','ﾕ','ﾖ','ﾗ','ﾘ','ﾙ','ﾚ','ﾛ','ﾜ','ｦ','ﾝ');
-    // 変換後
-    var afterStr = new Array('ァ','ィ','ゥ','ェ','ォ','ャ','ュ','ョ','ッ','ー','ヴ','ガ','ギ','グ','ゲ','ゴ','ザ','ジ','ズ','ゼ','ゾ','ダ','ヂ','ヅ','デ','ド','バ','ビ','ブ','ベ','ボ','パ','ピ','プ','ペ','ポ','ア','イ','ウ','エ','オ','カ','キ','ク','ケ','コ','サ','シ','ス','セ','ソ','タ','チ','ツ','テ','ト','ナ','ニ','ヌ','ネ','ノ','ハ','ヒ','フ','ヘ','ホ','マ','ミ','ム','メ','モ','ヤ','ユ','ヨ','ラ','リ','ル','レ','ロ','ワ','ヲ','ン');
-
-    function convertStr(str) {
-        var fullStr = str;
-        for(var i = 0; i < beforeStr.length; i++) {
-            fullStr = fullStr.replace(new RegExp(beforeStr[i], 'g'), afterStr[i]);
-        }
-        return fullStr;
-    }
-    $(function() {
-        $('.form-control').on('blur', function() {
-            var str = $(this).val();
-            $(this).val(convertStr(str));
-        });
-
-    });
-
-    function form_submit() {
-        document.charger_form.submit();
-    }
-</script>
-@endpush
