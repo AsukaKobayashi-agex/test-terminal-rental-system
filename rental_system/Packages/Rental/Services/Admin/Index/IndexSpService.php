@@ -17,7 +17,7 @@ class IndexSpService
     {
         $data = [];
         $data['mobile_device_list'] = $this->_model->getAllIndexSp($param);
-        if(\Auth::guard('user')->check()) {
+        if(\Auth::guard('admin')->check()) {
             $data['admin_info'] = $this->_model->getAdminAccountData();
         }
         return $data;
