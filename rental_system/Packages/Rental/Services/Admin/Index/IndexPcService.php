@@ -17,7 +17,7 @@ class IndexPcService
     {
         $data = [];
         $data['pc_device_list'] = $this->_model->getAllIndexPc($param);
-        if(\Auth::guard('user')->check()) {
+        if(\Auth::guard('admin')->check()) {
             $data['admin_info'] = $this->_model->getAdminAccountData();
         }
         return $data;

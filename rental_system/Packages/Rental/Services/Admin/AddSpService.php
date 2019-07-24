@@ -10,7 +10,7 @@ class AddSpService
 {
     protected $_mobile_app_master;
     protected $_mobile_carrier;
-    protected $_add_model;
+    protected $_model;
 
     public function __construct(MobileAppMasterData $_mobile_app_master,MobileCarrierData $_mobile_carrier,AddSpData $_add_model)
     {
@@ -24,7 +24,7 @@ class AddSpService
         $data = [];
         $data['mobile_carrier'] = $this->_mobile_carrier->getAll();
         $data['mobile_app_master'] = $this->_mobile_app_master->getAll();
-        if(\Auth::guard('user')->check()) {
+        if(\Auth::guard('admin')->check()) {
             $data['admin_info'] = $this->_model->getAdminAccountData();
         }
         return $data;
