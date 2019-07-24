@@ -19,7 +19,7 @@ class AddPcService
     public function getFormData()
     {
         $ret = [];
-        $ret['software_master'] = $this->_software_master->getAll();
+        $ret['software_master'] = $this->_software_master->getAdd();
         return $ret;
     }
 

@@ -20,4 +20,10 @@ class EditChargerService
         $data['detail'] = $this->_model->getAllEditCharger($param);
         return $data;
     }
+
+    public function registerData($param)
+    {
+        $this->_model->updateChargerData($param);
+        return true;
+    }
 }
