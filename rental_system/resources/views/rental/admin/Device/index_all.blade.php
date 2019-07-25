@@ -35,10 +35,10 @@
                             <form id='search' method="post" action="#">
                                 @csrf
                                 <div class="col-sm-2 mb-3">
-                                    <input type="number" name="search_id" class="form-control" value="{{$search_id}}" placeholder="端末IDを入力" >
+                                    <input type="number" name="search_id" class="form-control" value="{{$search_id}}" placeholder="端末ID" >
                                 </div>
                                 <div class="col-sm-4 mb-3">
-                                    <input type="search" name="search_word" class="form-control" value="{{$search_word}}" placeholder="端末名を入力" >
+                                    <input type="search" name="search_word" class="form-control" value="{{$search_word}}" placeholder="端末名" >
                                 </div>
                                 <div class="col-sm-2 mb-3">
                                     <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-fw fa-search"></i>
@@ -94,20 +94,20 @@
                             @if($device['device_category']===1)
                                 @if($device['test_device_category']===1)
                                     <td >
-                                        <a class="text-lg text-primary" target="_blank" href="/detail-mobile?rental_device_id=<?=$device['rental_device_id']?>" >
+                                        <a class="text-lg text-primary" href="info_sp?rental_device_id=<?=$device['rental_device_id']?>" >
                                             <?=$device['device_name']?>
                                         </a>
                                     </td>
                                 @elseif($device['test_device_category']===2)
                                     <td>
-                                        <a class="text-lg text-success" target="_blank" href="/detail-pc?rental_device_id=<?=$device['rental_device_id']?>" >
+                                        <a class="text-lg text-success" href="info_pc?rental_device_id=<?=$device['rental_device_id']?>" >
                                             <?=$device['device_name']?>
                                         </a>
                                     </td>
                                 @endif
                             @elseif($device['device_category']===2)
                                 <td>
-                                    <a class="text-lg text-warning" target="_blank" href="/detail-charger?rental_device_id=<?=$device['rental_device_id']?>" >
+                                    <a class="text-lg text-warning" href="info_charger?rental_device_id=<?=$device['rental_device_id']?>" >
                                         <?=$device['charger_name']?>
                                     </a>
                                 </td>

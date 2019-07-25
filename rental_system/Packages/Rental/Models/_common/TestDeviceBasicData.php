@@ -10,7 +10,8 @@ class TestDeviceBasicData
             'rental_device_id' =>$rental_device_id,
             'device_name' =>$param['device_name'],
             'test_device_category' => $data['test_device_category'],
-            'os' => $param['os']
+            'os' => $param['os'],
+            'os_version' => $param['os_version']
         ];
 
         $test_device_id = \DB::table('test_device_basic')->insertGetId($insert_data);

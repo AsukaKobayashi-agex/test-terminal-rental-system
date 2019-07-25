@@ -43,10 +43,10 @@
                                 @csrf
                                 <div class="w-100">
                                     <div class="col-lg-2 float-left mb-3">
-                                        <input type="number" name="search_id" class="form-control" value="{{$search_id}}" placeholder="端末IDを入力" >
+                                        <input type="number" name="search_id" class="form-control" value="{{$search_id}}" placeholder="端末ID" >
                                     </div>
                                     <div class="col-lg-4 float-left mb-3">
-                                        <input type="search" name="search_word" class="form-control" value="{{$search_word}}" placeholder="端末名を入力" >
+                                        <input type="search" name="search_word" class="form-control" value="{{$search_word}}" placeholder="端末名" >
                                     </div>
                                     <div class="col-lg-2 float-left mb-3">
                                         <select name="type" class="form-control">
@@ -108,7 +108,7 @@
                                 <?=$device['rental_device_id']?>
                             </td>
                             <td>
-                                <a class="text-lg" href="edit_sp?rental_device_id=<?=$device['rental_device_id']?>" ><?=$device['device_name']?></a>
+                                <a class="text-lg" href="info_sp?rental_device_id=<?=$device['rental_device_id']?>" ><?=$device['device_name']?></a>
                             </td>
                             <td> @if($device['os']==1)
                                     Android
