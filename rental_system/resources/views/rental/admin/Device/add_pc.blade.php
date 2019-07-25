@@ -16,7 +16,7 @@
                 @csrf
 
                 <div class="col-sm-6 float-left mb-3">
-                    <label>端末名</label>
+                    <label>端末名<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
                     @if($errors->has('device_name'))
                         <span class="text-danger">
                                     {{$errors->first('device_name')}}
@@ -26,7 +26,7 @@
                 </div>
 
                 <div class="col-sm-6 float-left mb-3">
-                    <label>OS</label>
+                    <label>OS<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
                     <select class="form-control" name="os">
                         <option value="3" {{old('os')=== "3" ? 'selected': null}}>Windows</option>
                         <option value="4" {{old('os')=== "4" ? 'selected': null}}>MacOS</option>
@@ -34,7 +34,7 @@
                 </div>
 
                 <div class="col-sm-6 float-left mb-3">
-                    <label>OSバージョン</label>
+                    <label>OSバージョン<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
                     @if($errors->has('os_version'))
                         <span class="text-danger">
                                     {{$errors->first('os_version')}}
@@ -45,7 +45,7 @@
 
 
                 <div class="col-sm-6 float-left mb-3">
-                    <label>PCアカウント名</label>
+                    <label>PCアカウント名<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
                     @if($errors->has('pc_account_name'))
                         <span class="text-danger">
                                     {{$errors->first('pc_account_name')}}
@@ -55,7 +55,7 @@
                 </div>
 
                 <div class="col-sm-6 float-left mb-3">
-                    <label>メールアドレス</label>
+                    <label>メールアドレス<span class="m-0 font-weight-bold text-info">（任意）</span></label>
                     @if($errors->has('mail_address'))
                         <span class="text-danger">
                                 {{$errors->first('mail_address')}}
@@ -65,7 +65,7 @@
                 </div>
 
                 <div class="col-sm-12 float-left mb-3">
-                    <label class="d-block">ソフトウェア</label>
+                    <label class="d-block">ソフトウェア<span class="m-0 font-weight-bold text-info">（任意）</span></label>
                         @foreach($software_master as $d)
                         <div class="w-50 float-sm-left">
                             <label><input type="checkbox" name="software_id[]" value="{!! $d->software_id !!}"  {{old('software_id') && in_array("$d->software_id",old('software_id')) ? 'checked': null}}>{{$d->software_name}}</label>
@@ -74,7 +74,7 @@
                 </div>
 
                 <div class="col-sm-12 float-left mb-3">
-                    <label>端末画像</label>
+                    <label>端末画像<span class="m-0 font-weight-bold text-info">（任意）</span></label>
                     @if($errors->has('device_img'))
                         <span class="text-danger">
                                 {{$errors->first('device_img')}}
@@ -85,7 +85,7 @@
 
 
                 <div class="col-sm-12 float-left mb-3">
-                    <label>備考(ユーザー向け)</label>
+                    <label>備考(ユーザー向け)<span class="m-0 font-weight-bold text-info">（任意）</span></label>
                     @if($errors->has('memo'))
                         <span class="text-danger">
                                     {{$errors->first('memo')}}
@@ -95,7 +95,7 @@
                 </div>
 
                 <div class="col-sm-12 float-left mb-3">
-                    <label>備考(管理者向け)</label>
+                    <label>備考(管理者向け)<span class="m-0 font-weight-bold text-info">（任意）</span></label>
                     @if($errors->has('device_name'))
                         <span class="text-danger">
                                     {{$errors->first('admin_memo')}}
