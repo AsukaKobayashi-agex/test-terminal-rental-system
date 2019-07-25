@@ -9,28 +9,25 @@
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">PCの情報を編集する</h1>
         <p class="mb-4"> PCの情報を記入してください。</p>
-        @if($errors->first())
-            <div class="alert alert-danger text-center">
-                {{$errors->first('os_version')}}
-                {{$errors->first('device_name')}}
-                {{$errors->first('pc_account_name')}}
-                {{$errors->first('mail_address')}}
-                {{$errors->first('memo')}}
-                {{$errors->first('admin_memo')}}
-            </div>
+        @if(count($errors) > 0)
+            <ul class="alert alert-danger">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
         @endif
 
         <div class="m-0 font-weight-bold text-primary">
 
             <form method="post" name="pc_form" action="/admin/edit_pc/action/" onsubmit="return false;" enctype="multipart/form-data">
                 @csrf
-                <div class="form-group">
+                <div class="col-sm-6 float-left mb-3">
                     <input type="hidden" class="form-control" name="test_device_id" value="<?=$detail['test_device_id']?>">
                         <label>端末名<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
-                        <input type="text" class="form-control" name="device_name" value="<?=$detail['device_name']?>">
+                        <input type="text" class="form-control {{$errors->has('device_name') ? "alert-danger": null}}" name="device_name" value="<?=$detail['device_name']?>">
                     </div>
 
-                <div class="form-group">
+                <div class="col-sm-3 float-left mb-3">
                     <label>OS<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
                     <select class="form-control" name="os">
                         <option value="3"{{$detail['os']=== 3 ? 'selected': null}}>Windows</option>
@@ -38,17 +35,22 @@
                     </select>
                 </div>
 
-                <div class="form-group">
+                <div class="col-sm-3 float-left mb-3">
                     <label>OSバージョン<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
-                    <input type="text" class="form-control" name="os_version" value="<?=$detail['os_version']?>">
+                    <input type="text" class="form-control {{$errors->has('os_version') ? "alert-danger": null}}" name="os_version" value="<?=$detail['os_version']?>">
                 </div>
 
-                <div class="form-group">
+                <div class="col-sm-6 float-left mb-3">
                     <label>PCアカウント名<span class="m-0 font-weight-bold text-info">（任意）</span></label>
-                    <input type="text" class="form-control" name="pc_account_name" value="<?=$detail['pc_account_name']?>">
+                    <input type="text" class="form-control {{$errors->has('pc_account_name') ? "alert-danger": null}}" name="pc_account_name" value="<?=$detail['pc_account_name']?>">
                 </div>
 
-                <div class="form-group">
+                <div class="col-sm-6 float-left mb-3">
+                    <label>メールアドレス<span class="m-0 font-weight-bold text-info">（任意）</span></label>
+                    <input type="text" class="form-control {{$errors->has('mail_address') ? "alert-danger": null}}" name="mail_address" value="<?=$detail['mail_address']?>">
+                </div>
+
+                <div class="col-sm-12 float-left mb-3">
                     <label>ソフトウェア<span class="m-0 font-weight-bold text-info">（任意）</span></label>
                     @foreach($software_master as $d )
                         <div>
@@ -57,34 +59,24 @@
                     @endforeach
                 </div>
 
-                <div class="form-group">
-                    <label>メールアドレス<span class="m-0 font-weight-bold text-info">（任意）</span></label>
-                    <input type="text" class="form-control" name="mail_address" value="<?=$detail['mail_address']?>">
-                </div>
-
-                <div class="form-group">
+                <div class="col-sm-12 float-left mb-3">
                     <label>端末画像<span class="m-0 font-weight-bold text-info">（任意）</span></label>
                     <input type="file" name="device_img">
-                    @if($errors->has('device_img'))
-                        <span class="text-danger">
-                                {{$errors->first('device_img')}}
-                                </span>
-                    @endif
                 </div>
 
-                <div class="form-group">
+                <div class="col-sm-12 float-left mb-3">
                     <label>備考(ユーザー向け)<span class="m-0 font-weight-bold text-info">（任意）</span></label>
-                    <textarea class="form-control" name=memo rows="5"><?=$detail['memo']?></textarea>
+                    <textarea class="form-control {{$errors->has('memo') ? "alert-danger": null}}" name=memo rows="5"><?=$detail['memo']?></textarea>
                 </div>
 
-                <div class="form-group">
+                <div class="col-sm-12 float-left mb-3">
                     <label>備考(管理者向け)<span class="m-0 font-weight-bold text-info">（任意）</span></label>
-                    <textarea class="form-control" name=admin_memo rows="5"><?=$detail['admin_memo']?></textarea>
+                    <textarea class="form-control {{$errors->has('admin_memo') ? "alert-danger": null}}" name=admin_memo rows="5"><?=$detail['admin_memo']?></textarea>
                 </div>
             </form>
         </div>
     </div>
-    <div class="row center-block text-center">
+    <div class="row float-left center w-100 my-3 center-block text-center">
         <div class="col-1">
         </div>
         <div class="col-5">

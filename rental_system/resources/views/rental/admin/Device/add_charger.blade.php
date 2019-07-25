@@ -12,16 +12,22 @@
                     <p class="mb-4"> 登録する充電器の情報を記入してください。</p>
 
                     <div class="m-0 font-weight-bold text-primary">
+                        @if(count($errors) > 0)
+                            <ul class="alert alert-danger">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        @endif
 
                         <form method="post" name="charger_form" action="/admin/add_charger/action/">
                             @csrf
-                            <div class="form-group">
+                            <div class="col-sm-6 float-left mb-3">
                                 <label>充電器名<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
-                                <input type="text" class="form-control" name="charger_name" required value="{{old('charger_name')}}">
-                                {{$errors->first('charger_name')}}
+                                <input type="text" class="form-control {{$errors->has('charger_name') ? "alert-danger": null}}" name="charger_name" required value="{{old('charger_name')}}">
                             </div>
 
-                            <div class="form-group">
+                            <div class="col-sm-6 float-left mb-3">
                                 <label>充電器タイプ<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
                                 <select class="form-control" name="charger_type">
                                     <option value="1">USB TYPE-B</option>
@@ -35,7 +41,7 @@
                         </form>
                     </div>
                 </div>
-                <div class="row center-block text-center">
+                <div class="row float-left center w-100 my-3 center-block text-center">
                     <div class="col-1">
                     </div>
                     <div class="col-5">

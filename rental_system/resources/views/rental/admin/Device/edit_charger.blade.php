@@ -11,10 +11,12 @@
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">充電器情報を編集する</h1>
     <p class="mb-4"> 充電器の情報を記入してください。</p>
-    @if ($errors->first())
-        <div class="alert alert-danger text-center">
-            {{ $errors->first('charger_name')}}
-        </div>
+    @if(count($errors) > 0)
+        <ul class="alert alert-danger">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
     @endif
 
     <div class="m-0 font-weight-bold text-primary">
@@ -22,12 +24,12 @@
         <form method="post" name="charger_form" action="/admin/edit_charger/action/" onsubmit="return false;">
             @csrf
             <input type="hidden" class="form-control" name="charger_id" value="<?=$detail['charger_id']?>">
-            <div class="form-group">
+            <div class="col-sm-6 float-left mb-3">
                 <label>充電器名<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
-                <input type="text" class="form-control" name="charger_name" value="<?=$detail['charger_name']?>">
+                <input type="text" class="form-control {{$errors->has('charger_name') ? "alert-danger": null}}" name="charger_name" value="<?=$detail['charger_name']?>">
             </div>
 
-            <div class="form-group">
+            <div class="col-sm-6 float-left mb-3">
                 <label>充電器タイプ<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
                 <select class="form-control" name="charger_type">
                     <option value="1"{{$detail['charger_type']=== 1 ? 'selected': null}}>USB TYPE-B</option>
@@ -41,7 +43,7 @@
         </form>
     </div>
 </div>
-<div class="row center-block text-center">
+<div class="row float-left center w-100 my-3 center-block text-center">
     <div class="col-1">
     </div>
     <div class="col-5">
@@ -89,7 +91,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">いいえ</button>
-                <a type="button" class="btn btn-primary" href="javascript:document.charger_form.submit()">はい</a>
+                <button type="button" class="btn btn-primary" onclick="javascript:document.charger_form.submit()">はい</button>
             </div>
         </div>
     </div>

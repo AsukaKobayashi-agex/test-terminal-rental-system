@@ -11,21 +11,22 @@
         <p class="mb-4"> 登録するPCの情報を記入してください。</p>
 
         <div class="m-0 font-weight-bold text-primary">
-
+            @if(count($errors) > 0)
+                <ul class="alert alert-danger">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            @endif
             <form method="post" name="pc_form" action="/admin/add_pc/action/"  enctype="multipart/form-data">
                 @csrf
 
                 <div class="col-sm-6 float-left mb-3">
                     <label>端末名<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
-                    @if($errors->has('device_name'))
-                        <span class="text-danger">
-                                    {{$errors->first('device_name')}}
-                                </span>
-                    @endif
                     <input type="text" class="form-control {{$errors->has('device_name') ? "alert-danger": null}}" value="{{old("device_name")}}" name="device_name">
                 </div>
 
-                <div class="col-sm-6 float-left mb-3">
+                <div class="col-sm-3 float-left mb-3">
                     <label>OS<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
                     <select class="form-control" name="os">
                         <option value="3" {{old('os')=== "3" ? 'selected': null}}>Windows</option>
@@ -33,13 +34,8 @@
                     </select>
                 </div>
 
-                <div class="col-sm-6 float-left mb-3">
+                <div class="col-sm-3 float-left mb-3">
                     <label>OSバージョン<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
-                    @if($errors->has('os_version'))
-                        <span class="text-danger">
-                                    {{$errors->first('os_version')}}
-                                </span>
-                    @endif
                     <input type="text" class="form-control {{$errors->has('os_version') ? "alert-danger": null}}" name="os_version"  value="{{old('os_version')}}">
                 </div>
 
@@ -56,11 +52,6 @@
 
                 <div class="col-sm-6 float-left mb-3">
                     <label>メールアドレス<span class="m-0 font-weight-bold text-info">（任意）</span></label>
-                    @if($errors->has('mail_address'))
-                        <span class="text-danger">
-                                {{$errors->first('mail_address')}}
-                        </span>
-                    @endif
                     <input type="text" class="form-control {{$errors->has('mail_address') ? "alert-danger": null}}" name="mail_address" value="{{old("mail_address")}}">
                 </div>
 
@@ -75,32 +66,17 @@
 
                 <div class="col-sm-12 float-left mb-3">
                     <label>端末画像<span class="m-0 font-weight-bold text-info">（任意）</span></label>
-                    @if($errors->has('device_img'))
-                        <span class="text-danger">
-                                {{$errors->first('device_img')}}
-                        </span>
-                    @endif
                     <input type="file" name="device_img">
                 </div>
 
 
                 <div class="col-sm-12 float-left mb-3">
                     <label>備考(ユーザー向け)<span class="m-0 font-weight-bold text-info">（任意）</span></label>
-                    @if($errors->has('memo'))
-                        <span class="text-danger">
-                                    {{$errors->first('memo')}}
-                                </span>
-                    @endif
                     <textarea class="form-control {{$errors->has('memo') ? "alert-danger": null}}" name=memo rows="5">{{old("memo")}}</textarea>
                 </div>
 
                 <div class="col-sm-12 float-left mb-3">
                     <label>備考(管理者向け)<span class="m-0 font-weight-bold text-info">（任意）</span></label>
-                    @if($errors->has('device_name'))
-                        <span class="text-danger">
-                                    {{$errors->first('admin_memo')}}
-                                </span>
-                    @endif
                     <textarea class="form-control {{$errors->has('admin_memo') ? "alert-danger": null}}" name=admin_memo rows="5">{{old("admin_memo")}}</textarea>
                 </div>
             </form>
