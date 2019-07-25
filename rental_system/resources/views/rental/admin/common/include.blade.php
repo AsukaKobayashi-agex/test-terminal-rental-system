@@ -18,6 +18,7 @@
 
     <!-- Custom styles for this template -->
     <link href="/bootsample/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="/css/admin/admin_base.css" rel="stylesheet">
 
     <!-- Custom styles for this page -->
     <link href="/bootsample/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
@@ -47,7 +48,7 @@
 
 
         <!-- Nav Item - Tables -->
-        <li class="nav-item">
+        <li {!! (Request::is('admin/index_all') ? 'class="nav-item active"' : 'class="nav-item"') !!}>
             <a class="nav-link" href="index_all">
                 <i class="fas fa-fw fa-table"></i>
                 <span>端末一覧</span></a>
@@ -62,7 +63,7 @@
             カテゴリ別
         </div>
 
-        <li  {!! (Request::is('view') ? 'class="nav-item active"' : 'class="nav-item"') !!}>
+        <li  {!! (Request::is('admin/index_sp') ? 'class="nav-item active"' : 'class="nav-item"') !!}>
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                 <i class="fas fa-fw fa-mobile"></i>
                 <span >モバイル</span>
@@ -84,13 +85,13 @@
             </div>
         </li>
 
-        <li  {!! (Request::is('view') ? 'class="nav-item active"' : 'class="nav-item"') !!}>
+        <li  {!! (Request::is('admin/index_pc') ? 'class="nav-item active"' : 'class="nav-item"') !!}>
             <a class="nav-link" href="index_pc">
                 <i class="fas fa-fw fa-laptop"></i>
                 <span>PC</span>
             </a>
         </li>
-        <li  {!! (Request::is('view') ? 'class="nav-item active"' : 'class="nav-item"') !!}>
+        <li  {!! (Request::is('admin/index_charger') ? 'class="nav-item active"' : 'class="nav-item"') !!}>
             <a class="nav-link" href="index_charger">
                 <i class="fas fa-fw fa-charging-station"></i>
                 <span>充電器</span>
@@ -101,9 +102,9 @@
         <hr class="sidebar-divider d-none d-md-block">
 
         <!-- Sidebar Toggler (Sidebar) -->
-        <div class="text-center d-none d-md-inline">
+        <!--<div class="text-center d-none d-md-inline">
             <button class="rounded-circle border-0" id="sidebarToggle"></button>
-        </div>
+        </div>-->
 
     </ul>
     <!-- End of Sidebar -->
