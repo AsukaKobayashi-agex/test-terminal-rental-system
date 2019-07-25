@@ -75,12 +75,31 @@
                             @endif
                         </td>
                         <td class="align-middle">
-                            <button class="btn btn-primary btn-user btn-block deleteButton">削除</button>
+                            <button type="button" class="btn btn-primary btn-user btn-block deleteButton">削除</button>
                         </td>
                     </tr>
                 @endforeach
                 </tbody>
             </table>
+                <!-- Check Modal-->
+                <div class="modal fade" id="checkModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">貸出確認</h5>
+                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">選択したデバイスの貸出を確定しますか？</div>
+                            <div class="modal-footer">
+                                <button class="btn btn-secondary" type="button" data-dismiss="modal">キャンセル</button>
+                                <a class="btn btn-primary" href="javascript:document.rental_device.submit()">はい</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </form>
         </div>
         <div class="d-flex d-inline justify-content-end">
@@ -96,24 +115,6 @@
     </div>
 </div>
 
-<!-- Check Modal-->
-<div class="modal fade" id="checkModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">貸出確認</h5>
-                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body">選択したデバイスの貸出を確定しますか？</div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">キャンセル</button>
-                <a class="btn btn-primary" href="javascript:document.rental_device.submit()">はい</a>
-            </div>
-        </div>
-    </div>
-</div>
 
 
 @endsection

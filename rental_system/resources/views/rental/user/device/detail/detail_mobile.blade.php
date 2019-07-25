@@ -203,7 +203,7 @@
                 </div>
                 <div class="card-body">
                     @foreach($installed_app_list as $app)
-                        <ul class="m-0">
+                        <ul class="m-0 justify-content-center">
                             <li class="h5 w-50 list-inline-item font-weight-bold text-gray-800"><?=$app['app_name']?></li>
                             <li class="h6 list-inline-item font-weight-bold text-gray-800">(<?=date('Y年m月d日',strtotime($app['add_date']))?>)</li>
                         </ul>

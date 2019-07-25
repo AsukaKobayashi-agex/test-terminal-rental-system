@@ -11,41 +11,37 @@
         <p class="mb-4"> 登録するPCの情報を記入してください。</p>
 
         <div class="m-0 font-weight-bold text-primary">
-
+            @if(count($errors) > 0)
+                <ul class="alert alert-danger">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            @endif
             <form method="post" name="pc_form" action="/admin/add_pc/action/"  enctype="multipart/form-data">
                 @csrf
 
                 <div class="col-sm-6 float-left mb-3">
-                    <label>端末名</label>
-                    @if($errors->has('device_name'))
-                        <span class="text-danger">
-                                    {{$errors->first('device_name')}}
-                                </span>
-                    @endif
+                    <label>端末名<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
                     <input type="text" class="form-control {{$errors->has('device_name') ? "alert-danger": null}}" value="{{old("device_name")}}" name="device_name">
                 </div>
 
-                <div class="col-sm-6 float-left mb-3">
-                    <label>OS</label>
+                <div class="col-sm-3 float-left mb-3">
+                    <label>OS<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
                     <select class="form-control" name="os">
                         <option value="3" {{old('os')=== "3" ? 'selected': null}}>Windows</option>
                         <option value="4" {{old('os')=== "4" ? 'selected': null}}>MacOS</option>
                     </select>
                 </div>
 
-                <div class="col-sm-6 float-left mb-3">
-                    <label>OSバージョン</label>
-                    @if($errors->has('os_version'))
-                        <span class="text-danger">
-                                    {{$errors->first('os_version')}}
-                                </span>
-                    @endif
+                <div class="col-sm-3 float-left mb-3">
+                    <label>OSバージョン<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
                     <input type="text" class="form-control {{$errors->has('os_version') ? "alert-danger": null}}" name="os_version"  value="{{old('os_version')}}">
                 </div>
 
 
                 <div class="col-sm-6 float-left mb-3">
-                    <label>PCアカウント名</label>
+                    <label>PCアカウント名<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
                     @if($errors->has('pc_account_name'))
                         <span class="text-danger">
                                     {{$errors->first('pc_account_name')}}
@@ -55,17 +51,12 @@
                 </div>
 
                 <div class="col-sm-6 float-left mb-3">
-                    <label>メールアドレス</label>
-                    @if($errors->has('mail_address'))
-                        <span class="text-danger">
-                                {{$errors->first('mail_address')}}
-                        </span>
-                    @endif
+                    <label>メールアドレス<span class="m-0 font-weight-bold text-info">（任意）</span></label>
                     <input type="text" class="form-control {{$errors->has('mail_address') ? "alert-danger": null}}" name="mail_address" value="{{old("mail_address")}}">
                 </div>
 
                 <div class="col-sm-12 float-left mb-3">
-                    <label class="d-block">ソフトウェア</label>
+                    <label class="d-block">ソフトウェア<span class="m-0 font-weight-bold text-info">（任意）</span></label>
                         @foreach($software_master as $d)
                         <div class="w-50 float-sm-left">
                             <label><input type="checkbox" name="software_id[]" value="{!! $d->software_id !!}"  {{old('software_id') && in_array("$d->software_id",old('software_id')) ? 'checked': null}}>{{$d->software_name}}</label>
@@ -74,33 +65,18 @@
                 </div>
 
                 <div class="col-sm-12 float-left mb-3">
-                    <label>端末画像</label>
-                    @if($errors->has('device_img'))
-                        <span class="text-danger">
-                                {{$errors->first('device_img')}}
-                        </span>
-                    @endif
+                    <label>端末画像<span class="m-0 font-weight-bold text-info">（任意）</span></label>
                     <input type="file" name="device_img">
                 </div>
 
 
                 <div class="col-sm-12 float-left mb-3">
-                    <label>備考(ユーザー向け)</label>
-                    @if($errors->has('memo'))
-                        <span class="text-danger">
-                                    {{$errors->first('memo')}}
-                                </span>
-                    @endif
+                    <label>備考(ユーザー向け)<span class="m-0 font-weight-bold text-info">（任意）</span></label>
                     <textarea class="form-control {{$errors->has('memo') ? "alert-danger": null}}" name=memo rows="5">{{old("memo")}}</textarea>
                 </div>
 
                 <div class="col-sm-12 float-left mb-3">
-                    <label>備考(管理者向け)</label>
-                    @if($errors->has('device_name'))
-                        <span class="text-danger">
-                                    {{$errors->first('admin_memo')}}
-                                </span>
-                    @endif
+                    <label>備考(管理者向け)<span class="m-0 font-weight-bold text-info">（任意）</span></label>
                     <textarea class="form-control {{$errors->has('admin_memo') ? "alert-danger": null}}" name=admin_memo rows="5">{{old("admin_memo")}}</textarea>
                 </div>
             </form>

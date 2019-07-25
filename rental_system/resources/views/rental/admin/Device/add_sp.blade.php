@@ -26,22 +26,23 @@
                 <p class="mb-4"> 登録するモバイル端末の情報を記入してください。</p>
 
                 <div class="m-0 font-weight-bold text-primary">
-
+                    @if(count($errors) > 0)
+                        <ul class="alert alert-danger">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    @endif
                     <form method="post" name="sp_form" action="/admin/add_sp/action/" enctype="multipart/form-data">
                         @csrf
                         <div>
                             <div class="col-sm-6 float-left mb-3">
-                                <label>端末名</label>
-                                @if($errors->has('device_name'))
-                                    <span class="text-danger">
-                                        {{$errors->first('device_name')}}
-                                    </span>
-                                @endif
+                                <label>端末名<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
                                 <input type="text" class="form-control {{$errors->has('device_name') ? "alert-danger": null}}" name="device_name" value="{{old('device_name')}}">
                             </div>
 
                             <div class="col-sm-6 float-left mb-3">
-                                <label>モバイル種別</label>
+                                <label>モバイル種別<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
                                 <select class="form-control" name="mobile_type">
                                     <option value="1" {{old('mobile_type')=== "1" ? 'selected': null}}>スマートフォン</option>
                                     <option value="2" {{old('mobile_type')=== "2" ? 'selected': null}}>タブレット</option>
@@ -50,15 +51,36 @@
                         </div>
 
                         <div class="col-sm-6 float-left mb-3">
-                            <label>WiFi回線</label>
+                            <label>モバイル回線<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
+                            <select class="form-control" name="communication_line">
+                                <option value="0" {{old('communication_line')=== "0" ? 'selected': null}}>なし</option>
+                                <option value="1" {{old('communication_line')=== "1" ? 'selected': null}}>あり</option>
+                            </select>
+                        </div>
+
+                        <div class="col-sm-6 float-left mb-3">
+                            <label>WiFi回線<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
                             <select class="form-control" name="wifi_line">
                                 <option value="0" {{old('wifi_line')=== "0" ? 'selected': null}}>なし</option>
                                 <option value="1" {{old('wifi_line')=== "1" ? 'selected': null}}>あり</option>
                             </select>
                         </div>
 
+                        <div class="col-sm-3 float-left mb-3">
+                            <label>OS<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
+                            <select class="form-control" name="os">
+                                <option value="1" {{old('os')=== "1" ? 'selected': null}}>Android</option>
+                                <option value="2" {{old('os')=== "2" ? 'selected': null}}>iOS</option>
+                            </select>
+                        </div>
+
+                        <div class="col-sm-3 float-left mb-3">
+                            <label>OSバージョン<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
+                            <input type="text" class="form-control {{$errors->has('os_version') ? "alert-danger": null}}" name="os_version"  value="{{old('os_version')}}">
+                        </div>
+
                         <div class="col-sm-6 float-left mb-3">
-                            <label>キャリア</label>
+                            <label>キャリア<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
                             <select class="form-control" name="carrier_id">
                                 <option value="0">なし</option>
                             @foreach($mobile_carrier as $d)
@@ -68,54 +90,18 @@
                         </div>
 
                         <div class="col-sm-6 float-left mb-3">
-                            <label>モバイル回線</label>
-                            <select class="form-control" name="communication_line">
-                                <option value="0" {{old('communication_line')=== "0" ? 'selected': null}}>なし</option>
-                                <option value="1" {{old('communication_line')=== "1" ? 'selected': null}}>あり</option>
+                            <label>SIM/UIM<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
+                            <select class="form-control" name="sim_card">
+                                <option value="0" {{old('sim_card')=== "0" ? 'selected': null}}>SIMなし</option>
+                                <option value="1" {{old('sim_card')=== "1" ? 'selected': null}}>標準SIM</option>
+                                <option value="2" {{old('sim_card')=== "2" ? 'selected': null}}>nanoSIM</option>
+                                <option value="3" {{old('sim_card')=== "3" ? 'selected': null}}>microSIM</option>
+                                <option value="4" {{old('sim_card')=== "4" ? 'selected': null}}>miniSIM</option>
                             </select>
                         </div>
 
                         <div class="col-sm-6 float-left mb-3">
-                            <label>電話番号</label>
-                            @if($errors->has('number'))
-                                <span class="text-danger">
-                                    {{$errors->first('number')}}
-                                </span>
-                            @endif
-                            <input type="tel" class="form-control  {{$errors->has('number') ? "alert-danger": null}}" name="number"  value="{{old('number')}}">
-                        </div>
-
-                        <div class="col-sm-6 float-left mb-3">
-                            <label>メールアドレス</label>
-                            <input type="text" class="form-control {{$errors->has('mail_address') ? "alert-danger": null}}" name="mail_address"  value="{{old('mail_address')}}">
-                            @if($errors->has('mail_address'))
-                                <span class="text-danger">
-                                    {{$errors->first('mail_address')}}
-                                </span>
-                            @endif
-                        </div>
-
-                        <div class="col-sm-6 float-left mb-3">
-                            <label>OS</label>
-                            <select class="form-control" name="os">
-                                <option value="1" {{old('os')=== "1" ? 'selected': null}}>Android</option>
-                                <option value="2" {{old('os')=== "2" ? 'selected': null}}>iOS</option>
-                            </select>
-                        </div>
-
-                        <div class="col-sm-6 float-left mb-3">
-                            <label>OSバージョン</label>
-                            @if($errors->has('os_version'))
-                                <span class="text-danger">
-                                    {{$errors->first('os_version')}}
-                                </span>
-                            @endif
-                            <input type="text" class="form-control {{$errors->has('os_version') ? "alert-danger": null}}" name="os_version"  value="{{old('os_version')}}">
-                        </div>
-
-
-                        <div class="col-sm-6 float-left mb-3">
-                            <label>充電器タイプ</label>
+                            <label>充電器タイプ<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
                             <select class="form-control" name="charger_type">
                                 <option value="1" {{old('charger_type')=== "1" ? 'selected': null}}>USB TYPE-B</option>
                                 <option value="2" {{old('charger_type')=== "2" ? 'selected': null}}>USB TYPE-C</option>
@@ -126,42 +112,37 @@
                         </div>
 
                         <div class="col-sm-6 float-left mb-3">
-                            <label>画面サイズ</label>
-                            @if($errors->has('display_size'))
+                            <label>電話番号<span class="m-0 font-weight-bold text-info">（任意）</span></label>
+                            @if($errors->has('number'))
                                 <span class="text-danger">
-                                    {{$errors->first('display_size')}}
+                                    {{$errors->first('number')}}
                                 </span>
                             @endif
+                            <input type="tel" class="form-control  {{$errors->has('number') ? "alert-danger": null}}" name="number"  value="{{old('number')}}">
+                        </div>
+
+                        <div class="col-sm-6 float-left mb-3">
+                            <label>メールアドレス<span class="m-0 font-weight-bold text-info">（任意）</span></label>
+                            <input type="text" class="form-control {{$errors->has('mail_address') ? "alert-danger": null}}" name="mail_address"  value="{{old('mail_address')}}">
+                        </div>
+
+                        <div class="col-sm-6 float-left mb-3">
+                            <label>画面サイズ<span class="m-0 font-weight-bold text-info">（任意）</span></label>
                             <input type="text" class="form-control {{$errors->has('display_size') ? "alert-danger": null}}" name="display_size" value="{{old('display_size')}}">
                         </div>
 
                         <div class="col-sm-6 float-left mb-3">
-                            <label>解像度</label>
-                            @if($errors->has('resolution'))
-                                <span class="text-danger">
-                                    {{$errors->first('resolution')}}
-                                </span>
-                            @endif
+                            <label>解像度<span class="m-0 font-weight-bold text-info">（任意）</span></label>
                             <input type="text" class="form-control {{$errors->has("resolution") ? "alert-danger": null}}" name="resolution" value="{{old('resolution')}}">
                         </div>
 
                         <div class="col-sm-6 float-left mb-3">
-                            <label>発売時期</label>
+                            <label>発売時期<span class="m-0 font-weight-bold text-info">（任意）</span></label>
                             <input type="date" class="form-control" name="launch_date" value="{{old('launch_date')}}">
                         </div>
 
-                        <div class="col-sm-6 float-left mb-3">
-                            <label>SIM/UIM</label>
-                            <select class="form-control" name="sim_card">
-                                <option value="1" {{old('sim_card')=== "1" ? 'selected': null}}>標準SIM</option>
-                                <option value="2" {{old('sim_card')=== "2" ? 'selected': null}}>nanoSIM</option>
-                                <option value="3" {{old('sim_card')=== "3" ? 'selected': null}}>microSIM</option>
-                                <option value="4" {{old('sim_card')=== "4" ? 'selected': null}}>miniSIM</option>
-                            </select>
-                        </div>
-
                         <div class="col-sm-12 float-left mb-3">
-                            <label class="d-block">インストールアプリ</label>
+                            <label class="d-block">インストールアプリ<span class="m-0 font-weight-bold text-info">（任意）</span></label>
                                 @foreach($mobile_app_master as $d)
                                     <div class="w-50 float-sm-left">
                                     <label><input type="checkbox" name="mobile_app_id[]" value="{!! $d->mobile_app_id !!}" {{old('mobile_app_id') && in_array("$d->mobile_app_id",old('mobile_app_id')) ? 'checked': null}}>{{$d->app_name}}</label>
@@ -170,32 +151,17 @@
                         </div>
 
                         <div class="col-sm-12 float-left mb-3">
-                            <label>端末画像</label>
+                            <label>端末画像<span class="m-0 font-weight-bold text-info">（任意）</span></label>
                             <input type="file" name="device_img">
-                            @if($errors->has('device_img'))
-                                <span class="text-danger">
-                                {{$errors->first('device_img')}}
-                                </span>
-                            @endif
                         </div>
 
                         <div class="col-sm-12 float-left mb-3">
-                            <label>備考(ユーザー向け)</label>
-                            @if($errors->has('memo'))
-                                <span class="text-danger">
-                                    {{$errors->first('memo')}}
-                                </span>
-                            @endif
+                            <label>備考(ユーザー向け)<span class="m-0 font-weight-bold text-info">（任意）</span></label>
                             <textarea class="form-control {{$errors->has('memo') ? "alert-danger": null}}" name=memo rows="5">{{old('memo')}}</textarea>
                         </div>
 
                         <div class="col-sm-12 float-left mb-3">
-                            <label>備考(管理者向け)</label>
-                            @if($errors->has('admin_memo'))
-                                <span class="text-danger">
-                                    {{$errors->first('admin_memo')}}
-                                </span>
-                            @endif
+                            <label>備考(管理者向け)<span class="m-0 font-weight-bold text-info">（任意）</span></label>
                             <textarea class="form-control {{$errors->has('admin_memo') ? "alert-danger": null}}" name=admin_memo rows="5">{{old('admin_memo')}}</textarea>
                         </div>
                     </form>

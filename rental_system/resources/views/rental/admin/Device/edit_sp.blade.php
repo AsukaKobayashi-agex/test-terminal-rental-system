@@ -21,17 +21,12 @@
                     <!-- Page Heading -->
                     <h1 class="h3 mb-2 text-gray-800">モバイル端末情報の編集</h1>
                     <p class="mb-4"> モバイル端末の情報を記入してください。</p>
-                    @if($errors->first())
-                        <div class="alert alert-danger text-center">
-                            {{$errors->first('device_name')}}
-                            {{$errors->first('number')}}
-                            {{$errors->first('mail_address')}}
-                            {{$errors->first('os_version')}}
-                            {{$errors->first('display_size')}}
-                            {{$errors->first('resolution')}}
-                            {{$errors->first('memo')}}
-                            {{$errors->first('admin_memo')}}
-                        </div>
+                    @if(count($errors) > 0)
+                        <ul class="alert alert-danger">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
                     @endif
 
                     <div class="m-0 font-weight-bold text-primary">
@@ -41,12 +36,12 @@
                             <div class="form-group">
                                 <input type="hidden" class="form-control" name="test_device_id" value="<?=$detail['test_device_id']?>">
 
-                                <div class="form-group">
+                                <div class="col-sm-6 float-left mb-3">
                                     <label>端末名<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
-                                    <input type="text" class="form-control" name="device_name" value="<?=$detail['device_name']?>">
+                                    <input type="text" class="form-control {{$errors->has('device_name') ? "alert-danger": null}}" name="device_name" value="<?=$detail['device_name']?>">
                                 </div>
 
-                            <div class="form-group">
+                            <div class="col-sm-6 float-left mb-3">
                                 <label>モバイル種別<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
                                 <select class="form-control" name="mobile_type">
                                     <option value="1"{{$detail['mobile_type']=== 1 ? 'selected': null}}>スマートフォン</option>
@@ -54,7 +49,7 @@
                                 </select>
                             </div>
 
-                            <div class="form-group">
+                            <div class="col-sm-6 float-left mb-3">
                                 <label>モバイル回線<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
                                 <select class="form-control" name="communication_line">
                                     <option value="1"{{$detail['communication_line']=== 0 ? 'selected': null}}>なし</option>
@@ -62,7 +57,7 @@
                                 </select>
                             </div>
 
-                            <div class="form-group">
+                            <div class="col-sm-6 float-left mb-3">
                                 <label>Wi-fi回線<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
                                 <select class="form-control" name="wifi_line">
                                     <option value="1"{{$detail['wifi_line']=== 0 ? 'selected': null}}>なし</option>
@@ -70,7 +65,7 @@
                                 </select>
                             </div>
 
-                            <div class="form-group">
+                            <div class="col-sm-3 float-left mb-3">
                                 <label>OS<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
                                 <select class="form-control" name="os">
                                     <option value="1"{{$detail['os']=== 1 ? 'selected': null}}>Android</option>
@@ -78,12 +73,12 @@
                                 </select>
                             </div>
 
-                            <div class="form-group">
+                            <div class="col-sm-3 float-left mb-3">
                                 <label>OSバージョン<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
-                                <input type="text" class="form-control" name="os_version" value="<?=$detail['os_version']?>">
+                                <input type="text" class="form-control {{$errors->has('os_version') ? "alert-danger": null}}" name="os_version" value="<?=$detail['os_version']?>">
                             </div>
 
-                            <div class="form-group">
+                            <div class="col-sm-6 float-left mb-3">
                                 <label>キャリア<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
                                 <select class="form-control" name="carrier_id">
                                     @foreach($mobile_carrier as $d)
@@ -92,9 +87,10 @@
                                 </select>
                             </div>
 
-                            <div class="form-group">
+                            <div class="col-sm-6 float-left mb-3">
                                 <label>SIM/UIM<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
                                 <select class="form-control" name="sim_card">
+                                    <option value="0"{{$detail['sim_card']=== 0 ? 'selected': null}}>SIMなし</option>
                                     <option value="1"{{$detail['sim_card']=== 1 ? 'selected': null}}>標準SIM</option>
                                     <option value="2"{{$detail['sim_card']=== 2 ? 'selected': null}}>nanoSIM</option>
                                     <option value="3"{{$detail['sim_card']=== 3 ? 'selected': null}}>microSIM</option>
@@ -102,43 +98,43 @@
                                 </select>
                             </div>
 
-                            <div class="form-group">
+                            <div class="col-sm-6 float-left mb-3">
                                 <label>充電器タイプ<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
                                 <select class="form-control" name="charger_type">
                                     <option value="1"{{$detail['charger_type']=== 1 ? 'selected': null}}>USB TYPE-B</option>
                                     <option value="2"{{$detail['charger_type']=== 2 ? 'selected': null}}>USB TYPE-C</option>
                                     <option value="3"{{$detail['charger_type']=== 3 ? 'selected': null}}>iphone ライトニング</option>
                                     <option value="4"{{$detail['charger_type']=== 4 ? 'selected': null}}>iphone　旧型</option>
-                                    <option value="0"{{$detail['charger_type']=== 5 ? 'selected': null}}>その他</option>
+                                    <option value="0"{{$detail['charger_type']=== 0 ? 'selected': null}}>その他</option>
                                 </select>
                             </div>
 
-                            <div class="form-group">
+                            <div class="col-sm-6 float-left mb-3">
                                 <label>電話番号<span class="m-0 font-weight-bold text-info">（任意）</span></label>
-                                <input type="text" class="form-control" name="number" value="<?=$detail['number']?>">
+                                <input type="text" class="form-control {{$errors->has('number') ? "alert-danger": null}}" name="number" value="<?=$detail['number']?>">
                             </div>
 
-                            <div class="form-group">
+                            <div class="col-sm-6 float-left mb-3">
                                 <label>メールアドレス<span class="m-0 font-weight-bold text-info">（任意）</span></label>
-                                <input type="text" class="form-control" name="mail_address" value="<?=$detail['mail_address']?>">
+                                <input type="text" class="form-control{{$errors->has('mail_address') ? "alert-danger": null}}" name="mail_address" value="<?=$detail['mail_address']?>">
                             </div>
 
-                            <div class="form-group">
+                            <div class="col-sm-6 float-left mb-3">
                                 <label>画面サイズ<span class="m-0 font-weight-bold text-info">（任意）</span></label>
-                                <input type="text" class="form-control" name="display_size" value="<?=$detail['display_size']?>">
+                                <input type="text" class="form-control {{$errors->has('display_size') ? "alert-danger": null}}" name="display_size" value="<?=$detail['display_size']?>">
                             </div>
 
-                            <div class="form-group">
+                            <div class="col-sm-6 float-left mb-3">
                                 <label>解像度<span class="m-0 font-weight-bold text-info">（任意）</span></label>
-                                <input type="text" class="form-control" name="resolution" value="<?=$detail['resolution']?>">
+                                <input type="text" class="form-control {{$errors->has('resolution') ? "alert-danger": null}}" name="resolution" value="<?=$detail['resolution']?>">
                             </div>
 
-                            <div class="form-group">
+                            <div class="col-sm-6 float-left mb-3">
                                 <label>発売時期<span class="m-0 font-weight-bold text-info">（任意）</span></label>
                                 <input type="date" class="form-control" name="launch_date" value="<?=$detail['launch_date']?>">
                             </div>
 
-                            <div class="form-group">
+                            <div class="col-sm-12 float-left mb-3">
                                 <label>インストールアプリ<span class="m-0 font-weight-bold text-info">（任意）</span></label>
                                 @foreach($mobile_app_master as $d)
                                     <div>
@@ -147,29 +143,24 @@
                                 @endforeach
                             </div>
 
-                            <div class="form-group">
+                            <div class="col-sm-12 float-left mb-3">
                                 <label>端末画像<span class="m-0 font-weight-bold text-info">（任意）</span></label>
                                 <input type="file" name="device_img">
-                                @if($errors->has('device_img'))
-                                    <span class="text-danger">
-                            {{$errors->first('device_img')}}
-                            </span>
-                                @endif
                             </div>
 
-                            <div class="form-group">
+                            <div class="col-sm-12 float-left mb-3">
                                 <label>備考(ユーザー向け)<span class="m-0 font-weight-bold text-info">（任意）</span></label>
-                                <textarea class="form-control" name=memo rows="5"><?=$detail['memo']?></textarea>
+                                <textarea class="form-control {{$errors->has('memo') ? "alert-danger": null}}" name=memo rows="5"><?=$detail['memo']?></textarea>
                             </div>
 
-                            <div class="form-group">
+                            <div class="col-sm-12 float-left mb-3">
                                 <label>備考(管理者向け)<span class="m-0 font-weight-bold text-info">（任意）</span></label>
-                                <textarea class="form-control" name=admin_memo rows="5"><?=$detail['admin_memo']?></textarea>
+                                <textarea class="form-control {{$errors->has('admin_memo') ? "alert-danger": null}}" name=admin_memo rows="5"><?=$detail['admin_memo']?></textarea>
                             </div>
                         </form>
                     </div>
                 </div>
-                <div class="row center-block text-center">
+                <div class="row float-left center w-100 my-3 center-block text-center">
                     <div class="col-1">
                     </div>
                     <div class="col-5">

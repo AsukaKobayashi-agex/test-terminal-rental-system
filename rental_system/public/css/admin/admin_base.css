@@ -35,14 +35,3 @@
     }
 
 }
-
-@media all and (-ms-high-contrast:none) {
-    .bundle {
-        display:none;
-    }
-
-   .custom-checkbox{
-        display: none;
-    }
-
-}
