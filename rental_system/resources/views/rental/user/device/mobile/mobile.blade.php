@@ -38,7 +38,7 @@
                             </ul>
                             @endif
                             <div class="form-group row">
-                                <form name='search' method="post" action="#">
+                                <form id='search' method="post" action="/mobile">
                                     @csrf
                                     <div class="col-lg-2 px-1 mb-3">
                                         <input type="search" name="search_word" class="form-control" value="{{$search_word}}" placeholder="端末名を入力" >
@@ -99,7 +99,13 @@
                         @component('rental.user.common.bundle_bar')
                         @endcomponent
 
-                        @if(empty($mobile_device_list))
+                        <div class="btn-group form-group float-right" role="group">
+                            @for($x=1; $x <= $page_num ; $x++)
+                                <button type="submit" form="search" class="btn btn-secondary" formaction="?page={{$x}}">{{$x}}</button>
+                            @endfor
+                        </div>
+
+                    @if(empty($mobile_device_list))
                             <tr class="font-weight-bold">
                                 <td class="align-middle"></td>
                                 <td class="align-middle">一致する項目はありません</td>

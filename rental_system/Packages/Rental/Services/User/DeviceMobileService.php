@@ -16,7 +16,11 @@ class DeviceMobileService
     public function getData($param)
     {
         $data = [];
-        $data['mobile_device_list'] = $this->_model->getAllDeviceMobile($param);
+        $paginate = $this->_model->getAllDeviceMobile($param,1);
+        $data['mobile_device_list'] = $this->_model->getAllDeviceMobile($param,0);
+        $paginate = count($paginate);
+        $data['page_num'] = ceil($paginate / 10);
+
         return $data;
     }
 }

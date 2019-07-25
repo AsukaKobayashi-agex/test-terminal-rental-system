@@ -16,7 +16,11 @@ class DeviceChargerService
     public function getData($param)
     {
         $data = [];
-        $data['charger_list'] = $this->_model->getAllDeviceCharger($param);
+        $data['charger_list'] = $this->_model->getAllDeviceCharger($param,0);
+        $paginate = $this->_model->getAllDeviceCharger($param,1);
+        $paginate = count($paginate);
+        $data['page_num'] = ceil($paginate / 10);
+
         return $data;
     }
 }

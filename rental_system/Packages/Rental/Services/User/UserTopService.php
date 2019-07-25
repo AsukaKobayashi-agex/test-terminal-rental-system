@@ -16,7 +16,11 @@ class UserTopService
     public function getData($param)
     {
         $data = [];
-        $data['all_device_list'] = $this->_model->getAllUserTop($param);
+        $paginate = $this->_model->getAllUserTop($param,1);
+        $data['all_device_list'] = $this->_model->getAllUserTop($param,0);
+        $paginate = count($paginate);
+        $data['page_num'] = ceil($paginate / 10);
+
         return $data;
     }
 }

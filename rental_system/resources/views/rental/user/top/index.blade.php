@@ -40,7 +40,7 @@
                             </ul>
                         @endif
                         <div class="form-group row">
-                            <form id='search' method="post" action="#">
+                            <form id='search' method="post" action="/">
                                 @csrf
                                 <div class="col-sm-4 mb-3 mb-sm-0">
                                     <input type="search" name="search_word" class="form-control" value="{{$search_word}}" placeholder="端末名を入力" >
@@ -65,6 +65,11 @@
                     </div>
                     @component('rental.user.common.bundle_bar')
                     @endcomponent
+                    <div class="btn-group form-group float-right" role="group">
+                        @for($x=1; $x <= $page_num ; $x++)
+                            <button type="submit" form="search" class="btn btn-secondary" formaction="?page={{$x}}">{{$x}}</button>
+                        @endfor
+                    </div>
 
                     <tbody>
                     @if(empty($all_device_list))

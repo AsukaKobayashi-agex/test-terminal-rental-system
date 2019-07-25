@@ -2,8 +2,6 @@
 
 namespace Rental\Models\User;
 
-use Rental\Models\_common\GetUserInfo;
-
 
 class RentalData
 {
