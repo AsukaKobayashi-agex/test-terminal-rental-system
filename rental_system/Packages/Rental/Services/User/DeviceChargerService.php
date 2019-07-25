@@ -16,10 +16,11 @@ class DeviceChargerService
     public function getData($param)
     {
         $data = [];
-        $data['charger_list'] = $this->_model->getAllDeviceCharger($param,0);
-        $paginate = $this->_model->getAllDeviceCharger($param,1);
+        $page_limit = 10;
+        $data['charger_list'] = $this->_model->getAllDeviceCharger($param,$page_limit);
+        $paginate = $this->_model->getAllDeviceCharger($param,0);
         $paginate = count($paginate);
-        $data['page_num'] = ceil($paginate / 10);
+        $data['page_num'] = ceil($paginate / $page_limit);
 
         return $data;
     }

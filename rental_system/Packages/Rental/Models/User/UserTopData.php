@@ -5,7 +5,7 @@ namespace Rental\Models\User;
 
 class UserTopData
 {
-    public function getAllUserTop($param,$page)
+    public function getAllUserTop($param,$page_limit)
     {
         // バインド値設定
         $bind_params = [
@@ -85,22 +85,20 @@ Add_sql;
 
         $sql .= "order by device_category,test_device_category,mobile_type,device_name,charger_name";
 
-            if($page!==1){
+            if($page_limit!==0){
                 if (isset($param['page'])) {
-                    $page = (int)$param['page'];
+                    $nowPage = (int)$param['page'];
                 } else {
-                    $page = 1;
+                    $nowPage = 1;
                 }
 
-                // スタートのポジションを計算する
-                if ($page > 1) {
-                    // 例：２ページ目の場合は、『(2 × 10) - 10 = 10』
-                    $start = ($page * 10) - 10;
+                if ($nowPage > 1) {
+                    $start = ($nowPage - 1) * $page_limit;
                 } else {
                     $start = 0;
                 }
 
-                $sql .= " LIMIT {$start},10";
+                $sql .= " LIMIT {$start},$page_limit";
             }
 
 

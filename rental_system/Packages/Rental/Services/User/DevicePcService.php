@@ -16,10 +16,11 @@ class DevicePcService
     public function getData($param)
     {
         $data = [];
-        $data['pc_device_list'] = $this->_model->getAllDevicePc($param,0);
-        $paginate = $this->_model->getAllDevicePc($param,1);
+        $page_limit = 10;
+        $data['pc_device_list'] = $this->_model->getAllDevicePc($param,$page_limit);
+        $paginate = $this->_model->getAllDevicePc($param,0);
         $paginate = count($paginate);
-        $data['page_num'] = ceil($paginate / 10);
+        $data['page_num'] = ceil($paginate / $page_limit);
 
         return $data;
     }

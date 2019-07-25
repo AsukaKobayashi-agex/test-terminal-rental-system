@@ -7,7 +7,7 @@ use Rental\Models\_common\GetUserInfo;
 
 class DeviceChargerData
 {
-    public function getAllDeviceCharger($param,$page)
+    public function getAllDeviceCharger($param,$page_limit)
     {
         // バインド値設定
         $bind_params = [
@@ -84,22 +84,20 @@ Add_sql;
 
 
 
-        if($page!==1){
+        if($page_limit!==0){
             if (isset($param['page'])) {
-                $page = (int)$param['page'];
+                $nowPage = (int)$param['page'];
             } else {
-                $page = 1;
+                $nowPage = 1;
             }
 
-            // スタートのポジションを計算する
-            if ($page > 1) {
-                // 例：２ページ目の場合は、『(2 × 10) - 10 = 10』
-                $start = ($page * 10) - 10;
+            if ($nowPage > 1) {
+                $start = ($nowPage - 1) * $page_limit;
             } else {
                 $start = 0;
             }
 
-            $sql .= " LIMIT {$start},10";
+            $sql .= " LIMIT {$start},$page_limit";
         }
 
 
