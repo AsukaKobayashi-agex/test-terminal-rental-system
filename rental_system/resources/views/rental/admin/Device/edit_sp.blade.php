@@ -109,7 +109,7 @@
                                     <option value="2"{{$detail['charger_type']=== 2 ? 'selected': null}}>USB TYPE-C</option>
                                     <option value="3"{{$detail['charger_type']=== 3 ? 'selected': null}}>iphone ライトニング</option>
                                     <option value="4"{{$detail['charger_type']=== 4 ? 'selected': null}}>iphone　旧型</option>
-                                    <option value="5"{{$detail['charger_type']=== 5 ? 'selected': null}}>その他</option>
+                                    <option value="0"{{$detail['charger_type']=== 5 ? 'selected': null}}>その他</option>
                                 </select>
                             </div>
 
