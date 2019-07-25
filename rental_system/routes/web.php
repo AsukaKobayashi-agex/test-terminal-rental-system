@@ -70,6 +70,19 @@ Route::group(['prefix' => 'admin', 'middleware' => ['force_https']], function() 
         Route::get('/edit_charger','Admin\Edit\EditChargerController@view');
         Route::post('/edit_charger/action','Admin\Edit\EditChargerController@action');
 
+        //-----------------------------------------------------------------------------------------------
+
+        //詳細画面
+
+        //詳細画面（SP）
+        Route::get('/info_sp','Admin\Info\InfoSpController@view');
+
+        //詳細画面（PC）
+        Route::get('/info_pc','Admin\Info\InfoPcController@view');
+
+        //詳細画面（充電器）
+        Route::get('/info_charger','Admin\Info\InfoChargerController@view');
+
     });
 });
 
