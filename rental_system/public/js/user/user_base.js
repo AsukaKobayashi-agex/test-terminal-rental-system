@@ -1,16 +1,17 @@
 
 $(function () {
     //チェックがない場合に全チェックボタンを外し、一括ボタンを無効化
+    const check = $('.custom-checkbox :checked');
     $('footer').ready(function(){
-        if ($('#dataTable :checked').length !== 0) {
+        if ($(check).length !== 0) {
             $('.bundle').removeAttr('disabled')
         } else {
             $('.bundle').attr('disabled', true)
         }
     });
 
-    $('footer').ready(function(){
-        if ($('.data-table :checked').length !== 0) {
+    $(function(){
+        if ($(check).length !== 0) {
             $('.bundle').removeAttr('disabled')
         } else {
             $('.bundle').attr('disabled', true)
@@ -152,7 +153,10 @@ $(function () {
     });
 
     $(".deleteButton").click(function(){
-        $(this).parents('tr').remove();
+        const tr = $(this).parents('tr');
+        $(tr).fadeOut('fast',function () {
+           $(tr).remove()
+        });
         if($('tbody input').length === 0) {
             $("#noDevice").removeAttr('hidden');
             $("#agree").attr('disabled', 'disabled')
