@@ -44,7 +44,7 @@
                                     <input type="number" name="search_id" class="form-control" value="{{$search_id}}" placeholder="端末ID" >
                                 </div>
                                 <div class="col-sm-3 mb-3 mb-sm-0">
-                                    <input type="search" name="search_word" class="form-control" value="{{$search_word}}" placeholder="端末名を入力" >
+                                    <input type="search" name="search_word" class="form-control" value="{{$search_word}}" placeholder="端末名" >
                                 </div>
                                 <div class="col-sm-2 px-1 mb-3 mb-sm-0">
                                     <select name="charger_type" class="form-control">
