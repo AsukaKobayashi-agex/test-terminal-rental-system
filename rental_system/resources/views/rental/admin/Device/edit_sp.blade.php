@@ -95,6 +95,7 @@
                             <div class="form-group">
                                 <label>SIM/UIM<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
                                 <select class="form-control" name="sim_card">
+                                    <option value="0"{{$detail['sim_card']=== 0 ? 'selected': null}}>SIMなし</option>
                                     <option value="1"{{$detail['sim_card']=== 1 ? 'selected': null}}>標準SIM</option>
                                     <option value="2"{{$detail['sim_card']=== 2 ? 'selected': null}}>nanoSIM</option>
                                     <option value="3"{{$detail['sim_card']=== 3 ? 'selected': null}}>microSIM</option>
@@ -109,7 +110,7 @@
                                     <option value="2"{{$detail['charger_type']=== 2 ? 'selected': null}}>USB TYPE-C</option>
                                     <option value="3"{{$detail['charger_type']=== 3 ? 'selected': null}}>iphone ライトニング</option>
                                     <option value="4"{{$detail['charger_type']=== 4 ? 'selected': null}}>iphone　旧型</option>
-                                    <option value="5"{{$detail['charger_type']=== 5 ? 'selected': null}}>その他</option>
+                                    <option value="5"{{$detail['charger_type']=== 0 ? 'selected': null}}>その他</option>
                                 </select>
                             </div>
 
