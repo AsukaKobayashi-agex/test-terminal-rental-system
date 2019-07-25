@@ -7,20 +7,20 @@ use Rental\Models\User\DeviceChargerData;
 class DeviceChargerService
 {
     protected $_model;
+    protected $_paginate;
 
-    public function __construct(DeviceChargerData $model)
+    public function __construct(DeviceChargerData $model,PaginateService $paginateService)
     {
         $this->_model = $model;
+        $this->_paginate = $paginateService;
     }
 
     public function getData($param)
     {
         $data = [];
-        $page_limit = 10;
-        $data['charger_list'] = $this->_model->getAllDeviceCharger($param,$page_limit);
-        $paginate = $this->_model->getAllDeviceCharger($param,0);
-        $paginate = count($paginate);
-        $data['page_num'] = ceil($paginate / $page_limit);
+        $all_num = $this->_model->getAllDeviceCharger($param,0);
+        $data += $this->_paginate->paginate($all_num);
+        $data['charger_list'] = $this->_model->getAllDeviceCharger($param,$data['limit']);
 
         return $data;
     }

@@ -7,20 +7,20 @@ use Rental\Models\User\DevicePcData;
 class DevicePcService
 {
     protected $_model;
+    protected $_paginate;
 
-    public function __construct(DevicePcData $model)
+    public function __construct(DevicePcData $model,PaginateService $paginateService)
     {
         $this->_model = $model;
+        $this->_paginate = $paginateService;
     }
 
     public function getData($param)
     {
         $data = [];
-        $page_limit = 10;
-        $data['pc_device_list'] = $this->_model->getAllDevicePc($param,$page_limit);
-        $paginate = $this->_model->getAllDevicePc($param,0);
-        $paginate = count($paginate);
-        $data['page_num'] = ceil($paginate / $page_limit);
+        $all_num = $this->_model->getAllDevicePc($param,0);
+        $data += $this->_paginate->paginate($all_num);
+        $data['pc_device_list'] = $this->_model->getAllDevicePc($param,$data['limit']);
 
         return $data;
     }

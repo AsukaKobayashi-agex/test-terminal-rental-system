@@ -7,20 +7,20 @@ use Rental\Models\User\UserTopData;
 class UserTopService
 {
     protected $_model;
+    protected $_paginate;
 
-    public function __construct(UserTopData $model)
+    public function __construct(UserTopData $model,PaginateService $paginateService)
     {
         $this->_model = $model;
+        $this->_paginate = $paginateService;
     }
 
     public function getData($param)
     {
         $data = [];
-        $paginate = $this->_model->getAllUserTop($param,0);
-        $page_limit = 10;
-        $data['all_device_list'] = $this->_model->getAllUserTop($param,$page_limit);
-        $paginate = count($paginate);
-        $data['page_num'] = ceil($paginate / $page_limit);
+        $all_num = $this->_model->getAllUserTop($param,0);
+        $data += $this->_paginate->paginate($all_num);
+        $data['all_device_list'] = $this->_model->getAllUserTop($param,$data['limit']);
 
         return $data;
     }
