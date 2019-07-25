@@ -1,28 +1,39 @@
-.sidebar .nav-item .nav-link[data-toggle="collapse"]::after {
-    content: '\f106';
-}
-.sidebar .nav-item .nav-link[data-toggle="collapse"].collapsed::after {
-    content: '\f107';
-}
-.sidebar.toggled .nav-item .nav-link span {
-    font-size: 0.65rem;
-    display: block;
+@media (min-width: 768px) {
+    .sidebar .nav-item .nav-link[data-toggle="collapse"]::after {
+        content: '\f106';
+        font-family: 'Font Awesome 5 Free';
+
+    }
+
+    .sidebar .nav-item .nav-link[data-toggle="collapse"].collapsed::after {
+        content: '\f107';
+        font-family: 'Font Awesome 5 Free';
+
+    }
+
+    .sidebar.toggled .nav-item .nav-link span {
+        font-size: 0.65rem;
+        display: block;
+    }
 }
 
-.sidebar.toggled .nav-item .nav-link[data-toggle="collapse"]{
-    display: inline-block;
-}
+@media (max-width: 767.9px){
+    .sidebar .nav-item .nav-link[data-toggle="collapse"]{
+        display: inline-block;
+    }
 
-.sidebar.toggled .nav-item .nav-link[data-toggle="collapse"] span::after{
-    display: inline;
-    width: 1rem;
-    text-align: center;
-    float: right;
-    vertical-align: 0;
-    border: 0;
-    font-weight: 900;
-    content: '\f105';
-    font-family: 'Font Awesome 5 Free';
+    .sidebar .nav-item .nav-link[data-toggle="collapse"] span::after{
+        display: inline;
+        width: 1rem;
+        text-align: center;
+        float: right;
+        vertical-align: 0;
+        border: 0;
+        font-weight: 900;
+        content: '\f105';
+        font-family: 'Font Awesome 5 Free';
+    }
+
 }
 
 @media all and (-ms-high-contrast:none) {
