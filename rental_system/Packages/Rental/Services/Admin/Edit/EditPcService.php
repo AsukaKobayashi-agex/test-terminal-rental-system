@@ -20,7 +20,7 @@ class EditPcService
         $data = [];
         $data['detail'] = $this->_model->getAllEditPc($param);
         $data['installed_software'] = $this->_model->getAllInstalledSoftware($param);
-        $data['software_master'] = $this->_software_master->getEdit();
+        $data['software_master'] = $this->_software_master->getAll();
         if(\Auth::guard('admin')->check()) {
             $data['admin_info'] = $this->_model->getAdminAccountData();
         }
