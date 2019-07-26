@@ -109,7 +109,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">いいえ</button>
-                    <a href="edit.blade.php"><button type="button" class="btn btn-primary">はい</button></a>
+                    <a href="/admin/index_pc"><button type="button" class="btn btn-primary">はい</button></a>
                 </div>
             </div>
         </div>

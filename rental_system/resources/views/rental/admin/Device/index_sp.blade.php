@@ -85,7 +85,7 @@
                             </form>
                         </div>
                             <div class="form-group float-left row mx-2">
-                                <a href="add_sp" class="btn btn-success btn-icon-split float-right">
+                                <a href="/admin/add_sp" class="btn btn-success btn-icon-split float-right">
                                 <span class="icon text-white-50">
                                   <i class="fas fa-flag"></i>
                                 </span>
@@ -108,7 +108,7 @@
                                 <?=$device['rental_device_id']?>
                             </td>
                             <td>
-                                <a class="text-lg" href="info_sp?rental_device_id=<?=$device['rental_device_id']?>" ><?=$device['device_name']?></a>
+                                <a class="text-lg" href="/admin/info_sp?rental_device_id=<?=$device['rental_device_id']?>" ><?=$device['device_name']?></a>
                             </td>
                             <td> @if($device['os']==1)
                                     Android

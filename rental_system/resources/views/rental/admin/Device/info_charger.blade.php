@@ -11,7 +11,7 @@
 
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">充電器情報
-            <a href="edit_charger?rental_device_id=<?=$detail['rental_device_id']?>" class="btn btn-info btn-icon-split m-4">
+            <a href="/admin/edit_charger?rental_device_id=<?=$detail['rental_device_id']?>" class="btn btn-info btn-icon-split m-4">
                     <span class="icon text-white-50">
                       <i class="fas fa-info-circle"></i>
                     </span>
