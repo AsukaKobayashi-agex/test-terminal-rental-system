@@ -19,6 +19,8 @@ class InfoPcService
     {
         $data = [];
         $data['detail'] = $this->_model->getAllInfoPc($param);
+        $data['detail']['memo'] = nl2br($data['detail']['memo']);
+        $data['detail']['admin_memo'] = nl2br($data['detail']['admin_memo']);
         $data['installed_software'] = $this->_model->getAllInstalledSoftware($param);
         $data['software_master'] = $this->_software_master->getAll();
         if(\Auth::guard('admin')->check()) {

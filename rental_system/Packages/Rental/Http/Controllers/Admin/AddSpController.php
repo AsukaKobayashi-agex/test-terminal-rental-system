@@ -27,8 +27,7 @@ class AddSpController extends Controller
 
         }
 
-
-        exit('登録完了！！');
+        return redirect('/admin/index_sp')->with('success', 'モバイル端末を登録しました！');
     }
 }
 

@@ -58,9 +58,9 @@
                                             </button>
                                         </div>
                                         <div class="modal-footer">
-                                                <a href="add_sp"button type="button" class="btn btn-primary">モバイル</button></a>
-                                                <a href="add_pc" button type="button" class="btn btn-primary">PC</button></a>
-                                                <a href="add_charger" button type="button" class="btn btn-primary">充電器</button></a>
+                                                <a href="/admin/add_sp"button type="button" class="btn btn-primary">モバイル</button></a>
+                                                <a href="/admin/add_pc" button type="button" class="btn btn-primary">PC</button></a>
+                                                <a href="/admin/add_charger" button type="button" class="btn btn-primary">充電器</button></a>
                                         </div>
                                     </div>
                                 </div>
@@ -94,20 +94,20 @@
                             @if($device['device_category']===1)
                                 @if($device['test_device_category']===1)
                                     <td >
-                                        <a class="text-lg text-primary" href="info_sp?rental_device_id=<?=$device['rental_device_id']?>" >
+                                        <a class="text-lg text-primary" target="_blank" href="/admin/info_sp?rental_device_id=<?=$device['rental_device_id']?>" >
                                             <?=$device['device_name']?>
                                         </a>
                                     </td>
                                 @elseif($device['test_device_category']===2)
                                     <td>
-                                        <a class="text-lg text-success" href="info_pc?rental_device_id=<?=$device['rental_device_id']?>" >
+                                        <a class="text-lg text-success" target="_blank" href="/admin/info_pc?rental_device_id=<?=$device['rental_device_id']?>" >
                                             <?=$device['device_name']?>
                                         </a>
                                     </td>
                                 @endif
                             @elseif($device['device_category']===2)
                                 <td>
-                                    <a class="text-lg text-warning" href="info_charger?rental_device_id=<?=$device['rental_device_id']?>" >
+                                    <a class="text-lg text-warning" target="_blank" href="/admin/info_charger?rental_device_id=<?=$device['rental_device_id']?>" >
                                         <?=$device['charger_name']?>
                                     </a>
                                 </td>

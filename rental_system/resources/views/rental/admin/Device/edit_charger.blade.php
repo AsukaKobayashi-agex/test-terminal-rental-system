@@ -26,7 +26,7 @@
             <input type="hidden" class="form-control" name="charger_id" value="<?=$detail['charger_id']?>">
             <div class="col-sm-6 float-left mb-3">
                 <label>充電器名<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
-                <input type="text" class="form-control {{$errors->has('charger_name') ? "alert-danger": null}}" name="charger_name" value="<?=$detail['charger_name']?>">
+                <input type="text" class="form-control {{$errors->has('charger_name') ? "alert-danger": null}}" name="charger_name" value="{{old('charger_name',$detail['charger_name'])}}">
             </div>
 
             <div class="col-sm-6 float-left mb-3">

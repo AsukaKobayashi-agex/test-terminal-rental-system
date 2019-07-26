@@ -30,7 +30,6 @@ class AddChargerController extends Controller
 
         $service->registerData($param);
 
-        // todo: デバイス一覧へリダイレクト
-        exit('データ登録完了！！');
+        return redirect('/admin/index_charger')->with('success', '充電器を登録しました！');
     }
 }

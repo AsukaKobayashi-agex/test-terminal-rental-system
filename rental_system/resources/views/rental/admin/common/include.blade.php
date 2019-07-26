@@ -37,7 +37,7 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index_all">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/admin/index_all">
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
@@ -49,7 +49,7 @@
 
         <!-- Nav Item - Tables -->
         <li {!! (Request::is('admin/index_all') ? 'class="nav-item active"' : 'class="nav-item"') !!}>
-            <a class="nav-link" href="index_all">
+            <a class="nav-link" href="/admin/index_all">
                 <i class="fas fa-fw fa-table"></i>
                 <span>端末一覧</span></a>
         </li>
@@ -70,14 +70,14 @@
             </a>
             <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <form method="get" name="ios" action="index_sp">
-                        <a class="collapse-item text-primary" href="index_sp">モバイル</a>
+                    <form method="get" name="ios" action="/admin/index_sp">
+                        <a class="collapse-item text-primary" href="/admin/index_sp">モバイル</a>
                     </form>
-                    <form method="get" name="smartphone" action="index_sp">
+                    <form method="get" name="smartphone" action="/admin/index_sp">
                         <input type="hidden" name="type" value="1">
                         <a class="collapse-item text-center" href="javascript:smartphone.submit()">スマホ</a>
                     </form>
-                    <form method="get" name="tablet" action="index_sp">
+                    <form method="get" name="tablet" action="/admin/index_sp">
                         <input type="hidden" name="type" value="2">
                         <a class="collapse-item text-center" href="javascript:tablet.submit()">タブレット</a>
                     </form>
@@ -86,13 +86,13 @@
         </li>
 
         <li  {!! (Request::is('admin/index_pc') ? 'class="nav-item active"' : 'class="nav-item"') !!}>
-            <a class="nav-link" href="index_pc">
+            <a class="nav-link" href="/admin/index_pc">
                 <i class="fas fa-fw fa-laptop"></i>
                 <span>PC</span>
             </a>
         </li>
         <li  {!! (Request::is('admin/index_charger') ? 'class="nav-item active"' : 'class="nav-item"') !!}>
-            <a class="nav-link" href="index_charger">
+            <a class="nav-link" href="/admin/index_charger">
                 <i class="fas fa-fw fa-charging-station"></i>
                 <span>充電器</span>
             </a>

@@ -36,7 +36,7 @@ class AddPcController extends Controller
 
         }
 
-        exit('登録完了！！');
+        return redirect('/admin/index_pc')->with('success', 'PCを登録しました！');
     }
 
     /*
