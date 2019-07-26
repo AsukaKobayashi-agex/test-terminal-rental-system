@@ -122,7 +122,7 @@
 
 
     <div class="col-sm-12">
-        <button onclick="history.back(); return false;" class="btn btn-secondary btn-user btn-block">閉じる</button>
+        <a href="#" onclick="window.close(); return false;" class="btn btn-secondary btn-user btn-block">閉じる</a>
     </div>
 
 @endsection

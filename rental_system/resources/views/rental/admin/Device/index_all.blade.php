@@ -94,20 +94,20 @@
                             @if($device['device_category']===1)
                                 @if($device['test_device_category']===1)
                                     <td >
-                                        <a class="text-lg text-primary" href="/admin/info_sp?rental_device_id=<?=$device['rental_device_id']?>" >
+                                        <a class="text-lg text-primary" target="_blank" href="/admin/info_sp?rental_device_id=<?=$device['rental_device_id']?>" >
                                             <?=$device['device_name']?>
                                         </a>
                                     </td>
                                 @elseif($device['test_device_category']===2)
                                     <td>
-                                        <a class="text-lg text-success" href="/admin/info_pc?rental_device_id=<?=$device['rental_device_id']?>" >
+                                        <a class="text-lg text-success" target="_blank" href="/admin/info_pc?rental_device_id=<?=$device['rental_device_id']?>" >
                                             <?=$device['device_name']?>
                                         </a>
                                     </td>
                                 @endif
                             @elseif($device['device_category']===2)
                                 <td>
-                                    <a class="text-lg text-warning" href="/admin/info_charger?rental_device_id=<?=$device['rental_device_id']?>" >
+                                    <a class="text-lg text-warning" target="_blank" href="/admin/info_charger?rental_device_id=<?=$device['rental_device_id']?>" >
                                         <?=$device['charger_name']?>
                                     </a>
                                 </td>
