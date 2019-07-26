@@ -38,7 +38,7 @@
 
                                 <div class="col-sm-6 float-left mb-3">
                                     <label>端末名<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
-                                    <input type="text" class="form-control {{$errors->has('device_name') ? "alert-danger": null}}" name="device_name" value="<?=$detail['device_name']?>">
+                                    <input type="text" class="form-control {{$errors->has('device_name') ? "alert-danger": null}}" name="device_name" value="{{old('device_name')}}<?=$detail['device_name']?>">
                                 </div>
 
                             <div class="col-sm-6 float-left mb-3">
@@ -75,7 +75,7 @@
 
                             <div class="col-sm-3 float-left mb-3">
                                 <label>OSバージョン<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
-                                <input type="text" class="form-control {{$errors->has('os_version') ? "alert-danger": null}}" name="os_version" value="<?=$detail['os_version']?>">
+                                <input type="text" class="form-control {{$errors->has('os_version') ? "alert-danger": null}}" name="os_version" value="{{old('os_version')}}<?=$detail['os_version']?>">
                             </div>
 
                             <div class="col-sm-6 float-left mb-3">
@@ -111,27 +111,27 @@
 
                             <div class="col-sm-6 float-left mb-3">
                                 <label>電話番号<span class="m-0 font-weight-bold text-info">（任意）</span></label>
-                                <input type="text" class="form-control {{$errors->has('number') ? "alert-danger": null}}" name="number" value="<?=$detail['number']?>">
+                                <input type="text" class="form-control {{$errors->has('number') ? "alert-danger": null}}" name="number" value="{{old('number')}}<?=$detail['number']?>">
                             </div>
 
                             <div class="col-sm-6 float-left mb-3">
                                 <label>メールアドレス<span class="m-0 font-weight-bold text-info">（任意）</span></label>
-                                <input type="text" class="form-control{{$errors->has('mail_address') ? "alert-danger": null}}" name="mail_address" value="<?=$detail['mail_address']?>">
+                                <input type="text" class="form-control{{$errors->has('mail_address') ? "alert-danger": null}}" name="mail_address" value="{{old('mail_address')}}<?=$detail['mail_address']?>">
                             </div>
 
                             <div class="col-sm-6 float-left mb-3">
                                 <label>画面サイズ<span class="m-0 font-weight-bold text-info">（任意）</span></label>
-                                <input type="text" class="form-control {{$errors->has('display_size') ? "alert-danger": null}}" name="display_size" value="<?=$detail['display_size']?>">
+                                <input type="text" class="form-control {{$errors->has('display_size') ? "alert-danger": null}}" name="display_size" value="{{old('display_size')}}<?=$detail['display_size']?>">
                             </div>
 
                             <div class="col-sm-6 float-left mb-3">
                                 <label>解像度<span class="m-0 font-weight-bold text-info">（任意）</span></label>
-                                <input type="text" class="form-control {{$errors->has('resolution') ? "alert-danger": null}}" name="resolution" value="<?=$detail['resolution']?>">
+                                <input type="text" class="form-control {{$errors->has('resolution') ? "alert-danger": null}}" name="resolution" value="{{old('resolution')}}<?=$detail['resolution']?>">
                             </div>
 
                             <div class="col-sm-6 float-left mb-3">
                                 <label>発売時期<span class="m-0 font-weight-bold text-info">（任意）</span></label>
-                                <input type="date" class="form-control" name="launch_date" value="<?=$detail['launch_date']?>">
+                                <input type="date" class="form-control" name="launch_date" value="{{old('launch_date')}}<?=$detail['launch_date']?>">
                             </div>
 
                             <div class="col-sm-12 float-left mb-3">
@@ -150,12 +150,12 @@
 
                             <div class="col-sm-12 float-left mb-3">
                                 <label>備考(ユーザー向け)<span class="m-0 font-weight-bold text-info">（任意）</span></label>
-                                <textarea class="form-control {{$errors->has('memo') ? "alert-danger": null}}" name=memo rows="5"><?=$detail['memo']?></textarea>
+                                <textarea class="form-control {{$errors->has('memo') ? "alert-danger": null}}" name=memo rows="5">{{old('memo')}}<?=$detail['memo']?></textarea>
                             </div>
 
                             <div class="col-sm-12 float-left mb-3">
                                 <label>備考(管理者向け)<span class="m-0 font-weight-bold text-info">（任意）</span></label>
-                                <textarea class="form-control {{$errors->has('admin_memo') ? "alert-danger": null}}" name=admin_memo rows="5"><?=$detail['admin_memo']?></textarea>
+                                <textarea class="form-control {{$errors->has('admin_memo') ? "alert-danger": null}}" name=admin_memo rows="5">{{old('admin_memo')}}<?=$detail['admin_memo']?></textarea>
                             </div>
                         </form>
                     </div>
