@@ -3,10 +3,12 @@
 namespace Rental\Services\User;
 
 use Rental\Models\User\UserTopData;
+use Rental\Services\_common\PaginateTrait;
 
 class UserTopService
 {
     protected $_model;
+    use PaginateTrait;
 
     public function __construct(UserTopData $model)
     {
@@ -16,7 +18,10 @@ class UserTopService
     public function getData($param)
     {
         $data = [];
-        $data['all_device_list'] = $this->_model->getAllUserTop($param);
+        $all_num = $this->_model->getAllUserTop($param,0);
+        $data += $this->paginate($all_num);
+        $data['all_device_list'] = $this->_model->getAllUserTop($param,$data['limit']);
+
         return $data;
     }
 }

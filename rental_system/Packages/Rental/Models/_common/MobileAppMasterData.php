@@ -3,7 +3,8 @@
 namespace Rental\Models\_common;
 
 
-class MobileAppMasterData
+class
+MobileAppMasterData
 {
     const TABLE_NAME = 'mobile_app_master';
 
@@ -18,13 +19,7 @@ class MobileAppMasterData
 
     public function getAll()
     {
-        $data = \DB::table(self::TABLE_NAME)->get();
-        return $data;
-    }
-
-    public function getEdit()
-    {
-        $data = stdClasstoArray( \DB::table(self::TABLE_NAME)->get());
+        $data = stdClassToArray(\DB::table(self::TABLE_NAME)->get());
         return $data;
     }
 

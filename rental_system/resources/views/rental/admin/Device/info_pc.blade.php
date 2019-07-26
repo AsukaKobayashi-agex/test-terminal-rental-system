@@ -6,7 +6,7 @@
 
         <!-- Page Heading -->
         <h1 class="h3 mb-2 text-gray-800">PC情報
-            <a href="edit_pc?rental_device_id=<?=$detail['rental_device_id']?>" class="btn btn-info btn-icon-split m-4">
+            <a href="/admin/edit_pc?rental_device_id=<?=$detail['rental_device_id']?>" class="btn btn-info btn-icon-split m-4">
                     <span class="icon text-white-50">
                       <i class="fas fa-info-circle"></i>
                     </span>
@@ -122,7 +122,7 @@
 
 
     <div class="col-sm-12">
-        <button onclick="history.back(); return false;" class="btn btn-secondary btn-user btn-block">閉じる</button>
+        <a href="#" onclick="window.close(); return false;" class="btn btn-secondary btn-user btn-block">閉じる</a>
     </div>
 
 @endsection

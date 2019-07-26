@@ -2,12 +2,10 @@
 
 namespace Rental\Models\User;
 
-use Rental\Models\_common\GetUserInfo;
-
 
 class UserTopData
 {
-    public function getAllUserTop($param)
+    public function getAllUserTop($param,$page_limit)
     {
         // バインド値設定
         $bind_params = [
@@ -85,7 +83,27 @@ Add_sql;
         };
 
 
-        $sql .= "order by device_category,test_device_category,mobile_type,device_name,charger_name;";
+        $sql .= "order by device_category,test_device_category,mobile_type,device_name,charger_name";
+
+            if($page_limit!==0){
+                if (isset($param['page'])) {
+                    $nowPage = (int)$param['page'];
+                } else {
+                    $nowPage = 1;
+                }
+
+                if ($nowPage > 1) {
+                    $start = ($nowPage - 1) * $page_limit;
+                } else {
+                    $start = 0;
+                }
+
+                $sql .= " LIMIT {$start},$page_limit";
+            }
+
+
+        $sql .= ";";
+
 
         $selected = \DB::select($sql, $bind_params);
 

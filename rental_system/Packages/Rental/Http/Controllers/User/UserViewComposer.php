@@ -5,7 +5,7 @@ namespace Rental\Http\Controllers\User;
 use Illuminate\Contracts\View\View;
 use Rental\Models\_common\GetUserInfo;
 
-class ViewComposer
+class UserViewComposer
 {
     protected $_get_user_info;
     public function __construct(GetUserInfo $userInfo)

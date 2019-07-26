@@ -1,4 +1,4 @@
-<div id="bundle_bar" class="form-group row d-md-flex justify-content-end">
+<div id="bundle_bar" class="form-group row float-right">
     <form method="post" id="bundle">
         @csrf
         <div class="mx-2">

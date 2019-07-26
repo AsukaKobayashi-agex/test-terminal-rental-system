@@ -59,7 +59,7 @@
                     <label class="d-block">ソフトウェア<span class="m-0 font-weight-bold text-info">（任意）</span></label>
                         @foreach($software_master as $d)
                         <div class="w-50 float-sm-left">
-                            <label><input type="checkbox" name="software_id[]" value="{!! $d->software_id !!}"  {{old('software_id') && in_array("$d->software_id",old('software_id')) ? 'checked': null}}>{{$d->software_name}}</label>
+                            <label><input type="checkbox" name="software_id[]" value="{!! $d['software_id'] !!}"  {{old('software_id') && in_array($d['software_id'] ,old('software_id')) ? 'checked': null}}>{{ $d['software_name']}}</label>
                         </div>
                         @endforeach
                 </div>
@@ -109,7 +109,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">いいえ</button>
-                    <a href="edit.blade.php"><button type="button" class="btn btn-primary">はい</button></a>
+                    <a href="/admin/index_pc"><button type="button" class="btn btn-primary">はい</button></a>
                 </div>
             </div>
         </div>
