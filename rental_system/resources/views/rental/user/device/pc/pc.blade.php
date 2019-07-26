@@ -37,9 +37,9 @@
                                 @endforeach
                             </ul>
                             @endif
-                        <div class="form-group row">
-                                <form id='search' method="post" action="/pc">
-                                    @csrf
+                            <form id='search' method="post" action="/pc">
+                                @csrf
+                                <div class="form-group row">
                                     <div class="col-lg-4 mb-3 mb-lg-0">
                                         <input type="search" name="search_word" class="form-control" value="{{$search_word}}" placeholder="端末名を入力" >
                                     </div>
@@ -68,11 +68,11 @@
                                         <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-fw fa-search"></i>
                                         </button>
                                     </div>
-                                </form>
-                            </div>
+                                </div>
+                                @include('rental.user.common.paginate_bar')
+                            </form>
                         </div>
-                        @component('rental.user.common.bundle_bar')
-                        @endcomponent
+                        @include('rental.user.common.bundle_bar')
 
                         @if(empty($pc_device_list))
                             <tr class="font-weight-bold">
@@ -81,12 +81,6 @@
                                 <td class="align-middle"></td>
                             </tr>
                         @endif
-
-                        <div class="btn-group form-group float-right" role="group">
-                            @for($x=1; $x <= $page_num ; $x++)
-                                <button type="submit" form="search" class="btn btn-secondary" formaction="?page={{$x}}">{{$x}}</button>
-                            @endfor
-                        </div>
 
                         <tbody>@foreach($pc_device_list as $device)
                             <tr class="font-weight-bold">

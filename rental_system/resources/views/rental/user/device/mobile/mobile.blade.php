@@ -37,12 +37,9 @@
                                 @endforeach
                             </ul>
                             @endif
-                            <div class="form-group row">
-                                <form id='search' method="post" action="/mobile">
-                                    @csrf
-                                    <div class="col-lg-2 px-1 mb-3">
-                                        <input type="search" name="search_word" class="form-control" value="{{$search_word}}" placeholder="端末名を入力" >
-                                    </div>
+                            <form id='search' method="post" action="/mobile">
+                                @csrf
+                                <div class="form-group row">
                                     <div class="col-lg-2 px-1 mb-3">
                                         <select name="type" class="form-control">
                                             <option value="">カテゴリ</option>
@@ -50,6 +47,35 @@
                                             <option value="2" {{$type==="2" ? 'selected': null}}>タブレット</option>
                                         </select>
                                     </div>
+
+                                    <div class="col-lg-3 px-1 mb-3">
+                                        <input type="search" name="search_word" class="form-control" value="{{$search_word}}" placeholder="端末名を入力" >
+                                    </div>
+
+                                    <div class="col-lg-3 px-1 mb-3 d-flex d-inline">
+                                        <span class="m-2 text-center w-25"><i class="fas fa-fw fa-lg fa-wifi"></i></span>
+                                        <select name="wifi" class="form-control w-75 float-right">
+                                            <option value="">Wi-Fi</option>
+                                            <option value="0" {{$wifi==="0" ? 'selected': null}}>なし</option>
+                                            <option value="1" {{$wifi==="1" ? 'selected': null}}>あり</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-lg-2 px-1 mb-3">
+                                        <select name="status" class="form-control">
+                                            <option value="" >ステータス</option>
+                                            <option value="0" {{$status==="0" ? 'selected': null}}>貸出可</option>
+                                            <option value="1"{{$status==="1" ? 'selected': null}}>貸出中</option>
+                                            @if(\Auth::guard('user')->check())
+                                                <option value="user=<?=$user_info['user_id']?>" {{$status=="user={$user_info['user_id']}" ? 'selected': null}}>返却</option>
+                                            @endif
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-2 px-1 mb-3">
+                                        <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-fw fa-search"></i>
+                                        </button>
+                                    </div>
+
                                     <div class="col-lg-2 px-1 mb-3">
                                         <select name="os" class="form-control">
                                             <option value="">OS</option>
@@ -57,53 +83,23 @@
                                             <option value="2" {{($os==="2") ? 'selected': null}}>iOS</option>
                                         </select>
                                     </div>
-                                    <div class="col-lg-2 px-1 mb-3">
+                                    <div class="col-lg-3 px-1 mb-3">
                                         <input type="search" name="os_version" class="form-control" value="{{$os_version}}" placeholder="OSバージョン" >
                                     </div>
 
-                                    <div class="col-lg-2 px-1 mb-3">
-                                        <label class="h-100 py-2 m-0 w-25 text-center"><span><i class="fas fa-fw fa-wifi"></i></span></label>
-                                       <select name="wifi" class="form-control w-75 float-right">
-                                            <option value="">Wi-Fi</option>
-                                            <option value="0" {{$wifi==="0" ? 'selected': null}}>なし</option>
-                                            <option value="1" {{$wifi==="1" ? 'selected': null}}>あり</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-lg-2 px-1 mb-3">
-                                        <label class="h-100 py-2 m-0  w-25 text-center"><span><i class="fas fa-fw fa-mobile-alt"></i></span></label>
+                                    <div class="col-lg-3 px-1 mb-3 d-flex d-inline">
+                                        <span class="m-2 w-25 text-center"><i class="fas fa-fw fa-lg fa-mobile-alt"></i></span>
                                         <select name="com_line" class="form-control w-75 float-right">
                                             <option value="">モバイル回線</option>
                                             <option value="0" {{$com_line==="0" ? 'selected': null}}>なし</option>
                                             <option value="1" {{$com_line==="1" ? 'selected': null}}>あり</option>
                                         </select>
                                     </div>
-                                    <div class="col-lg-8 px-1">
-                                    </div>
-                                    <div class="col-lg-2 px-1 mb-3">
-                                        <select name="status" class="form-control">
-                                            <option value="" >ステータス</option>
-                                            <option value="0" {{$status==="0" ? 'selected': null}}>貸出可</option>
-                                            <option value="1"{{$status==="1" ? 'selected': null}}>貸出中</option>
-                                              @if(\Auth::guard('user')->check())
-                                            <option value="user=<?=$user_info['user_id']?>" {{$status=="user={$user_info['user_id']}" ? 'selected': null}}>返却</option>
-                                        @endif
-                                        </select>
-                                    </div>
-                                    <div class="col-lg-2 px-1 mb-3">
-                                        <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-fw fa-search"></i>
-                                        </button>
-                                    </div>
-                                </form>
-                            </div>
+                                </div>
+                                @include('rental.user.common.paginate_bar')
+                            </form>
                         </div>
-                        @component('rental.user.common.bundle_bar')
-                        @endcomponent
-
-                        <div class="btn-group form-group float-right" role="group">
-                            @for($x=1; $x <= $page_num ; $x++)
-                                <button type="submit" form="search" class="btn btn-secondary" formaction="?page={{$x}}">{{$x}}</button>
-                            @endfor
-                        </div>
+                        @include('rental.user.common.bundle_bar')
 
                     @if(empty($mobile_device_list))
                             <tr class="font-weight-bold">
