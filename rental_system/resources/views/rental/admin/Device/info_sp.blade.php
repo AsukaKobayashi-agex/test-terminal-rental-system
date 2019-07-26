@@ -253,7 +253,7 @@
 
                             <div class="card shadow mb-4 w-100">
                                 <div class="card-header py-2">
-                                    <label>備考(ユーザー向け</label>
+                                    <label>備考(ユーザー向け)</label>
                                 </div>
                                     <div class="card-body text-center">
                                         <div class="h4 mb-2 font-weight-bold text-primary"><?=$detail['memo']?></div>
