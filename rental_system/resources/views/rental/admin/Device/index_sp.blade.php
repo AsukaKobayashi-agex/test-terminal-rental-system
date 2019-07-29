@@ -80,7 +80,6 @@
                                     </div>
                                 </div>
                             </form>
-                        </div>
                             <div class="form-group float-left">
                                 <a href="/admin/add_sp" class="btn btn-success btn-icon-split float-right">
                                 <span class="icon text-white-50">
@@ -89,6 +88,7 @@
                                     <span class="text">モバイル端末を追加する</span>
                                 </a>
                             </div>
+                        </div>
                     </div>
 
                     @if(empty($mobile_device_list))
