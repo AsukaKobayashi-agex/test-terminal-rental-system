@@ -35,6 +35,7 @@ class EditSpRequest extends FormRequest
             'mail_address' => 'max:100',
             'display_size' => 'max:100',
             'resolution' => 'max:100',
+            'device_img' => 'mimes:jpeg|max:3000',
             'memo' => 'max:1000',
             'admin_memo' => 'max:1000'
         ];
@@ -55,7 +56,10 @@ class EditSpRequest extends FormRequest
             'os_version.max' =>'OSバージョンは50文字以内で記入してください',
             'os_version.required' =>'OSバージョンを入力してください',
             'display_size.max' =>'画面サイズは100文字以内で記入してください',
+            'mail_address.max' => 'メールアドレスは100文字以内で記入してください',
             'resolution.max' =>'解像度は100文字以内で記入してください',
+            'device_img.mimes' => 'アップロードできるのはJPEG形式の画像のみです',
+            'device_img.max' => '端末画像のサイズは3000KBまでです',
             'memo.max' =>'備考は1000文字以内で記入してください',
             'admin_memo.max' =>'備考は1000文字以内で記入してください'
         ];

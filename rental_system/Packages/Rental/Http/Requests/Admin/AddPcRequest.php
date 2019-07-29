@@ -31,9 +31,9 @@ class AddPcRequest extends FormRequest
             'device_name' => 'required|max:100',
             'pc_account_name' => 'required|max:100',
             'os_version' => 'required|max:100',
-            'device_img' => 'image|max:3000',
+            'device_img' => 'mimes:jpeg|max:3000',
             'mail_address' => 'max:100',
-            'memo' => 'max:10',
+            'memo' => 'max:1000',
             'admin_memo' => 'max:1000'
         ];
     }
@@ -52,7 +52,7 @@ class AddPcRequest extends FormRequest
             'device_name.max' =>'端末名は100文字以内で記入してください',
             'pc_account_name.required' =>'コンピュータ名を入力してください',
             'pc_account_name.max' =>'コンピュータ名は100文字以内で記入してください',
-            'device_img.image' =>'アップロードできるのは画像ファイルのみです',
+            'device_img.mimes' =>'アップロードできるのは、JPEG形式の画像のみです',
             'device_img.max' =>'画像ファイルが大きすぎます',
             'os_version.required' =>'OSのバージョンを入力してください',
             'os_version.max' =>'OSのバージョンは100文字以内で記入してください',
