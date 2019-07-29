@@ -15,16 +15,9 @@ class PcSoftwareMasterData
         return \DB::table(self::TABLE_NAME)->insertGetId($insert_data);
     }
 
-    public function getEdit()
+    public function getAll()
     {
-        $data = stdClasstoArray( \DB::table(self::TABLE_NAME)->get());
-        return $data;
-    }
-
-    public function getAdd()
-    {
-        //var_dump($param,1);
-        $data = \DB::table(self::TABLE_NAME)->get();
+        $data = stdClasstoarray(\DB::table(self::TABLE_NAME)->get());
         return $data;
     }
 

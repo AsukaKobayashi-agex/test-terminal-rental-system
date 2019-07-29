@@ -145,7 +145,7 @@
                             <label class="d-block">インストールアプリ<span class="m-0 font-weight-bold text-info">（任意）</span></label>
                                 @foreach($mobile_app_master as $d)
                                     <div class="w-50 float-sm-left">
-                                    <label><input type="checkbox" name="mobile_app_id[]" value="{!! $d->mobile_app_id !!}" {{old('mobile_app_id') && in_array("$d->mobile_app_id",old('mobile_app_id')) ? 'checked': null}}>{{$d->app_name}}</label>
+                                    <label><input type="checkbox" name="mobile_app_id[]" value="{!! $d['mobile_app_id'] !!}" {{old('mobile_app_id') && in_array( $d['mobile_app_id'] ,old('mobile_app_id')) ? 'checked': null}}>{{ $d['app_name'] }}</label>
                                     </div>
                                 @endforeach
                         </div>

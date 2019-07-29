@@ -32,6 +32,8 @@
                     </thead>
 
                     <div id="search_bar">
+                        <form id='search' method="post" action="/">
+                            @csrf
                         @if(count($errors) > 0)
                             <ul class="alert alert-danger">
                                 @foreach ($errors->all() as $error)
@@ -39,9 +41,7 @@
                                 @endforeach
                             </ul>
                         @endif
-                        <div class="form-group row">
-                            <form id='search' method="post" action="/">
-                                @csrf
+                            <div class="form-group row">
                                 <div class="col-sm-4 mb-3 mb-sm-0">
                                     <input type="search" name="search_word" class="form-control" value="{{$search_word}}" placeholder="端末名を入力" >
                                 </div>
@@ -60,16 +60,11 @@
                                     <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-fw fa-search"></i>
                                     </button>
                                 </div>
-                            </form>
-                        </div>
+                            </div>
+                            @include('rental.user.common.paginate_bar')
+                        </form>
                     </div>
-                    @component('rental.user.common.bundle_bar')
-                    @endcomponent
-                    <div class="btn-group form-group float-right" role="group">
-                        @for($x=1; $x <= $page_num ; $x++)
-                            <button type="submit" form="search" class="btn btn-secondary" formaction="?page={{$x}}">{{$x}}</button>
-                        @endfor
-                    </div>
+                    @include('rental.user.common.bundle_bar')
 
                     <tbody>
                     @if(empty($all_device_list))

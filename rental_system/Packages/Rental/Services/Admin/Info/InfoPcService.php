@@ -22,7 +22,7 @@ class InfoPcService
         $data['detail']['memo'] = nl2br($data['detail']['memo']);
         $data['detail']['admin_memo'] = nl2br($data['detail']['admin_memo']);
         $data['installed_software'] = $this->_model->getAllInstalledSoftware($param);
-        $data['software_master'] = $this->_software_master->getEdit();
+        $data['software_master'] = $this->_software_master->getAll();
         if(\Auth::guard('admin')->check()) {
             $data['admin_info'] = $this->_model->getAdminAccountData();
         }

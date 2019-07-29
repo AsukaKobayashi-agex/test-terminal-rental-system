@@ -83,6 +83,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['force_https']], function() 
         //詳細画面（充電器）
         Route::get('/info_charger','Admin\Info\InfoChargerController@view');
 
+        //アプリ・ソフトウェア追加画面
+        Route::get('/master','Admin\Master\MasterController@view');
+        Route::post('/master/add_app','AdminMaster\MasterController@add_app');
+        Route::post('/master/add_software','Admin\Master\MasterController@add_software');
     });
 });
 
@@ -114,7 +118,7 @@ Route::group(['middleware' => ['force_https']], function () {
     // ログインならアクセス出来る画面
     Route::group(['middleware' => ['user.authed']], function () {
 
-
+        //マイリスト画面
         Route::match(['get','post'],'/mylist', [
             'uses'=>'User\MylistController@mylist',
             'as'=>'user.mylist'
@@ -123,43 +127,53 @@ Route::group(['middleware' => ['force_https']], function () {
         Route::post('/mylist/rename', 'User\MylistController@rename');
         Route::post('/mylist/delete-mylist', 'User\MylistController@delete_mylist');
 
-
+        //貸出画面
         Route::match(['get','post'],'/rental', 'User\RentalController@view');
         Route::post('/rental/rental', 'User\RentalController@rental');
 
+        //返却画面
         Route::match(['get','post'],'/return', 'User\ReturnController@view');
         Route::post('/return/return', 'User\ReturnController@return');
 
+        //プロフィール編集
         Route::match(['get','post'],'/profile', 'User\UserProfileController@user_profile');
         Route::post('/profile/change-profile', 'User\UserProfileController@change_profile');
 
+        //マイリスト登録
         Route::match(['get','post'],'/mylist-register', 'User\MylistRegisterController@mylist_register');
         Route::post('/mylist-register/register', 'User\MylistRegisterController@register');
 
+        //ログアウト
         Route::get('/logout', 'User\LogoutController@logout');
 
     });
 
     // ログイン・ログアウトに関わらずアクセスできる画面
-        // TOPページ
-        Route::match(['get','post'],'/', 'User\UserTopController@index');
+    // TOPページ
+    Route::match(['get','post'],'/', 'User\UserTopController@index');
 
-
-    Route::match(['get','post'],'/detail-mobile', 'User\DetailMobileController@detail_mobile');
-
-    Route::match(['get','post'],'/detail-pc', 'User\DetailPcController@detail_pc');
-
-    Route::match(['get','post'],'/detail-charger', 'User\DetailChargerController@detail_charger');
-
-    Route::get('help/users-guide', 'User\UsersGuideController@users_guide');
-
+    //PC一覧
     Route::match(['get','post'],'/pc', 'User\DevicePcController@pc');
 
+    //充電器一覧
     Route::match(['get','post'],'/charger', 'User\DeviceChargerController@charger');
 
+    //モバイル一覧
     Route::match(['get','post'],'/mobile', 'User\DeviceMobileController@mobile');
 
+    //モバイル詳細
+    Route::match(['get','post'],'/detail-mobile', 'User\DetailMobileController@detail_mobile');
 
+    //PC詳細
+    Route::match(['get','post'],'/detail-pc', 'User\DetailPcController@detail_pc');
+
+    //充電器詳細
+    Route::match(['get','post'],'/detail-charger', 'User\DetailChargerController@detail_charger');
+
+    //利用マニュアル
+    //Route::get('help/users-guide', 'User\UsersGuideController@users_guide');
+
+    //借りているユーザー詳細
     Route::match(['get','post'],'/rent-user', 'User\RentUserController@rent_user');
 
 });
