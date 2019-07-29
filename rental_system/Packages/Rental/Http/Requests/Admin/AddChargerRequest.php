@@ -30,7 +30,8 @@ class AddChargerRequest extends FormRequest
     public function rules()
     {
         return [
-            'charger_name' => 'required|max:100'
+            'charger_name' => 'required|max:100',
+            'charger_type' => 'required'
         ];
     }
 
@@ -45,7 +46,8 @@ class AddChargerRequest extends FormRequest
     {
         return [
             'charger_name.required' =>'充電器名を入力してください',
-            'charger_name.max' =>'充電器名は100文字以内で記入してください'
+            'charger_name.max' =>'充電器名は100文字以内で記入してください',
+            'charger_type.required' => '充電器タイプを選択してください'
         ];
 
     }
