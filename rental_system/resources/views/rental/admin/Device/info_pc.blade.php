@@ -108,10 +108,15 @@
                 </div>
                     </div>
 
+
             <label>端末画像</label>
             <div class="card-body">
                 @if($detail['device_img']===1)
-                    <img class="rounded w-50 h-50" src="bootsample/img/device_image_{{$detail['rental_device_id']}}.jpg" alt="device_image">
+                    @if(file_exists($filename))
+                    <img class="rounded w-50 h-50" src="/bootsample/img/device_image_{{$detail['rental_device_id']}}.jpg" alt="device_image">
+                    @else
+                    <img class="rounded w-50 h-50" src="/bootsample/img/device_image_{{$detail['rental_device_id']}}.png" alt="device_image">
+                        @endif
                 @else
                     <img class="rounded w-50 h-50" src="/bootsample/img/noImage.png" alt="no_image">
                 @endif
