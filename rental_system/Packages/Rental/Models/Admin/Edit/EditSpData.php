@@ -51,6 +51,7 @@ select
     rental_datetime,
     os,
     os_version,
+    tdm.carrier_id,
     carrier_name,
     mobile_type,
     number,
