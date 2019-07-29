@@ -24,7 +24,7 @@ class IndexPcData
 
     const TABLE_NAME = 'test_device_pc';
 
-    public function getAllIndexPc($param)
+    public function getAllIndexPc($param,$page_limit)
     {
         // バインド値設定
         $bind_params = [
@@ -123,7 +123,26 @@ and pc_account_name collate utf8mb4_unicode_ci like :pc_account_name{$i}
 Add_sql;
             }};
 
-$sql .= "order by device_category,device_name;";
+$sql .= "order by device_category,device_name";
+
+        if($page_limit!==0){
+            if (isset($param['page'])) {
+                $nowPage = (int)$param['page'];
+            } else {
+                $nowPage = 1;
+            }
+
+            if ($nowPage > 1) {
+                $start = ($nowPage - 1) * $page_limit;
+            } else {
+                $start = 0;
+            }
+
+            $sql .= " LIMIT {$start},$page_limit";
+        }
+
+
+        $sql .= ";";
 
 
 
