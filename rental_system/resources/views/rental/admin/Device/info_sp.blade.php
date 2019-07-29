@@ -228,7 +228,12 @@
                                     <label>発売時期</label>
                                 </div>
                                     <div class="card-body text-center">
-                                        <div class="h4 mb-2 font-weight-bold text-primary"><?=$detail['launch_date']?></div>
+                                        <div class="h4 mb-2 font-weight-bold text-primary">
+                                            @if($detail['launch_date']=='1900-01-01')
+                                            @else
+                                                <?=date('Y年m月d日',strtotime($detail['launch_date']))?>
+                                            @endif
+                                        </div>
                                 </div>
                             </div>
                         </div>

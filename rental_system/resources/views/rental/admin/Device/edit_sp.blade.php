@@ -81,6 +81,7 @@
                             <div class="col-sm-6 float-left mb-3">
                                 <label>キャリア<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
                                 <select class="form-control" name="carrier_id">
+                                    <option value="0">なし</option>
                                     @foreach($mobile_carrier as $d)
                                         <option value="{!! $d->carrier_id !!}">{{$d->carrier_name}}</option>
                                     @endforeach
