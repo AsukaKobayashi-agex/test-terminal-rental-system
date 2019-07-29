@@ -19,10 +19,11 @@
                     <h1 class="h3 mb-2 text-gray-800">モバイル端末情報
                         <a href="/admin/edit_sp?rental_device_id=<?=$detail['rental_device_id']?>" class="btn btn-info btn-icon-split m-4">
                         <span class="icon text-white-50">
-                      <i class="fas fa-info-circle"></i>
-                    </span>
+                          <i class="fas fa-info-circle"></i>
+                        </span>
                         <span class="text">情報を編集する</span>
-                        </a></h1>
+                        </a>
+                    </h1>
 
                     <div class="m-0 font-weight-bold text-gray-800">
 
@@ -277,7 +278,7 @@
                             <label>端末画像</label>
                             <div class="card-body">
                                 @if($detail['device_img']===1)
-                                    <img class="rounded w-50 h-50" src="bootsample/img/device_image_{{$detail['rental_device_id']}}.jpg" alt="device_image">
+                                    <img class="rounded w-50 h-50" src="/bootsample/img/device_image_{{$detail['rental_device_id']}}.jpg" alt="device_image">
                                 @else
                                     <img class="rounded w-50 h-50" src="/bootsample/img/noImage.png" alt="no_image">
                                 @endif
