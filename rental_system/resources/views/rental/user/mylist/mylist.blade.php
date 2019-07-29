@@ -63,7 +63,7 @@
                             <div class="modal-body">
                             <h4>マイリストの名前を入力</h4>
                                 <input type="hidden" name="mylist_id"  value="<?=$mylist['mylist_id']?>">
-                                <input type="text" class="form-control" name="mylist_name"  value="<?=$mylist['mylist_name']?>" required>
+                                <input type="text" class="form-control" name="mylist_name"  value="<?=$mylist['mylist_name']?>" required maxlength="100">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
