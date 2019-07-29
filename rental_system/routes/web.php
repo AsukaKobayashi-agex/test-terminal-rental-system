@@ -85,8 +85,13 @@ Route::group(['prefix' => 'admin', 'middleware' => ['force_https']], function() 
 
         //アプリ・ソフトウェア追加画面
         Route::get('/master','Admin\Master\MasterController@view');
-        Route::post('/master/add_app','AdminMaster\MasterController@add_app');
+        Route::post('/master/add_app','Admin\Master\MasterController@add_app');
+        Route::post('/master/delete_app','Admin\Master\MasterController@delete_app');
+        Route::post('/master/rename_app','Admin\Master\MasterController@rename_app');
         Route::post('/master/add_software','Admin\Master\MasterController@add_software');
+        Route::post('/master/delete_software','Admin\Master\MasterController@delete_software');
+        Route::post('/master/rename_software','Admin\Master\MasterController@rename_software');
+
     });
 });
 

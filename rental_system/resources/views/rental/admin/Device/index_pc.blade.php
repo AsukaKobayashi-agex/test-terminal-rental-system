@@ -38,7 +38,7 @@
                                 @endforeach
                             </ul>
                         @endif
-                        <div class="form-group row">
+                        <div class="form-group row mb-0">
                             <form name='search' method="post" action="#">
                                 @csrf
                                 <div class="col-sm-2 mb-3">
@@ -66,7 +66,7 @@
                                 </div>
                             </form>
                         </div>
-                            <div class="form-group float-left row mx-2">
+                            <div class="form-group float-left">
                                 <a href="/admin/add_pc" class="btn btn-success btn-icon-split float-right">
                                 <span class="icon text-white-50">
                                   <i class="fas fa-flag"></i>

@@ -67,7 +67,7 @@
                             </div>
                             </form>
                         </div>
-                            <div class="form-group float-left row mx-2">
+                            <div class="form-group float-left">
                                 <a href="#" class="btn btn-success btn-icon-split float-right">
                                 <span class="icon text-white-50">
                                   <i class="fas fa-flag"></i>

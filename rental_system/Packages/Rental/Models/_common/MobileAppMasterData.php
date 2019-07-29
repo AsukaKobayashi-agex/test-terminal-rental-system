@@ -23,4 +23,21 @@ MobileAppMasterData
         return $data;
     }
 
+    public function delete_app($app_id)
+    {
+        \DB::table(self::TABLE_NAME)->where('mobile_app_id','=',$app_id)->delete();
+        \DB::table('mobile_installed_app')->where('mobile_app_id','=',$app_id)->delete();
+        return true;
+    }
+
+    public function rename_app($param)
+    {
+        $update_data=[
+            'app_name' => $param['app_name']
+        ];
+
+        \DB::table(self::TABLE_NAME)->where('mobile_app_id','=',$param['mobile_app_id'])->update($update_data);
+        return true;
+    }
+
 }
