@@ -133,26 +133,13 @@
                     <i class="fa fa-bars"></i>
                 </button>
 
-                <h5 class="text-primary" id="RealtimeClockArea2"></h5>
-                <script>
-                    function set2fig(num){
-                        var ret;
-                        if( num < 10 ){ ret = "0" + num; }
-                        else { ret = num; }
-                        return ret;
-                    }
-                    function showClock2() {
-                        var nowTime = new Date();
-                        var nowYear = set2fig( nowTime.getFullYear() );
-                        var nowMonth = set2fig( nowTime.getMonth() );
-                        var nowDate = set2fig( nowTime.getDate() );
-                        var nowHour = set2fig( nowTime.getHours() );
-                        var nowMin = set2fig( nowTime.getMinutes() );
-                        var msg = nowYear + "年" + nowMonth + "月" + nowDate + "日" + nowHour + "時" + nowMin + "分";
-                        document.getElementById("RealtimeClockArea2").innerHTML = msg;
-                    }
-                    setInterval('showClock2()',1000);
-                </script>
+                <ul class="navbar-nav ml-auto">
+                    <div class="d-flex align-items-center ">
+                        @php(date_default_timezone_set('Asia/Tokyo'))
+                        <h4 class="text-lg-left text-primary"><?=date('Y/m/d D H:i')?></h4>
+                    </div>
+
+                    <div class="topbar-divider d-none d-sm-block"></div>
 
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">

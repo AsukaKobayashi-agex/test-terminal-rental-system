@@ -43,7 +43,8 @@
 
                             <div class="col-sm-6 float-left mb-3">
                                 <label>モバイル種別<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
-                                <select class="form-control" name="mobile_type">
+                                <select class="form-control {{$errors->has('mobile_type') ? "alert-danger": null}}" name="mobile_type">
+                                    <option value="">-----</option>
                                     <option value="1" {{old('mobile_type')=== "1" ? 'selected': null}}>スマートフォン</option>
                                     <option value="2" {{old('mobile_type')=== "2" ? 'selected': null}}>タブレット</option>
                                 </select>
@@ -52,7 +53,8 @@
 
                         <div class="col-sm-6 float-left mb-3">
                             <label>モバイル回線<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
-                            <select class="form-control" name="communication_line">
+                            <select class="form-control {{$errors->has('communication_line') ? "alert-danger": null}}" name="communication_line">
+                                <option value="">-----</option>
                                 <option value="0" {{old('communication_line')=== "0" ? 'selected': null}}>なし</option>
                                 <option value="1" {{old('communication_line')=== "1" ? 'selected': null}}>あり</option>
                             </select>
@@ -60,7 +62,8 @@
 
                         <div class="col-sm-6 float-left mb-3">
                             <label>WiFi回線<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
-                            <select class="form-control" name="wifi_line">
+                            <select class="form-control {{$errors->has('wifi_line') ? "alert-danger": null}}" name="wifi_line">
+                                <option value="">-----</option>
                                 <option value="0" {{old('wifi_line')=== "0" ? 'selected': null}}>なし</option>
                                 <option value="1" {{old('wifi_line')=== "1" ? 'selected': null}}>あり</option>
                             </select>
@@ -68,7 +71,8 @@
 
                         <div class="col-sm-3 float-left mb-3">
                             <label>OS<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
-                            <select class="form-control" name="os">
+                            <select class="form-control {{$errors->has('os') ? "alert-danger": null}}" name="os">
+                                <option value="">-----</option>
                                 <option value="1" {{old('os')=== "1" ? 'selected': null}}>Android</option>
                                 <option value="2" {{old('os')=== "2" ? 'selected': null}}>iOS</option>
                             </select>
@@ -81,7 +85,8 @@
 
                         <div class="col-sm-6 float-left mb-3">
                             <label>キャリア<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
-                            <select class="form-control" name="carrier_id">
+                            <select class="form-control {{$errors->has('carrier_id') ? "alert-danger": null}}" name="carrier_id">
+                                <option value="">-----</option>
                                 <option value="0">なし</option>
                             @foreach($mobile_carrier as $d)
                                 <option value="{!! $d->carrier_id !!}" {{old('carrier_id')=== "$d->carrier_id" ? 'selected': null}}>{{$d->carrier_name}}</option>
@@ -91,7 +96,8 @@
 
                         <div class="col-sm-6 float-left mb-3">
                             <label>SIM/UIM<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
-                            <select class="form-control" name="sim_card">
+                            <select class="form-control {{$errors->has('sim_card') ? "alert-danger": null}}" name="sim_card">
+                                <option value="">-----</option>
                                 <option value="0" {{old('sim_card')=== "0" ? 'selected': null}}>SIMなし</option>
                                 <option value="1" {{old('sim_card')=== "1" ? 'selected': null}}>標準SIM</option>
                                 <option value="2" {{old('sim_card')=== "2" ? 'selected': null}}>nanoSIM</option>
@@ -102,7 +108,8 @@
 
                         <div class="col-sm-6 float-left mb-3">
                             <label>充電器タイプ<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
-                            <select class="form-control" name="charger_type">
+                            <select class="form-control {{$errors->has('charger_type') ? "alert-danger": null}}" name="charger_type">
+                                <option value="">-----</option>
                                 <option value="1" {{old('charger_type')=== "1" ? 'selected': null}}>USB TYPE-B</option>
                                 <option value="2" {{old('charger_type')=== "2" ? 'selected': null}}>USB TYPE-C</option>
                                 <option value="3" {{old('charger_type')=== "3" ? 'selected': null}}>iphone ライトニング</option>

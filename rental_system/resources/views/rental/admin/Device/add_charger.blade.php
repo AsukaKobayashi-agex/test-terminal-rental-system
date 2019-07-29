@@ -29,7 +29,8 @@
 
                             <div class="col-sm-6 float-left mb-3">
                                 <label>充電器タイプ<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
-                                <select class="form-control" name="charger_type">
+                                <select class="form-control {{$errors->has('charger_type') ? "alert-danger": null}}" name="charger_type">
+                                    <option value="">-----</option>
                                     <option value="1">USB TYPE-B</option>
                                     <option value="2">USB　TYPE-C</option>
                                     <option value="3">iphone ライトニング</option>

@@ -30,6 +30,7 @@ class AddPcRequest extends FormRequest
         return[
             'device_name' => 'required|max:100',
             'pc_account_name' => 'required|max:100',
+            'os' => 'required',
             'os_version' => 'required|max:100',
             'device_img' => 'mimes:jpeg|max:3000',
             'mail_address' => 'max:100',
@@ -54,6 +55,7 @@ class AddPcRequest extends FormRequest
             'pc_account_name.max' =>'コンピュータ名は100文字以内で記入してください',
             'device_img.mimes' =>'アップロードできるのは、JPEG形式の画像のみです',
             'device_img.max' =>'画像ファイルが大きすぎます',
+            'os.required' => 'OSを選択してください',
             'os_version.required' =>'OSのバージョンを入力してください',
             'os_version.max' =>'OSのバージョンは100文字以内で記入してください',
             'mail_address.required' =>'メールアドレスを入力してください',

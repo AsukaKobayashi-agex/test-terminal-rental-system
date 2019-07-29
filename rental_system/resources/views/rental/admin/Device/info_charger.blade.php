@@ -28,7 +28,7 @@
                         <div class="card-header py-2">
                     <label>充電器名</label>
                         </div>
-                    <div class="card-body text-center">
+                    <div class="card-body">
                         <div class="h4 mb-2 font-weight-bold text-primary"><?=$detail['charger_name']?></div>
                     </div>
                         </div>
@@ -39,7 +39,7 @@
                             <div class="card-header py-2">
                     <label>充電器タイプ</label>
                             </div>
-                    <div class="card-body text-center">
+                    <div class="card-body">
                             <div class="h4 mb-2 font-weight-bold text-primary">
                                 @if($detail['charger_type']==1)
                                     USB TYPE-B

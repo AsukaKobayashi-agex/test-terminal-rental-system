@@ -55,6 +55,7 @@ class EditSpRequest extends FormRequest
             'number.max' =>'電話番号は100文字以内で記入してください',
             'os_version.max' =>'OSバージョンは50文字以内で記入してください',
             'os_version.required' =>'OSバージョンを入力してください',
+            'mail_address.max' =>'メールアドレスは100文字以内で記入してください',
             'display_size.max' =>'画面サイズは100文字以内で記入してください',
             'mail_address.max' => 'メールアドレスは100文字以内で記入してください',
             'resolution.max' =>'解像度は100文字以内で記入してください',
