@@ -18,8 +18,9 @@ class InfoPcController extends Controller
     {
         $param = \Request::all();
         $data = $service->getData($param);
+        $filename = "/bootsample/img/device_image_{{$detail['rental_device_id']}}.jpg";
 
-        return view('rental.admin.Device.info_pc')->with($data);
+        return view('rental.admin.Device.info_pc')->with($data,$filename);
     }
 
 

@@ -28,7 +28,8 @@
 
                 <div class="col-sm-3 float-left mb-3">
                     <label>OS<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
-                    <select class="form-control" name="os">
+                    <select class="form-control {{$errors->has('os') ? "alert-danger": null}}" name="os">
+                        <option value="">-----</option>
                         <option value="3" {{old('os')=== "3" ? 'selected': null}}>Windows</option>
                         <option value="4" {{old('os')=== "4" ? 'selected': null}}>MacOS</option>
                     </select>

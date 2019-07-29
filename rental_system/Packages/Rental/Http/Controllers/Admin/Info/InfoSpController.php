@@ -17,7 +17,8 @@ class InfoSpController extends Controller
     {
         $param = \Request::all();
         $data = $service->getData($param);
-        return view('rental.admin.Device.info_sp')->with($data);
+        $filename = "/bootsample/img/device_image_{{$detail['rental_device_id']}}.jpg";
+        return view('rental.admin.Device.info_sp')->with($data,$filename);
     }
 
 }

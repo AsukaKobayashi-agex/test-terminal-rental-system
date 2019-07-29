@@ -1,11 +1,11 @@
 <?php
 
-namespace Rental\Http\Requests\Admin;
+namespace Rental\Http\Requests\Admin\Master;
 
 use http\Env\Request;
 use Illuminate\Foundation\Http\FormRequest;
 
-class AddChargerRequest extends FormRequest
+class MasterRequest extends FormRequest
 {
     protected $_inputs = [];
 
@@ -30,24 +30,24 @@ class AddChargerRequest extends FormRequest
     public function rules()
     {
         return [
-            'charger_name' => 'required|max:100',
-            'charger_type' => 'required'
+            'app_name' => 'min:1|max:100',
+            'software_name' => 'min:1|max:100'
         ];
     }
 
     public function attributes()
     {
         return [
-            'charger_name' => '充電器名'
         ];
     }
 
     public function messages()
     {
         return [
-            'charger_name.required' =>'充電器名を入力してください',
-            'charger_name.max' =>'充電器名は100文字以内で記入してください',
-            'charger_type.required' => '充電器タイプを選択してください'
+            'app_name.min' => 'アプリ名を入力してください',
+            'app_name.max' => 'アプリ名が長すぎます',
+            'software_name.min' => 'アプリ名を入力してください',
+            'software_name.max' => 'アプリ名が長すぎます'
         ];
 
     }
