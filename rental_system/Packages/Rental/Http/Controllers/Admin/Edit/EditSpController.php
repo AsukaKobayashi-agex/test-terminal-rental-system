@@ -26,7 +26,13 @@ class EditSpController extends Controller
         $param = $request->all();
         //preDump($param,1);
 
-        $service->registerData($param);
+        $rental_device_id = $service->registerData($param);
+
+        if(isset($param['device_img'])) {
+            $img_client = $request->file('device_img') -> getClientOriginalExtension();
+            $request -> file('device_img')->move("bootsample/img","device_image_{$rental_device_id}.{$img_client}");
+
+        }
 
         return redirect('/admin/index_sp')->with('success', 'モバイル端末情報を更新しました！');
     }
