@@ -44,38 +44,38 @@
                             <div class="col-sm-6 float-left mb-3">
                                 <label>モバイル種別<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
                                 <select class="form-control" name="mobile_type">
-                                    <option value="1"{{$detail['mobile_type']=== 1 ? 'selected': null}}>スマートフォン</option>
-                                    <option value="2"{{$detail['mobile_type']=== 2 ? 'selected': null}}>タブレット</option>
+                                    <option value="1"{{old('mobile_type',$detail['mobile_type'])=== "1" ? 'selected': null}}>スマートフォン</option>
+                                    <option value="2"{{old('mobile_type',$detail['mobile_type'])=== "2" ? 'selected': null}}>タブレット</option>
                                 </select>
                             </div>
 
                             <div class="col-sm-6 float-left mb-3">
                                 <label>モバイル回線<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
                                 <select class="form-control" name="communication_line">
-                                    <option value="1"{{$detail['communication_line']=== 0 ? 'selected': null}}>なし</option>
-                                    <option value="2"{{$detail['communication_line']=== 1 ? 'selected': null}}>あり</option>
+                                    <option value="1"{{old('communication_line',$detail['communication_line'])== "1" ? 'selected': null}}>なし</option>
+                                    <option value="2"{{old('communication_line',$detail['communication_line'])== "2" ? 'selected': null}}>あり</option>
                                 </select>
                             </div>
 
                             <div class="col-sm-6 float-left mb-3">
                                 <label>Wi-fi回線<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
                                 <select class="form-control" name="wifi_line">
-                                    <option value="1"{{$detail['wifi_line']=== 0 ? 'selected': null}}>なし</option>
-                                    <option value="2"{{$detail['wifi_line']=== 1 ? 'selected': null}}>あり</option>
+                                    <option value="1"{{old('wifi_line',$detail['wifi_line'])== "1" ? 'selected': null}}>なし</option>
+                                    <option value="2"{{old('wifi_line',$detail['wifi_line'])== "2" ? 'selected': null}}>あり</option>
                                 </select>
                             </div>
 
                             <div class="col-sm-3 float-left mb-3">
                                 <label>OS<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
                                 <select class="form-control" name="os">
-                                    <option value="1"{{$detail['os']=== 1 ? 'selected': null}}>Android</option>
-                                    <option value="2"{{$detail['os']=== 2 ? 'selected': null}}>iOS</option>
+                                    <option value="1"{{old('os',$detail['os'])== "1" ? 'selected': null}}>Android</option>
+                                    <option value="2"{{old('os',$detail['os'])== "2" ? 'selected': null}}>iOS</option>
                                 </select>
                             </div>
 
                             <div class="col-sm-3 float-left mb-3">
                                 <label>OSバージョン<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
-                                <input type="text" class="form-control {{$errors->has('os_version') ? "alert-danger": null}}" name="os_version" value="{{old('os_version')}}<?=$detail['os_version']?>">
+                                <input type="text" class="form-control {{$errors->has('os_version') ? "alert-danger": null}}" name="os_version" value="{{old('os_version',$detail['os_version'])}}">
                             </div>
 
                             <div class="col-sm-6 float-left mb-3">
@@ -83,7 +83,7 @@
                                 <select class="form-control" name="carrier_id">
                                     <option value="0">なし</option>
                                     @foreach($mobile_carrier as $d)
-                                        <option value="{!! $d->carrier_id !!}">{{$d->carrier_name}}</option>
+                                        <option value="{!! $d->carrier_id !!}"{{old('carrier_id',$detail['carrier_id']) == $d->carrier_id ? 'selected': null}}>{{$d->carrier_name}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -91,22 +91,22 @@
                             <div class="col-sm-6 float-left mb-3">
                                 <label>SIM/UIM<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
                                 <select class="form-control" name="sim_card">
-                                    <option value="0"{{$detail['sim_card']=== 0 ? 'selected': null}}>SIMなし</option>
-                                    <option value="1"{{$detail['sim_card']=== 1 ? 'selected': null}}>標準SIM</option>
-                                    <option value="2"{{$detail['sim_card']=== 2 ? 'selected': null}}>nanoSIM</option>
-                                    <option value="3"{{$detail['sim_card']=== 3 ? 'selected': null}}>microSIM</option>
-                                    <option value="4"{{$detail['sim_card']=== 4 ? 'selected': null}}>miniSIM</option>
+                                    <option value="0"{{old('sim_card',$detail['sim_card'])== 0 ? 'selected': null}}>SIMなし</option>
+                                    <option value="1"{{old('sim_card',$detail['sim_card'])== 1 ? 'selected': null}}>標準SIM</option>
+                                    <option value="2"{{old('sim_card',$detail['sim_card'])== 2 ? 'selected': null}}>nanoSIM</option>
+                                    <option value="3"{{old('sim_card',$detail['sim_card'])== 3 ? 'selected': null}}>microSIM</option>
+                                    <option value="4"{{old('sim_card',$detail['sim_card'])== 4 ? 'selected': null}}>miniSIM</option>
                                 </select>
                             </div>
 
                             <div class="col-sm-6 float-left mb-3">
                                 <label>充電器タイプ<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
                                 <select class="form-control" name="charger_type">
-                                    <option value="1"{{$detail['charger_type']=== 1 ? 'selected': null}}>USB TYPE-B</option>
-                                    <option value="2"{{$detail['charger_type']=== 2 ? 'selected': null}}>USB TYPE-C</option>
-                                    <option value="3"{{$detail['charger_type']=== 3 ? 'selected': null}}>iphone ライトニング</option>
-                                    <option value="4"{{$detail['charger_type']=== 4 ? 'selected': null}}>iphone　旧型</option>
-                                    <option value="0"{{$detail['charger_type']=== 0 ? 'selected': null}}>その他</option>
+                                    <option value="1"{{$detail['charger_type']== 1 ? 'selected': null}}>USB TYPE-B</option>
+                                    <option value="2"{{$detail['charger_type']== 2 ? 'selected': null}}>USB TYPE-C</option>
+                                    <option value="3"{{$detail['charger_type']== 3 ? 'selected': null}}>iphone ライトニング</option>
+                                    <option value="4"{{$detail['charger_type']== 4 ? 'selected': null}}>iphone　旧型</option>
+                                    <option value="0"{{$detail['charger_type']== 0 ? 'selected': null}}>その他</option>
                                 </select>
                             </div>
 
@@ -139,7 +139,7 @@
                                 <label>インストールアプリ<span class="m-0 font-weight-bold text-info">（任意）</span></label>
                                 @foreach($mobile_app_master as $d)
                                     <div>
-                                        <label><input type="checkbox" name="mobile_app_id[]" value="{!! $d['mobile_app_id']!!}"<?= in_array($d['mobile_app_id'],$installed_app) ? 'checked' : ''?>>{{$d['app_name']}}</label>
+                                        <label><input type="checkbox" name="mobile_app_id[]" value="{!! $d['mobile_app_id']!!}"<?= in_array($d['mobile_app_id'],old('mobile_app_id',$installed_app)) ? 'checked' : null?>>{{$d['app_name']}}</label>
                                     </div>
                                 @endforeach
                             </div>

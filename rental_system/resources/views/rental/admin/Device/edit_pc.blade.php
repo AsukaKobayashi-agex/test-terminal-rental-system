@@ -30,8 +30,8 @@
                 <div class="col-sm-3 float-left mb-3">
                     <label>OS<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
                     <select class="form-control" name="os">
-                        <option value="3"{{$detail['os']=== 3 ? 'selected': null}}>Windows</option>
-                        <option value="4"{{$detail['os']=== 4 ? 'selected': null}}>MacOS</option>
+                        <option value="3"{{old('os',$detail['os'])== "3" ? 'selected': null}}>Windows</option>
+                        <option value="4"{{old('os',$detail['os'])== "4" ? 'selected': null}}>MacOS</option>
                     </select>
                 </div>
 
@@ -54,7 +54,7 @@
                     <label>ソフトウェア<span class="m-0 font-weight-bold text-info">（任意）</span></label>
                     @foreach($software_master as $d )
                         <div>
-                            <label><input type="checkbox" name="software_id[]" value="{!! $d['software_id'] !!}"<?= in_array($d['software_id'],$installed_software) ? 'checked' : ''?>>{{$d['software_name']}}</label>
+                            <label><input type="checkbox" name="software_id[]" value="{!! $d['software_id'] !!}"<?= in_array($d['software_id'],old('software_id',$installed_software)) ? 'checked' : ''?>>{{$d['software_name']}}</label>
                         </div>
                     @endforeach
                 </div>
