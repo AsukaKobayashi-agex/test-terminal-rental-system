@@ -33,7 +33,7 @@ class AddPcRequest extends FormRequest
             'os_version' => 'required|max:100',
             'device_img' => 'image|max:3000',
             'mail_address' => 'max:100',
-            'memo' => 'max:10',
+            'memo' => 'max:1000',
             'admin_memo' => 'max:1000'
         ];
     }
