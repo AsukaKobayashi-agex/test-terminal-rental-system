@@ -22,7 +22,7 @@
                     <div class="card-header py-2">
                     <label>端末名</label>
                     </div>
-                        <div class="card-body text-center">
+                        <div class="card-body">
                             <div class="h4 mb-2 font-weight-bold text-primary"><?=$detail['device_name']?></div>
                         </div>
                     </div>
@@ -34,7 +34,7 @@
                 <div class="card-header py-2">
                     <label>OS</label>
                 </div>
-            <div class="card-body text-center">
+            <div class="card-body">
                 <div class="h4 mb-2 font-weight-bold text-primary">
                     @if($detail['os']==3)
                         Windows
@@ -56,7 +56,7 @@
                 <div class="card-header py-2">
                     <label>PCアカウント名</label>
                 </div>
-            <div class="card-body text-center">
+            <div class="card-body ">
                 <div class="h4 mb-2 font-weight-bold text-primary"><?=$detail['pc_account_name']?></div>
                 </div>
                 </div>
@@ -68,7 +68,7 @@
                     <div class="card-header py-2">
                     <label>メールアドレス</label>
                     </div>
-                        <div class="card-body text-center">
+                        <div class="card-body">
                             <div class="h4 mb-2 font-weight-bold text-primary"><?=$detail['mail_address']?></div>
                 </div>
                     </div>
@@ -79,7 +79,7 @@
                 <div class="card-header py-2">
                     <label>ソフトウェア</label>
                 </div>
-                    <div class="card-body text-center">
+                    <div class="card-body ">
                         @foreach($installed_software as $software)
                             <ul>
                                 <li class="h5 font-weight-bold text-primary d-inline-block" ><?=$software['software_name']?></li>
@@ -93,7 +93,7 @@
                 <div class="card-header py-2">
                     <label>備考(ユーザー向け)</label>
                 </div>
-                            <div class="card-body text-center">
+                            <div class="card-body ">
                                 <div class="h4 mb-2 font-weight-bold text-primary"><?=$detail['memo']?></div>
                 </div>
                     </div>
@@ -103,7 +103,7 @@
                 <div class="card-header py-2">
                     <label>備考(管理者向け)</label>
                 </div>
-                            <div class="card-body text-center">
+                            <div class="card-body ">
                                 <div class="h4 mb-2 font-weight-bold text-primary"><?=$detail['admin_memo']?></div>
                 </div>
                     </div>
@@ -112,11 +112,7 @@
             <label>端末画像</label>
             <div class="card-body">
                 @if($detail['device_img']===1)
-                    @if(file_exists($filename))
                     <img class="rounded w-50 h-50" src="/bootsample/img/device_image_{{$detail['rental_device_id']}}.jpg" alt="device_image">
-                    @else
-                    <img class="rounded w-50 h-50" src="/bootsample/img/device_image_{{$detail['rental_device_id']}}.png" alt="device_image">
-                        @endif
                 @else
                     <img class="rounded w-50 h-50" src="/bootsample/img/noImage.png" alt="no_image">
                 @endif
