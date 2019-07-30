@@ -35,6 +35,7 @@
                             @csrf
                             <div class="form-group">
                                 <input type="hidden" class="form-control" name="test_device_id" value="<?=$detail['test_device_id']?>">
+                                <input type="hidden" class="form-control" name="rental_device_id" value="<?=$detail['rental_device_id']?>">
 
                                 <div class="col-sm-6 float-left mb-3">
                                     <label>端末名<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
@@ -138,7 +139,7 @@
                             <div class="col-sm-12 float-left mb-3">
                                 <label>インストールアプリ<span class="m-0 font-weight-bold text-info">（任意）</span></label>
                                 @foreach($mobile_app_master as $d)
-                                    <div>
+                                    <div class="w-50 float-sm-left">
                                         <label><input type="checkbox" name="mobile_app_id[]" value="{!! $d['mobile_app_id']!!}"<?= in_array($d['mobile_app_id'],$installed_app) ? 'checked' : ''?>>{{$d['app_name']}}</label>
                                     </div>
                                 @endforeach

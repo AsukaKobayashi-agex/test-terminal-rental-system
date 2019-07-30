@@ -32,11 +32,11 @@
             <div class="col-sm-6 float-left mb-3">
                 <label>充電器タイプ<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
                 <select class="form-control" name="charger_type">
-                    <option value="1"{{$detail['charger_type']=== 1 ? 'selected': null}}>USB TYPE-B</option>
-                    <option value="2"{{$detail['charger_type']=== 2 ? 'selected': null}}>USB　TYPE-C</option>
-                    <option value="3"{{$detail['charger_type']=== 3 ? 'selected': null}}>iphone ライトニング</option>
-                    <option value="4"{{$detail['charger_type']=== 4 ? 'selected': null}}>iphone 旧型</option>
-                    <option value="0"{{$detail['charger_type']=== 5 ? 'selected': null}}>その他</option>
+                    <option value="1"{{old('charger_type',$detail['charger_type'])== "1" ? 'selected': null}}>USB TYPE-B</option>
+                    <option value="2"{{old('charger_type',$detail['charger_type'])== "2" ? 'selected': null}}>USB　TYPE-C</option>
+                    <option value="3"{{old('charger_type',$detail['charger_type'])== "3" ? 'selected': null}}>iphone ライトニング</option>
+                    <option value="4"{{old('charger_type',$detail['charger_type'])== "4" ? 'selected': null}}>iphone 旧型</option>
+                    <option value="0"{{old('charger_type',$detail['charger_type'])== "5" ? 'selected': null}}>その他</option>
                 </select>
             </div>
 

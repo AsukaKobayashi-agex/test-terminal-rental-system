@@ -129,7 +129,7 @@ and status = :status
 
 Add_sql;
         };
-        $sql .= "order by device_category,mobile_type,device_name";
+        $sql .= "order by device_category,mobile_type,rental_device_id DESC";
 
 
         if($page_limit!==0){

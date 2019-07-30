@@ -26,11 +26,11 @@ class EditSpController extends Controller
         $param = $request->all();
         //preDump($param,1);
 
-        $rental_device_id = $service->registerData($param);
+        $service->registerData($param);
 
         if(isset($param['device_img'])) {
             $img_client = $request->file('device_img') -> getClientOriginalExtension();
-            $request -> file('device_img')->move("bootsample/img","device_image_{$rental_device_id}.{$img_client}");
+            $request -> file('device_img')->move("bootsample/img","device_image_{$param['rental_device_id']}.{$img_client}");
 
         }
 

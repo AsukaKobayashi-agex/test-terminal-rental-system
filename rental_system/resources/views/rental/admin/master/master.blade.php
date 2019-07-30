@@ -25,11 +25,11 @@
 
 
     <div class="row">
-    <div class="col-sm-6 mb-3">
+    <div class="col-md-6 mb-3">
         <div class="card font-weight-bold text-primary shadow">
             <div class="card-header">
                 モバイルアプリ
-                <a class="btn btn-outline-primary btn-sm text-xs text-primary float-right" data-toggle="modal" data-target="#appAddModal"><i class="fas fa-fw fa-plus"></i>追加</a>
+                <button type="button" class="btn btn-outline-primary btn-sm text-xs float-right" data-toggle="modal" data-target="#appAddModal"><i class="fas fa-fw fa-plus"></i>追加</button>
                 <!--   アプリ追加モーダル -->
                 <div class="modal fade" id="appAddModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
                     <div class="modal-dialog">
@@ -44,7 +44,7 @@
                                 @csrf
                                 <div class="modal-body">
                                     <h4>アプリ名を入力</h4>
-                                    <input type="text" class="form-control" name="app_name"  value="" required maxlength="100">
+                                    <input type="text" class="form-control" name="app_name" required>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
@@ -112,7 +112,7 @@
                                                 <div class="modal-body">
                                                     <h4>アプリ名を入力</h4>
                                                     <input type="hidden" name="mobile_app_id" value="{{$app['mobile_app_id']}}">
-                                                    <input type="text" class="form-control" name="app_name"  value="<?=$app['app_name']?>" required maxlength="100">
+                                                    <input type="text" class="form-control" name="app_name"  value="<?=$app['app_name']?>" required>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
@@ -130,11 +130,11 @@
             </div>
         </div>
     </div>
-    <div class="col-sm-6 mb-3">
+    <div class="col-md-6 mb-3">
         <div class="card font-weight-bold text-primary shadow">
             <div class="card-header">
                 ソフトウェア
-                <a class="btn btn-outline-primary btn-sm text-xs text-primary float-right" data-toggle="modal" data-target="#softwareAddModal"><i class="fas fa-fw fa-plus"></i>追加</a>
+                <button type="button" class="btn btn-outline-primary btn-sm text-xs float-right" data-toggle="modal" data-target="#softwareAddModal"><i class="fas fa-fw fa-plus"></i>追加</button>
                 <!--   ソフトウェア追加モーダル -->
                 <div class="modal fade" id="softwareAddModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
                     <div class="modal-dialog">
@@ -150,7 +150,7 @@
 
                                 <div class="modal-body">
                                     <h4>ソフトウェア名を入力</h4>
-                                    <input type="text" class="form-control" name="software_name"  value="" required maxlength="100">
+                                    <input type="text" class="form-control" name="software_name" required>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
@@ -218,7 +218,7 @@
                                                     <div class="modal-body">
                                                     <h4>ソフトウェア名を入力</h4>
                                                     <input type="hidden" name="software_id" value="{{$software['software_id']}}">
-                                                    <input type="text" class="form-control" name="software_name"  value="<?=$software['software_name']?>" required maxlength="100">
+                                                    <input type="text" class="form-control" name="software_name"  value="<?=$software['software_name']?>" required>
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>

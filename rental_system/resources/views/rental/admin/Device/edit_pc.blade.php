@@ -23,6 +23,7 @@
                 @csrf
                 <div class="col-sm-6 float-left mb-3">
                     <input type="hidden" class="form-control" name="test_device_id" value="<?=$detail['test_device_id']?>">
+                    <input type="hidden" class="form-control" name="rental_device_id" value="<?=$detail['rental_device_id']?>">
                         <label>端末名<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
                         <input type="text" class="form-control {{$errors->has('device_name') ? "alert-danger": null}}" name="device_name" value="{{old('device_name',$detail['device_name'])}}">
                     </div>
@@ -53,7 +54,7 @@
                 <div class="col-sm-12 float-left mb-3">
                     <label>ソフトウェア<span class="m-0 font-weight-bold text-info">（任意）</span></label>
                     @foreach($software_master as $d )
-                        <div>
+                        <div class="w-50 float-sm-left">
                             <label><input type="checkbox" name="software_id[]" value="{!! $d['software_id'] !!}"<?= in_array($d['software_id'],$installed_software) ? 'checked' : ''?>>{{$d['software_name']}}</label>
                         </div>
                     @endforeach

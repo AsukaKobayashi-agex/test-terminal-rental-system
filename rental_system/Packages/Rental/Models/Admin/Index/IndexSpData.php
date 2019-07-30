@@ -22,7 +22,7 @@ class IndexSpData
 
 
 
-    public function getAllIndexSp($param)
+    public function getAllIndexSp($param,$page_limit)
     {
         // バインド値設定
         $bind_params = [
@@ -145,7 +145,26 @@ and rs.user_id = :user_id
 
 Add_sql;
         };
-        $sql .= "order by device_category,mobile_type,device_name;";
+        $sql .= "order by rental_device_id desc";
+
+        if($page_limit!==0){
+            if (isset($param['page'])) {
+                $nowPage = (int)$param['page'];
+            } else {
+                $nowPage = 1;
+            }
+
+            if ($nowPage > 1) {
+                $start = ($nowPage - 1) * $page_limit;
+            } else {
+                $start = 0;
+            }
+
+            $sql .= " LIMIT {$start},$page_limit";
+        }
+
+
+        $sql .= ";";
 
 
 

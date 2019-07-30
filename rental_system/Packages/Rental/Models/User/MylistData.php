@@ -72,7 +72,7 @@ where archive_flag = :archive_flag
 End_of_sql;
 
 
-        $sql .= "order by device_category,test_device_category,device_name,charger_name;";
+        $sql .= "order by device_category,test_device_category,rental_device_id DESC;";
 
 
 

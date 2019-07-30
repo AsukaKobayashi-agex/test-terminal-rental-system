@@ -44,8 +44,8 @@
     <div class="card-header py-3">
         <div class="h4 m-0 font-weight-bold text-primary" id="<?=$mylist['mylist_name']?>">
             <?=$mylist['mylist_name']?>
-            <a class="text-xs text-primary btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#renameModal<?=$mylist['mylist_id']?>"><i class="fas fa-fw fa-pen"></i></a>
-            <a class="text-xs text-danger btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#mylistDeleteModal<?=$mylist['mylist_id']?>">削除</a>
+            <button type="button" class="btn btn-sm btn-outline-primary text-xs" data-toggle="modal" data-target="#renameModal<?=$mylist['mylist_id']?>"><i class="fas fa-fw fa-pen"></i></button>
+            <button type="button" class="btn btn-sm btn-outline-danger text-xs" data-toggle="modal" data-target="#mylistDeleteModal<?=$mylist['mylist_id']?>">削除</button>
         </div>
         <!--   名前編集モーダル -->
         <div class="modal fade" id="renameModal<?=$mylist['mylist_id']?>" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">

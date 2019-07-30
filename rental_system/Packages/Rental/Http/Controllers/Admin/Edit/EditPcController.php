@@ -26,9 +26,14 @@ class EditPcController extends Controller
     public function action(EditPcRequest $request, EditPcService $service)
     {
         $param = $request->all();
-//         preDump($param);
 
         $service->registerData($param);
+
+        if(isset($param['device_img'])) {
+            $img_client = $request->file('device_img') -> getClientOriginalExtension();
+            $request -> file('device_img')->move("bootsample/img","device_image_{$param['rental_device_id']}.{$img_client}");
+
+        }
 
         //exit('データ登録完了！！');
         return redirect('/admin/index_pc')->with('success', 'PC情報を更新しました！');

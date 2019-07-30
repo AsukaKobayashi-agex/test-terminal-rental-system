@@ -43,7 +43,7 @@ End_of_sql;
 Add_sql;
         };
 
-        $sql .= "order by status,device_category,test_device_category,device_name,charger_name;";
+        $sql .= "order by status,device_category,test_device_category,rental_device_id DESC;";
 
         return stdClassToArray(\DB::select($sql, $bind_params));
     }

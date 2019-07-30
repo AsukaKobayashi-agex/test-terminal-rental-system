@@ -29,7 +29,7 @@
                                     <input type="text" class="form-control {{$errors->has('username')? 'alert-danger':null}}" name="username" value="{{ old('username') }}" placeholder="氏名*">
                             </div>
                             <div class="form-group">
-                                <input type="email" class="form-control {{$errors->has('address')? 'alert-danger':null}}" name="address" value="{{ old('address') }}" placeholder="メールアドレス*">
+                                <input type="text" class="form-control {{$errors->has('address')? 'alert-danger':null}}" name="address" value="{{ old('address') }}" placeholder="メールアドレス*">
                             </div>
                             <div class="form-group">
                                 <div class="mb-3 mb-sm-0">

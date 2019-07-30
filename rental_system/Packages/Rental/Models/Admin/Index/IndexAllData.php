@@ -20,7 +20,7 @@ class IndexAllData
         return $admin_info;
     }
 
-    public function getIndexAll($param)
+    public function getIndexAll($param,$page_limit)
     {
         // バインド値設定
         $bind_params = [
@@ -83,8 +83,26 @@ Add_sql;
             };
 
         //並べ替え
-        $sql .= "order by device_category,test_device_category,mobile_type,device_name,charger_name;";
+        $sql .= "order by rental_device_id desc";
 
+        if($page_limit!==0){
+            if (isset($param['page'])) {
+                $nowPage = (int)$param['page'];
+            } else {
+                $nowPage = 1;
+            }
+
+            if ($nowPage > 1) {
+                $start = ($nowPage - 1) * $page_limit;
+            } else {
+                $start = 0;
+            }
+
+            $sql .= " LIMIT {$start},$page_limit";
+        }
+
+
+        $sql .= ";";
 
 
         return stdClassToArray(\DB::select($sql, $bind_params));
