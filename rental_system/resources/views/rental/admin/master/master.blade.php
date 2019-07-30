@@ -25,7 +25,7 @@
 
 
     <div class="row">
-    <div class="col-sm-6 mb-3">
+    <div class="col-md-6 mb-3">
         <div class="card font-weight-bold text-primary shadow">
             <div class="card-header">
                 モバイルアプリ
@@ -130,7 +130,7 @@
             </div>
         </div>
     </div>
-    <div class="col-sm-6 mb-3">
+    <div class="col-md-6 mb-3">
         <div class="card font-weight-bold text-primary shadow">
             <div class="card-header">
                 ソフトウェア

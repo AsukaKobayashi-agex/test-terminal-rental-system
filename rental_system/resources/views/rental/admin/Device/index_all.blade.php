@@ -2,10 +2,7 @@
 
 @section('content')
     <!-- Page Heading -->
-    <?php
-        //preDump($all_device_list);
-        $userid = "1";
-    ?>
+
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
@@ -31,19 +28,21 @@
                                 @endforeach
                             </ul>
                         @endif
-                        <div class="form-group row">
-                            <form id='search' method="post" action="#">
+                            <form id='search' method="post" action="/admin/index_all">
                                 @csrf
-                                <div class="col-sm-2 mb-3">
-                                    <input type="number" name="search_id" class="form-control" value="{{$search_id}}" placeholder="端末ID" >
+                                <div class="row">
+                                    <div class="col-sm-2 mb-3">
+                                        <input type="number" name="search_id" class="form-control" value="{{$search_id}}" placeholder="端末ID" >
+                                    </div>
+                                    <div class="col-sm-4 mb-3">
+                                        <input type="search" name="search_word" class="form-control" value="{{$search_word}}" placeholder="端末名" >
+                                    </div>
+                                    <div class="col-sm-2 mb-3">
+                                        <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-fw fa-search"></i>
+                                        </button>
+                                    </div>
                                 </div>
-                                <div class="col-sm-4 mb-3">
-                                    <input type="search" name="search_word" class="form-control" value="{{$search_word}}" placeholder="端末名" >
-                                </div>
-                                <div class="col-sm-2 mb-3">
-                                    <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-fw fa-search"></i>
-                                    </button>
-                                </div>
+                                @include('rental.admin.common.admin_paginate_bar')
                             </form>
 
                             <!-- basic modal -->
@@ -66,15 +65,14 @@
                                 </div>
                             </div>
                             </form>
+                        <div class="form-group float-left mx-3">
+                            <a href="#" class="btn btn-success btn-icon-split float-right">
+                            <span class="icon text-white-50">
+                              <i class="fas fa-flag"></i>
+                            </span>
+                                <span class="text px-4" data-toggle="modal" data-target="#basicModal">端末を追加する</span>
+                            </a>
                         </div>
-                            <div class="form-group float-left">
-                                <a href="#" class="btn btn-success btn-icon-split float-right">
-                                <span class="icon text-white-50">
-                                  <i class="fas fa-flag"></i>
-                                </span>
-                                    <span class="text px-4" data-toggle="modal" data-target="#basicModal">端末を追加する</span>
-                                </a>
-                            </div>
                     </div>
 
                     <tbody>
@@ -117,6 +115,7 @@
                     </tbody>
                 </table>
             </div>
+            <div class="py-3"></div>
         </div>
     </div>
 
