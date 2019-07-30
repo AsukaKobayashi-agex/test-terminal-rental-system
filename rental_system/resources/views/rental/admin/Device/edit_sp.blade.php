@@ -133,11 +133,15 @@
 
                             <div class="col-sm-6 float-left mb-3">
                                 <label>発売時期<span class="m-0 font-weight-bold text-info">（任意）</span></label>
-                                <input type="date" class="form-control" name="launch_date" value="{{old('launch_date',$detail['launch_date'])}}">
+                                @if($detail['launch_date']=='1900-01-01')
+                                    <input type="date" class="form-control" name="launch_date" value="{{old('launch_date')}}">
+                                @else
+                                    <input type="date" class="form-control" name="launch_date" value="{{old('launch_date',$detail['launch_date'])}}">
+                                @endif
                             </div>
 
                             <div class="col-sm-12 float-left mb-3">
-                                <label>インストールアプリ<span class="m-0 font-weight-bold text-info">（任意）</span></label>
+                                <label class="d-block">インストールアプリ<span class="m-0 font-weight-bold text-info">（任意）</span></label>
                                 @foreach($mobile_app_master as $d)
                                     <div class="w-50 float-sm-left">
                                         <label><input type="checkbox" name="mobile_app_id[]" value="{!! $d['mobile_app_id']!!}"{{(!$errors->has('*') && in_array($d['mobile_app_id'],$installed_app)) || old('mobile_app_id') && in_array( $d['mobile_app_id'] ,old('mobile_app_id')) ? 'checked' : ''}}>{{$d['app_name']}}</label>
