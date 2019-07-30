@@ -87,7 +87,7 @@ class AddSpData
             'device_name'=>mb_convert_kana($param['device_name'],'KVnr'),
             'test_device_category' => 1,
             'os' => $param['os'],
-            'os_version' => mb_convert_kana($param['os_version'],'n')
+            'os_version' => mb_convert_kana($param['os_version'],'KVnr')
         ];
         $test_device_id = $this->_test_device_basic_model->insertTestDeviceBasic($rental_device_id, $data);
         return $test_device_id;
@@ -105,18 +105,18 @@ class AddSpData
             'test_device_id' => $test_device_id,
             'carrier_id' => $param['carrier_id'],
             'mobile_type' => $param['mobile_type'],
-            'number' => mb_convert_kana($param['number'],'n'),
-            'mail_address' => "{$param['mail_address']}",
+            'number' => mb_convert_kana($param['number'],'KVnr'),
+            'mail_address' => mb_convert_kana($param['mail_address'],'KVnr'),
             'wifi_line' => $param['wifi_line'],
             'communication_line' => $param['communication_line'],
             'device_img' => $device_img,
             'launch_date' => isset($param['launch_date']) ? $param['launch_date']:"1900/1/1",
             'sim_card' => $param['sim_card'],
             'charger_type' => $param['charger_type'],
-            'resolution' => mb_convert_kana($param['resolution'],'n'),
-            'display_size' => mb_convert_kana($param['display_size'],'n'),
-            'memo' => "{$param['memo']}",
-            'admin_memo' => "{$param['admin_memo']}"
+            'resolution' => mb_convert_kana($param['resolution'],'KVnr'),
+            'display_size' => mb_convert_kana($param['display_size'],'KVnr'),
+            'memo' => mb_convert_kana($param['memo'],'KVnr'),
+            'admin_memo' => mb_convert_kana($param['admin_memo'],'KVnr')
         ];
         //preDump($sp_data,1);
         return \DB::table('test_device_mobile')->insert($sp_data);

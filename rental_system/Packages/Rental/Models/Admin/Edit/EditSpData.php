@@ -171,7 +171,7 @@ Add_sql;
         $data = [
             'device_name' => mb_convert_kana($param['device_name'],'KVnr'),
             'os' => $param['os'],
-            'os_version' => mb_convert_kana($param['os_version'],'n')
+            'os_version' => mb_convert_kana($param['os_version'],'KVnr')
         ];
         return \DB::table('test_device_basic')->where('test_device_id', $param['test_device_id'])->update($data);
     }
@@ -187,18 +187,18 @@ Add_sql;
         $sp_data = [
             'carrier_id' => $param['carrier_id'],
             'mobile_type' => $param['mobile_type'],
-            'number' => mb_convert_kana($param['number'],'n'),
-            'mail_address' => $param['mail_address'],
+            'number' => mb_convert_kana($param['number'],'KVnr'),
+            'mail_address' => mb_convert_kana($param['mail_address'],'KVnr'),
             'wifi_line' => $param['wifi_line'],
             'communication_line' => $param['communication_line'],
             'device_img' => $device_img,
             'sim_card' => $param['sim_card'],
             'charger_type' => $param['charger_type'],
-            'resolution' => mb_convert_kana($param['resolution'],'n'),
-            'display_size' => mb_convert_kana($param['display_size'],'n'),
+            'resolution' => mb_convert_kana($param['resolution'],'KVnr'),
+            'display_size' => mb_convert_kana($param['display_size'],'KVnr'),
             'launch_date' => $param['launch_date'],
-            'memo' => $param['memo'],
-            'admin_memo' => $param['admin_memo']
+            'memo' => mb_convert_kana($param['memo'],'KVnr'),
+            'admin_memo' => mb_convert_kana($param['admin_memo'],'KVnr')
         ];
         return \DB::table('test_device_mobile')->where('test_device_id', $param['test_device_id'])->update($sp_data);
     }

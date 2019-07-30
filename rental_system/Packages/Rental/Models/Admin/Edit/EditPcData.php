@@ -159,7 +159,7 @@ Add_sql;
         $data = [
             'device_name'=>mb_convert_kana($param['device_name'],'KVnr'),
             'os' => $param['os'],
-            'os_version' => mb_convert_kana($param['os_version'],'n')
+            'os_version' => mb_convert_kana($param['os_version'],'KVnr')
         ];
         return \DB::table('test_device_basic')->where('test_device_id',$param['test_device_id'])->update($data);
     }
@@ -172,11 +172,11 @@ Add_sql;
             $device_img = 0;
         }
         $pc_data = [
-            'pc_account_name' => $param['pc_account_name'],
-            'mail_address' => $param['mail_address'],
+            'pc_account_name' => mb_convert_kana($param['pc_account_name'],'KVnr'),
+            'mail_address' => mb_convert_kana($param['mail_address'],'KVnr'),
             'device_img' => $device_img,
-            'memo' => $param['memo'],
-            'admin_memo' => $param['admin_memo']
+            'memo' => mb_convert_kana($param['memo'],'KVnr'),
+            'admin_memo' => mb_convert_kana($param['admin_memo'],'KVnr')
         ];
         return \DB::table('test_device_pc')->where('test_device_id',$param['test_device_id'])->update($pc_data);
     }
