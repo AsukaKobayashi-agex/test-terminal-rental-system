@@ -47,7 +47,7 @@
                                     <input type="text" class="form-control" name="app_name" required>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="reset()">キャンセル</button>
                                     <button type="submit" class="btn btn-primary btn-user">追加</button>
                                 </div>
                             </form>
@@ -115,7 +115,7 @@
                                                     <input type="text" class="form-control" name="app_name"  value="<?=$app['app_name']?>" required>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal"  onclick="reset()">キャンセル</button>
                                                     <button type="submit" class="btn btn-success btn-user" formaction="/admin/master/rename_app">変更</button>
                                                 </div>
                                             </form>
@@ -153,7 +153,7 @@
                                     <input type="text" class="form-control" name="software_name" required>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal"  onclick="reset()">キャンセル</button>
                                     <button type="submit" class="btn btn-primary btn-user">追加</button>
                                 </div>
                             </form>
@@ -221,7 +221,7 @@
                                                     <input type="text" class="form-control" name="software_name"  value="<?=$software['software_name']?>" required>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal"  onclick="reset()">キャンセル</button>
                                                         <button type="submit" class="btn btn-success btn-user" formaction="/admin/master/rename_software">変更</button>
                                                     </div>
                                                 </form>
