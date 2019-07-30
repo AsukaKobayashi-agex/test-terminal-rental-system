@@ -52,7 +52,7 @@
                     </select>
                     <div class="d-block text font-weight-bold text-primary text-uppercase mb-1 p-2">メールアドレス</div>
                     <div class="d-block text-center mb-2">
-                        <input type="email" name="address" class="form-control {{$errors->has('address')? 'alert-danger':null}}" value="<?=$user_info['address']?>
+                        <input type="text" name="address" class="form-control {{$errors->has('address')? 'alert-danger':null}}" value="<?=$user_info['address']?>
                             " placeholder="メールアドレス">
                     </div>
                 </div>
