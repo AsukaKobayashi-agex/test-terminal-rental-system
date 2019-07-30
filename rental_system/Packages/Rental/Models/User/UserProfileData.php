@@ -9,7 +9,7 @@ class UserProfileData
 {
     public function changeUserProfile($param){
         $update_data = [
-            'name' => $param['name'],
+            'name' => mb_convert_kana($param['name'],"KVnr"),
             'division_id' => $param['division_id'],
             'group_id' => $param['group_id'],
             'address' => $param['address']

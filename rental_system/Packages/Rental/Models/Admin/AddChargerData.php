@@ -73,7 +73,7 @@ class AddChargerData
         //preDump($param,1);
         $charger_data = [
             'rental_device_id' => $rental_device_id,
-            'charger_name' => $param['charger_name'],
+            'charger_name' => mb_convert_kana($param['charger_name'],"KVnr"),
             'charger_type' => $param['charger_type']
         ];
         $charger_id = \DB::table('charger')->insertGetId($charger_data);

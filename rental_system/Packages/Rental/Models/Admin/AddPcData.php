@@ -83,10 +83,10 @@ class AddPcData
     protected function _insertTestDeviceBasic($rental_device_id,$param)
     {
         $data = [
-            'device_name'=>$param['device_name'],
+            'device_name'=>mb_convert_kana($param['device_name'],"KVnr"),
             'test_device_category' => 2,
             'os' => $param['os'],
-            'os_version' => $param['os_version']
+            'os_version' => mb_convert_kana($param['os_version'],'KVnr')
         ];
         $test_device_id = $this->_test_device_basic_model->insertTestDeviceBasic($rental_device_id, $data,$param);
         return $test_device_id;
@@ -101,11 +101,11 @@ class AddPcData
         }
         $pc_data = [
             'test_device_id' => $test_device_id,
-            'pc_account_name' => $param['pc_account_name'],
-            'mail_address' => "{$param['mail_address']}",
+            'pc_account_name' => mb_convert_kana($param['pc_account_name'],'KVnr'),
+            'mail_address' => mb_convert_kana($param['mail_address'],'KVnr'),
             'device_img' => $device_img,
-            'memo' => "{$param['memo']}",
-            'admin_memo' => "{$param['admin_memo']}"
+            'memo' => mb_convert_kana($param['memo'],'KVnr'),
+            'admin_memo' => mb_convert_kana($param['admin_memo'],'KVnr')
         ];
         return \DB::table('test_device_pc')->insert($pc_data);
     }

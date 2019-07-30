@@ -66,7 +66,7 @@
                                 <input type="text" class="form-control" name="mylist_name"  value="<?=$mylist['mylist_name']?>" required maxlength="100">
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="reset()">キャンセル</button>
                             <button type="submit" class="btn btn-primary btn-user" href="javascript:document.rename<?=$mylist['mylist_id']?>.submit()">変更</button>
                         </div>
                     </form>

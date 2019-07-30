@@ -25,7 +25,7 @@
 
 
     <div class="row">
-    <div class="col-md-6 mb-3">
+    <div class="col-md-4 mb-3">
         <div class="card font-weight-bold text-primary shadow">
             <div class="card-header">
                 モバイルアプリ
@@ -47,7 +47,7 @@
                                     <input type="text" class="form-control" name="app_name" required>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="reset()">キャンセル</button>
                                     <button type="submit" class="btn btn-primary btn-user">追加</button>
                                 </div>
                             </form>
@@ -115,7 +115,7 @@
                                                     <input type="text" class="form-control" name="app_name"  value="<?=$app['app_name']?>" required>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal"  onclick="reset()">キャンセル</button>
                                                     <button type="submit" class="btn btn-success btn-user" formaction="/admin/master/rename_app">変更</button>
                                                 </div>
                                             </form>
@@ -130,7 +130,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6 mb-3">
+    <div class="col-md-4 mb-3">
         <div class="card font-weight-bold text-primary shadow">
             <div class="card-header">
                 ソフトウェア
@@ -153,7 +153,7 @@
                                     <input type="text" class="form-control" name="software_name" required>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal"  onclick="reset()">キャンセル</button>
                                     <button type="submit" class="btn btn-primary btn-user">追加</button>
                                 </div>
                             </form>
@@ -221,8 +221,115 @@
                                                     <input type="text" class="form-control" name="software_name"  value="<?=$software['software_name']?>" required>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal"  onclick="reset()">キャンセル</button>
                                                         <button type="submit" class="btn btn-success btn-user" formaction="/admin/master/rename_software">変更</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+        <div class="card font-weight-bold text-primary shadow">
+            <div class="card-header">
+                キャリア
+                <button type="button" class="btn btn-outline-primary btn-sm text-xs float-right" data-toggle="modal" data-target="#carrierAddModal"><i class="fas fa-fw fa-plus"></i>追加</button>
+                <!--   キャリア追加モーダル -->
+                <div class="modal fade" id="carrierAddModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="myModalLabel">キャリア追加</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <form name="addApp" method="post" action="/admin/master/add_carrier">
+                                @csrf
+
+                                <div class="modal-body">
+                                    <h4>キャリア名を入力</h4>
+                                    <input type="text" class="form-control" name="carrier_name" required>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal"  onclick="reset()">キャンセル</button>
+                                    <button type="submit" class="btn btn-primary btn-user">追加</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered" style="table-layout: fixed">
+                    <thead>
+                    <tr>
+                        <th>キャリア名</th>
+                        <th width="110px"></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($all_carrier as $carrier)
+                        <tr>
+                            <td class="align-middle">
+                                <span><?=$carrier['carrier_name']?></span>
+                            </td>
+                            <td class="align-middle px-0">
+                                    <button type="button" class="btn btn-sm btn-success float-left mx-1 mb-sm-0 mb-2" data-toggle="modal" data-target="#carrierRenameModal{{$carrier['carrier_id']}}">編集</button>
+                                    <button type="button" class="btn btn-sm btn-danger float-left mx-1 mb-sm-0 mb-2" data-toggle="modal" data-target="#carrierDeleteModal{{$carrier['carrier_id']}}">削除</button>
+                                <!--   アプリ削除モーダル -->
+                                <div class="modal fade" id="carrierDeleteModal{{$carrier['carrier_id']}}" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title" id="myModalLabel">キャリア削除</h4>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <form method="post"  name="delete_carrier">
+                                                @csrf
+                                                <div class="modal-body">
+                                                    <h4>「<?=$carrier['carrier_name']?>」を削除しますか？</h4>
+                                                    <input type="hidden" name="carrier_id" value="{{$carrier['carrier_id']}}">
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
+                                                    <button type="submit" class="btn btn-danger btn-user" formaction="/admin/master/delete_carrier">はい</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--   キャリア編集モーダル -->
+                                    <div class="modal fade" id="carrierRenameModal{{$carrier['carrier_id']}}" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h4 class="modal-title" id="myModalLabel">キャリア名変更</h4>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <form method="post"  name="rename_carrier">
+                                                    @csrf
+                                                    <div class="modal-body">
+                                                    <h4>キャリア名を入力</h4>
+                                                    <input type="hidden" name="carrier_id" value="{{$carrier['carrier_id']}}">
+                                                    <input type="text" class="form-control" name="carrier_name"  value="<?=$carrier['carrier_name']?>" required>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal"  onclick="reset()">キャンセル</button>
+                                                        <button type="submit" class="btn btn-success btn-user" formaction="/admin/master/rename_carrier">変更</button>
                                                     </div>
                                                 </form>
                                             </div>

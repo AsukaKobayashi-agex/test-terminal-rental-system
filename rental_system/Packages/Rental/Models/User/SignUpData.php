@@ -8,9 +8,9 @@ class SignUpData
     public function createAccount($param){
         $now = nowDateTime();
         $insert_data = [
-            'name' => $param['username'],
-            'password' =>$param['password'],
-            'address' =>$param['address'],
+            'name' => mb_convert_kana($param['username'],"KVnr"),
+            'password' => $param['password'],
+            'address' => $param['address'],
             'division_id' =>$param['division_id'],
             'group_id' =>$param['group_id'],
             'registration_date' => $now,

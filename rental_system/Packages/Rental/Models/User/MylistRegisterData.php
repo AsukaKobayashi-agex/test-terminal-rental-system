@@ -112,7 +112,7 @@ Add_sql;
     {
         $now = nowDateTime();
         $insert_data = [
-            'mylist_name' => $data['mylist_name'],
+            'mylist_name' => mb_convert_kana($data['mylist_name'],"KVnr"),
             'user_id' => \Auth::guard('user')->id(),
             'registration_date' => $now,
             'update_date' => $now
