@@ -133,7 +133,11 @@
 
                             <div class="col-sm-6 float-left mb-3">
                                 <label>発売時期<span class="m-0 font-weight-bold text-info">（任意）</span></label>
-                                <input type="date" class="form-control" name="launch_date" value="{{old('launch_date',$detail['launch_date'])}}">
+                                @if($detail['launch_date']=='1900-01-01')
+                                    <input type="date" class="form-control" name="launch_date" value="{{old('launch_date')}}">
+                                @else
+                                    <input type="date" class="form-control" name="launch_date" value="{{old('launch_date',$detail['launch_date'])}}">
+                                @endif
                             </div>
 
                             <div class="col-sm-12 float-left mb-3">
