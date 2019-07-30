@@ -184,22 +184,44 @@ Add_sql;
             $device_img = 0;
         }
 
-        $sp_data = [
-            'carrier_id' => $param['carrier_id'],
-            'mobile_type' => $param['mobile_type'],
-            'number' => mb_convert_kana($param['number'],'n'),
-            'mail_address' => $param['mail_address'],
-            'wifi_line' => $param['wifi_line'],
-            'communication_line' => $param['communication_line'],
-            'device_img' => $device_img,
-            'sim_card' => $param['sim_card'],
-            'charger_type' => $param['charger_type'],
-            'resolution' => mb_convert_kana($param['resolution'],'n'),
-            'display_size' => mb_convert_kana($param['display_size'],'n'),
-            'launch_date' => $param['launch_date'],
-            'memo' => $param['memo'],
-            'admin_memo' => $param['admin_memo']
-        ];
+
+        if($device_img === 1) {
+            $sp_data = [
+                'carrier_id' => $param['carrier_id'],
+                'mobile_type' => $param['mobile_type'],
+                'number' => mb_convert_kana($param['number'], 'n'),
+                'mail_address' => $param['mail_address'],
+                'wifi_line' => $param['wifi_line'],
+                'communication_line' => $param['communication_line'],
+                'device_img' => $device_img,
+                'sim_card' => $param['sim_card'],
+                'charger_type' => $param['charger_type'],
+                'resolution' => mb_convert_kana($param['resolution'], 'n'),
+                'display_size' => mb_convert_kana($param['display_size'], 'n'),
+                'launch_date' => $param['launch_date'],
+                'memo' => $param['memo'],
+                'admin_memo' => $param['admin_memo']
+            ];
+        }
+
+        //$device_img === 0 の時はdevice_imgテーブルを更新しない仕様です
+        if($device_img === 0){
+            $sp_data = [
+                'carrier_id' => $param['carrier_id'],
+                'mobile_type' => $param['mobile_type'],
+                'number' => mb_convert_kana($param['number'], 'n'),
+                'mail_address' => $param['mail_address'],
+                'wifi_line' => $param['wifi_line'],
+                'communication_line' => $param['communication_line'],
+                'sim_card' => $param['sim_card'],
+                'charger_type' => $param['charger_type'],
+                'resolution' => mb_convert_kana($param['resolution'], 'n'),
+                'display_size' => mb_convert_kana($param['display_size'], 'n'),
+                'launch_date' => $param['launch_date'],
+                'memo' => $param['memo'],
+                'admin_memo' => $param['admin_memo']
+            ];
+        }
         return \DB::table('test_device_mobile')->where('test_device_id', $param['test_device_id'])->update($sp_data);
     }
 

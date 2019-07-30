@@ -171,13 +171,25 @@ Add_sql;
         }else{
             $device_img = 0;
         }
-        $pc_data = [
-            'pc_account_name' => $param['pc_account_name'],
-            'mail_address' => $param['mail_address'],
-            'device_img' => $device_img,
-            'memo' => $param['memo'],
-            'admin_memo' => $param['admin_memo']
-        ];
+        if($device_img === 1) {
+            $pc_data = [
+                'pc_account_name' => $param['pc_account_name'],
+                'mail_address' => $param['mail_address'],
+                'device_img' => $device_img,
+                'memo' => $param['memo'],
+                'admin_memo' => $param['admin_memo']
+            ];
+        }
+
+        //$device_img === 0 の時はdevice_imgテーブルを更新しない仕様です
+        if($device_img === 0){
+            $pc_data = [
+                'pc_account_name' => $param['pc_account_name'],
+                'mail_address' => $param['mail_address'],
+                'memo' => $param['memo'],
+                'admin_memo' => $param['admin_memo']
+                ];
+        }
         return \DB::table('test_device_pc')->where('test_device_id',$param['test_device_id'])->update($pc_data);
     }
 
