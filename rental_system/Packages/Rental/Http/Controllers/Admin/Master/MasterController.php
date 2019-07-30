@@ -76,4 +76,31 @@ class MasterController extends Controller
         // todo: デバイス一覧へリダイレクト
         return redirect('/admin/master')->with('flash_message','ソフトウェア名を変更しました');
     }
+    
+    public function delete_carrier(MasterService $service,MasterRequest $request)
+    {
+        $param = $request->all();
+        $service->delete_carrier($param);
+
+        // todo: デバイス一覧へリダイレクト
+        return redirect('/admin/master')->with('flash_message','キャリアを削除しました');
+    }
+
+    public function add_carrier(MasterService $service,MasterRequest $request)
+    {
+        $param = $request->all();
+        $service->add_carrier($param);
+
+        // todo: デバイス一覧へリダイレクト
+        return redirect('/admin/master')->with('flash_message','キャリアを追加しました');
+    }
+    
+    public function rename_carrier(MasterService $service,MasterRequest $request)
+    {
+        $param = $request->all();
+        $service->rename_carrier($param);
+
+        // todo: デバイス一覧へリダイレクト
+        return redirect('/admin/master')->with('flash_message','キャリア名を変更しました');
+    }
 }

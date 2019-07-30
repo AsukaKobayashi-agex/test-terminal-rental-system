@@ -91,6 +91,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['force_https']], function() 
         Route::post('/master/add_software','Admin\Master\MasterController@add_software');
         Route::post('/master/delete_software','Admin\Master\MasterController@delete_software');
         Route::post('/master/rename_software','Admin\Master\MasterController@rename_software');
+        Route::post('/master/add_carrier','Admin\Master\MasterController@add_carrier');
+        Route::post('/master/delete_carrier','Admin\Master\MasterController@delete_carrier');
+        Route::post('/master/rename_carrier','Admin\Master\MasterController@rename_carrier');
 
     });
 });

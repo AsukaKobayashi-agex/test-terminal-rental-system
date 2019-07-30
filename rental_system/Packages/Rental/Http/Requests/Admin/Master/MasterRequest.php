@@ -30,8 +30,9 @@ class MasterRequest extends FormRequest
     public function rules()
     {
         return [
-            'app_name' => 'min:1|max:100',
-            'software_name' => 'min:1|max:100'
+            'app_name' => 'sometimes|required|max:100',
+            'software_name' => 'sometimes|required||max:100',
+            'carrier_name' => 'sometimes|required||max:100'
         ];
     }
 
@@ -44,10 +45,12 @@ class MasterRequest extends FormRequest
     public function messages()
     {
         return [
-            'app_name.min' => 'アプリ名を入力してください',
+            'app_name.required' => 'アプリ名を入力してください',
             'app_name.max' => 'アプリ名が長すぎます',
-            'software_name.min' => 'アプリ名を入力してください',
-            'software_name.max' => 'アプリ名が長すぎます'
+            'carrier_name.required' => 'キャリア名を入力してください',
+            'carrier_name.max' => 'キャリア名が長すぎます',
+            'software_name.required' => 'ソフトウェア名を入力してください',
+            'software_name.max' => 'ソフトウェア名が長すぎます'
         ];
 
     }
