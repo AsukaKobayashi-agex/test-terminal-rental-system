@@ -83,7 +83,7 @@ Add_sql;
             };
 
         //並べ替え
-        $sql .= "order by device_category,test_device_category,mobile_type,device_name,charger_name";
+        $sql .= "order by rental_device_id desc";
 
         if($page_limit!==0){
             if (isset($param['page'])) {

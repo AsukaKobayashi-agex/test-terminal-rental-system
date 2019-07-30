@@ -123,7 +123,7 @@ and pc_account_name collate utf8mb4_unicode_ci like :pc_account_name{$i}
 Add_sql;
             }};
 
-$sql .= "order by device_category,device_name";
+$sql .= "order by rental_device_id desc";
 
         if($page_limit!==0){
             if (isset($param['page'])) {
