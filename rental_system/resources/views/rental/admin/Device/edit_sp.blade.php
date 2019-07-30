@@ -118,7 +118,7 @@
 
                             <div class="col-sm-6 float-left mb-3">
                                 <label>メールアドレス<span class="m-0 font-weight-bold text-info">（任意）</span></label>
-                                <input type="text" class="form-control{{$errors->has('mail_address') ? "alert-danger": null}}" name="mail_address" value="{{old('mail_address',$detail['mail_address'])}}">
+                                <input type="text" class="form-control {{$errors->has('mail_address') ? "alert-danger": null}}" name="mail_address" value="{{old('mail_address',$detail['mail_address'])}}">
                             </div>
 
                             <div class="col-sm-6 float-left mb-3">
