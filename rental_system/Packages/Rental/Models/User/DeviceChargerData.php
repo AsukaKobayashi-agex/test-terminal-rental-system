@@ -80,7 +80,7 @@ and rs.user_id = :user_id
 and status = :status
 
 Add_sql;
-        };$sql .= "order by device_category,charger_name";
+        };$sql .= "order by device_category,rental_device_id DESC";
 
 
 
