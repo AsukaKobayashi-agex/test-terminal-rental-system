@@ -84,7 +84,7 @@
                                 <select class="form-control" name="carrier_id">
                                     <option value="0"{{old('carrier_id',$detail['carrier_id']=== 0) ? 'selected': null}}>なし</option>
                                     @foreach($mobile_carrier as $d)
-                                        <option value="{!! $d->carrier_id !!}"{{(!$errors->has('*') && $detail['carrier_id']===$d->carrier_id) || old('carrier_id')=== "$d->carrier_id" ? 'selected': null}}>{{$d->carrier_name}}</option>
+                                        <option value="{!! $d['carrier_id'] !!}"{{(!$errors->has('*') && $detail['carrier_id']===$d['carrier_id']) || old('carrier_id')=== "{$d['carrier_id']}" ? 'selected': null}}>{{$d['carrier_name']}}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -118,7 +118,7 @@
 
                             <div class="col-sm-6 float-left mb-3">
                                 <label>メールアドレス<span class="m-0 font-weight-bold text-info">（任意）</span></label>
-                                <input type="text" class="form-control{{$errors->has('mail_address') ? "alert-danger": null}}" name="mail_address" value="{{old('mail_address',$detail['mail_address'])}}">
+                                <input type="text" class="form-control {{$errors->has('mail_address') ? "alert-danger": null}}" name="mail_address" value="{{old('mail_address',$detail['mail_address'])}}">
                             </div>
 
                             <div class="col-sm-6 float-left mb-3">

@@ -89,7 +89,7 @@
                                 <option value="">-----</option>
                                 <option value="0">なし</option>
                             @foreach($mobile_carrier as $d)
-                                <option value="{!! $d->carrier_id !!}" {{old('carrier_id')=== "$d->carrier_id" ? 'selected': null}}>{{$d->carrier_name}}</option>
+                                <option value="{!! $d['carrier_id'] !!}" {{old('carrier_id')=== "{$d['carrier_id']}" ? 'selected': null}}>{{$d['carrier_name']}}</option>
                                 @endforeach
                             </select>
                         </div>
