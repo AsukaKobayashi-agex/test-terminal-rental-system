@@ -9,7 +9,7 @@ class MobileCarrierData
     public function  insertMobileCarrier($data)
     {
         $insert_data = [
-            'carrier_name' =>$data['carrier_name']
+            'carrier_name' => mb_convert_kana($data['carrier_name'],"KVnr")
         ];
 
         return \DB::table(self::TABLE_NAME)->insertGetId($insert_data);

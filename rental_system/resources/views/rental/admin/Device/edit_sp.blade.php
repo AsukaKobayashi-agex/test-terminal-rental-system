@@ -151,12 +151,12 @@
                             </div>
 
                             <div class="col-sm-12 float-left mb-3">
-                                <label>備考(ユーザー向け)<span class="m-0 font-weight-bold text-info">（任意）</span></label>
+                                <label>備考(ユーザー向け)<span class="m-0 font-weight-bold text-info">（任意）</span><span class="m-0 text-secondary text-xs">改行は１文字としてカウント</span></label>
                                 <textarea class="form-control {{$errors->has('memo') ? "alert-danger": null}}" name=memo rows="5">{{old('memo',$detail['memo'])}}</textarea>
                             </div>
 
                             <div class="col-sm-12 float-left mb-3">
-                                <label>備考(管理者向け)<span class="m-0 font-weight-bold text-info">（任意）</span></label>
+                                <label>備考(管理者向け)<span class="m-0 font-weight-bold text-info">（任意）</span><span class="m-0 text-secondary text-xs">改行は１文字としてカウント</span></label>
                                 <textarea class="form-control {{$errors->has('admin_memo') ? "alert-danger": null}}" name=admin_memo rows="5">{{old('admin_memo',$detail['admin_memo'])}}</textarea>
                             </div>
                         </form>

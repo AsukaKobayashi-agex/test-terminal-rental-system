@@ -83,7 +83,7 @@ class AddPcData
     protected function _insertTestDeviceBasic($rental_device_id,$param)
     {
         $data = [
-            'device_name'=>$param['device_name'],
+            'device_name'=>mb_convert_kana($param['device_name'],"KVnr"),
             'test_device_category' => 2,
             'os' => $param['os'],
             'os_version' => $param['os_version']

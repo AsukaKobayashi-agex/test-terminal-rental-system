@@ -93,7 +93,7 @@ Add_sql;
     {
         //preDump($param,1);
         $charger_data = [
-            'charger_name' => mb_convert_kana($param['charger_name'],'KV'),
+            'charger_name' => mb_convert_kana($param['charger_name'],'KVnr'),
             'charger_type' => $param['charger_type']
         ];
         return \DB::table('charger')->where('charger_id',$param['charger_id'])->update($charger_data);
