@@ -57,7 +57,6 @@ class EditSpRequest extends FormRequest
             'os_version.required' =>'OSバージョンを入力してください',
             'mail_address.max' =>'メールアドレスは100文字以内で記入してください',
             'display_size.max' =>'画面サイズは100文字以内で記入してください',
-            'mail_address.max' => 'メールアドレスは100文字以内で記入してください',
             'resolution.max' =>'解像度は100文字以内で記入してください',
             'device_img.mimes' => 'アップロードできるのはJPEG形式の画像のみです',
             'device_img.max' => '端末画像のサイズは3000KBまでです',
