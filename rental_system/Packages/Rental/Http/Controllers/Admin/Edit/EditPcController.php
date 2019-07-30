@@ -26,7 +26,6 @@ class EditPcController extends Controller
     public function action(EditPcRequest $request, EditPcService $service)
     {
         $param = $request->all();
-//         preDump($param);
 
         $service->registerData($param);
 
