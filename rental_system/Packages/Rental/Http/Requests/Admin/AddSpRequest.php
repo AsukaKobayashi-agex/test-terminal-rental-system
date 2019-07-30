@@ -16,6 +16,18 @@ class AddSpRequest extends FormRequest
 
         $inputs = parent::all();
 
+        if($this->filled('memo')) {
+
+            $inputs['memo'] = preg_replace("/\r/","",$this->input('memo'));
+
+        }
+
+        if($this->filled('admin_memo')) {
+
+            $inputs['admin_memo'] = preg_replace("/\r/","",$this->input('admin_memo'));
+
+        }
+
         $this->_inputs = $this->_format($inputs);
         return $this->_inputs;
     }
