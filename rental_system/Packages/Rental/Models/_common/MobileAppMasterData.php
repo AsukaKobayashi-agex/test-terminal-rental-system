@@ -11,7 +11,7 @@ MobileAppMasterData
     public function insertMobileAppMaster($param)
     {
         $insert_data = [
-            'app_name' =>$param['app_name']
+            'app_name' => mb_convert_kana($param['app_name'],"KVnr"),
         ];
 
         return \DB::table(self::TABLE_NAME)->insertGetId($insert_data);
@@ -19,7 +19,7 @@ MobileAppMasterData
 
     public function getAll()
     {
-        $data = stdClassToArray(\DB::table(self::TABLE_NAME)->get());
+        $data = stdClassToArray(\DB::table(self::TABLE_NAME)->orderby('mobile_app_id','DESC')->get());
         return $data;
     }
 

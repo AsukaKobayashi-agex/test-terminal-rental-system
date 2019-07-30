@@ -98,7 +98,7 @@ End_of_sql;
     {
         $update_data = [
             'update_date' => nowDateTime(),
-            'mylist_name' => $param['mylist_name']
+            'mylist_name' => mb_convert_kana($param['mylist_name'],"KVnr")
         ];
         \DB::table('mylist')->where('mylist_id', $param['mylist_id'])->update($update_data);
         return true;

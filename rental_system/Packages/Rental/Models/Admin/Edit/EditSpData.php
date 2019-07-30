@@ -169,7 +169,7 @@ Add_sql;
     protected function _updateTestDeviceBasic($param)
     {
         $data = [
-            'device_name' => mb_convert_kana($param['device_name'],'KV'),
+            'device_name' => mb_convert_kana($param['device_name'],'KVnr'),
             'os' => $param['os'],
             'os_version' => mb_convert_kana($param['os_version'],'n')
         ];

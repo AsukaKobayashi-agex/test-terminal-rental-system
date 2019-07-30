@@ -9,7 +9,7 @@ class PcSoftwareMasterData
     public function insertPcSoftwareMaster($param)
     {
         $insert_data = [
-            'software_name' =>$param['software_name']
+            'software_name' =>mb_convert_kana($param['software_name'],"KVnr")
         ];
 
         return \DB::table(self::TABLE_NAME)->insertGetId($insert_data);
@@ -17,7 +17,7 @@ class PcSoftwareMasterData
 
     public function getAll()
     {
-        $data = stdClasstoarray(\DB::table(self::TABLE_NAME)->get());
+        $data = stdClasstoarray(\DB::table(self::TABLE_NAME)->orderby('software_id','DESC')->get());
         return $data;
     }
 

@@ -84,7 +84,7 @@ class AddSpData
     protected function _insertTestDeviceBasic($rental_device_id,$param)
     {
         $data = [
-            'device_name'=>mb_convert_kana($param['device_name'],'KV'),
+            'device_name'=>mb_convert_kana($param['device_name'],'KVnr'),
             'test_device_category' => 1,
             'os' => $param['os'],
             'os_version' => mb_convert_kana($param['os_version'],'n')
