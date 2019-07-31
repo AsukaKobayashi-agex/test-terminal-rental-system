@@ -7,11 +7,6 @@
     $userid = "1";
     ?>
 
-    @if (session('success'))
-        <div class="alert alert-success text-center">
-            {{ session('success') }}
-        </div>
-    @endif
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
