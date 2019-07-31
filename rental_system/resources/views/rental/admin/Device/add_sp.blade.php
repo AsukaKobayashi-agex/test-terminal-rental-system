@@ -159,7 +159,7 @@
 
                         <div class="col-sm-12 float-left mb-3">
                             <label>端末画像<span class="m-0 font-weight-bold text-info">（任意）</span></label>
-                            <input type="file" name="device_img">
+                            <input type="file" name="device_img" accept="image/jpeg">
                         </div>
 
                         <div class="col-sm-12 float-left mb-3">
