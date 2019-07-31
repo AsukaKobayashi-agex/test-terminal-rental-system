@@ -30,6 +30,6 @@ class EditChargerController extends Controller
 
         // todo: デバイス一覧へリダイレクト
         //exit('データ登録完了！！');
-        return redirect('/admin/index_charger')->with('success','充電器情報を更新しました！');
+        return redirect("/admin/info_charger?rental_device_id={$param['rental_device_id']}")->with('success','充電器情報を更新しました！');
     }
 }
