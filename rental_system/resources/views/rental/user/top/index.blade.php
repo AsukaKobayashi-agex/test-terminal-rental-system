@@ -4,10 +4,6 @@
 
 @section('content')
 <!-- Page Heading -->
-@php
-    //preDump($user_info);
-
-@endphp
 
 
 <!-- DataTales Example -->
