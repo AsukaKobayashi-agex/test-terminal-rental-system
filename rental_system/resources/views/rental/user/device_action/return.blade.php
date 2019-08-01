@@ -74,7 +74,7 @@
                                 @endif
                             </td>
                             <td class="align-middle">
-                                <button class="btn btn-primary btn-user btn-block deleteButton">削除</button>
+                                <button type="button" class="btn btn-primary btn-user btn-block deleteButton">削除</button>
                             </td>
                         </tr>
                     @endforeach
