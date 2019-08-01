@@ -8,7 +8,7 @@
 
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">マスター管理</h1>
-    <p class="mb-4"> モバイルアプリ・ソフトウェアの管理ができます。</p>
+    <p class="mb-4"> モバイルアプリ・ソフトウェア・キャリアの管理ができます。</p>
 
     @if(count($errors) > 0)
         <ul class="alert alert-danger">

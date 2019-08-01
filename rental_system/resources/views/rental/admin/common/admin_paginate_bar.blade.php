@@ -1,7 +1,7 @@
 <div class="form-group float-left">
     <div class="btn-group" role="group">
         <button type="submit" form="search" class="btn btn-light text-primary" formaction="?page={{isset($_GET['page'])? $_GET['page']-1:1}}" {{isset($_GET['page']) && $_GET['page'] != 1 ? null : 'disabled'}}><<</button>
-        @if(!isset($_GET['page']) || $_GET['page']<3)
+        @if(!isset($_GET['page']) ||$page_num<=4|| $_GET['page']<=3)
             @for($x=1; $x <= $page_num && $x <= 5 ; $x++)
                 <button type="submit" form="search" class="btn btn-light text-primary {{(!isset($_GET['page']) && $x==1) || (isset($_GET['page']) && $_GET['page']==$x) ? "active":null}}" formaction="?page={{$x}}">{{$x}}</button>
             @endfor
@@ -22,7 +22,7 @@
 <div class="form-group float-left"  style="position: absolute; bottom: 0;">
     <div class="btn-group" role="group">
         <button type="submit" form="search" class="btn btn-light text-primary" formaction="?page={{isset($_GET['page'])? $_GET['page']-1:1}}" {{isset($_GET['page']) && $_GET['page'] != 1 ? null : 'disabled'}}><<</button>
-        @if(!isset($_GET['page']) || $_GET['page']<3)
+        @if(!isset($_GET['page']) ||$page_num<=4|| $_GET['page']<=3)
             @for($x=1; $x <= $page_num && $x <= 5 ; $x++)
                 <button type="submit" form="search" class="btn btn-light text-primary {{(!isset($_GET['page']) && $x==1) || (isset($_GET['page']) && $_GET['page']==$x) ? "active":null}}" formaction="?page={{$x}}">{{$x}}</button>
             @endfor

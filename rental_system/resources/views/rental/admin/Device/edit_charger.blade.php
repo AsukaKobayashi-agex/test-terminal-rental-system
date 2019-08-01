@@ -24,6 +24,7 @@
         <form method="post" name="charger_form" action="/admin/edit_charger/action/" onsubmit="return false;">
             @csrf
             <input type="hidden" class="form-control" name="charger_id" value="<?=$detail['charger_id']?>">
+            <input type="hidden" class="form-control" name="rental_device_id" value="<?=$detail['rental_device_id']?>">
             <div class="col-sm-6 float-left mb-3">
                 <label>充電器名<span class="m-0 font-weight-bold text-danger">（必須）</span></label>
                 <input type="text" class="form-control {{$errors->has('charger_name') ? "alert-danger": null}}" name="charger_name" value="{{old('charger_name',$detail['charger_name'])}}">
@@ -70,7 +71,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">いいえ</button>
-                <a href="index_charger"><button type="button" class="btn btn-primary">はい</button></a>
+                <a href="/admin/info_charger?rental_device_id=<?=$detail['rental_device_id']?>"><button type="button" class="btn btn-primary">はい</button></a>
             </div>
         </div>
     </div>

@@ -41,7 +41,7 @@ class AddChargerData
             $this->_insertRentalState($rental_device_id);
 
             // 充電機テーブルにデータを登録する
-            $charger_id = $this->_insertCharger($rental_device_id, $param);
+            $this->_insertCharger($rental_device_id, $param);
 
             // トランザクション終了
             \DB::commit();

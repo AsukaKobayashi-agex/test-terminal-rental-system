@@ -35,7 +35,6 @@ class EditPcController extends Controller
 
         }
 
-        //exit('データ登録完了！！');
         return redirect("/admin/info_pc?rental_device_id={$param['rental_device_id']}")->with('success', 'PC情報を更新しました！');
     }
 }
