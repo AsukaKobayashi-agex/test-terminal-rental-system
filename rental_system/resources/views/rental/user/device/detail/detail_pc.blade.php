@@ -56,13 +56,28 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="col-sm-6 p-0 m-0">
+                        <div class="card h-100">
+                            <div class="card-header py-2">
+                                <h6 class="m-0 font-weight-bold text-primary">最初貸出</h6>
+                            </div>
+                            <div class="card-body  text-center">
+                                <div class="h6 m-0 font-weight-bold text-gray-800">
+                                    @if($recent_user)
+                                        <?=$recent_user['name']?><br>(<?=$recent_user['registration_datetime']?>)
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-sm-12 p-0 m-0">
                         <div class="card h-100">
                             <div class="card-header py-2">
                                 <h6 class="m-0 font-weight-bold text-primary">ステータス</h6>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body mx-auto w-50">
                                 @if($detail['status']===1)
                                     @if(isset($user_info) && $user_info['user_id']==$detail['user_id'])
                                         <form id='return' method="post" action="/return">

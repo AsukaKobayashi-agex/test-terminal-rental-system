@@ -238,8 +238,22 @@
                                 </div>
                             </div>
                         </div>
+                            <div class="col-sm-6 float-left mb-3">
+                                <div class="card shadow mb-4">
+                                    <div class="card-header py-2">
+                                        <label>最終貸出</label>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="h4 mb-2 font-weight-bold text-primary">
+                                            @if($recent_user)
+                                                <?=$recent_user['name']?>(<?=$recent_user['registration_datetime']?>)
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-                    </div>
+                        </div>
 
                             <div class="card shadow mb-4 w-100">
                                 <div class="card-header py-2">
