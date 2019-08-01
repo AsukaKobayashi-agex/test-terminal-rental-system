@@ -26,7 +26,6 @@ class AddChargerController extends Controller
     public function action(AddChargerRequest $request, AddChargerService $service)
     {
         $param = $request->all();
-        // preDump($param, 1);
 
         $rental_device_id = $service->registerData($param);
 

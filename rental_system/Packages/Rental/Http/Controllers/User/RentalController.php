@@ -17,14 +17,11 @@ class RentalController extends Controller
 {
     public function view(RentalRequest $request, RentalService $service)
     {
-        //$param = $request->old(null,[]);
         $param = $request->all();
         if(!isset($param['rental_device_id'])){
             return redirect('/');
         }
-        //preDump($param,1);
         $data = $service->getData($param);
-        //var_dump($data);
         return view('rental.user.device_action.rental')->with($data);
     }
 

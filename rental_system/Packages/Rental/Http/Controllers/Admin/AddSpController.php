@@ -17,7 +17,6 @@ class AddSpController extends Controller
     public function action(AddSpRequest $request, AddSpService $service)
     {
         $param = $request->all();
-        //preDump($param,1);
 
         $rental_device_id = $service->registerData($param);
 

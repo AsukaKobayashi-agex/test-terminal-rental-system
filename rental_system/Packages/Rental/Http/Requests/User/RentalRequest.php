@@ -14,8 +14,6 @@ class RentalRequest extends FormRequest
             return $this->_inputs;
         }
 
-        //$inputs = $this->old();
-        //preDump($inputs,1);
         $inputs = parent::all();
 
         // Format

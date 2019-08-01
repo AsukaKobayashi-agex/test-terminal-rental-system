@@ -22,9 +22,7 @@ class MylistRegisterController extends Controller
         if(!isset($param['rental_device_id'])){
             return redirect('/');
         }
-        //preDump($param,1);
         $data = $service->getData($param);
-        //var_dump($data);
         return view('rental.user.mylist.mylist_register')->with($data);
     }
 

@@ -3,10 +3,6 @@
 
 @section('content')
     <!-- Page Heading -->
-    <?php
-    //preDump($all_device_list);
-
-    ?>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4">

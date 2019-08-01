@@ -17,7 +17,6 @@ class MasterController extends Controller
     public function view(MasterService $service)
     {
         $data = $service->getData();
-        //preDump($data,1);
         // Memo: validation エラーになったときは、
         //       画面に描画するデータあり
         return view('rental.admin.master.master')->with($data);

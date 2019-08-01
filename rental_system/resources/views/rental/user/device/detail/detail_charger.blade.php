@@ -4,11 +4,6 @@
 @section('content')
     <!-- Page Heading -->
 
-    @php
-        //exit(var_dump($detail_list));
-    @endphp
-
-
 
     <!-- 基礎情報-->
     <div class="row mb-4">

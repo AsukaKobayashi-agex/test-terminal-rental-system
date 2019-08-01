@@ -81,23 +81,6 @@
     <hr class="sidebar-divider d-none d-md-block">
 
 
-    <!-- Nav Item - Utilities Collapse Menu -->
-    <!--<li>
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-            <i class="fas fa-fw fa-info-circle"></i>
-            <span>ヘルプ</span>
-        </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="Q&A.php">Q&A</a>
-                <a class="collapse-item" href="/help/users-guide">利用マニュアル</a>
-                <a class="collapse-item" href="utilities-other.html">問い合わせ</a>
-            </div>
-        </div>
-    </li>-->
-    <!-- Divider -->
-    <!--<hr class="sidebar-divider d-none d-md-block">-->
-
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
