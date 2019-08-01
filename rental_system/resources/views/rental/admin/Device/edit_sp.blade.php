@@ -150,7 +150,7 @@
                             </div>
 
                             <div class="col-sm-12 float-left mb-3">
-                                <label>端末画像<span class="m-0 font-weight-bold text-info">（任意）</span></label>
+                                <label>端末画像<span class="m-0 font-weight-bold text-info">（任意）</span><span class="m-0 text-secondary text-xs">最大3MB</span></label>
                                 <input type="file" name="device_img" accept="image/jpeg">
                             </div>
 
