@@ -1,5 +1,5 @@
 <!-- Sidebar -->
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion {{$_COOKIE['sideOpen'] ? 'toggled':null}}" id="accordionSidebar">
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion {{isset($_COOKIE['sideOpen']) && $_COOKIE['sideOpen'] ? 'toggled':null}}" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/admin/index_all">

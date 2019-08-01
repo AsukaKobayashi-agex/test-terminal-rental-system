@@ -3,7 +3,7 @@
 
 @include('rental.admin.common.header')
 
-<body id="page-top" class="{{$_COOKIE['sideOpen'] ? 'sidebar-toggled':null}}">
+<body id="page-top" class="{{isset($_COOKIE['sideOpen']) && $_COOKIE['sideOpen'] ? 'sidebar-toggled':null}}">
 
 <!-- Page Wrapper -->
 <div id="wrapper">
