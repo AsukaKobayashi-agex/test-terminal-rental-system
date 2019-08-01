@@ -14,7 +14,7 @@
                 <button type="submit" form="search" class="btn btn-light text-primary {{(!isset($_GET['page']) && $x==1) || (isset($_GET['page']) && $_GET['page']==$x) ? "active":null}}" formaction="?page={{$x}}">{{$x}}</button>
             @endfor
         @endif
-        <button type="submit" form="search" class="btn btn-light text-primary" formaction="?page={{isset($_GET['page']) ? $_GET['page'] + 1 : 2}}" {{(!isset($_GET['page']) && $page_num != 1) || (isset($_GET['page']) && $_GET['page'] != $page_num) ? null :'disabled'}}>>></button>
+        <button type="submit" form="search" class="btn btn-light text-primary" formaction="?page={{isset($_GET['page']) ? $_GET['page'] + 1 : 2}}" {{(!isset($_GET['page']) && $page_num > 1) || (isset($_GET['page']) && $_GET['page'] < $page_num) ? null :'disabled'}}>>></button>
     </div>
     <span class="text-secondary text-xs ml-2">全{{$page_num}}ページ</span>
 </div>
@@ -35,7 +35,7 @@
                 <button type="submit" form="search" class="btn btn-light text-primary {{(!isset($_GET['page']) && $x==1) || (isset($_GET['page']) && $_GET['page']==$x) ? "active":null}}" formaction="?page={{$x}}">{{$x}}</button>
             @endfor
         @endif
-        <button type="submit" form="search" class="btn btn-light text-primary" formaction="?page={{isset($_GET['page']) ? $_GET['page'] + 1 : 2}}" {{(!isset($_GET['page']) && $page_num != 1) || (isset($_GET['page']) && $_GET['page'] != $page_num) ? null :'disabled'}}>>></button>
+        <button type="submit" form="search" class="btn btn-light text-primary" formaction="?page={{isset($_GET['page']) ? $_GET['page'] + 1 : 2}}" {{(!isset($_GET['page']) && $page_num > 1) || (isset($_GET['page']) && $_GET['page'] < $page_num) ? null :'disabled'}}>>></button>
     </div>
     <span class="text-secondary text-xs ml-2">全{{$page_num}}ページ</span>
 </div>
