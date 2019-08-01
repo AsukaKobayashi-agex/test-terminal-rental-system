@@ -17,14 +17,11 @@ class ReturnController extends Controller
 {
     public function view(ReturnRequest $request, ReturnService $service)
     {
-        //$param = $request->old(null,[]);
         $param = $request->all();
         if(!isset($param['rental_device_id'])){
             return redirect('/');
         }
-        //preDump($param,1);
         $data = $service->getData($param);
-        //var_dump($data);
         return view('rental.user.device_action.return')->with($data);
     }
 

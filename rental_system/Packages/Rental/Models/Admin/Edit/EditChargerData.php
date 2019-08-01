@@ -91,7 +91,6 @@ Add_sql;
 
     protected function _updateCharger($param)
     {
-        //preDump($param,1);
         $charger_data = [
             'charger_name' => mb_convert_kana($param['charger_name'],'KVnr'),
             'charger_type' => $param['charger_type']

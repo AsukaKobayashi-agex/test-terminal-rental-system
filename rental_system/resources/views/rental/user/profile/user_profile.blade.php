@@ -3,7 +3,6 @@
 
 @section('content')
 <!-- Page Heading -->
-{{--}}@php(var_dump($user_info))--}}
 <!-- DataTales Example -->
 <div class="card border-left-primary shadow col-lg-5 mb-4">
     <div class="card-header py-3">

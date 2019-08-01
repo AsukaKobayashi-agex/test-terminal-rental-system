@@ -24,7 +24,6 @@ class EditSpController extends Controller
     public function action(EditSpRequest $request, EditSpService $service)
     {
         $param = $request->all();
-        //preDump($param,1);
 
         $service->registerData($param);
 
@@ -34,6 +33,6 @@ class EditSpController extends Controller
 
         }
 
-        return redirect('/admin/index_sp')->with('success', 'モバイル端末情報を更新しました！');
+        return redirect("/admin/info_sp?rental_device_id={$param['rental_device_id']}")->with('success', 'モバイル端末情報を更新しました！');
     }
 }

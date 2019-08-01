@@ -1,88 +1,76 @@
 <!-- Sidebar -->
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion {{isset($_COOKIE['sideOpen']) && $_COOKIE['sideOpen'] ? 'toggled':null}}" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/admin/index_all">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
         <div class="sidebar-brand-text mx-3">管理者画面</div>
     </a>
 
-    <!-- Divider -->
     <hr class="sidebar-divider">
 
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        端末情報
-    </div>
 
     <!-- Nav Item - Tables -->
-    <li class="nav-item">
-        <a class="nav-link" href="index.php">
+    <li {!! (Request::is('admin/index_all') ? 'class="nav-item active"' : 'class="nav-item"') !!}>
+        <a class="nav-link" href="/admin/index_all">
             <i class="fas fa-fw fa-table"></i>
             <span>端末一覧</span></a>
     </li>
 
-    <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
+    <!-- Divider -->
+    <hr class="sidebar-divider">
+
+
+
+    <div class="sidebar-heading">
+        カテゴリ別
+    </div>
+
+    <li  {!! (Request::is('admin/index_sp') ? 'class="nav-item active"' : 'class="nav-item"') !!}>
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-table"></i>
-            <span>カテゴリ別</span>
+            <i class="fas fa-fw fa-mobile"></i>
+            <span >モバイル</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="sp_index.php">スマホ</a>
-                <a class="collapse-item" href="pc_index.php">PC</a>
-                <a class="collapse-item" href="tablet_index.php">タブレット</a>
-                <a class="collapse-item" href="charger_index.php">充電器</a>
+                <form method="get" name="ios" action="/admin/index_sp">
+                    <a class="collapse-item text-primary" href="/admin/index_sp">モバイル</a>
+                </form>
+                <form method="get" name="smartphone" action="/admin/index_sp">
+                    <input type="hidden" name="type" value="1">
+                    <a class="collapse-item text-center" href="javascript:smartphone.submit()">スマホ</a>
+                </form>
+                <form method="get" name="tablet" action="/admin/index_sp">
+                    <input type="hidden" name="type" value="2">
+                    <a class="collapse-item text-center" href="javascript:tablet.submit()">タブレット</a>
+                </form>
             </div>
         </div>
     </li>
 
-    <!-- Nav Item - Tables -->
-    <li class="nav-item">
-        <a class="nav-link" href="keep.php">
-            <i class="fas fa-fw fa-table"></i>
-            <span>保管BOX</span></a>
+    <li  {!! (Request::is('admin/index_pc') ? 'class="nav-item active"' : 'class="nav-item"') !!}>
+        <a class="nav-link" href="/admin/index_pc">
+            <i class="fas fa-fw fa-laptop"></i>
+            <span>PC</span>
+        </a>
     </li>
-
-
-
-    <!-- Divider -->
-    <hr class="sidebar-divider">
-
-    <!-- Heading -->
-    <div class="sidebar-heading">
-        情報
-    </div>
-
-    <!-- Nav Item - Tables -->
-    <li class="nav-item">
-        <a class="nav-link" href="user_admin.php">
-            <i class="fas fa-fw fa-table"></i>
-            <span>ユーザー管理</span></a>
-
-            <!-- Nav Item - Charts -->
-    <li class="nav-item">
-        <a class="nav-link" href="rule.php">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>使用ルール</span></a>
+    <li  {!! (Request::is('admin/index_charger') ? 'class="nav-item active"' : 'class="nav-item"') !!}>
+        <a class="nav-link" href="/admin/index_charger">
+            <i class="fas fa-fw fa-charging-station"></i>
+            <span>充電器</span>
+        </a>
     </li>
 
     <!-- Divider -->
-    <hr class="sidebar-divider">
+    <hr class="sidebar-divider d-none d-md-block">
 
-    <li class="nav-item">
-        <a class="nav-link" href="config.php">
-            <i class="fas fa-fw fa-wrench"></i>
-            <span>設定</span></a>
-
-    <!-- Nav Item - Dashboard -->
-    <li class="nav-item">
-        <a class="nav-link" href="index.html">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>ヘルプ</span></a>
+    <li  {!! (Request::is('admin/master') ? 'class="nav-item active"' : 'class="nav-item"') !!}>
+        <a class="nav-link" href="/admin/master">
+            <i class="fas fa-fw fa-list"></i>
+            <span>マスター管理</span>
+        </a>
     </li>
 
     <!-- Divider -->

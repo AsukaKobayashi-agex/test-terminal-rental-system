@@ -53,7 +53,7 @@ class AddSpRequest extends FormRequest
             'mail_address' => 'max:100',
             'display_size' => 'max:100',
             'resolution' => 'max:100',
-            'device_img' => 'mimes:jpeg|max:3000',
+            'device_img' => 'file|mimes:jpeg|max:3000',
             'memo' => 'max:1000',
             'admin_memo' => 'max:1000'
         ];
@@ -85,6 +85,7 @@ class AddSpRequest extends FormRequest
             'display_size.max' =>'画面サイズは100文字以内で記入してください',
             'resolution.max' =>'解像度は100文字以内で記入してください',
             'device_img.max' => '端末画像のサイズは3000KBまでです',
+            'device_img.file' => '画像のアップロードに失敗しました',
             'device_img.mimes' => 'アップロードできるのはJPEG形式の画像のみですｓ',
             'memo.max' =>'備考は1000文字以内で記入してください',
             'admin_memo.max' =>'備考は1000文字以内で記入してください'

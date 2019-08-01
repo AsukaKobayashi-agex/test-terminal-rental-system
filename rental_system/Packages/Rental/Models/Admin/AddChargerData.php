@@ -50,7 +50,7 @@ class AddChargerData
             throw $e;
         }
 
-        return $charger_id;
+        return $rental_device_id;
     }
 
     protected function _insertRentalDevice()
@@ -70,7 +70,6 @@ class AddChargerData
 
     protected function _insertCharger($rental_device_id, $param)
     {
-        //preDump($param,1);
         $charger_data = [
             'rental_device_id' => $rental_device_id,
             'charger_name' => mb_convert_kana($param['charger_name'],"KVnr"),

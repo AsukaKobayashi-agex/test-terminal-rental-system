@@ -14,9 +14,6 @@
   @component('rental.admin.common.core_script')
   @endcomponent
 
-
-  @stack('scripts')
-
 </body>
 
 </html>

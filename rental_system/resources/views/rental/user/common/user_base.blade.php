@@ -9,7 +9,7 @@
 @endcomponent
 
 
-<body id="page-top">
+<body id="page-top" class="{{isset($_COOKIE['sideOpen']) && $_COOKIE['sideOpen'] ? 'sidebar-toggled':null}}">
 
 <!-- Page Wrapper -->
 <div id="wrapper">

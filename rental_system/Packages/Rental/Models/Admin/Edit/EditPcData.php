@@ -199,7 +199,6 @@ Add_sql;
 
     protected function _insertPcSoftware($param)
     {
-//        preDump($param,1);
         if (empty($param['software_id']) || !is_array($param['software_id'])) {
             return;
         }
