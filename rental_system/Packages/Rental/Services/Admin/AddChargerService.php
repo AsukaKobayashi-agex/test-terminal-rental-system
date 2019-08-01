@@ -24,7 +24,7 @@ class AddChargerService
 
     public function registerData($param)
     {
-        $this->_model->insertChargerData($param);
-        return true;
+        $rental_device_id = $this->_model->insertChargerData($param);
+        return $rental_device_id;
     }
 }

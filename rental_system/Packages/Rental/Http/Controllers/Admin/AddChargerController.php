@@ -28,8 +28,8 @@ class AddChargerController extends Controller
         $param = $request->all();
         // preDump($param, 1);
 
-        $service->registerData($param);
+        $rental_device_id = $service->registerData($param);
 
-        return redirect('/admin/index_charger')->with('success', '充電器を登録しました！');
+        return redirect("/admin/info_charger?rental_device_id={$rental_device_id}")->with('success', '充電器を登録しました！');
     }
 }

@@ -36,7 +36,7 @@ class AddPcController extends Controller
 
         }
 
-        return redirect('/admin/index_pc')->with('success', 'PCを登録しました！');
+        return redirect("/admin/info_pc?rental_device_id={$rental_device_id}")->with('success', 'PCを登録しました！');
     }
 
     /*

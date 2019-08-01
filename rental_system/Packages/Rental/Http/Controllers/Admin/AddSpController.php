@@ -27,7 +27,7 @@ class AddSpController extends Controller
 
         }
 
-        return redirect('/admin/index_sp')->with('success', 'モバイル端末を登録しました！');
+        return redirect("/admin/info_sp?rental_device_id={$rental_device_id}")->with('success', 'モバイル端末を登録しました！');
     }
 }
 

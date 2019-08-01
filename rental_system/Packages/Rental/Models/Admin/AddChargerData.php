@@ -50,7 +50,7 @@ class AddChargerData
             throw $e;
         }
 
-        return $charger_id;
+        return $rental_device_id;
     }
 
     protected function _insertRentalDevice()
