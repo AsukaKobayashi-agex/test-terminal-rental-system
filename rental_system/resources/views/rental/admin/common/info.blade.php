@@ -8,7 +8,6 @@
 <!-- Page Wrapper -->
 <div id="wrapper">
 
-    @include('rental.admin.common.sidebar')
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
 
@@ -20,12 +19,12 @@
             <!-- Begin Page Content -->
             <div class="container-fluid">
                 @if (session('success'))
-                    <div class="alert alert-success text-center">
-                        {{ session('success') }}
-                    </div>
+                <div class="alert alert-success text-center">
+                    {{ session('success') }}
+                </div>
                 @endif
 
-            @section('content')
+                @section('content')
                 @show
             </div>
 
