@@ -1,6 +1,6 @@
 
 
-@extends('rental.admin.common.include')
+@extends('rental.admin.common.info')
 
 @section('content')
 
@@ -26,20 +26,22 @@
                 <div class="col-sm-6 float-left mb-3">
                     <div class="card shadow mb-4">
                         <div class="card-header py-2">
-                    <label>充電器名</label>
+                            <label>充電器名</label>
                         </div>
-                    <div class="card-body">
-                        <div class="h4 mb-2 font-weight-bold text-primary"><?=$detail['charger_name']?></div>
-                    </div>
-                        </div>
-                    </div>
-
-                    <div class="col-sm-6 float-left mb-3">
-                        <div class="card shadow mb-4">
-                            <div class="card-header py-2">
-                    <label>充電器タイプ</label>
+                        <div class="card-body">
+                            <div class="h4 mb-2 font-weight-bold text-primary">
+                                <?=$detail['charger_name']?>
                             </div>
-                    <div class="card-body">
+                        </div>
+                        </div>
+                </div>
+
+                <div class="col-sm-6 float-left mb-3">
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-2">
+                            <label>充電器タイプ</label>
+                        </div>
+                        <div class="card-body">
                             <div class="h4 mb-2 font-weight-bold text-primary">
                                 @if($detail['charger_type']==1)
                                     USB TYPE-B
@@ -54,11 +56,25 @@
                                 @endif
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 float-left mb-3">
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-2">
+                            <label>最終貸出</label>
+                        </div>
+                        <div class="card-body">
+                            <div class="h4 mb-2 font-weight-bold text-primary">
+                                @if($recent_user)
+                                    <?=$recent_user['name']?>(<?=$recent_user['registration_datetime']?>)
+                                @endif
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 
 
 

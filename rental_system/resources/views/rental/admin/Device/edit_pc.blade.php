@@ -1,5 +1,5 @@
 
-@extends('rental.admin.common.include')
+@extends('rental.admin.common.info')
 
 @section('content')
 
