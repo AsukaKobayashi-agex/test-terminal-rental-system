@@ -43,9 +43,6 @@
                         <input type="submit" value="ログイン" class="btn btn-primary btn-user btn-block">
                         <hr>
                     </form>
-                  <!--<div class="text-center">
-                    <a class="small" href="forgot_password.php">パスワードを再発行</a>
-                  </div>-->
                   <div class="text-center">
                     <a class="small" href="/sign-up">アカウント作成</a>
                   </div>

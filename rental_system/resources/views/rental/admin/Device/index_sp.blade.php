@@ -2,10 +2,6 @@
 
 @section('content')
     <!-- Page Heading -->
-    <?php
-    //preDump($all_device_list);
-    $userid = "1";
-    ?>
 
 
 

@@ -71,7 +71,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">いいえ</button>
-                <a href="index_charger"><button type="button" class="btn btn-primary">はい</button></a>
+                <a href="/admin/info_charger?rental_device_id=<?=$detail['rental_device_id']?>"><button type="button" class="btn btn-primary">はい</button></a>
             </div>
         </div>
     </div>

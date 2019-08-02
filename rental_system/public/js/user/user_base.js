@@ -154,13 +154,35 @@ $(function () {
 
     $(".deleteButton").click(function(){
         const tr = $(this).parents('tr');
-        $(tr).fadeOut('fast',function () {
+        $(tr).fadeOut('normal',function () {
            $(tr).remove()
         });
         if($('tbody input').length === 0) {
             $("#noDevice").removeAttr('hidden');
             $("#agree").attr('disabled', 'disabled')
         }
+    });
+
+    $('#newMylist').ready(function(){
+        var mylist = $('#mylist').val();
+        if(mylist === "new"){
+            $('#newMylist').removeAttr("disabled");
+        }
+    });
+
+    $(function(){
+        var selectMylist = $('#mylist');
+        var inputName = $('#newMylist');
+
+
+        $(selectMylist).change(function(){
+            var mylist = $(this).val();
+            if(mylist === "new"){
+                $(inputName).removeAttr("disabled");
+            }else{
+                $(inputName).attr("disabled","disabled").val("");
+            }
+        });
     });
 
     $("#agree").ready(function(){

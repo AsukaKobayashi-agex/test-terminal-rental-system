@@ -118,7 +118,6 @@ class AddSpData
             'memo' => mb_convert_kana($param['memo'],'KVnr'),
             'admin_memo' => mb_convert_kana($param['admin_memo'],'KVnr')
         ];
-        //preDump($sp_data,1);
         return \DB::table('test_device_mobile')->insert($sp_data);
     }
 }

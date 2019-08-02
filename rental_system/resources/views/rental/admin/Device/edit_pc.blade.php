@@ -61,8 +61,8 @@
                 </div>
 
                 <div class="col-sm-12 float-left mb-3">
-                    <label>端末画像<span class="m-0 font-weight-bold text-info">（任意）</span></label>
-                    <input type="file" name="device_img">
+                    <label>端末画像<span class="m-0 font-weight-bold text-info">（任意）</span><span class="m-0 text-secondary text-xs">最大3MB</span></label>
+                    <input type="file" name="device_img" accept="image/jpeg">
                 </div>
 
                 <div class="col-sm-12 float-left mb-3">
@@ -105,7 +105,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">いいえ</button>
-                    <a href="index_pc"><button type="button" class="btn btn-primary">はい</button></a>
+                    <a href="/admin/info_pc?rental_device_id=<?=$detail['rental_device_id']?>"><button type="button" class="btn btn-primary">はい</button></a>
                 </div>
             </div>
         </div>

@@ -41,7 +41,7 @@ class AddChargerData
             $this->_insertRentalState($rental_device_id);
 
             // 充電機テーブルにデータを登録する
-            $charger_id = $this->_insertCharger($rental_device_id, $param);
+            $this->_insertCharger($rental_device_id, $param);
 
             // トランザクション終了
             \DB::commit();
@@ -50,7 +50,7 @@ class AddChargerData
             throw $e;
         }
 
-        return $charger_id;
+        return $rental_device_id;
     }
 
     protected function _insertRentalDevice()
@@ -70,7 +70,6 @@ class AddChargerData
 
     protected function _insertCharger($rental_device_id, $param)
     {
-        //preDump($param,1);
         $charger_data = [
             'rental_device_id' => $rental_device_id,
             'charger_name' => mb_convert_kana($param['charger_name'],"KVnr"),

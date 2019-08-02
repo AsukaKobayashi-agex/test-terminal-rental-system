@@ -8,7 +8,7 @@
 
     <!-- Page Heading -->
     <h1 class="h3 mb-2 text-gray-800">マスター管理</h1>
-    <p class="mb-4"> モバイルアプリ・ソフトウェアの管理ができます。</p>
+    <p class="mb-4"> モバイルアプリ・PCソフトウェア・キャリアの管理ができます。</p>
 
     @if(count($errors) > 0)
         <ul class="alert alert-danger">
@@ -133,7 +133,7 @@
     <div class="col-md-4 mb-3">
         <div class="card font-weight-bold text-primary shadow">
             <div class="card-header">
-                ソフトウェア
+                PCソフトウェア
                 <button type="button" class="btn btn-outline-primary btn-sm text-xs float-right" data-toggle="modal" data-target="#softwareAddModal"><i class="fas fa-fw fa-plus"></i>追加</button>
                 <!--   ソフトウェア追加モーダル -->
                 <div class="modal fade" id="softwareAddModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">

@@ -3,10 +3,6 @@
 
 @section('content')
 <!-- Page Heading -->
-@php
-    //preDump($_POST['search_word']);
-
-@endphp
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
@@ -74,7 +70,7 @@
                             </td>
                         @endif
                         <td class="align-middle">
-                            <button class="btn btn-primary btn-user btn-block deleteButton">削除</button>
+                            <button type="button" class="btn btn-primary btn-user btn-block deleteButton">削除</button>
                         </td>
                     </tr>
                 @endforeach
@@ -130,46 +126,3 @@
 
 
 @endsection
-
-@push('scripts')
-    <script>
-        $(".deleteButton").click(function(){
-            $(this).parents('tr').remove();
-            if($('tbody tr').length === 1) {
-                $("#noDevice").removeAttr('hidden');
-                $("#agree").attr('disabled', 'disabled')
-            }
-        });
-
-
-        $('#newMylist').ready(function(){
-                var mylist = $('#mylist').val();
-                if(mylist === "new"){
-                    $('#newMylist').removeAttr("disabled");
-                }
-        });
-
-       $(function(){
-            var selectMylist = $('#mylist');
-            var inputName = $('#newMylist');
-
-
-            $(selectMylist).change(function(){
-                var mylist = $(this).val();
-                if(mylist === "new"){
-                    $(inputName).removeAttr("disabled");
-                }else{
-                    $(inputName).attr("disabled","disabled").val("");
-                }
-            });
-        });
-
-        $("#agree").ready(function(){
-            if($('tbody input').length === 0) {
-                $("#noDevice").removeAttr('hidden');
-                $("#agree").attr('disabled', 'disabled')
-            }
-        });
-
-    </script>
-@endpush

@@ -2,9 +2,6 @@
 @section('subTitle',"貸出")
 @section('content')
 <!-- Page Heading -->
-@php
-    //preDump($_POST['search_word']);
-@endphp
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">

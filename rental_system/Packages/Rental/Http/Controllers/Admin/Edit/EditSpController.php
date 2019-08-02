@@ -24,7 +24,6 @@ class EditSpController extends Controller
     public function action(EditSpRequest $request, EditSpService $service)
     {
         $param = $request->all();
-        //preDump($param,1);
 
         $service->registerData($param);
 
