@@ -73,7 +73,7 @@
                             @include('rental.admin.common.admin_paginate_bar')
                         </form>
                         <div class="form-group float-left mx-3">
-                            <a href="/admin/add_sp" class="btn btn-success btn-icon-split float-right">
+                            <a target="_blank" href="/admin/add_sp" class="btn btn-success btn-icon-split float-right">
                             <span class="icon text-white-50">
                               <i class="fas fa-flag"></i>
                             </span>

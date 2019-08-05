@@ -57,9 +57,9 @@
                                             </button>
                                         </div>
                                         <div class="modal-footer">
-                                                <a href="/admin/add_sp"button type="button" class="btn btn-primary">モバイル</button></a>
-                                                <a href="/admin/add_pc" button type="button" class="btn btn-primary">PC</button></a>
-                                                <a href="/admin/add_charger" button type="button" class="btn btn-primary">充電器</button></a>
+                                                <a target="_blank" href="/admin/add_sp"button type="button" class="btn btn-primary">モバイル</button></a>
+                                                <a target="_blank" href="/admin/add_pc" button type="button" class="btn btn-primary">PC</button></a>
+                                                <a target="_blank" href="/admin/add_charger" button type="button" class="btn btn-primary">充電器</button></a>
                                         </div>
                                     </div>
                                 </div>
