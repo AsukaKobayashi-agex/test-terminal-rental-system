@@ -44,7 +44,7 @@ class AddPcRequest extends FormRequest
             'pc_account_name' => 'required|max:100',
             'os' => 'required',
             'os_version' => 'required|max:100',
-            'device_img' => 'uploaded|mimes:jpeg|max:3000',
+            'device_img' => 'file|mimes:jpeg|max:3000',
             'mail_address' => 'max:100',
             'memo' => 'max:1000',
             'admin_memo' => 'max:1000'
@@ -67,6 +67,7 @@ class AddPcRequest extends FormRequest
             'pc_account_name.max' =>'コンピュータ名は100文字以内で記入してください',
             'device_img.mimes' =>'アップロードできるのは、JPEG形式の画像のみです',
             'device_img.max' => '端末画像のサイズは3000KBまでです',
+            'device_img.file' => '画像のアップロードに失敗しました',
             'device_img.uploaded' => '画像のアップロードに失敗しました',
             'os.required' => 'OSを選択してください',
             'os_version.required' =>'OSのバージョンを入力してください',
