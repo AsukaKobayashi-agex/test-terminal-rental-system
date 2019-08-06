@@ -59,7 +59,7 @@
                     <div class="col-sm-6 p-0 m-0">
                         <div class="card h-100">
                             <div class="card-header py-2">
-                                <h6 class="m-0 font-weight-bold text-primary">最初貸出</h6>
+                                <h6 class="m-0 font-weight-bold text-primary">最終貸出</h6>
                             </div>
                             <div class="card-body  text-center">
                                 <div class="h6 m-0 font-weight-bold text-gray-800">
