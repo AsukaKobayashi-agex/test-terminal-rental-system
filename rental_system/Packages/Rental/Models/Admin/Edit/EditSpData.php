@@ -226,11 +226,9 @@ Add_sql;
 
     protected function updateMobileInstalledApp($param)
     {
-        if (empty($param['mobile_app_id']) || !is_array($param['mobile_app_id'])) {
-            return true;
-        }
+        $mobile_app = $param['mobile_app_id'];
         $test_device_id = $param['test_device_id'];
-        return $this->_mobile_installed_app_model->updateMobileInstalledApp($test_device_id,$param['mobile_app_id']);
+        return $this->_mobile_installed_app_model->updateMobileInstalledApp($test_device_id,$mobile_app);
     }
 
 
