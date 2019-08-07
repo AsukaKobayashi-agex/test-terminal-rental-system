@@ -108,7 +108,7 @@
             <div class="modal-body">選択したデバイスの返却を確定しますか？</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">キャンセル</button>
-                <a class="btn btn-danger" href="javascript:document.return_device.submit()">はい</a>
+                <a class="btn btn-danger once" href="javascript:document.return_device.submit()">はい</a>
             </div>
         </div>
     </div>

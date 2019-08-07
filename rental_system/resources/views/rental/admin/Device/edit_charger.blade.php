@@ -92,7 +92,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">いいえ</button>
-                <button type="button" class="btn btn-primary" onclick="javascript:document.charger_form.submit()">はい</button>
+                <button type="button" class="btn btn-primary" onclick="document.charger_form.submit();this.disabled=true;">はい</button>
             </div>
         </div>
     </div>

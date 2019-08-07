@@ -91,7 +91,7 @@
                             <div class="modal-body">選択したデバイスの貸出を確定しますか？</div>
                             <div class="modal-footer">
                                 <button class="btn btn-secondary" type="button" data-dismiss="modal">キャンセル</button>
-                                <a class="btn btn-primary" href="javascript:document.rental_device.submit()">はい</a>
+                                <a class="btn btn-primary once" href="javascript:document.rental_device.submit()" onclick="this.disabled = true;">はい</a>
                             </div>
                         </div>
                     </div>

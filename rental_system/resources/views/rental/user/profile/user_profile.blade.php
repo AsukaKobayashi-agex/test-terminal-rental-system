@@ -79,7 +79,7 @@
             <div class="modal-body">プロフィールを変更しますか？</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">キャンセル</button>
-                <a class="btn btn-primary" href="javascript:document.change_profile.submit()">はい</a>
+                <a class="btn btn-primary once" href="javascript:document.change_profile.submit()">はい</a>
             </div>
         </div>
     </div>

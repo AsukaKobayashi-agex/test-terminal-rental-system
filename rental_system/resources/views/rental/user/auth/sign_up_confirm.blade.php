@@ -72,7 +72,7 @@
                                     <label>パスワード：</label>
                                     <div type="password" class="h5 text-left w-75 mx-auto mb-3 "><?=preg_replace("/./","●",$input['password'])?></div>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-user btn-block">
+                            <button type="submit" class="btn btn-primary btn-user btn-block once">
                                 登録
                             </button>
                             <a href="#" onclick="window.history.back(); return false;" class="btn btn-secondary btn-user btn-block">キャンセル</a>

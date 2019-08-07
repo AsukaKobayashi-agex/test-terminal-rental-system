@@ -48,7 +48,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal" onclick="reset()">キャンセル</button>
-                                    <button type="submit" class="btn btn-primary btn-user">追加</button>
+                                    <button type="submit" class="btn btn-primary btn-user once">追加</button>
                                 </div>
                             </form>
                         </div>
@@ -91,7 +91,7 @@
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
-                                                    <button type="submit" class="btn btn-danger btn-user" formaction="/admin/master/delete_app">はい</button>
+                                                    <button type="submit" class="btn btn-danger btn-user once" formaction="/admin/master/delete_app">はい</button>
                                                 </div>
                                             </form>
                                         </div>
@@ -116,7 +116,7 @@
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-default" data-dismiss="modal"  onclick="reset()">キャンセル</button>
-                                                    <button type="submit" class="btn btn-success btn-user" formaction="/admin/master/rename_app">変更</button>
+                                                    <button type="submit" class="btn btn-success btn-user once" formaction="/admin/master/rename_app">変更</button>
                                                 </div>
                                             </form>
                                         </div>
@@ -154,7 +154,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal"  onclick="reset()">キャンセル</button>
-                                    <button type="submit" class="btn btn-primary btn-user">追加</button>
+                                    <button type="submit" class="btn btn-primary btn-user once">追加</button>
                                 </div>
                             </form>
                         </div>
@@ -197,7 +197,7 @@
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
-                                                    <button type="submit" class="btn btn-danger btn-user" formaction="/admin/master/delete_software">はい</button>
+                                                    <button type="submit" class="btn btn-danger btn-user once" formaction="/admin/master/delete_software">はい</button>
                                                 </div>
                                             </form>
                                         </div>
@@ -222,7 +222,7 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-default" data-dismiss="modal"  onclick="reset()">キャンセル</button>
-                                                        <button type="submit" class="btn btn-success btn-user" formaction="/admin/master/rename_software">変更</button>
+                                                        <button type="submit" class="btn btn-success btn-user once" formaction="/admin/master/rename_software">変更</button>
                                                     </div>
                                                 </form>
                                             </div>
@@ -261,7 +261,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal"  onclick="reset()">キャンセル</button>
-                                    <button type="submit" class="btn btn-primary btn-user">追加</button>
+                                    <button type="submit" class="btn btn-primary btn-user once">追加</button>
                                 </div>
                             </form>
                         </div>
@@ -304,7 +304,7 @@
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
-                                                    <button type="submit" class="btn btn-danger btn-user" formaction="/admin/master/delete_carrier">はい</button>
+                                                    <button type="submit" class="btn btn-danger btn-user once" formaction="/admin/master/delete_carrier">はい</button>
                                                 </div>
                                             </form>
                                         </div>
@@ -329,7 +329,7 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-default" data-dismiss="modal"  onclick="reset()">キャンセル</button>
-                                                        <button type="submit" class="btn btn-success btn-user" formaction="/admin/master/rename_carrier">変更</button>
+                                                        <button type="submit" class="btn btn-success btn-user once" formaction="/admin/master/rename_carrier">変更</button>
                                                     </div>
                                                 </form>
                                             </div>

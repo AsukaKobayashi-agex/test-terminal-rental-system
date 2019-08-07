@@ -1,5 +1,7 @@
 
 $(function () {
+    var cancelFlag = 0;
+
     //チェックがない場合に全チェックボタンを外し、一括ボタンを無効化
     const check = $('.custom-checkbox :checked');
     $('footer').ready(function(){
@@ -209,4 +211,28 @@ $(function () {
         }
 
     });
+    
+    $('a.once').click(function () {
+        if( cancelFlag === 0 ){
+            //++++cancelFlagが0であれば処理開始+++++
+
+            // 1. まずcancelFlgを立てる（1にする）
+            cancelFlag = 1;
+
+        }else{
+            return false;
+        }
+    });
+
+    $('button.once').click(function () {
+        if( cancelFlag === 0 ){
+            //++++cancelFlagが0であれば処理開始+++++
+
+            // 1. まずcancelFlgを立てる（1にする）
+            cancelFlag = 1;
+
+        }else{
+            return false;
+        }
+    })
 });
