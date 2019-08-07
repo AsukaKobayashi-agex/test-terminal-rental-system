@@ -133,6 +133,9 @@ Add_sql;
     {
         \DB::beginTransaction();
         try {
+            $now = nowDatetime();
+            //レンタル品情報の更新日を更新
+            \DB::table('rental_device')->where('rental_device_id','=',$param['rental_device_id'])->update(['update_date'=>$now]);
 
             //テスト端末基本情報テーブルにデータを登録する
             $this->_updateTestDeviceBasic($param);
@@ -140,11 +143,9 @@ Add_sql;
             //テスト端末PC情報テーブルにデータを登録する
             $this->_updatePcData($param);
 
-            //PCソフトウェアテーブルのデータを削除する
-            $this ->_deletePcSoftware($param);
+            //PCソフトウェアテーブルのデータを更新する
+            $this ->_updatePcSoftware($param);
 
-            //PCソフトウェアテーブルにデータを登録する
-            $this ->_insertPcSoftware($param);
 
             \DB::commit();
         } catch (\Exception $e) {
@@ -192,22 +193,14 @@ Add_sql;
         return \DB::table('test_device_pc')->where('test_device_id',$param['test_device_id'])->update($pc_data);
     }
 
-    protected function _deletePcSoftware($param)
-    {
-        return \DB::table('pc_software')->where('test_device_id',$param['test_device_id'])->delete();
-    }
-
-    protected function _insertPcSoftware($param)
+    protected function _updatePcSoftware($param)
     {
         if (empty($param['software_id']) || !is_array($param['software_id'])) {
-            return;
+            return true;
         }
         $test_device_id = $param['test_device_id'];
-        $data = [
-            'test_device_id'=>$param['test_device_id'],
-            'software_id' =>$param['software_id']
-        ];
-        return $this->_pc_software_model->insertPcSoftware($test_device_id,$data);
+
+        return $this->_pc_software_model->updatePcSoftware($test_device_id,$param['software_id']);
     }
     
 }
