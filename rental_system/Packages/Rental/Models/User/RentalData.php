@@ -53,7 +53,6 @@ Add_sql;
     {
         \DB::beginTransaction();
         try {
-            DB::table('rental_state')->sharedlock();
             foreach ($param['rental_device_id'] as $device){
                 $now = nowDateTime();
                 $data = [

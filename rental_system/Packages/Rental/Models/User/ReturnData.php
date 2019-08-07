@@ -2,6 +2,8 @@
 
 namespace Rental\Models\User;
 
+use Rental\Models\_common\GetUserInfo;
+
 
 class ReturnData
 {
@@ -54,7 +56,6 @@ Add_sql;
     {
         \DB::beginTransaction();
         try {
-            DB::table('rental_state')->sharedlock();
             foreach ($param['rental_device_id'] as $device){
                 $defaultDateTime = defaultDateTime();
                 $data = [
@@ -69,7 +70,7 @@ Add_sql;
                 ];
                 \DB::table('rental_state')->where($where)->update($data);
 
-                $this->createHistory($device);
+                $this->createHistory($device,$data);
             }
             // トランザクション終了
             \DB::commit();
