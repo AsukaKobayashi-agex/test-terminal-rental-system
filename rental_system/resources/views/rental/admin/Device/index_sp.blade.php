@@ -49,9 +49,9 @@
                                 <div class="col-lg-2 mb-3">
                                     <select name="search_carrier" class="form-control">
                                         <option value="">キャリア</option>
-                                        <option value="1" {{($search_carrier==="1") ? 'selected': null}}>docomo</option>
-                                        <option value="2" {{($search_carrier==="2") ? 'selected': null}}>au</option>
-                                        <option value="3" {{($search_carrier==="3") ? 'selected': null}}>softbank</option>
+                                        @foreach($all_carrier as $carrier)
+                                            <option value="{{$carrier['carrier_id']}}" {{($search_carrier==$carrier['carrier_id']) ? 'selected': null}}>{{$carrier['carrier_name']}}</option>
+                                        @endforeach
                                         <option value="0" {{($search_carrier==="0") ? 'selected': null}}>なし</option>
                                     </select>
                                 </div>
@@ -86,6 +86,7 @@
                         <tr class="font-weight-bold">
                             <td></td>
                             <td>一致する項目はありません</td>
+                            <td></td>
                             <td></td>
                         </tr>
                     @endif
