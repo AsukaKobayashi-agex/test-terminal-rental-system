@@ -90,18 +90,10 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">いいえ</button>
-                                <button type="button" class="btn btn-primary" onclick="form_submit()">はい</button>
+                                <button type="button" class="btn btn-primary" onclick="document.charger_form.submit();this.disabled=true;">はい</button>
                             </div>
                         </div>
                     </div>
                 </div>
 
 @endsection
-
-@push('scripts')
-<script>
-    function form_submit() {
-    document.charger_form.submit();
-}
-</script>
-@endpush

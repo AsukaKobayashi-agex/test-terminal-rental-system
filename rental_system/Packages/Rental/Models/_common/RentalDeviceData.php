@@ -17,4 +17,5 @@ class RentalDeviceData
         $rental_device_id = \DB::table('rental_device')->insertGetId($insert_data);
         return $rental_device_id;
     }
+
 }

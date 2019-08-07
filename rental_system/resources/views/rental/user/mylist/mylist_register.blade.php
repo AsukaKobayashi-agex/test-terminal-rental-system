@@ -118,7 +118,7 @@
             <div class="modal-body">選択したデバイスをマイリストに登録します。</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">キャンセル</button>
-                <a class="btn btn-success" href="javascript:document.register_device.submit()">はい</a>
+                <a class="btn btn-success once" href="javascript:document.register_device.submit()">はい</a>
             </div>
         </div>
     </div>

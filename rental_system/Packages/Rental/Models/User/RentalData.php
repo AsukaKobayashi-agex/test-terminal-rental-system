@@ -67,7 +67,7 @@ Add_sql;
                 ];
                 \DB::table('rental_state')->where($where)->update($data);
 
-                $this->createHistory($device,$data);
+                $this->createHistory($device);
             }
             // トランザクション終了
             \DB::commit();
@@ -79,7 +79,7 @@ Add_sql;
         return true;
     }
 
-    public function createHistory($device,$data)
+    public function createHistory($device)
     {
         $now = nowDateTime();
         $insert_data = [

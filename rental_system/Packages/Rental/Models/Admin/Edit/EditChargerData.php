@@ -75,6 +75,9 @@ Add_sql;
         // トランザクション開始
         \DB::beginTransaction();
         try {
+            $now = nowDatetime();
+            //レンタル品情報の更新日を更新
+            \DB::table('rental_device')->where('rental_device_id','=',$param['rental_device_id'])->update(['update_date'=>$now]);
 
             // 充電機テーブルにデータを登録する
             $charger_id = $this->_updateCharger($param);

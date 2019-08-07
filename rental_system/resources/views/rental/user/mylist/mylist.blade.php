@@ -67,7 +67,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal" onclick="reset()">キャンセル</button>
-                            <button type="submit" class="btn btn-primary btn-user" href="javascript:document.rename<?=$mylist['mylist_id']?>.submit()">変更</button>
+                            <button type="submit" class="btn btn-primary btn-user once" href="javascript:document.rename<?=$mylist['mylist_id']?>.submit()">変更</button>
                         </div>
                     </form>
                 </div>
@@ -92,7 +92,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">いいえ</button>
-                        <a class="btn btn-danger" href="javascript:document.deletemylist<?=$mylist['mylist_id']?>.submit()">削除</a>
+                        <a class="btn btn-danger once" href="javascript:document.deletemylist<?=$mylist['mylist_id']?>.submit()">削除</a>
                     </div>
                 </div>
             </div>
@@ -196,7 +196,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">いいえ</button>
-                                    <a class="btn btn-primary" href="javascript:document.delete_form<?=$i?>.submit()">はい</a>
+                                    <a class="btn btn-primary once" href="javascript:document.delete_form<?=$i?>.submit()">はい</a>
                                 </div>
                             </div>
                         </div>

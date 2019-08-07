@@ -145,17 +145,18 @@ Add_sql;
     {
         \DB::beginTransaction();
         try {
+            $now = nowDatetime();
+            //レンタル品情報の更新日を更新
+            \DB::table('rental_device')->where('rental_device_id','=',$param['rental_device_id'])->update(['update_date'=>$now]);
+
             //テスト端末基本情報テーブルにデータを登録する
             $this->_updateTestDeviceBasic($param);
 
             //テスト端末モバイル情報テーブルにデータを登録する
             $this->_updateSpData($param);
 
-            //インストール済みアプリテーブルのデータを削除する
-            $this->_deleteMobileInstalledApp($param);
-
-            //インストール済みアプリテーブルにデータを登録する
-            $this->_insertMobileInstalledApp($param);
+            //インストール済みアプリテーブルのデータを更新する
+            $this->updateMobileInstalledApp($param);
 
 
 
@@ -223,22 +224,13 @@ Add_sql;
         return \DB::table('test_device_mobile')->where('test_device_id', $param['test_device_id'])->update($sp_data);
     }
 
-    protected function _deleteMobileInstalledApp($param)
-    {
-        return \DB::table('mobile_installed_app')->where('test_device_id', $param['test_device_id'])->delete();
-    }
-
-    protected function _insertMobileInstalledApp($param)
+    protected function updateMobileInstalledApp($param)
     {
         if (empty($param['mobile_app_id']) || !is_array($param['mobile_app_id'])) {
-            return;
+            return true;
         }
         $test_device_id = $param['test_device_id'];
-        $data = [
-            'test_device_id'=>$test_device_id,
-            'mobile_app_id' =>$param['mobile_app_id']
-        ];
-        return $this->_mobile_installed_app_model->insertMobileInstalledApp($test_device_id,$data);
+        return $this->_mobile_installed_app_model->updateMobileInstalledApp($test_device_id,$param['mobile_app_id']);
     }
 
 
