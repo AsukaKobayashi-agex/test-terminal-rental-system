@@ -29,6 +29,28 @@ class EditSpController extends Controller
 
         if(isset($param['device_img'])) {
             $request -> file('device_img')->move("bootsample/img","device_image_{$param['rental_device_id']}.jpg");
+            $file = $_SERVER["DOCUMENT_ROOT"]."/bootsample/img/device_image_{$param['rental_device_id']}.jpg";
+            $imagick = new \Imagick($file);
+            $format = strtolower($imagick->getImageFormat());
+
+            if ($format === 'jpeg') {
+                $orientation = $imagick->getImageOrientation();
+                $isRotated = false;
+                if ($orientation === \Imagick::ORIENTATION_RIGHTTOP) {
+                    $imagick->rotateImage('none', 90);
+                    $isRotated = true;
+                } elseif ($orientation === \Imagick::ORIENTATION_BOTTOMRIGHT) {
+                    $imagick->rotateImage('none', 180);
+                    $isRotated = true;
+                } elseif ($orientation === \Imagick::ORIENTATION_LEFTBOTTOM) {
+                    $imagick->rotateImage('none', 270);
+                    $isRotated = true;
+                }
+                if ($isRotated) {
+                    $imagick->setImageOrientation(\Imagick::ORIENTATION_TOPLEFT);
+                }
+            }
+            $imagick->writeImage($file);
 
         }
 
