@@ -14,7 +14,7 @@ class UserAuthGuard implements StatefulGuard
     const COOKIE_ACCOUNT_INFOS_AES256 = 'RS19C01';
     const COOKIE_CHECKSUM = 'RS19C99';
 
-    const CRYPT_BLOWFISH_KEY = 'Dddn3D5TW8Yz6ChMjV6YkevGVjmgTD6z';
+    const CRYPT_BLOWFISH_KEY = '$2y$07$sd4QXBfN8NVWQWZqpYmthS';
     const CRYPT_PASSWORD = '4Cbpwt7Nq9MJEFm8Nn2BvELd';
 
     const REDIS_USER_ID = 'user_id';
