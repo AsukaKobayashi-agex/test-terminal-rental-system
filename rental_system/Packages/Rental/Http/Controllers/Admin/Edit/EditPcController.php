@@ -30,9 +30,7 @@ class EditPcController extends Controller
         $service->registerData($param);
 
         if(isset($param['device_img'])) {
-            $img_client = $request->file('device_img') -> getClientOriginalExtension();
-            $request -> file('device_img')->move("bootsample/img","device_image_{$param['rental_device_id']}.{$img_client}");
-
+            $request -> file('device_img')->move("bootsample/img","device_image_{$param['rental_device_id']}.jpg");
         }
 
         return redirect("/admin/info_pc?rental_device_id={$param['rental_device_id']}")->with('success', 'PC情報を更新しました！');

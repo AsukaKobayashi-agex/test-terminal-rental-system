@@ -28,8 +28,7 @@ class EditSpController extends Controller
         $service->registerData($param);
 
         if(isset($param['device_img'])) {
-            $img_client = $request->file('device_img') -> getClientOriginalExtension();
-            $request -> file('device_img')->move("bootsample/img","device_image_{$param['rental_device_id']}.{$img_client}");
+            $request -> file('device_img')->move("bootsample/img","device_image_{$param['rental_device_id']}.jpg");
 
         }
 
