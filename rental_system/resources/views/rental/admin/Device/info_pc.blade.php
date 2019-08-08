@@ -23,7 +23,7 @@
                     <label>端末名</label>
                     </div>
                         <div class="card-body">
-                            <div class="h4 mb-2 font-weight-bold text-primary"><?=$detail['device_name']?></div>
+                            <div class="h4 mb-2 font-weight-bold text-primary" style="min-height: 29px"><?=$detail['device_name']?></div>
                         </div>
                     </div>
                 </div>
@@ -35,7 +35,7 @@
                     <label>OS</label>
                 </div>
             <div class="card-body">
-                <div class="h4 mb-2 font-weight-bold text-primary">
+                <div class="h4 mb-2 font-weight-bold text-primary" style="min-height: 29px">
                     @if($detail['os']==3)
                         Windows
                     @elseif($detail['os']==4)
@@ -57,7 +57,7 @@
                     <label>PCアカウント名</label>
                 </div>
             <div class="card-body ">
-                <div class="h4 mb-2 font-weight-bold text-primary"><?=$detail['pc_account_name']?></div>
+                <div class="h4 mb-2 font-weight-bold text-primary" style="min-height: 29px"><?=$detail['pc_account_name']?></div>
                 </div>
                 </div>
             </div>
@@ -69,7 +69,7 @@
                     <label>メールアドレス</label>
                     </div>
                         <div class="card-body">
-                            <div class="h4 mb-2 font-weight-bold text-primary"><?=$detail['mail_address']?></div>
+                            <div class="h4 mb-2 font-weight-bold text-primary" style="min-height: 29px"><?=$detail['mail_address']?></div>
                 </div>
                     </div>
                 </div>
@@ -79,7 +79,7 @@
                             <label>最終貸出</label>
                         </div>
                         <div class="card-body">
-                            <div class="h4 mb-2 font-weight-bold text-primary">
+                            <div class="h4 mb-2 font-weight-bold text-primary" style="min-height: 29px">
                                 @if($recent_user)
                                     <?=$recent_user['name']?>(<?=$recent_user['registration_datetime']?>)
                                 @endif
@@ -95,7 +95,7 @@
                 <div class="card-header py-2">
                     <label>ソフトウェア</label>
                 </div>
-                    <div class="card-body ">
+                    <div class="card-body" style="min-height: 77px">
                         @foreach($installed_software as $software)
                             <ul>
                                 <li class="h5 font-weight-bold text-primary d-inline-block" ><?=$software['software_name']?></li>
@@ -110,7 +110,7 @@
                     <label>備考(ユーザー向け)</label>
                 </div>
                             <div class="card-body ">
-                                <div class="h4 mb-2 font-weight-bold text-primary"><?=$detail['memo']?></div>
+                                <div class="h4 mb-2 font-weight-bold text-primary" style="min-height: 29px"><?=$detail['memo']?></div>
                 </div>
                     </div>
 
@@ -120,7 +120,7 @@
                     <label>備考(管理者向け)</label>
                 </div>
                             <div class="card-body ">
-                                <div class="h4 mb-2 font-weight-bold text-primary"><?=$detail['admin_memo']?></div>
+                                <div class="h4 mb-2 font-weight-bold text-primary" style="min-height: 29px"><?=$detail['admin_memo']?></div>
                 </div>
                     </div>
 
