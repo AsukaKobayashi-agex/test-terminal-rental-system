@@ -2,8 +2,6 @@
 
 namespace Rental\Models\User;
 
-use Rental\Models\_common\GetUserInfo;
-
 
 class ReturnData
 {
@@ -56,6 +54,7 @@ Add_sql;
     {
         \DB::beginTransaction();
         try {
+            $message = ['success' => 0,'error' => 0];
             foreach ($param['rental_device_id'] as $device){
                 $defaultDateTime = defaultDateTime();
                 $data = [
@@ -68,9 +67,14 @@ Add_sql;
                     'status'=> 1,
                     'rental_device_id'=> $device
                 ];
-                \DB::table('rental_state')->where($where)->update($data);
+                $updated = \DB::table('rental_state')->where($where)->update($data);
 
-                $this->createHistory($device,$data);
+                if($updated){
+                    $this->createHistory($device);
+                    $message['success'] ++;
+                }else{
+                    $message['error'] ++;
+                }
             }
             // トランザクション終了
             \DB::commit();
@@ -79,7 +83,7 @@ Add_sql;
             throw $e;
         }
 
-        return true;
+        return $message;
     }
 
     public function createHistory($device)

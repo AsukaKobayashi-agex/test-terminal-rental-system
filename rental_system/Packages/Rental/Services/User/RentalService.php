@@ -22,8 +22,8 @@ class RentalService
 
     public function rentalDevice($param)
     {
-        $this->_model->rentalDevice($param);
-        return true;
+        $message = $this->_model->rentalDevice($param);
+        return $message;
     }
 
 }

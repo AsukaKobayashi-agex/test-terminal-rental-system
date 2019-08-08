@@ -61,6 +61,11 @@
                         {{ session('flash_message') }}
                     </div>
                 @endif
+                @if (session('error_message'))
+                    <div class="alert alert-danger text-center">
+                        {{ session('error_message') }}
+                    </div>
+                @endif
 
 
             @section('content')

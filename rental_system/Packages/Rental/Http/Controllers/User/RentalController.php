@@ -28,9 +28,20 @@ class RentalController extends Controller
     public function rental(RentalRequest $request, RentalService $service)
     {
         $param = $request->all();
-        $service->rentalDevice($param);
+        $message = $service->rentalDevice($param);
 
-        return redirect('/')->with('flash_message','貸出を完了しました');
+        if($message['error']){
+            $error = "{$message['error']}台の貸出に失敗しました";
+        }else{
+            $error = "";
+        }
+        if($message['success']){
+            $success = "{$message['success']}台の貸出を完了しました";
+        }else{
+            $success = "";
+        }
+
+        return redirect('/')->with('flash_message',$success)->with("error_message",$error);
     }
 
 }
