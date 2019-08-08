@@ -50,6 +50,7 @@ class EditSpController extends Controller
                     $imagick->setImageOrientation(\Imagick::ORIENTATION_TOPLEFT);
                 }
             }
+            $imagick->adaptiveResizeImage(700, 0);
             $imagick->writeImage($file);
 
         }
