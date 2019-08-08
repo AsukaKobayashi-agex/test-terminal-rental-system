@@ -33,20 +33,32 @@
                         <form id='search' method="post" action="/admin/index_sp">
                             @csrf
                             <div class="w-100 row">
-                                <div class="col-lg-2 mb-3">
+                                <div class="col-lg-2 mb-3 order-lg-1">
                                     <input type="number" name="search_id" class="form-control" value="{{$search_id}}" placeholder="端末ID" >
                                 </div>
-                                <div class="col-lg-4 mb-3">
+                                <div class="col-lg-4 mb-3 order-lg-2">
                                     <input type="search" name="search_word" class="form-control" value="{{$search_word}}" placeholder="端末名" >
                                 </div>
-                                <div class="col-lg-2 mb-3">
+
+                                <div class="col-lg-2 mb-3  order-lg-6">
+                                    <select name="os" class="form-control">
+                                        <option value="">OS</option>
+                                        <option value="1" {{($os==="1") ? 'selected': null}}>Android</option>
+                                        <option value="2" {{($os==="2") ? 'selected': null}}>iOS</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-4 mb-3 order-lg-7">
+                                    <input type="text" name="os_version" class="form-control" value="{{$os_version}}" placeholder="OSバージョン" >
+                                </div>
+
+                                <div class="col-lg-2 mb-3 order-lg-3">
                                     <select name="type" class="form-control">
                                         <option value="">カテゴリ</option>
                                         <option value="1" {{$type==="1" ? 'selected': null}}>スマホ</option>
                                         <option value="2" {{$type==="2" ? 'selected': null}}>タブレット</option>
                                     </select>
                                 </div>
-                                <div class="col-lg-2 mb-3">
+                                <div class="col-lg-2 mb-3 order-lg-4">
                                     <select name="search_carrier" class="form-control">
                                         <option value="">キャリア</option>
                                         @foreach($all_carrier as $carrier)
@@ -55,19 +67,9 @@
                                         <option value="0" {{($search_carrier==="0") ? 'selected': null}}>なし</option>
                                     </select>
                                 </div>
-                                <div class="col-lg-2 mb-3">
+                                <div class="col-lg-2 mb-3  order-lg-5">
                                     <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-fw fa-search"></i>
                                     </button>
-                                </div>
-                                <div class="col-lg-2 mb-3">
-                                    <select name="os" class="form-control">
-                                        <option value="">OS</option>
-                                        <option value="1" {{($os==="1") ? 'selected': null}}>Android</option>
-                                        <option value="2" {{($os==="2") ? 'selected': null}}>iOS</option>
-                                    </select>
-                                </div>
-                                <div class="col-lg-4 mb-3">
-                                    <input type="text" name="os_version" class="form-control" value="{{$os_version}}" placeholder="OSバージョン" >
                                 </div>
                             </div>
                             @include('rental.admin.common.admin_paginate_bar')
