@@ -28,9 +28,20 @@ class ReturnController extends Controller
     public function return(ReturnRequest $request, ReturnService $service)
     {
         $param = $request->all();
-        $service->returnDevice($param);
+        $message = $service->returnDevice($param);
 
-        return redirect('/')->with('flash_message','返却を完了しました');
+        if($message['error']){
+            $error = "{$message['error']}台の返却に失敗しました";
+        }else{
+            $error = "";
+        }
+        if($message['success']){
+            $success = "{$message['success']}台の返却を完了しました";
+        }else{
+            $success = "";
+        }
+
+        return redirect('/')->with('flash_message',$success)->with("error_message",$error);
     }
 
 }

@@ -1,5 +1,4 @@
 
-
 @extends('rental.admin.common.info')
 
 @section('content')
@@ -29,7 +28,7 @@
                             <label>充電器名</label>
                         </div>
                         <div class="card-body">
-                            <div class="h4 mb-2 font-weight-bold text-primary">
+                            <div class="h4 mb-2 font-weight-bold text-primary" style="min-height: 29px">
                                 <?=$detail['charger_name']?>
                             </div>
                         </div>
@@ -42,7 +41,7 @@
                             <label>充電器タイプ</label>
                         </div>
                         <div class="card-body">
-                            <div class="h4 mb-2 font-weight-bold text-primary">
+                            <div class="h4 mb-2 font-weight-bold text-primary" style="min-height: 29px">
                                 @if($detail['charger_type']==1)
                                     USB TYPE-B
                                 @elseif($detail['charger_type']==2)
@@ -64,7 +63,7 @@
                             <label>最終貸出</label>
                         </div>
                         <div class="card-body">
-                            <div class="h4 mb-2 font-weight-bold text-primary">
+                            <div class="h4 mb-2 font-weight-bold text-primary" style="min-height: 29px">
                                 @if($recent_user)
                                     <?=$recent_user['name']?>(<?=$recent_user['registration_datetime']?>)
                                 @endif

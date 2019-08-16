@@ -10,22 +10,27 @@ class MobileInstalledAppData
         $installed = stdClassToArray(\DB::table('mobile_installed_app')->select('mobile_app_id')->where('test_device_id','=',$test_device_id)->pluck('mobile_app_id'));
         $add_app = array_diff($app_id,$installed);
         $delete_app = array_diff($installed,$app_id);
-        foreach($add_app as $id){
-            $insert_data = [
-                'test_device_id' =>$test_device_id,
-                'mobile_app_id' =>$id,
-                'add_date' =>$now
-            ];
+        if(!empty($app_id)){
+            foreach($add_app as $id){
+                $insert_data = [
+                    'test_device_id' =>$test_device_id,
+                    'mobile_app_id' =>$id,
+                    'add_date' =>$now
+                ];
 
-            \DB::table('mobile_installed_app')->insert($insert_data);
-        }
-        foreach($delete_app as $id){
-            $delete_data = [
-                ['test_device_id','=',$test_device_id],
-                ['mobile_app_id','=',$id]
-            ];
+                \DB::table('mobile_installed_app')->insert($insert_data);
+            }
+            foreach($delete_app as $id){
+                $delete_data = [
+                    ['test_device_id','=',$test_device_id],
+                    ['mobile_app_id','=',$id]
+                ];
 
-            \DB::table('mobile_installed_app')->where($delete_data)->delete();
+                \DB::table('mobile_installed_app')->where($delete_data)->delete();
+            }
+        }else{
+
+            \DB::table('mobile_installed_app')->where('test_device_id','=',$test_device_id)->delete();
         }
         return true;
     }

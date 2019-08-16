@@ -34,7 +34,7 @@
                                     <label>端末名</label>
                             </div>
                                     <div class="card-body">
-                                        <div class="h4 mb-2 font-weight-bold text-primary"><?=$detail['device_name']?></div>
+                                        <div class="h4 mb-2 font-weight-bold text-primary" style="min-height: 29px"><?=$detail['device_name']?></div>
                                 </div>
                         </div>
                         </div>
@@ -45,7 +45,7 @@
                                     <label>モバイル種別</label>
                                 </div>
                                     <div class="card-body">
-                                        <div class="h4 mb-2 font-weight-bold text-primary">
+                                        <div class="h4 mb-2 font-weight-bold text-primary" style="min-height: 29px">
                                             @if($detail['mobile_type']==1)
                                                 スマートフォン
                                             @elseif($detail['mobile_type']==2)
@@ -66,7 +66,7 @@
                                     <label>モバイル回線</label>
                                 </div>
                                     <div class="card-body">
-                                        <div class="h4 mb-2 font-weight-bold text-primary">
+                                        <div class="h4 mb-2 font-weight-bold text-primary" style="min-height: 29px">
                                             @if($detail['communication_line']===1)
                                                 あり
                                             @else
@@ -83,7 +83,7 @@
                                     <label>Wi-fi回線</label>
                                 </div>
                                     <div class="card-body">
-                                        <div class="h4 mb-2 font-weight-bold text-primary">
+                                        <div class="h4 mb-2 font-weight-bold text-primary" style="min-height: 29px">
                                             @if($detail['wifi_line']===1)
                                                 あり
                                             @else
@@ -102,7 +102,7 @@
                                     <label>OS</label>
                                 </div>
                                     <div class="card-body">
-                                        <div class="h4 mb-2 font-weight-bold text-primary">
+                                        <div class="h4 mb-2 font-weight-bold text-primary" style="min-height: 29px">
                                             @if($detail['os']==1)
                                                 Android
                                             @elseif($detail['os']==2)
@@ -122,7 +122,7 @@
                                     <label>キャリア</label>
                                 </div>
                                     <div class="card-body">
-                                        <div class="h4 mb-2 font-weight-bold text-primary"><?=$detail['carrier_name']?></div>
+                                        <div class="h4 mb-2 font-weight-bold text-primary" style="min-height: 29px"><?=$detail['carrier_name']?></div>
                                 </div>
                         </div>
                         </div>
@@ -135,7 +135,7 @@
                                     <label>SIM/UIM</label>
                                 </div>
                                     <div class="card-body">
-                                        <div class="h4 mb-2 font-weight-bold text-primary">
+                                        <div class="h4 mb-2 font-weight-bold text-primary" style="min-height: 29px">
                                             @if($detail['sim_card']==1)
                                                 標準SIM
                                             @elseif($detail['sim_card']==2)
@@ -155,7 +155,7 @@
                                 <div class="card-header py-2">
                                     <label>充電器タイプ</label>
                                 </div>
-                                <div class="h4 mb-2 font-weight-bold text-primary">
+                                <div class="h4 mb-2 font-weight-bold text-primary" style="min-height: 29px">
                                     <div class="card-body">
                                         @if($detail['charger_type']==1)
                                             USB TYPE-B
@@ -181,7 +181,7 @@
                                     <label>電話番号</label>
                                 </div>
                                     <div class="card-body">
-                                        <div class="h4 mb-2 font-weight-bold text-primary"><?=$detail['number']?></div>
+                                        <div class="h4 mb-2 font-weight-bold text-primary" style="min-height: 29px"><?=$detail['number']?></div>
                                 </div>
                         </div>
                             </div>
@@ -192,7 +192,7 @@
                                     <label>メールアドレス</label>
                                 </div>
                                     <div class="card-body">
-                                        <div class="h4 mb-2 font-weight-bold text-primary"><?=$detail['mail_address']?></div>
+                                        <div class="h4 mb-2 font-weight-bold text-primary" style="min-height: 29px"><?=$detail['mail_address']?></div>
                                 </div>
                         </div>
                         </div>
@@ -205,7 +205,7 @@
                                     <label>画面サイズ</label>
                                 </div>
                                     <div class="card-body">
-                                        <div class="h4 mb-2 font-weight-bold text-primary"><?=$detail['display_size']?></div>
+                                        <div class="h4 mb-2 font-weight-bold text-primary" style="min-height: 29px"><?=$detail['display_size']?></div>
                                 </div>
                         </div>
                         </div>
@@ -216,7 +216,7 @@
                                     <label>解像度</label>
                                 </div>
                                     <div class="card-body">
-                                        <div class="h4 mb-2 font-weight-bold text-primary"><?=$detail['resolution']?></div>
+                                        <div class="h4 mb-2 font-weight-bold text-primary" style="min-height: 29px"><?=$detail['resolution']?></div>
                                 </div>
                         </div>
                         </div>
@@ -229,11 +229,12 @@
                                     <label>発売時期</label>
                                 </div>
                                     <div class="card-body">
-                                        <div class="h4 mb-2 font-weight-bold text-primary">
+                                        <div class="h4 mb-2 font-weight-bold text-primary" style="min-height: 29px" style="min-height: 29px">
                                             @if($detail['launch_date']=='1900-01-01')
                                             @else
                                                 <?=date('Y年m月d日',strtotime($detail['launch_date']))?>
                                             @endif
+                                            ああああああああああああああ
                                         </div>
                                 </div>
                             </div>
@@ -244,7 +245,7 @@
                                         <label>最終貸出</label>
                                     </div>
                                     <div class="card-body">
-                                        <div class="h4 mb-2 font-weight-bold text-primary">
+                                        <div class="h4 mb-2 font-weight-bold text-primary" style="min-height: 29px">
                                             @if($recent_user)
                                                 <?=$recent_user['name']?>(<?=$recent_user['registration_datetime']?>)
                                             @endif
@@ -260,7 +261,7 @@
                                     <label>インストールアプリ</label>
                                 </div>
                                     <div class="card-body">
-                                        <div class="h4 mb-2 font-weight-bold text-primary">
+                                        <div class="h4 mb-2 font-weight-bold text-primary" style="min-height: 29px">
                                             @foreach($installed_app as $app)
                                                 <ul>
                                                     <li class="h5 font-weight-bold text-primary d-inline-block"><?=$app['app_name']?></li>
@@ -276,7 +277,7 @@
                                     <label>備考(ユーザー向け)</label>
                                 </div>
                                     <div class="card-body">
-                                        <div class="h4 mb-2 font-weight-bold text-primary"><?=$detail['memo']?></div>
+                                        <div class="h4 mb-2 font-weight-bold text-primary" style="min-height: 29px"><?=$detail['memo']?></div>
                                 </div>
                             </div>
 
@@ -285,7 +286,7 @@
                                     <label>備考(管理者向け)</label>
                                 </div>
                                     <div class="card-body">
-                                        <div class="h4 mb-2 font-weight-bold text-primary"><?=$detail['admin_memo']?></div>
+                                        <div class="h4 mb-2 font-weight-bold text-primary" style="min-height: 29px"><?=$detail['admin_memo']?></div>
                                 </div>
                             </div>
 

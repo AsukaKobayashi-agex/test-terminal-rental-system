@@ -22,8 +22,8 @@ class ReturnService
 
     public function returnDevice($param)
     {
-        $this->_model->returnDevice($param);
-        return true;
+        $message = $this->_model->returnDevice($param);
+        return $message;
     }
 
 }

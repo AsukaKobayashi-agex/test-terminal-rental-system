@@ -36,7 +36,7 @@
                         <form id='search' method="post" action="/mobile">
                             @csrf
                             <div class="form-group row">
-                                <div class="col-lg-2 px-1 mb-3">
+                                <div class="col-lg-2 px-1 mb-3 order-lg-1">
                                     <select name="type" class="form-control">
                                         <option value="">カテゴリ</option>
                                         <option value="1" {{$type==="1" ? 'selected': null}}>スマホ</option>
@@ -44,20 +44,40 @@
                                     </select>
                                 </div>
 
-                                <div class="col-lg-3 px-1 mb-3">
+                                <div class="col-lg-3 px-1 mb-3 order-lg-2">
                                     <input type="search" name="search_word" class="form-control" value="{{$search_word}}" placeholder="端末名を入力" >
                                 </div>
 
-                                <div class="col-lg-3 px-1 mb-3 d-flex d-inline">
-                                    <span class="m-2 text-center w-25"><i class="fas fa-fw fa-lg fa-wifi"></i></span>
-                                    <select name="wifi" class="form-control w-75 float-right">
+                                <div class="col-lg-2 px-1 mb-3 order-lg-6">
+                                    <select name="os" class="form-control">
+                                        <option value="">OS</option>
+                                        <option value="1" {{($os==="1") ? 'selected': null}}>Android</option>
+                                        <option value="2" {{($os==="2") ? 'selected': null}}>iOS</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-3 px-1 mb-3 order-lg-7">
+                                    <input type="search" name="os_version" class="form-control" value="{{$os_version}}" placeholder="OSバージョン" >
+                                </div>
+
+                                <div class="col-lg-3 px-1 mb-3 d-flex d-inline order-lg-8">
+                                    <label class="m-2 text-center"><i class="fas fa-fw fa-lg fa-mobile-alt"></i></label>
+                                    <select name="com_line" class="form-control float-right">
+                                        <option value="">モバイル回線</option>
+                                        <option value="0" {{$com_line==="0" ? 'selected': null}}>なし</option>
+                                        <option value="1" {{$com_line==="1" ? 'selected': null}}>あり</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-lg-3 px-1 mb-3 d-flex d-inline order-lg-3">
+                                    <label class="m-2 text-center"><i class="fas fa-fw fa-lg fa-wifi"></i></label>
+                                    <select name="wifi" class="form-control float-right">
                                         <option value="">Wi-Fi</option>
                                         <option value="0" {{$wifi==="0" ? 'selected': null}}>なし</option>
                                         <option value="1" {{$wifi==="1" ? 'selected': null}}>あり</option>
                                     </select>
                                 </div>
 
-                                <div class="col-lg-2 px-1 mb-3">
+                                <div class="col-lg-2 px-1 mb-3 order-lg-4">
                                     <select name="status" class="form-control">
                                         <option value="" >ステータス</option>
                                         <option value="0" {{$status==="0" ? 'selected': null}}>貸出可</option>
@@ -67,29 +87,10 @@
                                         @endif
                                     </select>
                                 </div>
-                                <div class="col-lg-2 px-1 mb-3">
+
+                                <div class="col-lg-2 px-1 mb-3 order-lg-5">
                                     <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-fw fa-search"></i>
                                     </button>
-                                </div>
-
-                                <div class="col-lg-2 px-1 mb-3">
-                                    <select name="os" class="form-control">
-                                        <option value="">OS</option>
-                                        <option value="1" {{($os==="1") ? 'selected': null}}>Android</option>
-                                        <option value="2" {{($os==="2") ? 'selected': null}}>iOS</option>
-                                    </select>
-                                </div>
-                                <div class="col-lg-3 px-1 mb-3">
-                                    <input type="search" name="os_version" class="form-control" value="{{$os_version}}" placeholder="OSバージョン" >
-                                </div>
-
-                                <div class="col-lg-3 px-1 mb-3 d-flex d-inline">
-                                    <span class="m-2 w-25 text-center"><i class="fas fa-fw fa-lg fa-mobile-alt"></i></span>
-                                    <select name="com_line" class="form-control w-75 float-right">
-                                        <option value="">モバイル回線</option>
-                                        <option value="0" {{$com_line==="0" ? 'selected': null}}>なし</option>
-                                        <option value="1" {{$com_line==="1" ? 'selected': null}}>あり</option>
-                                    </select>
                                 </div>
                             </div>
                             @include('rental.user.common.paginate_bar')

@@ -195,12 +195,10 @@ Add_sql;
 
     protected function _updatePcSoftware($param)
     {
-        if (empty($param['software_id']) || !is_array($param['software_id'])) {
-            return true;
-        }
-        $test_device_id = $param['test_device_id'];
 
-        return $this->_pc_software_model->updatePcSoftware($test_device_id,$param['software_id']);
+        $test_device_id = $param['test_device_id'];
+        $software = $param['software_id'];
+        return $this->_pc_software_model->updatePcSoftware($test_device_id,$software);
     }
     
 }

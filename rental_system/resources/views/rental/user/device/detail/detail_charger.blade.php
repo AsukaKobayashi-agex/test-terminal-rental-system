@@ -56,7 +56,7 @@
                                 <h6 class="m-0 font-weight-bold text-primary">最終貸出</h6>
                             </div>
                             <div class="card-body  text-center">
-                                <div class="h6 m-0 font-weight-bold text-gray-800">
+                                <div class="h6 m-0 font-weight-bold text-gray-800" style="min-height: 24px">
                                     @if($recent_user)
                                         <?=$recent_user['name']?><br>(<?=$recent_user['registration_datetime']?>)
                                     @endif
@@ -98,7 +98,7 @@
             </div>
         </div>
     </div>
-    
+
 
     <div class="col-sm-6">
         <a href="#" onclick="window.close(); return false;" class="btn btn-secondary btn-user btn-block">閉じる</a>
