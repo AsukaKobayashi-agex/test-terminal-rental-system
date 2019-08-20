@@ -27,15 +27,23 @@ Route::group(['prefix' => 'admin', 'middleware' => ['force_https']], function() 
 
         // TOPページ(端末一覧)
         Route::match(['get','post'],'/index_all', 'Admin\Index\IndexAllController@view');
+        Route::match(['get','post'],'/index_all/archive', 'Admin\Index\IndexAllController@setArchive');
 
         //一覧画面（スマホ）
         Route::match(['get','post'],'/index_sp', 'Admin\Index\IndexSpController@view');
+        Route::match(['get','post'],'/index_sp/archive', 'Admin\Index\IndexSpController@setArchive');
 
         //一覧画面（PC）
         Route::match(['get','post'],'/index_pc', 'Admin\Index\IndexPcController@view');
+        Route::match(['get','post'],'/index_pc/archive', 'Admin\Index\IndexPcController@setArchive');
 
         //一覧画面（充電器）
         Route::match(['get','post'],'/index_charger', 'Admin\Index\IndexChargerController@view');
+        Route::match(['get','post'],'/index_charger/archive', 'Admin\Index\IndexChargerController@setArchive');
+
+        //保管済み端末一覧画面
+        Route::match(['get','post'],'/archived', 'Admin\Index\IndexArchivedController@view');
+        Route::match(['get','post'],'/archived/unset', 'Admin\Index\IndexArchivedController@unsetArchive');
 
         //-----------------------------------------------------------------------------------------------
 
