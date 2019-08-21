@@ -25,7 +25,6 @@ class InfoChargerData
     {
         // バインド値設定
         $bind_params = [
-            'archive_flag' => 0,
         ];
 
         $sql = <<< End_of_sql
@@ -48,7 +47,7 @@ left outer join charger as ch
     on rd.rental_device_id = ch.rental_device_id
 left outer join user
     on rs.user_id = user.user_id
-where archive_flag = :archive_flag
+where
 
 End_of_sql;
 
@@ -56,7 +55,7 @@ End_of_sql;
             $bind_params['rental_device_id'] = $param['rental_device_id'];
             $sql .= <<< Add_sql
 
-        and rd.rental_device_id = :rental_device_id
+        rd.rental_device_id = :rental_device_id
 
 Add_sql;
         };
