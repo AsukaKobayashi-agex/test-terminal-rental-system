@@ -157,12 +157,12 @@ $(function () {
     $(".deleteButton").click(function(){
         const tr = $(this).parents('tr');
         $(tr).fadeOut('normal',function () {
-           $(tr).remove()
+            $(tr).remove();
+            if($('tbody input').length === 0) {
+                $("#noDevice").removeAttr('hidden');
+                $("#agree").attr('disabled', 'disabled')
+            }
         });
-        if($('tbody input').length === 0) {
-            $("#noDevice").removeAttr('hidden');
-            $("#agree").attr('disabled', 'disabled')
-        }
     });
 
     $('#newMylist').ready(function(){
@@ -193,7 +193,7 @@ $(function () {
             $("#agree").attr('disabled', 'disabled')
         }
     });
-    
+
     $('#sidebarToggle').click(function () {
         if($('#accordionSidebar').hasClass('toggled')){
             document.cookie = 'sideOpen=1'
@@ -211,7 +211,7 @@ $(function () {
         }
 
     });
-    
+
     $('a.once').click(function () {
         if( cancelFlag === 0 ){
             //++++cancelFlagが0であれば処理開始+++++
