@@ -135,11 +135,11 @@
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <h4>この端末のアーカイブ状態にしますか？<br></h4>
+                                            <h4>この端末をアーカイブ状態にしますか？<br></h4>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">いいえ</button>
-                                            <a class="btn btn-primary once" href="javascript:document.set_form<?=$i?>.submit()">はい</a>
+                                            <a class="btn btn-danger once" href="javascript:document.set_form<?=$i?>.submit()">はい</a>
                                         </div>
                                     </div>
                                 </div>
