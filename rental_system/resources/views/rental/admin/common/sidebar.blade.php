@@ -9,7 +9,7 @@
         <div class="sidebar-brand-text mx-3">管理者画面</div>
     </a>
 
-    <hr class="sidebar-divider my-0">
+    <hr class="sidebar-divider">
 
 
     <!-- Nav Item - Tables -->
@@ -17,14 +17,6 @@
         <a class="nav-link" href="/admin/index_all">
             <i class="fas fa-fw fa-table"></i>
             <span>端末一覧</span></a>
-    </li>
-
-    <hr class="sidebar-divider my-0">
-
-    <li {!! (Request::is('admin/archived') ? 'class="nav-item active"' : 'class="nav-item"') !!}>
-        <a class="nav-link" href="/admin/archived">
-            <i class="fas fa-fw fa-archive"></i>
-            <span>アーカイブ</span></a>
     </li>
 
     <!-- Divider -->
@@ -72,7 +64,7 @@
     </li>
 
     <!-- Divider -->
-    <hr class="sidebar-divider my-0">
+    <hr class="sidebar-divider d-none d-md-block">
 
     <li  {!! (Request::is('admin/master') ? 'class="nav-item active"' : 'class="nav-item"') !!}>
         <a class="nav-link" href="/admin/master">

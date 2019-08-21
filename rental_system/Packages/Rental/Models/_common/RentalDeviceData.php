@@ -18,25 +18,4 @@ class RentalDeviceData
         return $rental_device_id;
     }
 
-    public function setArchiveFlag($rental_device_id)
-    {
-        $now = nowDateTime();
-        $update_data = [
-            'archive_flag' => 1,
-            'update_date' => $now
-        ];
-
-        \DB::table('rental_device')->where("rental_device_id","=",$rental_device_id)->update($update_data);
-    }
-
-    public function unsetArchiveFlag($rental_device_id)
-    {
-        $now = nowDateTime();
-        $update_data = [
-            'archive_flag' => 0,
-            'update_date' => $now
-        ];
-
-        \DB::table('rental_device')->where("rental_device_id","=",$rental_device_id)->update($update_data);
-    }
 }

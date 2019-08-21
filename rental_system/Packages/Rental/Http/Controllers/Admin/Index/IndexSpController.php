@@ -4,7 +4,6 @@ namespace Rental\Http\Controllers\Admin\Index;
 
 use App\Http\Controllers\Controller;
 use Rental\Http\Requests\Admin\Index\IndexSpRequest;
-use Rental\Services\_common\ArchiveTrait;
 use Rental\Services\Admin\Index\IndexSpService;
 
 
@@ -31,15 +30,4 @@ class IndexSpController extends Controller
         $data['search_carrier'] = $request -> input('search_carrier');
         return view('rental.admin.Device.index_sp')->with($data);
     }
-
-
-    use ArchiveTrait;
-
-    public function setArchive(IndexSpRequest $request)
-    {
-        $param = $request->all();
-        $this->archive($param['set_device_id']);
-        return redirect('/admin/index_sp')->with('success', 'アーカイブしました！');
-    }
-
 }

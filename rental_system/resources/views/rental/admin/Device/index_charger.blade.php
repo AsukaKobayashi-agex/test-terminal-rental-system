@@ -17,7 +17,6 @@
                         <th width=100px >端末ID</th>
                         <th>充電器名</th>
                         <th>充電器タイプ</th>
-                        <th width="10%"></th>
                     </tr>
                     </thead>
 
@@ -70,7 +69,6 @@
                             <td></td>
                             <td>一致する項目はありません</td>
                             <td></td>
-                            <td></td>
                         </tr>
                     @endif
 
@@ -96,35 +94,6 @@
                                    Other
                                @endif
                            </td>
-                            <td class="align-middle px-sm-2 px-0">
-                                @php($i= $device['rental_device_id'])
-                                <form name="set_form<?=$i?>" id="unset_form<?=$i?>" method="post" action="index_charger/archive">
-                                    @csrf
-                                    <input type="hidden" name="set_device_id"  value="<?=$device['rental_device_id']?>">
-                                </form>
-                                <button type="button" data-toggle="modal" data-target="#setModal<?=$i?>" class="btn btn-danger btn-user btn-block px-0 align-middle">
-                                    <span class="d-lg-inline d-none"><i class="fas fa-archive"></i></span><span class="d-lg-none">x</span></button>
-                            </td>
-                            <!--   削除モーダル -->
-                            <div class="modal fade" id="setModal<?=$i?>" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h4 class="modal-title" id="myModalLabel">アーカイブ</h4>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <h4>この端末をアーカイブ状態にしますか？<br></h4>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">いいえ</button>
-                                            <a class="btn btn-danger once" href="javascript:document.set_form<?=$i?>.submit()">はい</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </tr>
                     @endforeach
                     </tbody>
