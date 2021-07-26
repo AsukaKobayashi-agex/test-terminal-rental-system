@@ -103,6 +103,7 @@
                                 <option value="2" {{old('sim_card')=== "2" ? 'selected': null}}>nanoSIM</option>
                                 <option value="3" {{old('sim_card')=== "3" ? 'selected': null}}>microSIM</option>
                                 <option value="4" {{old('sim_card')=== "4" ? 'selected': null}}>miniSIM</option>
+                                <option value="5" {{old('sim_card')=== "5" ? 'selected': null}}>eSIM</option>
                             </select>
                         </div>
 
