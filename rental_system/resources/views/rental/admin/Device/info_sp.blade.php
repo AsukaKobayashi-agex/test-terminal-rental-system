@@ -144,6 +144,8 @@
                                                 microSIM
                                             @elseif($detail['sim_card']==4)
                                                 miniSIM
+                                            @elseif($detail['sim_card']==5)
+                                                eSIM
                                             @endif
                                         </div>
                                 </div>
